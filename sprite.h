@@ -35,6 +35,7 @@ public:
 	bool _blockMovement;
 	int width, height;
 	float _x; float _y;
+	float _angle;
 	int move_left; int move_right; int move_up; int move_down;
 	int frame;
 	game_sprite();
@@ -53,6 +54,7 @@ public:
 	void wh(float, float);
 	void draw();
 	void draw(float, float);
+	void rotate( float angle );
 	void text(char *str);
 	GLuint LoadTexture( const char * filename);
 	void renderSpacedBitmapString(float x, float y, int spacing, void *font, char *str);

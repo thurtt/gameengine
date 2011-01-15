@@ -30,42 +30,58 @@ void Guard::movement()
 	if ( _upCount < MAX_UP )
 	{
 		up();
-		_rightCount = _upCount >= MAX_UP ? 0 : MAX_RIGHT;
+		if ( _upCount >= MAX_UP )
+		{
+			_rightCount = 0;
+			_angle = 90.0;
+		}
 	}
 	else if ( _rightCount < MAX_RIGHT )
 	{
 		right();
-		_downCount = _rightCount >= MAX_RIGHT ? 0 : MAX_DOWN;
+		if ( _rightCount >= MAX_RIGHT )
+		{
+			_downCount = 0;
+			_angle = 180.0;
+		}
 	}
 	else if ( _downCount < MAX_DOWN )
 	{
 		down();
-		_leftCount = _downCount >= MAX_DOWN ? 0 : MAX_LEFT;
+		if ( _downCount >= MAX_DOWN )
+		{
+			_leftCount = 0;
+			_angle = -90.0;
+		}
 	}
 	else if ( _leftCount < MAX_LEFT )
 	{
 		left();
-		_upCount = _leftCount >= MAX_LEFT ? 0 : MAX_UP;
+		if ( _leftCount >= MAX_LEFT )
+		{
+			_upCount =  0;
+			_angle = 0.0;
+		}
 	}	
 }
 void Guard::up()
 {
-	_x += DELTA;
+	_y += DELTA;
 	_upCount++;
 
 }
 void Guard::down()
 {
-	_x -= DELTA;
+	_y -= DELTA;
 	_downCount++;
 }
 void Guard::right()
 {
-	_y += DELTA;
+	_x += DELTA;
 	_rightCount++;
 }
 void Guard::left()
 {
-	_y -= DELTA;
+	_x -= DELTA;
 	_leftCount++;
 }

@@ -19,6 +19,7 @@ game_sprite::game_sprite(){
 	_blockVisibility = false;
 	texture = LoadTexture("img.png");
 	textures.push_back( texture );
+	_angle = 0;
 }
 
 game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, const char * _filename, bool vis, bool mov){
@@ -173,14 +174,19 @@ void game_sprite::draw(float offset_x, float offset_y){
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	
 	glPushMatrix();
+	
 	glBegin(GL_QUADS);
+	glRotatef( 90.0, 0, 1, 0 );
 	glColor4f(1.0f,1.0f,1.0f,1.0f);			// Full Brightness, 0.5f == 50% Alpha ( NEW )
 	glTexCoord2d(0.0f,0.0f);	glVertex2f( _x + 0.0f + offset_x ,  _y + 0.0f + offset_y );
     glTexCoord2d(1.0f,0.0f);	glVertex2f( _x + width + offset_x , _y +   0.0f + offset_y );
     glTexCoord2d(1.0f, 1.0f);	glVertex2f( _x + width + offset_x , _y + height + offset_y );
     glTexCoord2d(0.0f, 1.0f);	glVertex2f( _x +  0.0f + offset_x , _y + height + offset_y );
-
-    glEnd();
+	
+	
+	
+	
+	glEnd();
 	glPopMatrix();
 	
 	glEnable(GL_DEPTH_TEST);
