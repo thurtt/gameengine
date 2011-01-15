@@ -10,13 +10,31 @@
 #ifndef _GUARD_H_
 #define _GUARD_H_
 
+const unsigned long MAX_UP = 100;
+const unsigned long MAX_DOWN = 100;
+const unsigned long MAX_RIGHT = 100;
+const unsigned long MAX_LEFT = 100;
+const float DELTA = 0.8;
+
 #include "sprite.h"
 
 class Guard : public game_sprite
 {
 public:
 	Guard( float start_x, float start_y );
-	void RoamForever();
+	virtual void movement();	
+	
+private:
+	unsigned long _upCount;
+	unsigned long _downCount;
+	unsigned long _rightCount;
+	unsigned long _leftCount;
+	
+	void up();
+	void down();
+	void right();
+	void left();
+	
 	
 };
 

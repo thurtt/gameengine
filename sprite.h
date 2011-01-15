@@ -44,7 +44,7 @@ public:
 	void includeAnimation(int, char *);
 	void useAnimation(int);
 	void animate();
-	void movement();
+	virtual void movement();
 	bool blockVisibility();
 	void blockVisibility(bool);
 	bool blockMovement();
