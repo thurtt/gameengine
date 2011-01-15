@@ -8,6 +8,7 @@
  */
 
 #include "game.h"
+#include "guard.h"
 
 
 game::game(){
@@ -15,6 +16,10 @@ game::game(){
 	timebase = 0;
 	focus_sprite = new game_sprite(102,700, 64,64, "target.png", false, false);
 	sprites.push_back(focus_sprite);
+	
+	// polymorphism...oh noes!!!
+	game_sprite * guard_sprite = new Guard( 202, 800 );
+	sprites.push_back( guard_sprite );
 	
 	loadMap(1);
 	

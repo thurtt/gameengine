@@ -13,6 +13,10 @@
 class LineOfSight
 {
 public:
+	// field of vision, depth of vision
+	LineOfSight( float fov, float dov );
+	
+	bool IsTargetVisible( float target_x, float target_y );
 private:
 };
 

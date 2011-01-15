@@ -25,6 +25,7 @@
 using namespace std;
 
 class game_sprite {
+protected:
 	const char * texture_file;
 	vector<GLuint> textures; 
 	GLuint texture;

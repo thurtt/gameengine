@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E2BEAC9D12E20D1A004C439E /* los.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BEAC9C12E20D1A004C439E /* los.cpp */; };
+		E2BEACBA12E2196C004C439E /* guard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BEACB912E2196C004C439E /* guard.cpp */; };
 		F3409E1612D81B6A005240F1 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3409E1512D81B6A005240F1 /* GLUT.framework */; };
 		F3409E1812D81B6A005240F1 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3409E1712D81B6A005240F1 /* OpenGL.framework */; };
 		F3409E2112D81BB5005240F1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3409E2012D81BB5005240F1 /* main.cpp */; };
@@ -27,6 +28,8 @@
 /* Begin PBXFileReference section */
 		E2BEAC9B12E20D1A004C439E /* los.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = los.h; sourceTree = "<group>"; };
 		E2BEAC9C12E20D1A004C439E /* los.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = los.cpp; sourceTree = "<group>"; };
+		E2BEACB812E2196C004C439E /* guard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guard.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		E2BEACB912E2196C004C439E /* guard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guard.cpp; sourceTree = "<group>"; };
 		F3409E0D12D81AD4005240F1 /* XcodeGLUT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XcodeGLUT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3409E1012D81AD4005240F1 /* XcodeGLUT-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XcodeGLUT-Info.plist"; sourceTree = "<group>"; };
 		F3409E1512D81B6A005240F1 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = /System/Library/Frameworks/GLUT.framework; sourceTree = "<absolute>"; };
@@ -76,6 +79,8 @@
 		F3409DFD12D81AA8005240F1 = {
 			isa = PBXGroup;
 			children = (
+				E2BEACB812E2196C004C439E /* guard.h */,
+				E2BEACB912E2196C004C439E /* guard.cpp */,
 				F3E35F7112DA4A420078D65F /* SOIL */,
 				F3E35C2F12D96F3F0078D65F /* input.h */,
 				F3E35C3012D96F3F0078D65F /* input.cpp */,
@@ -194,6 +199,7 @@
 				F367739B12DCF60600367F02 /* tiles.cpp in Sources */,
 				F36773A112DCF6BA00367F02 /* sprite_data.cpp in Sources */,
 				E2BEAC9D12E20D1A004C439E /* los.cpp in Sources */,
+				E2BEACBA12E2196C004C439E /* guard.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
