@@ -1,0 +1,154 @@
+// !$*UTF8*$!
+{
+	E2BEAC7912E20AE2004C439E /* XcodeGLUT */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = XcodeGLUT;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	E2BEAC9212E20AF0004C439E /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	E2BEAC9312E20AF0004C439E /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	F3409DFF12D81AA8005240F1 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = E2BEAC7912E20AE2004C439E /* XcodeGLUT */;
+		activeTarget = F3409E0C12D81AD4005240F1 /* XcodeGLUT */;
+		addToTargets = (
+			F3409E0C12D81AD4005240F1 /* XcodeGLUT */,
+		);
+		codeSenseManager = E2BEAC9312E20AF0004C439E /* Code sense */;
+		executables = (
+			E2BEAC7912E20AE2004C439E /* XcodeGLUT */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					788,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.XCSCMDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					764,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_SCM_ColumnID,
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 316803810;
+			PBXWorkspaceStateSaveDate = 316803810;
+		};
+		sourceControlManager = E2BEAC9212E20AF0004C439E /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	F3409E0C12D81AD4005240F1 /* XcodeGLUT */ = {
+		activeExec = 0;
+		executables = (
+			E2BEAC7912E20AE2004C439E /* XcodeGLUT */,
+		);
+	};
+	F3409E2012D81BB5005240F1 /* main.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {966, 2340}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{2304, 1029}";
+		};
+	};
+	F367739F12DCF6BA00367F02 /* sprite_data.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {966, 552}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 457}";
+		};
+	};
+	F36773A012DCF6BA00367F02 /* sprite_data.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {966, 377}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 396}";
+		};
+	};
+	F3E35C3012D96F3F0078D65F /* input.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1169, 585}}";
+			sepNavSelRange = "{126, 0}";
+			sepNavVisRange = "{0, 684}";
+			sepNavWindowFrame = "{{15, 118}, {1228, 623}}";
+		};
+	};
+	F3E35F5E12DA4A0E0078D65F /* image_DXT.c */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {966, 8229}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1187}";
+		};
+	};
+}
