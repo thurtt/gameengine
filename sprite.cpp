@@ -168,6 +168,14 @@ void game_sprite::draw(float offset_x, float offset_y){
 	glEnable(GL_BLEND);
 	glDisable(GL_DEPTH_TEST);
 	glBindTexture( GL_TEXTURE_2D, texture );
+	
+	glMatrixMode(GL_TEXTURE);
+	glLoadIdentity();
+	glTranslatef(0.5,0.5,0.0);
+	glRotatef(_angle,0.0,0.0,1.0);
+	glTranslatef(-0.5,-0.5,0.0);
+	glMatrixMode(GL_MODELVIEW);
+	
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -176,15 +184,11 @@ void game_sprite::draw(float offset_x, float offset_y){
 	glPushMatrix();
 	
 	glBegin(GL_QUADS);
-	glRotatef( 90.0, 0, 1, 0 );
 	glColor4f(1.0f,1.0f,1.0f,1.0f);			// Full Brightness, 0.5f == 50% Alpha ( NEW )
 	glTexCoord2d(0.0f,0.0f);	glVertex2f( _x + 0.0f + offset_x ,  _y + 0.0f + offset_y );
     glTexCoord2d(1.0f,0.0f);	glVertex2f( _x + width + offset_x , _y +   0.0f + offset_y );
     glTexCoord2d(1.0f, 1.0f);	glVertex2f( _x + width + offset_x , _y + height + offset_y );
     glTexCoord2d(0.0f, 1.0f);	glVertex2f( _x +  0.0f + offset_x , _y + height + offset_y );
-	
-	
-	
 	
 	glEnd();
 	glPopMatrix();
