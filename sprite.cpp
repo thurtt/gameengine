@@ -19,7 +19,7 @@ game_sprite::game_sprite(){
 	_blockVisibility = false;
 	texture = LoadTexture("img.png");
 	textures.push_back( texture );
-	_angle = 0;
+	_angle = 0.0f;
 }
 
 game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, const char * _filename, bool vis, bool mov){
@@ -31,6 +31,7 @@ game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, co
 	
 	texture = LoadTexture(texture_file);
 	textures.push_back( texture );
+	_angle = 0.0f;
 }
 
 void game_sprite::includeAnimation(int anim, char * t){
@@ -184,6 +185,7 @@ void game_sprite::draw(float offset_x, float offset_y){
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	
+
 	glPushMatrix();
 	
 	glBegin(GL_QUADS);
@@ -231,17 +233,21 @@ void game_sprite::movement(){
 	if (move_right > 0)	{ 
 		_x += delta;	
 		//texture = 2; 
+		_angle = 90;
 	}
 	if (move_left > 0)	{ 
 		_x -= delta;	
 		//texture = 2; 
+		_angle = 270;
 	}
 	if (move_up > 0)	{ 
 		_y += delta;	
 		//texture = 2; 
+		_angle = 0;
 	}
 	if (move_down > 0)	{ 
 		_y -= delta;	
 		//texture = 2; 
+		_angle = 180;
 	}
 }

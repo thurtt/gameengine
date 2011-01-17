@@ -197,7 +197,48 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>E2A8F77112E3D50900FED611</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>sprite.cpp</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>E2A8F77512E3DBAC00FED611</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>sprite.cpp</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>E2A8F77612E3DBAC00FED611</string>
+						<key>history</key>
+						<array>
+							<string>E2A8F77012E3D50900FED611</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {1228, 526}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>69 144 1228 567 0 0 1366 746 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -229,6 +270,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -274,7 +317,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 47}, {186, 548}}</string>
+							<string>{{0, 0}, {186, 548}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -304,14 +347,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>sprite.cpp</string>
+								<string>guard.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -319,11 +360,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>sprite.cpp</string>
+										<string>guard.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E2A8F76312E3BF9900FED611</string>
+										<string>E2A8F77412E3DBAC00FED611</string>
 										<key>history</key>
 										<array>
 											<string>E2BEAD0F12E2265F004C439E</string>
@@ -334,8 +375,8 @@
 											<string>E2BEADE812E238C0004C439E</string>
 											<string>E2BEAE6712E2488C004C439E</string>
 											<string>E2BEAE7212E248DC004C439E</string>
-											<string>E2BEAE7E12E24937004C439E</string>
-											<string>E22F3A5A12E39FE20085926B</string>
+											<string>E2A8F77212E3DBAC00FED611</string>
+											<string>E2A8F77312E3DBAC00FED611</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -510,7 +551,7 @@
 	<key>PerspectivesBarVisible</key>
 	<false/>
 	<key>PinnedNavigatorIdentifier</key>
-	<string>E2BEAE0A12E23AC0004C439E</string>
+	<string>E2A8F77112E3D50900FED611</string>
 	<key>ShelfIsVisible</key>
 	<false/>
 	<key>SourceDescription</key>
@@ -535,13 +576,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E2A8F76B12E3BF9900FED611</string>
 		<string>E2A8F76C12E3BF9900FED611</string>
 		<string>E2A8F76D12E3BF9900FED611</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>E2BEAC8612E20AF0004C439E</string>
 		<string>/Users/tom/projects/gltest/gltest.xcodeproj</string>
+		<string>E2A8F77112E3D50900FED611</string>
 	</array>
 	<key>WindowString</key>
 	<string>1 138 1167 607 0 0 1366 746 </string>
