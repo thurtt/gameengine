@@ -35,6 +35,7 @@ public:
 	bool _blockMovement;
 	int width, height;
 	float _x; float _y;
+	float facing;
 	int move_left; int move_right; int move_up; int move_down;
 	int frame;
 	game_sprite();
