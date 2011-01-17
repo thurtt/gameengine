@@ -169,6 +169,9 @@ void game_sprite::draw(float offset_x, float offset_y){
 	glDisable(GL_DEPTH_TEST);
 	glBindTexture( GL_TEXTURE_2D, texture );
 	
+	// not exactly sure how this works, but it does.
+	// use the _angle member variable to change the
+	// direction of the sprite.
 	glMatrixMode(GL_TEXTURE);
 	glLoadIdentity();
 	glTranslatef(0.5,0.5,0.0);

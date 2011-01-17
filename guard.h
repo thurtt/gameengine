@@ -12,7 +12,7 @@
 
 const unsigned long MAX_UP = 300;
 const unsigned long MAX_DOWN = 300;
-const unsigned long MAX_RIGHT = 300;
+const unsigned long MAX_RIGHT = 400;
 const unsigned long MAX_LEFT = 300;
 const float DELTA = 0.8;
 
