@@ -19,7 +19,7 @@ game_sprite::game_sprite(){
 	_blockVisibility = false;
 	texture = LoadTexture("img.png");
 	textures.push_back( texture );
-	facing = 0.0f;
+	_angle = 0.0f;
 }
 
 game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, const char * _filename, bool vis, bool mov){
@@ -31,7 +31,7 @@ game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, co
 	
 	texture = LoadTexture(texture_file);
 	textures.push_back( texture );
-	facing = 0.0f;
+	_angle = 0.0f;
 }
 
 void game_sprite::includeAnimation(int anim, char * t){
@@ -169,6 +169,14 @@ void game_sprite::draw(float offset_x, float offset_y){
 	glEnable(GL_BLEND);
 	glDisable(GL_DEPTH_TEST);
 	glBindTexture( GL_TEXTURE_2D, texture );
+	
+	glMatrixMode(GL_TEXTURE);
+	glLoadIdentity();
+	glTranslatef(0.5,0.5,0.0);
+	glRotatef(_angle,0.0,0.0,1.0);
+	glTranslatef(-0.5,-0.5,0.0);
+	glMatrixMode(GL_MODELVIEW);
+	
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -177,20 +185,14 @@ void game_sprite::draw(float offset_x, float offset_y){
 
 	glPushMatrix();
 	
-	glMatrixMode(GL_TEXTURE);
-	glLoadIdentity();
-	glTranslatef(0.5,0.5,0.0);
-	glRotatef(facing, 0,0,1);
-	glTranslatef(-0.5,-0.5,0.0);
-		
 	glBegin(GL_QUADS);
 	glColor4f(1.0f,1.0f,1.0f,1.0f);			// Full Brightness, 0.5f == 50% Alpha ( NEW )
 	glTexCoord2d(0.0f,0.0f);	glVertex2f( _x + 0.0f + offset_x ,  _y + 0.0f + offset_y );
     glTexCoord2d(1.0f,0.0f);	glVertex2f( _x + width + offset_x , _y +   0.0f + offset_y );
     glTexCoord2d(1.0f, 1.0f);	glVertex2f( _x + width + offset_x , _y + height + offset_y );
     glTexCoord2d(0.0f, 1.0f);	glVertex2f( _x +  0.0f + offset_x , _y + height + offset_y );
-
-    glEnd();
+	
+	glEnd();
 	glPopMatrix();
 	
 	glEnable(GL_DEPTH_TEST);
@@ -228,21 +230,21 @@ void game_sprite::movement(){
 	if (move_right > 0)	{ 
 		_x += delta;	
 		//texture = 2; 
-		facing = 90;
+		_angle = 90;
 	}
 	if (move_left > 0)	{ 
 		_x -= delta;	
 		//texture = 2; 
-		facing = 270;
+		_angle = 270;
 	}
 	if (move_up > 0)	{ 
 		_y += delta;	
 		//texture = 2; 
-		facing = 0;
+		_angle = 0;
 	}
 	if (move_down > 0)	{ 
 		_y -= delta;	
 		//texture = 2; 
-		facing = 180;
+		_angle = 180;
 	}
 }
