@@ -163,6 +163,7 @@
 			F3B87C4212E549E200F616C7 /* PBXTextBookmark */ = F3B87C4212E549E200F616C7 /* PBXTextBookmark */;
 			F3B87C4612E54A0F00F616C7 /* PBXTextBookmark */ = F3B87C4612E54A0F00F616C7 /* PBXTextBookmark */;
 			F3B87C4A12E54A2200F616C7 /* PBXTextBookmark */ = F3B87C4A12E54A2200F616C7 /* PBXTextBookmark */;
+			F3B87C4E12E54B5900F616C7 /* PBXTextBookmark */ = F3B87C4E12E54B5900F616C7 /* PBXTextBookmark */;
 			F3BA089812DE0D840099AB0E = F3BA089812DE0D840099AB0E /* PBXTextBookmark */;
 			F3BA08DD12DE2D7F0099AB0E = F3BA08DD12DE2D7F0099AB0E /* PBXTextBookmark */;
 			F3BA0A9112DE6AE10099AB0E = F3BA0A9112DE6AE10099AB0E /* PBXTextBookmark */;
@@ -488,7 +489,7 @@
 		ignoreCount = 0;
 		lineNumber = 247;
 		location = XcodeGLUT;
-		modificationTime = 317016609.254326;
+		modificationTime = 317016920.66785;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -954,7 +955,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 256";
 		rLen = 0;
-		rLoc = 6159;
+		rLoc = 6158;
 		rType = 0;
 		vrLen = 860;
 		vrLoc = 5138;
@@ -964,7 +965,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 254";
 		rLen = 88;
-		rLoc = 5984;
+		rLoc = 5983;
 		rType = 0;
 		vrLen = 860;
 		vrLoc = 5138;
@@ -984,7 +985,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 256";
 		rLen = 0;
-		rLoc = 6095;
+		rLoc = 6094;
 		rType = 0;
 		vrLen = 672;
 		vrLoc = 4605;
@@ -994,7 +995,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 255";
 		rLen = 0;
-		rLoc = 6004;
+		rLoc = 6003;
 		rType = 0;
 		vrLen = 780;
 		vrLoc = 5327;
@@ -1004,7 +1005,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 256";
 		rLen = 0;
-		rLoc = 6110;
+		rLoc = 6109;
 		rType = 0;
 		vrLen = 780;
 		vrLoc = 5327;
@@ -1024,7 +1025,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 271";
 		rLen = 0;
-		rLoc = 6365;
+		rLoc = 6364;
 		rType = 0;
 		vrLen = 1087;
 		vrLoc = 5358;
@@ -1044,9 +1045,19 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 265";
 		rLen = 0;
-		rLoc = 6365;
+		rLoc = 6364;
 		rType = 0;
 		vrLen = 999;
+		vrLoc = 5476;
+	};
+	F3B87C4E12E54B5900F616C7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
+		name = "sprite.cpp: 256";
+		rLen = 0;
+		rLoc = 5847;
+		rType = 0;
+		vrLen = 998;
 		vrLoc = 5476;
 	};
 	F3BA089812DE0D840099AB0E /* PBXTextBookmark */ = {
@@ -1126,9 +1137,9 @@
 	};
 	F3E35BA712D958C30078D65F /* sprite.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {887, 3666}}";
-			sepNavSelRange = "{6365, 0}";
-			sepNavVisRange = "{5476, 999}";
+			sepNavIntBoundsRect = "{{0, 0}, {887, 3653}}";
+			sepNavSelRange = "{5847, 0}";
+			sepNavVisRange = "{5476, 998}";
 			sepNavWindowFrame = "{{38, 294}, {750, 558}}";
 		};
 	};
@@ -1167,7 +1178,7 @@
 		ignoreCount = 0;
 		lineNumber = 45;
 		location = XcodeGLUT;
-		modificationTime = 317016609.254273;
+		modificationTime = 317016920.667805;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};

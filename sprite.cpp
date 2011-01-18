@@ -253,7 +253,7 @@ void game_sprite::draw_fov( float ref_x, float ref_y )
 	glColor4f(1.0f,0.0f,0.0f,0.5f);			// Full Brightness, 0.5f == 50% Alpha ( NEW )
 	
 	// Two things happened here:
-	// to make angle 0deg is straight up for our dude, so we had to split the x coord instead (so it's not sideways)
+	//  angle 0deg is straight up for our dude, so we have to split the x coord instead of y (so it's not sideways)
 	// we had to swap the FoV and DoV to get the long view you wanted.
 	glVertex2f(ref_x, ref_y);			// first corner
 	glVertex2f(ref_x - ( FIELD_OF_VISION / 2), ref_y + DEPTH_OF_VISION );	// second corner
