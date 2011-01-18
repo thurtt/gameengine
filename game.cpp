@@ -14,7 +14,8 @@
 game::game(){
 	frame = 0;
 	timebase = 0;
-	focus_sprite = new game_sprite(102,700, 64,64, "guard.png", false, false);
+	focus_sprite = new game_sprite(102,700, 32,32, "guard.png", false, false);
+	focus_sprite->use_los = true;
 	sprites.push_back(focus_sprite);
 	
 	// polymorphism...oh noes!!!

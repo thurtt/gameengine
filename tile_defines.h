@@ -32,7 +32,7 @@
 /***********
  ANIMATION CRAP
  **********/
-#define ANIM_MAX_FRAMES  6
+#define ANIM_MAX_FRAMES  360
 
 #define ANIM_NONE  0
 #define ANIM_IDLE  1

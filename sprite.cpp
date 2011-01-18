@@ -240,20 +240,29 @@ GLuint game_sprite::LoadTexture( const char * filename){
 
 void game_sprite::draw_fov( float ref_x, float ref_y )
 {
-
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 	
 	glPushMatrix();
 	glLoadIdentity();
-	glTranslatef(0.5,0.5,0.0);
-	glRotatef(_angle,0.0,0.0,1.0);
-	glTranslatef(-0.5, -0.5, 0.0);
+	glTranslatef(ref_x,ref_y,0.0);	// <- the translation used was world x,y, so it was rotating around screen 0,0
+	glRotatef(-_angle,0.0,0.0,1.0); // technically, you have to rotate this opposite to make it appear right.
+	glTranslatef(-ref_x, -ref_y, -0.0);
+
 	glBegin(GL_TRIANGLES);
-	glColor4f(1.0f,0.0f,0.0f,1.0f);			// Full Brightness, 0.5f == 50% Alpha ( NEW )
+	glColor4f(1.0f,0.0f,0.0f,0.5f);			// Full Brightness, 0.5f == 50% Alpha ( NEW )
+	
+	// Two things happened here:
+	// to make angle 0deg is straight up for our dude, so we had to split the x coord instead (so it's not sideways)
+	// we had to swap the FoV and DoV to get the long view you wanted.
 	glVertex2f(ref_x, ref_y);			// first corner
-	glVertex2f(ref_x + DEPTH_OF_VISION, ref_y - ( FIELD_OF_VISION / 2 ));	// second corner
-	glVertex2f(ref_x + DEPTH_OF_VISION, ref_y + ( FIELD_OF_VISION / 2 ));	// third corner
+	glVertex2f(ref_x - ( FIELD_OF_VISION / 2), ref_y + DEPTH_OF_VISION );	// second corner
+	glVertex2f(ref_x + ( FIELD_OF_VISION / 2), ref_y + DEPTH_OF_VISION );	// third corner
+	//glVertex2f(ref_x + DEPTH_OF_VISION, ref_y - ( FIELD_OF_VISION / 2 ));	// second corner
+	//glVertex2f(ref_x + DEPTH_OF_VISION, ref_y + ( FIELD_OF_VISION / 2 ));	// third corner
 	glEnd();
 	glPopMatrix();
+
 }
 
 void game_sprite::movement(){
