@@ -34,6 +34,7 @@ private:
 	void down();
 	void right();
 	void left();
+	void draw_fov( float ref_x, float ref_y );
 	
 	
 };

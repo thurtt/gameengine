@@ -22,6 +22,7 @@ Guard::Guard( float start_x, float start_y ) :
 	height = 32;
 	texture = LoadTexture( "guard.png" );
 	textures.push_back( texture );
+	use_los = true;
 }
 void Guard::movement()
 {
@@ -64,6 +65,7 @@ void Guard::movement()
 		}
 	}	
 }
+
 void Guard::up()
 {
 	_y += DELTA;

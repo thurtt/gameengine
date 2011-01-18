@@ -20,6 +20,7 @@ game_sprite::game_sprite(){
 	texture = LoadTexture("img.png");
 	textures.push_back( texture );
 	_angle = 0.0f;
+	use_los = false;
 }
 
 game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, const char * _filename, bool vis, bool mov){
@@ -32,6 +33,7 @@ game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, co
 	texture = LoadTexture(texture_file);
 	textures.push_back( texture );
 	_angle = 0.0f;
+	use_los = false;
 }
 
 void game_sprite::includeAnimation(int anim, char * t){
@@ -200,6 +202,17 @@ void game_sprite::draw(float offset_x, float offset_y){
 	
 	glEnable(GL_DEPTH_TEST);
 	glDisable(GL_BLEND);
+	
+	if ( use_los ) 
+	{
+		// find the eyeballs
+		// lets say they're in the center of the sprite
+		
+		float eye_x = (_x + offset_x) + (width / 2);
+		float eye_y = (_y + offset_y) + (height / 2);
+		// draw our fov
+		draw_fov( eye_x, eye_y );
+	}
 	/*char str [100];
 	sprintf(str, "%f,%f", _x + offset_x + width, _y + offset_y + height);
 	text(str);*/
@@ -223,8 +236,24 @@ GLuint game_sprite::LoadTexture( const char * filename){
 			 );
 	master_texture_list.push_back(make_pair(filename, _texture));
 	return _texture;
+}
+
+void game_sprite::draw_fov( float ref_x, float ref_y )
+{
 
 	
+	glPushMatrix();
+	glLoadIdentity();
+	glTranslatef(0.5,0.5,0.0);
+	glRotatef(_angle,0.0,0.0,1.0);
+	glTranslatef(-0.5, -0.5, 0.0);
+	glBegin(GL_TRIANGLES);
+	glColor4f(1.0f,0.0f,0.0f,1.0f);			// Full Brightness, 0.5f == 50% Alpha ( NEW )
+	glVertex2f(ref_x, ref_y);			// first corner
+	glVertex2f(ref_x + DEPTH_OF_VISION, ref_y - ( FIELD_OF_VISION / 2 ));	// second corner
+	glVertex2f(ref_x + DEPTH_OF_VISION, ref_y + ( FIELD_OF_VISION / 2 ));	// third corner
+	glEnd();
+	glPopMatrix();
 }
 
 void game_sprite::movement(){
