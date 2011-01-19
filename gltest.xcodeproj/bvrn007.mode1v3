@@ -229,6 +229,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -270,7 +272,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>7</integer>
+									<integer>25</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -305,14 +307,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>sprite.cpp</string>
+								<string>los.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -320,11 +320,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>sprite.cpp</string>
+										<string>los.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>F3B87C4E12E54B5900F616C7</string>
+										<string>F3B87C6612E6617F00F616C7</string>
 										<key>history</key>
 										<array>
 											<string>F3E35F1E12DA3D320078D65F</string>
@@ -335,27 +335,27 @@
 											<string>F3BA0A9112DE6AE10099AB0E</string>
 											<string>F3BA0CF312DEA6CD0099AB0E</string>
 											<string>F38B2C8012DF8B790040504D</string>
-											<string>F3EF0FBA12E0D13400BA243E</string>
-											<string>F3FA207D12E38BE000CF8B23</string>
-											<string>F3FA207E12E38BE000CF8B23</string>
-											<string>F3FA207F12E38BE000CF8B23</string>
-											<string>F3FA208412E38BE000CF8B23</string>
-											<string>F3FA208812E38BE000CF8B23</string>
-											<string>F3FA209A12E3CF2A00CF8B23</string>
-											<string>F3FA209B12E3CF2A00CF8B23</string>
-											<string>F3FA209C12E3CF2A00CF8B23</string>
-											<string>F3FA209E12E3CF2A00CF8B23</string>
-											<string>F3FA20E212E4FD7500CF8B23</string>
-											<string>F3FA20E312E4FD7500CF8B23</string>
-											<string>F3B87B8612E5400000F616C7</string>
-											<string>F3B87BF412E544CD00F616C7</string>
-											<string>F3B87BF512E544CD00F616C7</string>
-											<string>F3B87BF612E544CD00F616C7</string>
-											<string>F3B87BFC12E544F500F616C7</string>
-											<string>F3B87BFD12E544F500F616C7</string>
 											<string>F3B87C2412E5473700F616C7</string>
-											<string>F3B87C3212E5482D00F616C7</string>
-											<string>F3B87C3312E5482D00F616C7</string>
+											<string>F3B87C5212E6617F00F616C7</string>
+											<string>F3B87C5312E6617F00F616C7</string>
+											<string>F3B87C5412E6617F00F616C7</string>
+											<string>F3B87C5512E6617F00F616C7</string>
+											<string>F3B87C5612E6617F00F616C7</string>
+											<string>F3B87C5712E6617F00F616C7</string>
+											<string>F3B87C5812E6617F00F616C7</string>
+											<string>F3B87C5912E6617F00F616C7</string>
+											<string>F3B87C5A12E6617F00F616C7</string>
+											<string>F3B87C5B12E6617F00F616C7</string>
+											<string>F3B87C5C12E6617F00F616C7</string>
+											<string>F3B87C5D12E6617F00F616C7</string>
+											<string>F3B87C5E12E6617F00F616C7</string>
+											<string>F3B87C5F12E6617F00F616C7</string>
+											<string>F3B87C6012E6617F00F616C7</string>
+											<string>F3B87C6112E6617F00F616C7</string>
+											<string>F3B87C6212E6617F00F616C7</string>
+											<string>F3B87C6312E6617F00F616C7</string>
+											<string>F3B87C6412E6617F00F616C7</string>
+											<string>F3B87C6512E6617F00F616C7</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -553,7 +553,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>F3B87C4F12E54B5900F616C7</string>
 		<string>F3B87B9512E5400000F616C7</string>
 		<string>F3B87B9612E5400000F616C7</string>
 		<string>1C78EAAD065D492600B07095</string>

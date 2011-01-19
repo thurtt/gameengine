@@ -16,10 +16,18 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-
-#include <GLUT/glut.h>
 #include <string>
 #include <vector>
+
+#ifdef WIN32
+#include <freeglut.h>
+#elif defined(__APPLE__) || defined(__APPLE_CC__)
+#include <GLUT/glut.h>
+#else
+#include <GLUT/glut.h>
+#endif
+
+
 using namespace std;
 
 class game{

@@ -10,8 +10,16 @@
 #include "input.h"
 
 #include <stdlib.h>
-#include <GLUT/glut.h>
 #include <string>
+
+#ifdef WIN32
+	#include <freeglut.h>
+#elif defined(__APPLE__) || defined(__APPLE_CC__)
+	#include <GLUT/glut.h>
+#else
+	#include <GLUT/glut.h>
+#endif
+
 
 game_input::game_input(){
 	init();
