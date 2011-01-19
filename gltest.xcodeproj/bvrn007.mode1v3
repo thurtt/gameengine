@@ -229,8 +229,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -272,7 +270,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>25</integer>
+									<integer>15</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -296,7 +294,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>247 126 1156 682 0 0 1440 878 </string>
+						<string>200 116 1156 682 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -307,12 +305,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>los.h</string>
+								<string>game.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -320,11 +320,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>los.h</string>
+										<string>game.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>F3B87C6612E6617F00F616C7</string>
+										<string>F3B87C8512E69CA400F616C7</string>
 										<key>history</key>
 										<array>
 											<string>F3E35F1E12DA3D320078D65F</string>
@@ -335,7 +335,6 @@
 											<string>F3BA0A9112DE6AE10099AB0E</string>
 											<string>F3BA0CF312DEA6CD0099AB0E</string>
 											<string>F38B2C8012DF8B790040504D</string>
-											<string>F3B87C2412E5473700F616C7</string>
 											<string>F3B87C5212E6617F00F616C7</string>
 											<string>F3B87C5312E6617F00F616C7</string>
 											<string>F3B87C5412E6617F00F616C7</string>
@@ -345,17 +344,18 @@
 											<string>F3B87C5812E6617F00F616C7</string>
 											<string>F3B87C5912E6617F00F616C7</string>
 											<string>F3B87C5A12E6617F00F616C7</string>
-											<string>F3B87C5B12E6617F00F616C7</string>
-											<string>F3B87C5C12E6617F00F616C7</string>
 											<string>F3B87C5D12E6617F00F616C7</string>
 											<string>F3B87C5E12E6617F00F616C7</string>
 											<string>F3B87C5F12E6617F00F616C7</string>
 											<string>F3B87C6012E6617F00F616C7</string>
 											<string>F3B87C6112E6617F00F616C7</string>
 											<string>F3B87C6212E6617F00F616C7</string>
-											<string>F3B87C6312E6617F00F616C7</string>
 											<string>F3B87C6412E6617F00F616C7</string>
-											<string>F3B87C6512E6617F00F616C7</string>
+											<string>F3B87C6D12E69BC200F616C7</string>
+											<string>F3B87C6E12E69BC200F616C7</string>
+											<string>F3B87C6F12E69BC200F616C7</string>
+											<string>F3B87C7012E69BC200F616C7</string>
+											<string>F3B87C7112E69BC200F616C7</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -369,7 +369,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {948, 348}}</string>
 								<key>RubberWindowFrame</key>
-								<string>247 126 1156 682 0 0 1440 878 </string>
+								<string>200 116 1156 682 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -389,7 +389,7 @@
 								<key>Frame</key>
 								<string>{{0, 353}, {948, 288}}</string>
 								<key>RubberWindowFrame</key>
-								<string>247 126 1156 682 0 0 1440 878 </string>
+								<string>200 116 1156 682 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -553,6 +553,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>F3B87C8612E69CA400F616C7</string>
 		<string>F3B87B9512E5400000F616C7</string>
 		<string>F3B87B9612E5400000F616C7</string>
 		<string>1C78EAAD065D492600B07095</string>
@@ -561,7 +562,7 @@
 		<string>/Users/bvrn007/sandbox/gltest/gltest.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>247 126 1156 682 0 0 1440 878 </string>
+	<string>200 116 1156 682 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
