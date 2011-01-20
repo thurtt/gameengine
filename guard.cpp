@@ -20,13 +20,12 @@ Guard::Guard( float start_x, float start_y ) :
 	// do some basic setup
 	_x = start_x;
 	_y = start_y;
-	width = 32;
-	height = 32;
-	texture = LoadTexture( "guard.png" );
+	width = GUARD_WIDTH;
+	height = GUARD_HEIGHT;
+	texture = LoadTexture( GUARD_IMAGE );
 	textures.push_back( texture );
-	use_los = true;
 	
-	_los = new line_of_sight( FIELD_OF_VISION, DEPTH_OF_VISION );
+	_los = new line_of_sight( FIELD_OF_VISION, DEPTH_OF_VISION, height, width );
 	setDrawable( _los );
 	
 }

@@ -21,7 +21,10 @@ const float DELTA = 0.8;
 const float FIELD_OF_VISION = 180.0;
 const float DEPTH_OF_VISION = 250.0;
 
+const int GUARD_WIDTH = 32;
+const int GUARD_HEIGHT = 32;
 
+const char GUARD_IMAGE[10] = "guard.png";
 
 class Guard : public game_sprite
 {

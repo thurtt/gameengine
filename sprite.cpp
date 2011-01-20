@@ -20,7 +20,6 @@ game_sprite::game_sprite(){
 	texture = LoadTexture("img.png");
 	textures.push_back( texture );
 	_angle = 0.0f;
-	use_los = false;
 }
 
 game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, const char * _filename, bool vis, bool mov){
@@ -33,7 +32,6 @@ game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, co
 	texture = LoadTexture(texture_file);
 	textures.push_back( texture );
 	_angle = 0.0f;
-	use_los = false;
 }
 
 void game_sprite::includeAnimation(int anim, char * t){
@@ -206,20 +204,10 @@ void game_sprite::draw(float offset_x, float offset_y){
 	// run through the drawables
 	for ( int i = 0; i < drawables.size(); i++ )
 	{
-		drawables[i]->draw( _x, _y, _angle );
+		drawables[i]->draw( _x + offset_x, _y + offset_y, _angle );
 	}
 	
 	
-	/*if ( use_los ) 
-	{
-		// find the eyeballs
-		// lets say they're in the center of the sprite
-		
-		float eye_x = (_x + offset_x) + (width / 2);
-		float eye_y = (_y + offset_y) + (height / 2);
-		// draw our fov
-		draw_fov( eye_x, eye_y );
-	}
 	/*char str [100];
 	sprintf(str, "%f,%f", _x + offset_x + width, _y + offset_y + height);
 	text(str);*/

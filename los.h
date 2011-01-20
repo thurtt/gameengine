@@ -22,8 +22,8 @@ public:
 	// has to be overridden
 	virtual void draw( float x, float y, float angle );
 	
-	// field of vision, depth of vision
-	line_of_sight( float fov, float dov );
+	// field of vision, depth of vision, height and width are required
+	line_of_sight( float fov, float dov, float height, float width );
 	
 	bool IsTargetVisible( float target_x, float target_y );
 private:
@@ -31,9 +31,10 @@ private:
 	line_of_sight( const line_of_sight& );
 	const line_of_sight& operator=( const line_of_sight& );
 	
-	
 	float _fov;
 	float _dov;
+	float _height;
+	float _width;
 	
 	std::vector< std::pair< float, float > > _box_coords;
 };
