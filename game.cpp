@@ -14,9 +14,12 @@
 game::game(){
 	frame = 0;
 	timebase = 0;
-	focus_sprite = new game_sprite(102,700, 32,32, "guard.png", false, false);
-	line_of_sight * los = new line_of_sight( 180.0, 250.0, 32, 32 );
+
+	focus_sprite = new game_sprite(102,700, 64,64, "player_blue.png", false, false);
+	line_of_sight * los = new line_of_sight( 180.0, 250.0, 64, 64 );
 	focus_sprite->setDrawable( los );
+	focus_sprite->use_los = true;
+	
 	sprites.push_back(focus_sprite);
 	
 	// polymorphism...oh noes!!!
