@@ -10,15 +10,32 @@
 #ifndef _LOS_H_
 #define _LOS_H_
 
-class LineOfSight
+
+#include "drawable.h"
+#include <utility>
+#include <vector>
+
+class line_of_sight : public drawable
 {
 public:
+	
+	// has to be overridden
+	virtual void draw( float x, float y, float angle );
+	
 	// field of vision, depth of vision
-	LineOfSight( float fov, float dov );
+	line_of_sight( float fov, float dov );
 	
 	bool IsTargetVisible( float target_x, float target_y );
 private:
+	line_of_sight();
+	line_of_sight( const line_of_sight& );
+	const line_of_sight& operator=( const line_of_sight& );
+	
+	
+	float _fov;
+	float _dov;
+	
+	std::vector< std::pair< float, float > > _box_coords;
 };
-
-#endif // _LOS_H_
+ #endif // _LOS_H_
 

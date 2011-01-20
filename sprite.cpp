@@ -203,7 +203,14 @@ void game_sprite::draw(float offset_x, float offset_y){
 	glEnable(GL_DEPTH_TEST);
 	glDisable(GL_BLEND);
 	
-	if ( use_los ) 
+	// run through the drawables
+	for ( int i = 0; i < drawables.size(); i++ )
+	{
+		drawables[i]->draw( _x, _y, _angle );
+	}
+	
+	
+	/*if ( use_los ) 
 	{
 		// find the eyeballs
 		// lets say they're in the center of the sprite
@@ -238,33 +245,6 @@ GLuint game_sprite::LoadTexture( const char * filename){
 	return _texture;
 }
 
-void game_sprite::draw_fov( float ref_x, float ref_y )
-{
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	
-	glPushMatrix();
-	glLoadIdentity();
-	glTranslatef(ref_x,ref_y,0.0);	// <- the translation used was world x,y, so it was rotating around screen 0,0
-	glRotatef(-_angle,0.0,0.0,1.0); // technically, you have to rotate this opposite to make it appear right.
-	glTranslatef(-ref_x, -ref_y, -0.0);
-
-	glBegin(GL_TRIANGLES);
-	glColor4f(1.0f,0.0f,0.0f,0.5f);			// Full Brightness, 0.5f == 50% Alpha ( NEW )
-	
-	// Two things happened here:
-	//  angle 0deg is straight up for our dude, so we have to split the x coord instead of y (so it's not sideways)
-	// we had to swap the FoV and DoV to get the long view you wanted.
-	glVertex2f(ref_x, ref_y);			// first corner
-	glVertex2f(ref_x - ( FIELD_OF_VISION / 2), ref_y + DEPTH_OF_VISION );	// second corner
-	glVertex2f(ref_x + ( FIELD_OF_VISION / 2), ref_y + DEPTH_OF_VISION );	// third corner
-	//glVertex2f(ref_x + DEPTH_OF_VISION, ref_y - ( FIELD_OF_VISION / 2 ));	// second corner
-	//glVertex2f(ref_x + DEPTH_OF_VISION, ref_y + ( FIELD_OF_VISION / 2 ));	// third corner
-	glEnd();
-	glPopMatrix();
-
-}
-
 void game_sprite::movement(){
 	float delta = 0.8;
 	//texture = 1;
@@ -288,4 +268,9 @@ void game_sprite::movement(){
 		//texture = 2; 
 		_angle = 180;
 	}
+}
+
+void game_sprite::setDrawable( drawable * pDrawable )
+{
+	drawables.push_back( pDrawable );
 }

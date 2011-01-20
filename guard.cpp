@@ -8,12 +8,14 @@
  */
 
 #include "guard.h"
+#include "los.h"
 
 Guard::Guard( float start_x, float start_y ) :
 	_upCount(0),
 	_downCount(MAX_DOWN),
 	_rightCount(MAX_RIGHT),
-	_leftCount(MAX_LEFT)
+	_leftCount(MAX_LEFT),
+	_los(0)
 {
 	// do some basic setup
 	_x = start_x;
@@ -23,6 +25,17 @@ Guard::Guard( float start_x, float start_y ) :
 	texture = LoadTexture( "guard.png" );
 	textures.push_back( texture );
 	use_los = true;
+	
+	_los = new line_of_sight( FIELD_OF_VISION, DEPTH_OF_VISION );
+	setDrawable( _los );
+	
+}
+
+Guard::~Guard()
+{
+	// this is a wee bit dangerous
+	delete _los;
+	_los = 0;
 }
 void Guard::movement()
 {
