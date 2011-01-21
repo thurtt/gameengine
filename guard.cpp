@@ -26,6 +26,7 @@ Guard::Guard( float start_x, float start_y,  std::vector<game_sprite*> * sprites
 	height = GUARD_HEIGHT;
 	texture = LoadTexture( GUARD_IMAGE );
 	textures.push_back( texture );
+	includeAnimation(ANIM_NONE, texture);
 	
 	_los = new line_of_sight( FIELD_OF_VISION, DEPTH_OF_VISION, height, width, sprites );
 	setDrawable( _los );
