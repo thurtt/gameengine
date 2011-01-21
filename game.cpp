@@ -16,6 +16,7 @@ game::game(){
 	timebase = 0;
 	focus_sprite = new game_sprite(102,700, 64,64, "player_blue.png", false, false);
 	focus_sprite->use_los = true;
+	focus_sprite->includeAnimation(ANIM_WALK, "player_walking_64.png");
 	sprites.push_back(focus_sprite);
 	
 	// polymorphism...oh noes!!!

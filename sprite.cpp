@@ -19,6 +19,7 @@ game_sprite::game_sprite(){
 	_blockVisibility = false;
 	texture = LoadTexture("img.png");
 	textures.push_back( texture );
+	includeAnimation(ANIM_NONE, texture);
 	_angle = 0.0f;
 	use_los = false;
 }
@@ -32,6 +33,7 @@ game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, co
 	
 	texture = LoadTexture(texture_file);
 	textures.push_back( texture );
+	includeAnimation(ANIM_NONE, texture);
 	_angle = 0.0f;
 	use_los = false;
 }
@@ -45,7 +47,7 @@ void game_sprite::includeAnimation(int anim, GLuint t){
 }
 
 void game_sprite::useAnimation(int anim){
-	if (animations.find(anim) == animations.end() ){
+	if (animations.find(anim) != animations.end() ){
 		texture = animations[anim];
 	}else{
 		texture = 1;
@@ -189,13 +191,23 @@ void game_sprite::draw(float offset_x, float offset_y){
 	
 
 	glPushMatrix();
+	float translated_x;
+	float translated_x2;
 	
+	if (texture == animations[ANIM_NONE]) {
+		translated_x = 0;
+		translated_x2 = 1;
+	}else {
+		translated_x = ((float)frame * (float)width)/(ANIM_MAX_FRAMES * (float)width);
+		translated_x2 = (((float)frame + 1) * (float)width)/(ANIM_MAX_FRAMES * (float)width);
+	}
+
 	glBegin(GL_QUADS);
 	glColor4f(1.0f,1.0f,1.0f,1.0f);			// Full Brightness, 0.5f == 50% Alpha ( NEW )
-	glTexCoord2d(0.0f,0.0f);	glVertex2f( _x + 0.0f + offset_x ,  _y + 0.0f + offset_y );
-    glTexCoord2d(1.0f,0.0f);	glVertex2f( _x + width + offset_x , _y +   0.0f + offset_y );
-    glTexCoord2d(1.0f, 1.0f);	glVertex2f( _x + width + offset_x , _y + height + offset_y );
-    glTexCoord2d(0.0f, 1.0f);	glVertex2f( _x +  0.0f + offset_x , _y + height + offset_y );
+	glTexCoord2d(translated_x,0.0f);	glVertex2f( _x + 0.0f + offset_x ,  _y + 0.0f + offset_y );
+    glTexCoord2d(translated_x2,0.0f);	glVertex2f( _x + width + offset_x , _y +   0.0f + offset_y );
+    glTexCoord2d(translated_x2, 1.0f);	glVertex2f( _x + width + offset_x , _y + height + offset_y );
+    glTexCoord2d(translated_x, 1.0f);	glVertex2f( _x +  0.0f + offset_x , _y + height + offset_y );
 	
 	glEnd();
 	glPopMatrix();
@@ -252,14 +264,9 @@ void game_sprite::draw_fov( float ref_x, float ref_y )
 	glBegin(GL_TRIANGLES);
 	glColor4f(1.0f,0.0f,0.0f,0.5f);			// Full Brightness, 0.5f == 50% Alpha ( NEW )
 	
-	// Two things happened here:
-	//  angle 0deg is straight up for our dude, so we have to split the x coord instead of y (so it's not sideways)
-	// we had to swap the FoV and DoV to get the long view you wanted.
 	glVertex2f(ref_x, ref_y);			// first corner
 	glVertex2f(ref_x - ( FIELD_OF_VISION / 2), ref_y + DEPTH_OF_VISION );	// second corner
 	glVertex2f(ref_x + ( FIELD_OF_VISION / 2), ref_y + DEPTH_OF_VISION );	// third corner
-	//glVertex2f(ref_x + DEPTH_OF_VISION, ref_y - ( FIELD_OF_VISION / 2 ));	// second corner
-	//glVertex2f(ref_x + DEPTH_OF_VISION, ref_y + ( FIELD_OF_VISION / 2 ));	// third corner
 	glEnd();
 	glPopMatrix();
 
@@ -268,24 +275,26 @@ void game_sprite::draw_fov( float ref_x, float ref_y )
 void game_sprite::movement(){
 	float delta = 0.8;
 	//texture = 1;
+	if ((move_right > 0) || (move_left > 0) || (move_up > 0) || (move_down > 0)){
+		if (texture != animations[ANIM_WALK]) {
+			useAnimation(ANIM_WALK);
+		}
+	}
+	
 	if (move_right > 0)	{ 
-		_x += delta;	
-		//texture = 2; 
+		_x += delta; 
 		_angle = 90;
 	}
 	if (move_left > 0)	{ 
-		_x -= delta;	
-		//texture = 2; 
+		_x -= delta;
 		_angle = 270;
 	}
 	if (move_up > 0)	{ 
-		_y += delta;	
-		//texture = 2; 
+		_y += delta;
 		_angle = 0;
 	}
 	if (move_down > 0)	{ 
-		_y -= delta;	
-		//texture = 2; 
+		_y -= delta; 
 		_angle = 180;
 	}
 }
