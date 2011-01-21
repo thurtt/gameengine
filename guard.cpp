@@ -9,13 +9,15 @@
 
 #include "guard.h"
 #include "los.h"
+#include "text.h"
 
-Guard::Guard( float start_x, float start_y ) :
+Guard::Guard( float start_x, float start_y,  std::vector<game_sprite*> * sprites ) :
 	_upCount(0),
 	_downCount(MAX_DOWN),
 	_rightCount(MAX_RIGHT),
 	_leftCount(MAX_LEFT),
-	_los(0)
+	_los(0),
+	_text(0)
 {
 	// do some basic setup
 	_x = start_x;
@@ -25,9 +27,11 @@ Guard::Guard( float start_x, float start_y ) :
 	texture = LoadTexture( GUARD_IMAGE );
 	textures.push_back( texture );
 	
-	_los = new line_of_sight( FIELD_OF_VISION, DEPTH_OF_VISION, height, width );
+	_los = new line_of_sight( FIELD_OF_VISION, DEPTH_OF_VISION, height, width, sprites );
 	setDrawable( _los );
-	
+
+	_text = new Text();
+	setDrawable( _text );	
 }
 
 Guard::~Guard()
@@ -35,6 +39,9 @@ Guard::~Guard()
 	// this is a wee bit dangerous
 	delete _los;
 	_los = 0;
+
+	delete _text;
+	_text = 0;
 }
 void Guard::movement()
 {
@@ -75,7 +82,11 @@ void Guard::movement()
 			_upCount =  0;
 			_angle = 0.0;
 		}
-	}	
+	}
+	
+	vector<pair<float, float> > visibleSprites = _los->detect_visible_sprites();
+
+	_text->printf( "Sprites in line of sight: %d", visibleSprites.size() );
 }
 
 void Guard::up()

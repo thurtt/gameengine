@@ -138,7 +138,7 @@ void MainMouse(int button, int state, int x, int y) {
 void MouseEntry(int state) {
 }
 
-bool init(){
+void init(){
 	glColor4f(1.0f,1.0f,1.0f,0.5f);			// Full Brightness, 50% Alpha ( NEW )
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glutDisplayFunc(display);

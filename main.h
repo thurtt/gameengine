@@ -22,4 +22,4 @@
 
 
 void movementTimer(int value);
-bool init();
+void init();
