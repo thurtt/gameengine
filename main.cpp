@@ -20,7 +20,7 @@ void movementTimer(int value){
 
 void animationTimer(int value){
 	baseGame->animate();
-	glutTimerFunc(1000/20, animationTimer, 1);
+	glutTimerFunc(1000/8, animationTimer, 1);
 }
 
 void fpsTimer(int value){
@@ -60,6 +60,10 @@ void idle(void)
  **********/
 
 void InputMovement(int key, int delta){
+	if (delta == 0) {
+		baseGame->focus_sprite->useAnimation(ANIM_NONE);
+	}
+
 	switch(key) {
 		case GLUT_KEY_LEFT : 
 			baseGame->focus_sprite->move_left = delta; break;
