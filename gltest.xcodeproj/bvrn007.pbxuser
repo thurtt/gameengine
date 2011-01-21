@@ -93,7 +93,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 254";
 		rLen = 0;
-		rLoc = 6846;
+		rLoc = 7105;
 		rType = 0;
 		vrLen = 449;
 		vrLoc = 838;
@@ -153,7 +153,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 269";
 		rLen = 0;
-		rLoc = 7091;
+		rLoc = 7350;
 		rType = 0;
 		vrLen = 978;
 		vrLoc = 5758;
@@ -193,7 +193,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 273";
 		rLen = 0;
-		rLoc = 7265;
+		rLoc = 7524;
 		rType = 0;
 		vrLen = 1071;
 		vrLoc = 5728;
@@ -203,12 +203,12 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 275";
 		rLen = 0;
-		rLoc = 7263;
+		rLoc = 7522;
 		rType = 0;
 		vrLen = 817;
 		vrLoc = 6072;
 	};
-	F31F995212E7EDA7003312D1 /* sprite.cpp:294 */ = {
+	F31F995212E7EDA7003312D1 /* sprite.cpp:302 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -220,9 +220,9 @@
 		functionName = "game_sprite::movement()";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 294;
+		lineNumber = 302;
 		location = XcodeGLUT;
-		modificationTime = 317275160.027841;
+		modificationTime = 317275941.748767;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -231,7 +231,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 275";
 		rLen = 0;
-		rLoc = 7263;
+		rLoc = 7522;
 		rType = 0;
 		vrLen = 820;
 		vrLoc = 6072;
@@ -241,7 +241,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 275";
 		rLen = 0;
-		rLoc = 7263;
+		rLoc = 7522;
 		rType = 0;
 		vrLen = 817;
 		vrLoc = 6072;
@@ -301,7 +301,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 275";
 		rLen = 0;
-		rLoc = 7263;
+		rLoc = 7522;
 		rType = 0;
 		vrLen = 699;
 		vrLoc = 598;
@@ -311,7 +311,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 275";
 		rLen = 0;
-		rLoc = 7263;
+		rLoc = 7522;
 		rType = 0;
 		vrLen = 696;
 		vrLoc = 574;
@@ -371,12 +371,12 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 195";
 		rLen = 0;
-		rLoc = 4005;
+		rLoc = 4489;
 		rType = 0;
 		vrLen = 1135;
 		vrLoc = 3715;
 	};
-	F31F997712E7FA6E003312D1 /* sprite.cpp:205 */ = {
+	F31F997712E7FA6E003312D1 /* sprite.cpp:214 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -388,9 +388,9 @@
 		functionName = "game_sprite::draw(float offset_x, float offset_y)";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 205;
+		lineNumber = 214;
 		location = XcodeGLUT;
-		modificationTime = 317275160.027853;
+		modificationTime = 317275941.748828;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -399,7 +399,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 195";
 		rLen = 0;
-		rLoc = 4005;
+		rLoc = 4489;
 		rType = 0;
 		vrLen = 1135;
 		vrLoc = 3715;
@@ -409,7 +409,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 195";
 		rLen = 0;
-		rLoc = 4005;
+		rLoc = 4489;
 		rType = 0;
 		vrLen = 1115;
 		vrLoc = 3715;
@@ -419,7 +419,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 193";
 		rLen = 0;
-		rLoc = 3907;
+		rLoc = 4200;
 		rType = 0;
 		vrLen = 1119;
 		vrLoc = 3715;
@@ -429,7 +429,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 193";
 		rLen = 0;
-		rLoc = 3907;
+		rLoc = 4200;
 		rType = 0;
 		vrLen = 1119;
 		vrLoc = 3715;
@@ -449,7 +449,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 197";
 		rLen = 0;
-		rLoc = 4005;
+		rLoc = 4489;
 		rType = 0;
 		vrLen = 1216;
 		vrLoc = 3600;
@@ -459,7 +459,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 197";
 		rLen = 0;
-		rLoc = 4007;
+		rLoc = 4489;
 		rType = 0;
 		vrLen = 1218;
 		vrLoc = 3600;
@@ -549,7 +549,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 280";
 		rLen = 0;
-		rLoc = 7232;
+		rLoc = 7491;
 		rType = 0;
 		vrLen = 1026;
 		vrLoc = 5706;
@@ -559,7 +559,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 280";
 		rLen = 0;
-		rLoc = 7232;
+		rLoc = 7491;
 		rType = 0;
 		vrLen = 810;
 		vrLoc = 5997;
@@ -619,7 +619,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 202";
 		rLen = 0;
-		rLoc = 4244;
+		rLoc = 4491;
 		rType = 0;
 		vrLen = 1188;
 		vrLoc = 3726;
@@ -629,7 +629,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 195";
 		rLen = 0;
-		rLoc = 3907;
+		rLoc = 4200;
 		rType = 0;
 		vrLen = 1144;
 		vrLoc = 3726;
@@ -639,7 +639,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 202";
 		rLen = 0;
-		rLoc = 4271;
+		rLoc = 4673;
 		rType = 0;
 		vrLen = 1182;
 		vrLoc = 3726;
@@ -659,7 +659,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 205";
 		rLen = 0;
-		rLoc = 4478;
+		rLoc = 4737;
 		rType = 0;
 		vrLen = 1248;
 		vrLoc = 3726;
@@ -669,7 +669,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 205";
 		rLen = 0;
-		rLoc = 4478;
+		rLoc = 4737;
 		rType = 0;
 		vrLen = 1182;
 		vrLoc = 3726;
@@ -679,7 +679,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 202";
 		rLen = 0;
-		rLoc = 4209;
+		rLoc = 4489;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 3726;
@@ -689,7 +689,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 202";
 		rLen = 0;
-		rLoc = 4205;
+		rLoc = 4489;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 3726;
@@ -699,7 +699,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 202";
 		rLen = 0;
-		rLoc = 4205;
+		rLoc = 4489;
 		rType = 0;
 		vrLen = 1198;
 		vrLoc = 3726;
@@ -709,7 +709,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 208";
 		rLen = 0;
-		rLoc = 4561;
+		rLoc = 4820;
 		rType = 0;
 		vrLen = 1465;
 		vrLoc = 3726;
@@ -719,7 +719,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 212";
 		rLen = 0;
-		rLoc = 5395;
+		rLoc = 5654;
 		rType = 0;
 		vrLen = 1144;
 		vrLoc = 3986;
@@ -729,7 +729,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 202";
 		rLen = 0;
-		rLoc = 4205;
+		rLoc = 4489;
 		rType = 0;
 		vrLen = 1158;
 		vrLoc = 3863;
@@ -739,7 +739,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 202";
 		rLen = 0;
-		rLoc = 4205;
+		rLoc = 4489;
 		rType = 0;
 		vrLen = 1156;
 		vrLoc = 3863;
@@ -749,7 +749,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 201";
 		rLen = 0;
-		rLoc = 4118;
+		rLoc = 4489;
 		rType = 0;
 		vrLen = 1158;
 		vrLoc = 3863;
@@ -759,7 +759,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 202";
 		rLen = 0;
-		rLoc = 4205;
+		rLoc = 4489;
 		rType = 0;
 		vrLen = 1158;
 		vrLoc = 3863;
@@ -769,7 +769,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 202";
 		rLen = 0;
-		rLoc = 4205;
+		rLoc = 4489;
 		rType = 0;
 		vrLen = 1154;
 		vrLoc = 3863;
@@ -779,7 +779,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 209";
 		rLen = 0;
-		rLoc = 4454;
+		rLoc = 4713;
 		rType = 0;
 		vrLen = 1396;
 		vrLoc = 3944;
@@ -789,7 +789,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 209";
 		rLen = 0;
-		rLoc = 4453;
+		rLoc = 4712;
 		rType = 0;
 		vrLen = 1400;
 		vrLoc = 3944;
@@ -799,7 +799,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 208";
 		rLen = 0;
-		rLoc = 4364;
+		rLoc = 4673;
 		rType = 0;
 		vrLen = 1528;
 		vrLoc = 3944;
@@ -809,7 +809,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 208";
 		rLen = 0;
-		rLoc = 4364;
+		rLoc = 4673;
 		rType = 0;
 		vrLen = 1530;
 		vrLoc = 3944;
@@ -879,7 +879,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 207";
 		rLen = 0;
-		rLoc = 4364;
+		rLoc = 4673;
 		rType = 0;
 		vrLen = 1582;
 		vrLoc = 3932;
@@ -978,7 +978,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 287";
 		rLen = 0;
-		rLoc = 6983;
+		rLoc = 7242;
 		rType = 0;
 		vrLen = 823;
 		vrLoc = 0;
@@ -1028,7 +1028,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 287";
 		rLen = 0;
-		rLoc = 6983;
+		rLoc = 7242;
 		rType = 0;
 		vrLen = 823;
 		vrLoc = 0;
@@ -1043,6 +1043,86 @@
 		vrLen = 680;
 		vrLoc = 1389;
 	};
+	F31F9A2412E93E2A003312D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F3409E2012D81BB5005240F1 /* main.cpp */;
+		name = "main.cpp: 106";
+		rLen = 0;
+		rLoc = 1887;
+		rType = 0;
+		vrLen = 783;
+		vrLoc = 2691;
+	};
+	F31F9A2512E93E2A003312D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F3E35FA812DA555E0078D65F /* game.cpp */;
+		name = "game.cpp: 23";
+		rLen = 0;
+		rLoc = 511;
+		rType = 0;
+		vrLen = 684;
+		vrLoc = 1265;
+	};
+	F31F9A2612E93E2A003312D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F367739412DCF55000367F02 /* zone.cpp */;
+		name = "zone.cpp: 14";
+		rLen = 0;
+		rLoc = 179;
+		rType = 0;
+		vrLen = 652;
+		vrLoc = 0;
+	};
+	F31F9A2712E93E2A003312D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F367739612DCF5C400367F02 /* quadrant.h */;
+		name = "quadrant.h: 27";
+		rLen = 0;
+		rLoc = 421;
+		rType = 0;
+		vrLen = 431;
+		vrLoc = 0;
+	};
+	F31F9A2812E93E2A003312D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F367739712DCF5C400367F02 /* quadrant.cpp */;
+		name = "quadrant.cpp: 49";
+		rLen = 0;
+		rLoc = 1028;
+		rType = 0;
+		vrLen = 727;
+		vrLoc = 0;
+	};
+	F31F9A2912E93E2A003312D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F367739912DCF60600367F02 /* tiles.h */;
+		name = "tiles.h: 27";
+		rLen = 0;
+		rLoc = 454;
+		rType = 0;
+		vrLen = 764;
+		vrLoc = 0;
+	};
+	F31F9A2A12E93E2A003312D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
+		name = "sprite.cpp: 203";
+		rLen = 0;
+		rLoc = 4299;
+		rType = 0;
+		vrLen = 1154;
+		vrLoc = 3443;
+	};
+	F31F9A2E12E93F61003312D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
+		name = "sprite.cpp: 198";
+		rLen = 0;
+		rLoc = 4104;
+		rType = 0;
+		vrLen = 1459;
+		vrLoc = 3757;
+	};
 	F3409DFF12D81AA8005240F1 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = F3409E0F12D81AD4005240F1 /* XcodeGLUT */;
@@ -1052,9 +1132,9 @@
 		);
 		breakpoints = (
 			F3E35EE112DA38AD0078D65F /* main.cpp:45 */,
-			F3B87BA312E540DF00F616C7 /* sprite.cpp:276 */,
-			F31F995212E7EDA7003312D1 /* sprite.cpp:294 */,
-			F31F997712E7FA6E003312D1 /* sprite.cpp:205 */,
+			F3B87BA312E540DF00F616C7 /* sprite.cpp:284 */,
+			F31F995212E7EDA7003312D1 /* sprite.cpp:302 */,
+			F31F997712E7FA6E003312D1 /* sprite.cpp:214 */,
 		);
 		codeSenseManager = F3409E0412D81AA8005240F1 /* Code sense */;
 		executables = (
@@ -1209,6 +1289,14 @@
 			F31F9A1812E93C19003312D1 /* PBXTextBookmark */ = F31F9A1812E93C19003312D1 /* PBXTextBookmark */;
 			F31F9A1912E93C19003312D1 /* PBXTextBookmark */ = F31F9A1912E93C19003312D1 /* PBXTextBookmark */;
 			F31F9A1A12E93C19003312D1 /* PBXTextBookmark */ = F31F9A1A12E93C19003312D1 /* PBXTextBookmark */;
+			F31F9A2412E93E2A003312D1 /* PBXTextBookmark */ = F31F9A2412E93E2A003312D1 /* PBXTextBookmark */;
+			F31F9A2512E93E2A003312D1 /* PBXTextBookmark */ = F31F9A2512E93E2A003312D1 /* PBXTextBookmark */;
+			F31F9A2612E93E2A003312D1 /* PBXTextBookmark */ = F31F9A2612E93E2A003312D1 /* PBXTextBookmark */;
+			F31F9A2712E93E2A003312D1 /* PBXTextBookmark */ = F31F9A2712E93E2A003312D1 /* PBXTextBookmark */;
+			F31F9A2812E93E2A003312D1 /* PBXTextBookmark */ = F31F9A2812E93E2A003312D1 /* PBXTextBookmark */;
+			F31F9A2912E93E2A003312D1 /* PBXTextBookmark */ = F31F9A2912E93E2A003312D1 /* PBXTextBookmark */;
+			F31F9A2A12E93E2A003312D1 /* PBXTextBookmark */ = F31F9A2A12E93E2A003312D1 /* PBXTextBookmark */;
+			F31F9A2E12E93F61003312D1 /* PBXTextBookmark */ = F31F9A2E12E93F61003312D1 /* PBXTextBookmark */;
 			F36773E912DD02BC00367F02 = F36773E912DD02BC00367F02 /* PBXTextBookmark */;
 			F38B2C8012DF8B790040504D = F38B2C8012DF8B790040504D /* PBXTextBookmark */;
 			F3B87C5212E6617F00F616C7 = F3B87C5212E6617F00F616C7 /* PBXTextBookmark */;
@@ -1305,9 +1393,9 @@
 	};
 	F3409E2012D81BB5005240F1 /* main.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {889, 2392}}";
-			sepNavSelRange = "{988, 0}";
-			sepNavVisRange = "{1389, 680}";
+			sepNavIntBoundsRect = "{{0, 0}, {889, 2405}}";
+			sepNavSelRange = "{1887, 0}";
+			sepNavVisRange = "{2691, 783}";
 			sepNavWindowFrame = "{{15, 315}, {750, 558}}";
 		};
 	};
@@ -1336,17 +1424,17 @@
 	};
 	F367739712DCF5C400367F02 /* quadrant.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {887, 663}}";
+			sepNavIntBoundsRect = "{{0, 0}, {889, 663}}";
 			sepNavSelRange = "{1028, 0}";
-			sepNavVisRange = "{0, 497}";
+			sepNavVisRange = "{0, 727}";
 			sepNavWindowFrame = "{{38, 294}, {750, 558}}";
 		};
 	};
 	F367739912DCF60600367F02 /* tiles.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {887, 442}}";
+			sepNavIntBoundsRect = "{{0, 0}, {889, 475}}";
 			sepNavSelRange = "{454, 0}";
-			sepNavVisRange = "{73, 419}";
+			sepNavVisRange = "{0, 764}";
 			sepNavWindowFrame = "{{84, 252}, {750, 558}}";
 		};
 	};
@@ -1412,7 +1500,7 @@
 		path = /Users/bvrn007/Downloads/colltest.cpp;
 		sourceTree = "<absolute>";
 	};
-	F3B87BA312E540DF00F616C7 /* sprite.cpp:276 */ = {
+	F3B87BA312E540DF00F616C7 /* sprite.cpp:284 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -1424,9 +1512,9 @@
 		functionName = "game_sprite::draw_fov( float ref_x, float ref_y )";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 276;
+		lineNumber = 284;
 		location = XcodeGLUT;
-		modificationTime = 317275160.027818;
+		modificationTime = 317275941.748611;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1485,7 +1573,7 @@
 		fRef = F3E35BA712D958C30078D65F /* sprite.cpp */;
 		name = "sprite.cpp: 256";
 		rLen = 0;
-		rLoc = 6848;
+		rLoc = 7107;
 		rType = 0;
 		vrLen = 436;
 		vrLoc = 0;
@@ -1727,9 +1815,9 @@
 	};
 	F3E35BA712D958C30078D65F /* sprite.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {889, 3991}}";
-			sepNavSelRange = "{6983, 0}";
-			sepNavVisRange = "{0, 823}";
+			sepNavIntBoundsRect = "{{0, 0}, {889, 3939}}";
+			sepNavSelRange = "{4104, 0}";
+			sepNavVisRange = "{3757, 1459}";
 			sepNavWindowFrame = "{{38, 294}, {750, 558}}";
 		};
 	};
@@ -1768,7 +1856,7 @@
 		ignoreCount = 0;
 		lineNumber = 45;
 		location = XcodeGLUT;
-		modificationTime = 317275160.02772;
+		modificationTime = 317275941.748562;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1808,7 +1896,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {889, 1313}}";
 			sepNavSelRange = "{511, 0}";
-			sepNavVisRange = "{1270, 679}";
+			sepNavVisRange = "{1265, 684}";
 			sepNavWindowFrame = "{{61, 273}, {750, 558}}";
 		};
 	};

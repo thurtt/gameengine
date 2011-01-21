@@ -189,22 +189,30 @@ void game_sprite::draw(float offset_x, float offset_y){
 	
 
 	glPushMatrix();
-	float translated_x;
-	float translated_x2;
-	float translated_y;
-	float translated_y2;
 	
-	if (texture == animations[ANIM_NONE]) {
-		translated_x = 0;
-		translated_x2 = 1;
-		translated_y = 0;
-		translated_y2 = 1;
-	}else {
-		translated_x = 0; //((float)frame * (float)width)/(ANIM_MAX_FRAMES * (float)width);
-		translated_x2 = 1; //(((float)frame + 1) * (float)width)/(ANIM_MAX_FRAMES * (float)width);
-		
-		translated_y = ((float)frame * (float)height)/(ANIM_MAX_FRAMES * (float)height);
-		translated_y2 = (((float)frame + 1) * (float)height)/(ANIM_MAX_FRAMES * (float)height);
+	/* WHAT IS THIS TREACHERY?
+	 
+	 apparantly glRotate rotates the texture texel offsets too, so a 64x512 texture becomes a 512x64 texture
+	 and the offests needed to get the animation frames switch from x-axis to y-axis.
+	 
+	 go figure. My code is... not good.
+	 
+	 */
+	
+	float translated_x = 0.0f;
+	float translated_x2 = 1.0f;
+	float translated_y = 0.0f;
+	float translated_y2 = 1.0f;
+	
+	if (texture != animations[ANIM_NONE]) {
+		if ((_angle == 90) || (_angle == 270)){
+			translated_y = ((float)frame * (float)height)/(ANIM_MAX_FRAMES * (float)height);
+			translated_y2 = (((float)frame + 1) * (float)height)/(ANIM_MAX_FRAMES * (float)height);
+		}
+		else {
+			translated_x = ((float)frame * (float)width)/(ANIM_MAX_FRAMES * (float)width);
+			translated_x2 = (((float)frame + 1) * (float)width)/(ANIM_MAX_FRAMES * (float)width);
+		}
 	}
 
 	glBegin(GL_QUADS);
