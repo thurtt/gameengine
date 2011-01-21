@@ -229,6 +229,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -305,8 +307,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -324,7 +324,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>F31F99F512E9399A003312D1</string>
+										<string>F31F9A1A12E93C19003312D1</string>
 										<key>history</key>
 										<array>
 											<string>F3E35F1E12DA3D320078D65F</string>
@@ -342,20 +342,20 @@
 											<string>F3B87C5F12E6617F00F616C7</string>
 											<string>F3B87C6012E6617F00F616C7</string>
 											<string>F3B87C6212E6617F00F616C7</string>
-											<string>F3B87C6412E6617F00F616C7</string>
 											<string>F3B87C6D12E69BC200F616C7</string>
 											<string>F3B87C6E12E69BC200F616C7</string>
-											<string>F31F993812E7EAD0003312D1</string>
-											<string>F31F995B12E7EE1C003312D1</string>
-											<string>F31F999612E7FC9F003312D1</string>
 											<string>F31F999712E7FC9F003312D1</string>
-											<string>F31F999812E7FC9F003312D1</string>
-											<string>F31F999912E7FC9F003312D1</string>
 											<string>F31F99A812E7FF0A003312D1</string>
 											<string>F31F99A912E7FF0A003312D1</string>
-											<string>F31F99B512E9371F003312D1</string>
-											<string>F31F99EF12E93986003312D1</string>
-											<string>F31F99F012E93986003312D1</string>
+											<string>F31F99F712E93AF6003312D1</string>
+											<string>F31F99F812E93AF6003312D1</string>
+											<string>F31F99F912E93AF6003312D1</string>
+											<string>F31F99FB12E93AF6003312D1</string>
+											<string>F31F99FF12E93B14003312D1</string>
+											<string>F31F9A0C12E93BCC003312D1</string>
+											<string>F31F9A1812E93C19003312D1</string>
+											<string>F31F9A1912E93C19003312D1</string>
+											<string>F31F99FC12E93AF6003312D1</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -553,7 +553,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>F31F99F612E9399A003312D1</string>
+		<string>F31F9A1B12E93C19003312D1</string>
 		<string>F31F992512E7DB50003312D1</string>
 		<string>F31F992612E7DB50003312D1</string>
 		<string>1C78EAAD065D492600B07095</string>
@@ -583,7 +583,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>guard.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -600,6 +600,8 @@
 							<string>316pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

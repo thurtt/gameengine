@@ -1,7 +1,7 @@
 TXcodeGLUT
 v7
 r0
-t317274521.111252
+t317275159.885371
 cCheck dependencies
 cProcessInfoPlistFile /Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app/Contents/Info.plist XcodeGLUT-Info.plist
 cCompileC build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/main.o /Users/bvrn007/sandbox/gltest/main.cpp normal i386 c++ com.apple.compilers.gcc.4_2
@@ -75,88 +75,94 @@ t1295208803
 s15545
 
 N/Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app
-t1295581721
+t1295582359
 s102
 
 N/Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app/Contents/Info.plist
-t1295208803
+t1295582356
 s835
 
 N/Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app/Contents/MacOS/XcodeGLUT
-t1295581721
-s304280
+t1295582359
+s324148
 
 N/Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app/Contents/PkgInfo
-t1295208803
+t1295582356
 s8
 
 N/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/SOIL.o
-t1295208852
+t1295582358
 s38808
 
 N/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/XcodeGLUT.LinkFileList
-c000000004D3351920000000000000581
-t1295208850
+c000000004D3904940000000000000581
+t1295582356
 s1409
 
 N/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/game.o
-t1295497502
-s133280
+t1295582358
+s146352
 
 N/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/guard.o
-t1295500542
-s68864
+t1295582359
+s76432
 
 N/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/image_DXT.o
-t1295208851
+t1295582357
 s15916
 
 N/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/image_helper.o
-t1295208851
+t1295582357
 s11568
 
 N/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/input.o
-t1295395362
+t1295582357
 s18832
 
 N/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/los.o
-t1295208853
-s1384
+t1295582359
+s32288
 
 N/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/main.o
-t1295581720
-s73764
+t1295582357
+s79412
 
 N/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/quadrant.o
-t1295495997
-s87288
+t1295582359
+s92928
 
 N/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/sprite.o
-t1295581676
-s183228
+t1295582357
+s217304
 
 N/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/sprite_data.o
-t1295495997
+t1295582359
 s15820
 
 N/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/stb_image_aug.o
-t1295208852
+t1295582358
 s126140
 
 N/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/tiles.o
-t1295495997
-s198676
+t1295582359
+s204340
 
 N/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/zone.o
-t1295495996
-s92604
+t1295582358
+s98248
+
+N/Users/bvrn007/sandbox/gltest/drawable.h
+c000000004D3902CE00000000000001BF
+t1295581902
+s447
 
 N/Users/bvrn007/sandbox/gltest/game.cpp
-c000000004D37B91D0000000000000746
-t1295497501
-s1862
+c000000004D390375000000000000079D
+t1295582069
+s1949
 i"game.h"
 i"guard.h"
+i"los.h"
 
 N/Users/bvrn007/sandbox/gltest/game.h
 c000000004D3629FB000000000000033D
@@ -174,15 +180,16 @@ i<GLUT/glut.h>
 i<GLUT/glut.h>
 
 N/Users/bvrn007/sandbox/gltest/guard.cpp
-c000000004D37C4FE00000000000004F5
-t1295500542
-s1269
+c000000004D39042E00000000000005C8
+t1295582254
+s1480
 i"guard.h"
+i"los.h"
 
 N/Users/bvrn007/sandbox/gltest/guard.h
-c000000004D3504E500000000000002C8
-t1295320293
-s712
+c000000004D3902CE0000000000000369
+t1295581902
+s873
 i"sprite.h"
 
 N/Users/bvrn007/sandbox/gltest/image_DXT.c
@@ -230,15 +237,28 @@ t1295208803
 s523
 
 N/Users/bvrn007/sandbox/gltest/los.cpp
-c000000004D3351630000000000000091
-t1295208803
-s145
+c000000004D3902CE000000000000073F
+t1295581902
+s1855
 i"los.h"
+i<stdlib.h>
+i<stdio.h>
+i<time.h>
+i<string>
+i<vector>
+i<utility>
+i<map>
+i<freeglut.h>
+i<GLUT/glut.h>
+i<GLUT/glut.h>
 
 N/Users/bvrn007/sandbox/gltest/los.h
-c000000004D3351630000000000000160
-t1295208803
-s352
+c000000004D3902CE0000000000000326
+t1295581902
+s806
+i"drawable.h"
+i<utility>
+i<vector>
 
 N/Users/bvrn007/sandbox/gltest/main.cpp
 c000000004D3902180000000000000D92
@@ -272,17 +292,18 @@ i<vector>
 i<string>
 
 N/Users/bvrn007/sandbox/gltest/sprite.cpp
-c000000004D3901EB0000000000001D86
-t1295581675
-s7558
+c000000004D3903FF0000000000001D6A
+t1295582207
+s7530
 i"sprite.h"
 i"SOIL.h"
 
 N/Users/bvrn007/sandbox/gltest/sprite.h
-c000000004D3629FB000000000000061C
-t1295395323
-s1564
+c000000004D3902CE0000000000000637
+t1295581902
+s1591
 i"tile_defines.h"
+i"drawable.h"
 i<stdlib.h>
 i<stdio.h>
 i<time.h>
@@ -416,11 +437,11 @@ s895
 
 CCheck dependencies
 r0
-lSLF07#2@18"Check dependencies317274520#317274520#0(0"0(0#1#0"4300882208#0"0#
+lSLF07#2@18"Check dependencies317275156#317275156#0(0"0(0#1#0"4300882208#0"0#
 
 CCompileC build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/SOIL.o /Users/bvrn007/sandbox/gltest/SOIL.c normal i386 c com.apple.compilers.gcc.4_2
-s316901651.399845
-e316901652.368325
+s317275157.574868
+e317275158.415888
 r1
 xCompileC
 xbuild/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/SOIL.o
@@ -429,11 +450,11 @@ xnormal
 xi386
 xc
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@44"Compile /Users/bvrn007/sandbox/gltest/SOIL.c316901651#316901652#0(0"0(0#0#36"/Users/bvrn007/sandbox/gltest/SOIL.c4300882208#1070"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/SOIL.c -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/SOIL.o0#
+lSLF07#2@44"Compile /Users/bvrn007/sandbox/gltest/SOIL.c317275157#317275158#0(0"0(0#0#36"/Users/bvrn007/sandbox/gltest/SOIL.c4300882208#1070"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/SOIL.c -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/SOIL.o0#
 
 CCompileC build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/game.o /Users/bvrn007/sandbox/gltest/game.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s317192437.298009
-e317192437.299893
+s317275158.123274
+e317275158.691884
 r1
 xCompileC
 xbuild/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/game.o
@@ -442,11 +463,13 @@ xnormal
 xi386
 xc++
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@46"Compile /Users/bvrn007/sandbox/gltest/game.cpp317192437#317192437#0(177"/Users/bvrn007/sandbox/gltest/game.cpp: In constructor 'game::game()':/Users/bvrn007/sandbox/gltest/game.cpp:19: warning: deprecated conversion from string constant to 'char*'1(22@53"Deprecated conversion from string constant to 'char*'317192437#71#106#0(6@38"/Users/bvrn007/sandbox/gltest/game.cpp317190301#19#0#19#0#49"deprecated conversion from string constant to '*'0(0#0#38"/Users/bvrn007/sandbox/gltest/game.cpp4300882208#1102"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/game.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/game.o0#
+o/Users/bvrn007/sandbox/gltest/game.cpp: In constructor 'game::game()':
+o/Users/bvrn007/sandbox/gltest/game.cpp:19: warning: deprecated conversion from string constant to 'char*'
+lSLF07#2@46"Compile /Users/bvrn007/sandbox/gltest/game.cpp317275158#317275158#0(177"/Users/bvrn007/sandbox/gltest/game.cpp: In constructor 'game::game()':/Users/bvrn007/sandbox/gltest/game.cpp:19: warning: deprecated conversion from string constant to 'char*'1(22@53"Deprecated conversion from string constant to 'char*'317275158#71#106#0(6@38"/Users/bvrn007/sandbox/gltest/game.cpp317274869#19#0#19#0#49"deprecated conversion from string constant to '*'0(0#0#38"/Users/bvrn007/sandbox/gltest/game.cpp4300882208#1102"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/game.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/game.o0#
 
 CCompileC build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/guard.o /Users/bvrn007/sandbox/gltest/guard.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s317193345.048157
-e317193345.049215
+s317275159.451121
+e317275159.809212
 r1
 xCompileC
 xbuild/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/guard.o
@@ -455,11 +478,11 @@ xnormal
 xi386
 xc++
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@47"Compile /Users/bvrn007/sandbox/gltest/guard.cpp317193345#317193345#0(0"0(0#0#39"/Users/bvrn007/sandbox/gltest/guard.cpp4300882208#1104"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/guard.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/guard.o0#
+lSLF07#2@47"Compile /Users/bvrn007/sandbox/gltest/guard.cpp317275159#317275159#0(0"0(0#0#39"/Users/bvrn007/sandbox/gltest/guard.cpp4300882208#1104"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/guard.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/guard.o0#
 
 CCompileC build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/image_DXT.o /Users/bvrn007/sandbox/gltest/image_DXT.c normal i386 c com.apple.compilers.gcc.4_2
-s316901651.288914
-e316901651.391813
+s317275157.463424
+e317275157.574763
 r1
 xCompileC
 xbuild/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/image_DXT.o
@@ -468,11 +491,11 @@ xnormal
 xi386
 xc
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@49"Compile /Users/bvrn007/sandbox/gltest/image_DXT.c316901651#316901651#0(0"0(0#0#41"/Users/bvrn007/sandbox/gltest/image_DXT.c4300882208#1080"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/image_DXT.c -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/image_DXT.o0#
+lSLF07#2@49"Compile /Users/bvrn007/sandbox/gltest/image_DXT.c317275157#317275157#0(0"0(0#0#41"/Users/bvrn007/sandbox/gltest/image_DXT.c4300882208#1080"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/image_DXT.c -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/image_DXT.o0#
 
 CCompileC build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/image_helper.o /Users/bvrn007/sandbox/gltest/image_helper.c normal i386 c com.apple.compilers.gcc.4_2
-s316901651.391919
-e316901651.528652
+s317275157.507164
+e317275157.589440
 r1
 xCompileC
 xbuild/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/image_helper.o
@@ -481,11 +504,11 @@ xnormal
 xi386
 xc
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@52"Compile /Users/bvrn007/sandbox/gltest/image_helper.c316901651#316901651#0(0"0(0#0#44"/Users/bvrn007/sandbox/gltest/image_helper.c4300882208#1086"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/image_helper.c -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/image_helper.o0#
+lSLF07#2@52"Compile /Users/bvrn007/sandbox/gltest/image_helper.c317275157#317275157#0(0"0(0#0#44"/Users/bvrn007/sandbox/gltest/image_helper.c4300882208#1086"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/image_helper.c -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/image_helper.o0#
 
 CCompileC build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/input.o /Users/bvrn007/sandbox/gltest/input.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s317088162.486665
-e317088162.727206
+s317275157.199703
+e317275157.463309
 r1
 xCompileC
 xbuild/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/input.o
@@ -494,11 +517,11 @@ xnormal
 xi386
 xc++
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@47"Compile /Users/bvrn007/sandbox/gltest/input.cpp317088162#317088162#0(0"0(0#0#39"/Users/bvrn007/sandbox/gltest/input.cpp4300882208#1104"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/input.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/input.o0#
+lSLF07#2@47"Compile /Users/bvrn007/sandbox/gltest/input.cpp317275157#317275157#0(0"0(0#0#39"/Users/bvrn007/sandbox/gltest/input.cpp4300882208#1104"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/input.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/input.o0#
 
 CCompileC build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/los.o /Users/bvrn007/sandbox/gltest/los.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s316901653.117986
-e316901653.146351
+s317275159.359044
+e317275159.703394
 r1
 xCompileC
 xbuild/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/los.o
@@ -507,11 +530,11 @@ xnormal
 xi386
 xc++
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@45"Compile /Users/bvrn007/sandbox/gltest/los.cpp316901653#316901653#0(0"0(0#0#37"/Users/bvrn007/sandbox/gltest/los.cpp4300882208#1100"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/los.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/los.o0#
+lSLF07#2@45"Compile /Users/bvrn007/sandbox/gltest/los.cpp317275159#317275159#0(0"0(0#0#37"/Users/bvrn007/sandbox/gltest/los.cpp4300882208#1100"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/los.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/los.o0#
 
 CCompileC build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/main.o /Users/bvrn007/sandbox/gltest/main.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s317274520.631707
-e317274521.028373
+s317275156.803704
+e317275157.199593
 r1
 xCompileC
 xbuild/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/main.o
@@ -520,11 +543,11 @@ xnormal
 xi386
 xc++
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@46"Compile /Users/bvrn007/sandbox/gltest/main.cpp317274520#317274521#0(0"0(0#0#38"/Users/bvrn007/sandbox/gltest/main.cpp4300882208#1102"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/main.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/main.o0#
+lSLF07#2@46"Compile /Users/bvrn007/sandbox/gltest/main.cpp317275156#317275157#0(0"0(0#0#38"/Users/bvrn007/sandbox/gltest/main.cpp4300882208#1102"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/main.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/main.o0#
 
 CCompileC build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/quadrant.o /Users/bvrn007/sandbox/gltest/quadrant.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s317188796.688757
-e317188797.111778
+s317275158.691987
+e317275159.100050
 r1
 xCompileC
 xbuild/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/quadrant.o
@@ -533,11 +556,11 @@ xnormal
 xi386
 xc++
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@50"Compile /Users/bvrn007/sandbox/gltest/quadrant.cpp317188796#317188797#0(0"0(0#0#42"/Users/bvrn007/sandbox/gltest/quadrant.cpp4300882208#1110"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/quadrant.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/quadrant.o0#
+lSLF07#2@50"Compile /Users/bvrn007/sandbox/gltest/quadrant.cpp317275158#317275159#0(0"0(0#0#42"/Users/bvrn007/sandbox/gltest/quadrant.cpp4300882208#1110"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/quadrant.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/quadrant.o0#
 
 CCompileC build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/sprite.o /Users/bvrn007/sandbox/gltest/sprite.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s317274475.783193
-e317274476.249602
+s317275156.804962
+e317275157.507061
 r1
 xCompileC
 xbuild/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/sprite.o
@@ -546,11 +569,11 @@ xnormal
 xi386
 xc++
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@48"Compile /Users/bvrn007/sandbox/gltest/sprite.cpp317274475#317274476#0(0"0(0#0#40"/Users/bvrn007/sandbox/gltest/sprite.cpp4300882208#1106"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/sprite.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/sprite.o0#
+lSLF07#2@48"Compile /Users/bvrn007/sandbox/gltest/sprite.cpp317275156#317275157#0(0"0(0#0#40"/Users/bvrn007/sandbox/gltest/sprite.cpp4300882208#1106"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/sprite.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/sprite.o0#
 
 CCompileC build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/sprite_data.o /Users/bvrn007/sandbox/gltest/sprite_data.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s317188797.111959
-e317188797.393509
+s317275159.100151
+e317275159.358946
 r1
 xCompileC
 xbuild/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/sprite_data.o
@@ -559,11 +582,11 @@ xnormal
 xi386
 xc++
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@53"Compile /Users/bvrn007/sandbox/gltest/sprite_data.cpp317188797#317188797#0(0"0(0#0#45"/Users/bvrn007/sandbox/gltest/sprite_data.cpp4300882208#1116"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/sprite_data.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/sprite_data.o0#
+lSLF07#2@53"Compile /Users/bvrn007/sandbox/gltest/sprite_data.cpp317275159#317275159#0(0"0(0#0#45"/Users/bvrn007/sandbox/gltest/sprite_data.cpp4300882208#1116"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/sprite_data.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/sprite_data.o0#
 
 CCompileC build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/stb_image_aug.o /Users/bvrn007/sandbox/gltest/stb_image_aug.c normal i386 c com.apple.compilers.gcc.4_2
-s316901651.528757
-e316901652.007617
+s317275157.589544
+e317275158.123156
 r1
 xCompileC
 xbuild/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/stb_image_aug.o
@@ -572,11 +595,11 @@ xnormal
 xi386
 xc
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@53"Compile /Users/bvrn007/sandbox/gltest/stb_image_aug.c316901651#316901652#0(0"0(0#0#45"/Users/bvrn007/sandbox/gltest/stb_image_aug.c4300882208#1088"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/stb_image_aug.c -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/stb_image_aug.o0#
+lSLF07#2@53"Compile /Users/bvrn007/sandbox/gltest/stb_image_aug.c317275157#317275158#0(0"0(0#0#45"/Users/bvrn007/sandbox/gltest/stb_image_aug.c4300882208#1088"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/stb_image_aug.c -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/stb_image_aug.o0#
 
 CCompileC build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/tiles.o /Users/bvrn007/sandbox/gltest/tiles.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s317188796.934948
-e317188797.512349
+s317275158.891779
+e317275159.451010
 r1
 xCompileC
 xbuild/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/tiles.o
@@ -585,11 +608,11 @@ xnormal
 xi386
 xc++
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@47"Compile /Users/bvrn007/sandbox/gltest/tiles.cpp317188796#317188797#0(0"0(0#0#39"/Users/bvrn007/sandbox/gltest/tiles.cpp4300882208#1104"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/tiles.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/tiles.o0#
+lSLF07#2@47"Compile /Users/bvrn007/sandbox/gltest/tiles.cpp317275158#317275159#0(0"0(0#0#39"/Users/bvrn007/sandbox/gltest/tiles.cpp4300882208#1104"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/tiles.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/tiles.o0#
 
 CCompileC build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/zone.o /Users/bvrn007/sandbox/gltest/zone.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s317188796.517673
-e317188796.934824
+s317275158.416095
+e317275158.891662
 r1
 xCompileC
 xbuild/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/zone.o
@@ -598,26 +621,32 @@ xnormal
 xi386
 xc++
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@46"Compile /Users/bvrn007/sandbox/gltest/zone.cpp317188796#317188796#0(0"0(0#0#38"/Users/bvrn007/sandbox/gltest/zone.cpp4300882208#1102"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/zone.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/zone.o0#
+lSLF07#2@46"Compile /Users/bvrn007/sandbox/gltest/zone.cpp317275158#317275158#0(0"0(0#0#38"/Users/bvrn007/sandbox/gltest/zone.cpp4300882208#1102"    cd /Users/bvrn007/sandbox/gltest    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-generated-files.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-own-target-headers.hmap -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-all-target-headers.hmap -iquote /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/XcodeGLUT-project-headers.hmap -F/Users/bvrn007/sandbox/gltest/build/Debug -I/Users/bvrn007/sandbox/gltest/build/Debug/include -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources/i386 -I/Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/DerivedSources -c /Users/bvrn007/sandbox/gltest/zone.cpp -o /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/zone.o0#
 
 CLd /Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app/Contents/MacOS/XcodeGLUT normal i386
-s317274521.030445
-e317274521.108376
+s317275159.809330
+e317275159.882310
 r1
 xLd
 x/Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app/Contents/MacOS/XcodeGLUT
 xnormal
 xi386
-lSLF07#2@85"Link /Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app/Contents/MacOS/XcodeGLUT317274521#317274521#0(0"0(0#0#0"4300882208#449"    cd /Users/bvrn007/sandbox/gltest    /Developer/usr/bin/g++-4.2 -arch i386 -L/Users/bvrn007/sandbox/gltest/build/Debug -F/Users/bvrn007/sandbox/gltest/build/Debug -filelist /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/XcodeGLUT.LinkFileList -framework Foundation -framework AppKit -framework GLUT -framework OpenGL -o /Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app/Contents/MacOS/XcodeGLUT0#
+lSLF07#2@85"Link /Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app/Contents/MacOS/XcodeGLUT317275159#317275159#0(0"0(0#0#0"4300882208#449"    cd /Users/bvrn007/sandbox/gltest    /Developer/usr/bin/g++-4.2 -arch i386 -L/Users/bvrn007/sandbox/gltest/build/Debug -F/Users/bvrn007/sandbox/gltest/build/Debug -filelist /Users/bvrn007/sandbox/gltest/build/gltest.build/Debug/XcodeGLUT.build/Objects-normal/i386/XcodeGLUT.LinkFileList -framework Foundation -framework AppKit -framework GLUT -framework OpenGL -o /Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app/Contents/MacOS/XcodeGLUT0#
 
 CProcessInfoPlistFile /Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app/Contents/Info.plist XcodeGLUT-Info.plist
-r0
+s317275156.799222
+e317275156.803579
+r1
+xProcessInfoPlistFile
+x/Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app/Contents/Info.plist
+xXcodeGLUT-Info.plist
+lSLF07#2@28"Process XcodeGLUT-Info.plist317275156#317275156#0(0"0(0#0#50"/Users/bvrn007/sandbox/gltest/XcodeGLUT-Info.plist4300882208#289"    cd /Users/bvrn007/sandbox/gltest    builtin-infoPlistUtility XcodeGLUT-Info.plist -genpkginfo /Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app/Contents/PkgInfo -expandbuildsettings -platform macosx -o /Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app/Contents/Info.plist0#
 
 CTouch /Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app
-s317274521.108471
-e317274521.111216
+s317275159.882426
+e317275159.885334
 r1
 xTouch
 x/Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app
-lSLF07#2@61"Touch /Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app317274521#317274521#0(0"0(0#0#0"4300882208#115"    cd /Users/bvrn007/sandbox/gltest    /usr/bin/touch -c /Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app0#
+lSLF07#2@61"Touch /Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app317275159#317275159#0(0"0(0#0#0"4300882208#115"    cd /Users/bvrn007/sandbox/gltest    /usr/bin/touch -c /Users/bvrn007/sandbox/gltest/build/Debug/XcodeGLUT.app0#
 

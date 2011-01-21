@@ -11,6 +11,7 @@
 #define SPRITE_H
 
 #include "tile_defines.h"
+#include "drawable.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -32,8 +33,6 @@
 
 using namespace std;
 
-const float FIELD_OF_VISION = 180.0;
-const float DEPTH_OF_VISION = 250.0;
 
 class game_sprite {
 protected:
@@ -41,13 +40,13 @@ protected:
 	vector<GLuint> textures; 
 	GLuint texture;
 	map<int, GLuint> animations;
+	vector<drawable *> drawables; // need to think about who is responsible for cleaning this up.
 public:
 	bool _blockVisibility;
 	bool _blockMovement;
 	int width, height;
 	float _x; float _y;
 	float _angle;
-	bool use_los;
 	int move_left; int move_right; int move_up; int move_down;
 	int frame;
 	game_sprite();
@@ -66,11 +65,11 @@ public:
 	void wh(float, float);
 	void draw();
 	void draw(float, float);
-	void draw_fov( float ref_x, float ref_y );
 	void rotate( float angle );
 	void text(char *str);
 	GLuint LoadTexture( const char * filename);
 	void renderSpacedBitmapString(float x, float y, int spacing, void *font, char *str);
+	void setDrawable( drawable * pDrawable );
 };
 
 

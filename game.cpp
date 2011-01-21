@@ -9,14 +9,16 @@
 
 #include "game.h"
 #include "guard.h"
-
+#include "los.h"
 
 game::game(){
 	frame = 0;
 	timebase = 0;
+
 	focus_sprite = new game_sprite(102,700, 64,64, "player_blue.png", false, false);
-	focus_sprite->use_los = true;
 	focus_sprite->includeAnimation(ANIM_WALK, "player_walking_64.png");
+	line_of_sight * los = new line_of_sight( 180.0, 250.0, 64, 64 );
+	focus_sprite->setDrawable( los );
 	sprites.push_back(focus_sprite);
 	
 	// polymorphism...oh noes!!!
