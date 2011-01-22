@@ -26,10 +26,14 @@ const int GUARD_HEIGHT = 32;
 
 const char GUARD_IMAGE[10] = "guard.png";
 
+class Text;
+class line_of_sight;
+class game_sprite;
+
 class Guard : public game_sprite
 {
 public:
-	Guard( float start_x, float start_y );
+	Guard( float start_x, float start_y, std::vector<game_sprite*> * sprites );
 	~Guard();
 	virtual void movement();	
 	
@@ -38,14 +42,13 @@ private:
 	unsigned long _downCount;
 	unsigned long _rightCount;
 	unsigned long _leftCount;
-	drawable * _los;
+	line_of_sight * _los;
+	Text * _text;
 	
 	void up();
 	void down();
 	void right();
 	void left();
-	
-	
 };
 
 #endif // _GUARD_H_
