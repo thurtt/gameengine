@@ -8,6 +8,7 @@
  */
 
 #include "tiles.h"
+#include "collision.h"
 
 
 int zone_1[ZONETILES] =	{1,2,2,2,2,
@@ -101,20 +102,4 @@ void populateTileSet(){
 	raw_tile4.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"clean_tiles.png", false, false));
 	raw_tile4.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"tile_blood.png", false, false));
 	tileset.push_back(raw_tile4);
-}
-bool inBox(float x, float y, float box_x, float box_y, float box_h, float box_w){
-	return ((y < box_y + box_h) && (x < box_x + box_w) && (y > box_y) && ( x > box_x));
-}
-bool boxCollision(float x, float y, float h, float w, float box_x, float box_y, float box_h, float box_w){
-	return (inBox(x,y,box_x,box_y,box_h,box_w) ||
-			inBox(x + w,y,box_x,box_y,box_h,box_w) ||
-			inBox(x,y + h,box_x,box_y,box_h,box_w) ||
-			inBox(x + w,y + h,box_x,box_y,box_h,box_w));
-}
-bool onscreen(float x, float y, float height, float width){
-	int windowHeight = glutGet( GLUT_WINDOW_HEIGHT );
-	int windowWidth = glutGet( GLUT_WINDOW_WIDTH );
-	
-	return ( boxCollision(x,y,height,width,0,0,windowHeight, windowWidth) ||
-			boxCollision(0,0,windowHeight, windowWidth,x,y,height,width));
 }

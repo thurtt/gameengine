@@ -9,6 +9,7 @@
 
 #include "sprite.h"
 #include "SOIL.h"
+#include "collision.h"
 
 vector< pair<const char*, GLuint> > master_texture_list;
 
@@ -238,15 +239,15 @@ void game_sprite::draw(float offset_x, float offset_y){
 	glDisable(GL_BLEND);
 	
 	// run through the drawables
-	for ( int i = 0; i < drawables.size(); i++ )
-	{
-		drawables[i]->draw( _x + offset_x, _y + offset_y, _angle );
+	// Thomas. This is neat.
+	
+	//lets make rules for drawables:
+	//1 - Do not draw if you're not onscreen.
+	if (onscreen(_x + offset_x, _y + offset_y, height, width)){
+		for ( int i = 0; i < drawables.size(); i++ ){
+			drawables[i]->draw( _x + offset_x, _y + offset_y, _angle );
+		}
 	}
-	
-	
-	/*char str [100];
-	sprintf(str, "%f,%f", _x + offset_x + width, _y + offset_y + height);
-	text(str);*/
 }
 
 GLuint game_sprite::LoadTexture( const char * filename){

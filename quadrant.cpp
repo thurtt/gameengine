@@ -8,6 +8,7 @@
  */
 
 #include "quadrant.h"
+#include "collision.h"
 
 
 quad::quad(int _id, int _zone_id){

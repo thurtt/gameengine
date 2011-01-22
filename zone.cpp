@@ -8,6 +8,7 @@
  */
 
 #include "zone.h"
+#include "collision.h"
 
 
 zone::zone(int _id){
