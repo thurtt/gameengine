@@ -29,8 +29,6 @@
 #include <GLUT/glut.h>
 #endif
 
-
-
 using namespace std;
 
 

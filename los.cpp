@@ -7,7 +7,6 @@
  *
  */
 #include "los.h"
-#include "sprite.h"
 #include "collision.h"
 
 #include <stdlib.h>
