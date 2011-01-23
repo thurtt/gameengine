@@ -14,8 +14,8 @@
 #include "drawable.h"
 #include <utility>
 #include <vector>
+#include "sprite.h"
 
-class game_sprite;
 
 class line_of_sight : public drawable
 {
