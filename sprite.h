@@ -52,8 +52,8 @@ public:
 	game_sprite();
 	game_sprite(float, float, float, float, const char *, bool, bool);
 	~game_sprite();
-	void includeAnimation(int, GLuint, int frames);
-	void includeAnimation(int,const char *, int frames);
+	void includeAnimation(int, GLuint, int);
+	void includeAnimation(int,const char *, int);
 	void useAnimation(int);
 	void animate();
 	virtual void movement();
