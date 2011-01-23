@@ -11,13 +11,16 @@
 
 #include "los.h"
 #include "text.h"
+#include "collision.h"
 
-Player::Player( float _x_, float _y_, float _width_, float _height_, const char * _filename,  std::vector<game_sprite*> * sprites ) :
+Player::Player( float _x_, float _y_, float _width_, float _height_, const char * _filename,  std::vector<game_sprite*> * sprites,  std::vector<game_sprite*> * pickups  ) :
 _los(0),
-_text(0)
+_text(0),
+_sprites(sprites),
+_pickups(pickups)
 {
 	// do some basic setup
-	
+	pickupScore = 0;
 	xy(_x_, _y_);
 	wh(_width_, _height_);
 	texture_file = _filename;
@@ -46,5 +49,53 @@ Player::~Player()
 	
 	delete _text;
 	_text = 0;
+}
+void Player::movement(){	
+	float delta = 0.8;
+	//texture = 1;
+	if ((move_right > 0) || (move_left > 0) || (move_up > 0) || (move_down > 0)){
+		if (texture != animations[ANIM_WALK].first) {
+			useAnimation(ANIM_WALK);
+		}
+	}
+	
+	if (move_right > 0)	{ 
+		_x += delta; 
+		_angle = 90;
+	}
+	if (move_left > 0)	{ 
+		_x -= delta;
+		_angle = 270;
+	}
+	if (move_up > 0)	{ 
+		_y += delta;
+		_angle = 0;
+	}
+	if (move_down > 0)	{ 
+		_y -= delta; 
+		_angle = 180;
+	}
+	
+	checkPickups(); // check to see if we've snagged something.
+}
+
+void Player::checkPickups(){
+	
+	std::vector<game_sprite *>::iterator itr = _pickups->begin();
+	float xx;
+	float yy;
+	while( itr != _pickups->end() )
+	{
+		xx = (*itr)->_x;
+		yy = (*itr)->_y;
+		
+		if (boxCollision(_x, _y, height, width, (*itr)->_x, (*itr)->_y, (*itr)->height, (*itr)->width)){
+			if ( (*itr)->active ) {
+				pickupScore++;
+				(*itr)->useAnimation(ANIM_EXPLODE);
+			}
+		}
+		++itr;
+	}
 }
 

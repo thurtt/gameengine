@@ -44,6 +44,7 @@ protected:
 public:
 	bool _blockVisibility;
 	bool _blockMovement;
+	bool active;
 	int width, height;
 	float _x; float _y;
 	float _angle;

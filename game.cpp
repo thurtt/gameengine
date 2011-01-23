@@ -109,12 +109,23 @@ void game::loadMap(int map){
 	for ( i = 0; i < 16; i++){
 		zones.push_back( new zone( i ) );
 	}
-	sprites.push_back( new game_sprite(120,780, 16,16, "pickup_thing.png", false, false) );
-	sprites.push_back( new game_sprite(150,780, 32,32, "pickup_thing.png", false, false) );
-	sprites.push_back( new game_sprite(220,780, 64,64, "pickup_thing.png", false, false) );
+	game_sprite * pu = new game_sprite(120,780, 16,16, "pickup_thing.png", false, false);
+	pu->includeAnimation(ANIM_EXPLODE, "explosion.png", 25);
+	game_sprite * pu2 = new game_sprite(150,780, 32,32, "pickup_thing.png", false, false);
+	pu2->includeAnimation(ANIM_EXPLODE, "explosion.png", 25);
+	game_sprite * pu3 = new game_sprite(220,780, 32,32, "pickup_thing.png", false, false);
+	pu3->includeAnimation(ANIM_EXPLODE, "explosion.png", 25);
+	
+	sprites.push_back( pu );
+	sprites.push_back( pu2 );
+	sprites.push_back( pu3 );
+	
+	pickups.push_back( pu );
+	pickups.push_back( pu2 );
+	pickups.push_back( pu3 );
 	
 	
-	focus_sprite = new Player(102,700, 64,64, "player_blue.png", &sprites);
+	focus_sprite = new Player(102,700, 64,64, "player_blue.png", &sprites, &pickups);
 	sprites.push_back(focus_sprite);
 	
 	game_sprite * guard_sprite = new Guard( 202, 800, &sprites );
