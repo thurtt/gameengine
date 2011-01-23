@@ -215,12 +215,12 @@ void game_sprite::draw(float offset_x, float offset_y){
 	
 	if (animations[texture].first != animations[ANIM_NONE].first) {
 		if ((_angle == 90) || (_angle == 270)){
-			translated_y = ((float)frame * (float)height)/(ANIM_MAX_FRAMES * (float)height);
-			translated_y2 = (((float)frame + 1) * (float)height)/(ANIM_MAX_FRAMES * (float)height);
+			translated_y = ((float)frame * (float)height)/(animations[texture].second * (float)height);
+			translated_y2 = (((float)frame + 1) * (float)height)/(animations[texture].second * (float)height);
 		}
 		else {
-			translated_x = ((float)frame * (float)width)/(ANIM_MAX_FRAMES * (float)width);
-			translated_x2 = (((float)frame + 1) * (float)width)/(ANIM_MAX_FRAMES * (float)width);
+			translated_x = ((float)frame * (float)width)/(animations[texture].second * (float)width);
+			translated_x2 = (((float)frame + 1) * (float)width)/(animations[texture].second * (float)width);
 		}
 	}
 
