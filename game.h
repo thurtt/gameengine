@@ -40,6 +40,7 @@ public:
 	game_sprite* focus_sprite;
 	vector<zone*> zones;
 	bool _finished;
+	int _phase;
 	game();
 	~game();
 	void draw();
@@ -51,6 +52,7 @@ public:
 	bool finished();
 	bool finished(bool);
 	void genTiles();
+	void loadPhase(int phase);
 	void loadMap(int map);
 	
 };

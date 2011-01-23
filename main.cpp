@@ -92,6 +92,11 @@ void NormalKeys(unsigned char key, int x, int y) {
 	if (key == 27) {
 		exit(0);
 	}
+	if (key == 13) {
+		if ( baseGame->_phase == 0){
+			baseGame->loadPhase(3);
+		}
+	}
 	if (key == 'a'){
 		InputMovement(GLUT_KEY_LEFT,1);
 	}

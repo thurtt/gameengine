@@ -11,18 +11,14 @@
 #include "guard.h"
 #include "player.h"
 #include "los.h"
+#include "game_states.h"
 
 game::game(){
 	frame = 0;
 	timebase = 0;
+	focus_sprite = 0;
 
-	focus_sprite = new Player(102,700, 64,64, "player_blue.png", &sprites);
-	sprites.push_back(focus_sprite);
-	
-	game_sprite * guard_sprite = new Guard( 202, 800, &sprites );
-	sprites.push_back( guard_sprite );
-	
-	loadMap(1);
+	loadPhase(STATE_TITLE);
 	
 	_finished = false;
 }
@@ -66,9 +62,10 @@ void game::movement(){
 	for (i = 0; i < sprites.size(); i++){
 		sprites[i]->movement();
 	}
-	
-	offset_x = (glutGet( GLUT_WINDOW_WIDTH ) - focus_sprite->width) / 2 - focus_sprite->_x;
-	offset_y = (glutGet( GLUT_WINDOW_HEIGHT )  - focus_sprite->height) / 2 - focus_sprite->_y;
+	if (focus_sprite != 0){ //if we have something to follow....
+		offset_x = (glutGet( GLUT_WINDOW_WIDTH ) - focus_sprite->width) / 2 - focus_sprite->_x;
+		offset_y = (glutGet( GLUT_WINDOW_HEIGHT )  - focus_sprite->height) / 2 - focus_sprite->_y;
+	}
 }
 
 bool game::finished(){ return _finished; }
@@ -78,15 +75,44 @@ void game::genTiles(){
 	populateTileSet();
 }
 
+void game::loadPhase(int phase){
+	_phase = phase;
+	//game_sprite * title_sprite;
+	switch (phase) {
+		case STATE_TITLE:
+			sprites.push_back( new game_sprite(0,0, glutGet( GLUT_WINDOW_WIDTH ),glutGet( GLUT_WINDOW_HEIGHT ), "title_screen.png", false, false) );
+			
+			break;
+		case STATE_LEVEL_STARTING:
+			loadMap(1);
+			break;
+		case STATE_LEVEL:
+			break;
+		case STATE_LEVEL_FINISHED:
+			break;
+		default:
+			break;
+	}
+}
+
 void game::loadMap(int map){
 	// map is series of zones
 	zones.clear();
+	sprites.clear();
 	genTiles();
 	
 	int i;
 	for ( i = 0; i < 16; i++){
 		zones.push_back( new zone( i ) );
 	}
+	
+	focus_sprite = new Player(102,700, 64,64, "player_blue.png", &sprites);
+	sprites.push_back(focus_sprite);
+	
+	game_sprite * guard_sprite = new Guard( 202, 800, &sprites );
+	sprites.push_back( guard_sprite );
+
+	
 }
 
 void game::idle(){
