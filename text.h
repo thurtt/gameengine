@@ -4,6 +4,7 @@
 #include "drawable.h"
 #include <string>
 #include <vector>
+#include <stack>
 
 const size_t MAX_CHARS = 2048;
 const int CHAR_WIDTH = 6;
@@ -15,7 +16,7 @@ public:
 	void printf( const char * fmt, ... );
 
 private:
-	std::vector<std::string> _stringQueue;
+	std::stack<std::string> _stringQueue;
 
 	void write_string( std::string str, float x, float y );
 

@@ -21,14 +21,18 @@ void Text::printf( const char * format, ... )
 
 	delete [] buffer;
 
-	_stringQueue.push_back( tempStr );
+	_stringQueue.push( tempStr );
 }
 
 void Text::draw( float x, float y, float angle )
 {
 	for( int i = 0; i < _stringQueue.size(); i++ )
-	{
-		write_string( _stringQueue[i], x, y );
+	{ 
+		// the stl philosophy creates a hard line between accessors and
+		// mutators. This means that stavks are a two step process.
+		std::string tmpStr = _stringQueue.top();
+		write_string( tmpStr, x, y );
+		_stringQueue.pop();
 	}
 }
 
