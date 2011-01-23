@@ -17,6 +17,7 @@ game::game(){
 	frame = 0;
 	timebase = 0;
 	focus_sprite = 0;
+	_phase = 0;
 
 	loadPhase(STATE_TITLE);
 	
@@ -76,19 +77,24 @@ void game::genTiles(){
 }
 
 void game::loadPhase(int phase){
+	
 	_phase = phase;
-	//game_sprite * title_sprite;
+	
+	
 	switch (phase) {
 		case STATE_TITLE:
+			midPhase(); //a little clean-up here.
 			sprites.push_back( new game_sprite(0,0, glutGet( GLUT_WINDOW_WIDTH ),glutGet( GLUT_WINDOW_HEIGHT ), "title_screen.png", false, false) );
 			
 			break;
 		case STATE_LEVEL_STARTING:
+			midPhase();
 			loadMap(1);
 			break;
 		case STATE_LEVEL:
 			break;
 		case STATE_LEVEL_FINISHED:
+			midPhase();
 			break;
 		default:
 			break;
@@ -97,8 +103,6 @@ void game::loadPhase(int phase){
 
 void game::loadMap(int map){
 	// map is series of zones
-	zones.clear();
-	sprites.clear();
 	genTiles();
 	
 	int i;
@@ -113,6 +117,11 @@ void game::loadMap(int map){
 	sprites.push_back( guard_sprite );
 
 	
+}
+
+void game::midPhase(){
+	zones.clear();
+	sprites.clear();
 }
 
 void game::idle(){

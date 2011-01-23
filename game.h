@@ -54,6 +54,7 @@ public:
 	void genTiles();
 	void loadPhase(int phase);
 	void loadMap(int map);
+	void midPhase();
 	
 };
 #endif
