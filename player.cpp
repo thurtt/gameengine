@@ -89,7 +89,8 @@ void Player::checkPickups(){
 		xx = (*itr)->_x;
 		yy = (*itr)->_y;
 		
-		if (boxCollision(_x, _y, height, width, (*itr)->_x, (*itr)->_y, (*itr)->height, (*itr)->width)){
+		if (boxCollision(_x, _y, height, width, (*itr)->_x, (*itr)->_y, (*itr)->height, (*itr)->width) || 
+			boxCollision((*itr)->_x, (*itr)->_y, (*itr)->height, (*itr)->width, _x, _y, height, width )){
 			if ( (*itr)->active ) {
 				pickupScore++;
 				(*itr)->useAnimation(ANIM_EXPLODE);
