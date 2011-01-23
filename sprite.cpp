@@ -20,7 +20,8 @@ game_sprite::game_sprite(){
 	_blockVisibility = false;
 	texture = LoadTexture("img.png");
 	textures.push_back( texture );
-	includeAnimation(ANIM_NONE, texture);
+	includeAnimation(ANIM_NONE, texture, 0);
+	useAnimation(ANIM_NONE);
 	_angle = 0.0f;
 }
 
@@ -33,23 +34,27 @@ game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, co
 	
 	texture = LoadTexture(texture_file);
 	textures.push_back( texture );
-	includeAnimation(ANIM_NONE, texture);
+	includeAnimation(ANIM_NONE, texture, 0);
+	useAnimation(ANIM_NONE);
 	_angle = 0.0f;
 }
 
-void game_sprite::includeAnimation(int anim, char * t){
-	animations[anim] = LoadTexture(t);
+void game_sprite::includeAnimation(int anim,const char * t, int fr){
+	animations[anim] = make_pair(LoadTexture(t), fr);
 }
 
-void game_sprite::includeAnimation(int anim, GLuint t){
-	animations[anim] = t;
+void game_sprite::includeAnimation(int anim, GLuint t, int fr){
+	animations[anim] = make_pair(t, fr);
 }
 
 void game_sprite::useAnimation(int anim){
+	if (texture == anim){
+		return;
+	}
 	if (animations.find(anim) != animations.end() ){
-		texture = animations[anim];
+		texture = anim; //animations[anim].first;
 	}else{
-		texture = 1;
+		texture = ANIM_NONE;
 	}
 	
 	//STARTUP for different animation things.
@@ -82,7 +87,8 @@ void game_sprite::useAnimation(int anim){
 
 void game_sprite::animate(){
 	frame++;
-	if (frame >=ANIM_MAX_FRAMES ) frame = 0;
+	int fr = animations[texture].second;
+	if (frame >= animations[texture].second ) frame = 0;
 
 	switch (texture) {
 		case ANIM_NONE:
@@ -100,6 +106,9 @@ void game_sprite::animate(){
 		case ANIM_HIDE:
 			break;
 		case ANIM_EXPLODE:
+			if (frame >= animations[texture].second ) {
+				useAnimation(ANIM_NONE);
+			}
 			break;
 		case ANIM_AMBIENT:
 			break;
@@ -171,7 +180,7 @@ void game_sprite::draw(float offset_x, float offset_y){
 	glEnable( GL_TEXTURE_2D );
 	glEnable(GL_BLEND);
 	glDisable(GL_DEPTH_TEST);
-	glBindTexture( GL_TEXTURE_2D, texture );
+	glBindTexture( GL_TEXTURE_2D, animations[texture].first );
 	
 	// not exactly sure how this works, but it does.
 	// use the _angle member variable to change the
@@ -205,7 +214,7 @@ void game_sprite::draw(float offset_x, float offset_y){
 	float translated_y = 0.0f;
 	float translated_y2 = 1.0f;
 	
-	if (texture != animations[ANIM_NONE]) {
+	if (animations[texture].first != animations[ANIM_NONE].first) {
 		if ((_angle == 90) || (_angle == 270)){
 			translated_y = ((float)frame * (float)height)/(ANIM_MAX_FRAMES * (float)height);
 			translated_y2 = (((float)frame + 1) * (float)height)/(ANIM_MAX_FRAMES * (float)height);
@@ -298,7 +307,7 @@ void game_sprite::movement(){
 	float delta = 0.8;
 	//texture = 1;
 	if ((move_right > 0) || (move_left > 0) || (move_up > 0) || (move_down > 0)){
-		if (texture != animations[ANIM_WALK]) {
+		if (texture != animations[ANIM_WALK].first) {
 			useAnimation(ANIM_WALK);
 		}
 	}

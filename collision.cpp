@@ -9,14 +9,6 @@
 
 #include "collision.h"
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
-#include <string>
-#include <vector>
-#include <utility>
-#include <map>
-
 #ifdef WIN32
 #include <freeglut.h>
 #elif defined(__APPLE__) || defined(__APPLE_CC__)

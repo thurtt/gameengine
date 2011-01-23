@@ -123,6 +123,11 @@ void NormalKeysUp(unsigned char key, int x, int y) {
 	if (key == 'a'){
 		InputMovement(GLUT_KEY_LEFT,0);
 	}
+	
+	if (key == 'e'){
+		baseGame->focus_sprite->useAnimation(ANIM_EXPLODE);;
+	}
+	
 	if (key == 'd'){
 		InputMovement(GLUT_KEY_RIGHT,0);
 	}
