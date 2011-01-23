@@ -33,6 +33,8 @@ using namespace std;
 class game{
 	
 	vector<game_sprite*> sprites;
+	vector<game_sprite*> pickups;
+	
 	int frame,time,timebase;
 	float offset_x;
 	float offset_y;
@@ -40,6 +42,7 @@ public:
 	game_sprite* focus_sprite;
 	vector<zone*> zones;
 	bool _finished;
+	int _phase;
 	game();
 	~game();
 	void draw();
@@ -51,7 +54,9 @@ public:
 	bool finished();
 	bool finished(bool);
 	void genTiles();
+	void loadPhase(int phase);
 	void loadMap(int map);
+	void midPhase();
 	
 };
 #endif

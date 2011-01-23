@@ -115,7 +115,8 @@ bool line_of_sight::in_my_box( float x, float y, float h, float w )
 	// Here is the code to use boxCollision, so we can make changes in only one place
 	float my_width = _corners[0][1] - _corners[0][0];
 	float my_height = _corners[1][2] - _corners[1][0];
-	return boxCollision(x, y, h, w, _corners[0][0], _corners[0][1], my_height, my_width );
+	return (boxCollision(x, y, h, w, _corners[0][0], _corners[0][1], my_height, my_width ) ||
+			boxCollision(_corners[0][0], _corners[0][1], my_height, my_width,x, y, h, w ));
 	
 	//original. This makes the assumption that the LOS rect is bigger than the target rect.
 	/*

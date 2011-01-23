@@ -9,23 +9,17 @@
 
 #include "game.h"
 #include "guard.h"
+#include "player.h"
 #include "los.h"
+#include "game_states.h"
 
 game::game(){
 	frame = 0;
 	timebase = 0;
+	focus_sprite = 0;
+	_phase = 0;
 
-	focus_sprite = new game_sprite(102,700, 64,64, "player_blue.png", false, false);
-	focus_sprite->includeAnimation(ANIM_EXPLODE, "explosion.png", 25);
-	focus_sprite->includeAnimation(ANIM_WALK, "player_walking_64.png", 8);
-	line_of_sight * los = new line_of_sight( 180.0, 250.0, 64, 64, &sprites );
-	focus_sprite->setDrawable( los );
-	sprites.push_back(focus_sprite);
-	
-	game_sprite * guard_sprite = new Guard( 202, 800, &sprites );
-	sprites.push_back( guard_sprite );
-	
-	loadMap(1);
+	loadPhase(STATE_TITLE);
 	
 	_finished = false;
 }
@@ -69,9 +63,10 @@ void game::movement(){
 	for (i = 0; i < sprites.size(); i++){
 		sprites[i]->movement();
 	}
-	
-	offset_x = (glutGet( GLUT_WINDOW_WIDTH ) - focus_sprite->width) / 2 - focus_sprite->_x;
-	offset_y = (glutGet( GLUT_WINDOW_HEIGHT )  - focus_sprite->height) / 2 - focus_sprite->_y;
+	if (focus_sprite != 0){ //if we have something to follow....
+		offset_x = (glutGet( GLUT_WINDOW_WIDTH ) - focus_sprite->width) / 2 - focus_sprite->_x;
+		offset_y = (glutGet( GLUT_WINDOW_HEIGHT )  - focus_sprite->height) / 2 - focus_sprite->_y;
+	}
 }
 
 bool game::finished(){ return _finished; }
@@ -81,15 +76,67 @@ void game::genTiles(){
 	populateTileSet();
 }
 
+void game::loadPhase(int phase){
+	
+	_phase = phase;
+	
+	
+	switch (phase) {
+		case STATE_TITLE:
+			midPhase(); //a little clean-up here.
+			sprites.push_back( new game_sprite(0,0, glutGet( GLUT_WINDOW_WIDTH ),glutGet( GLUT_WINDOW_HEIGHT ), "title_screen.png", false, false) );
+			
+			break;
+		case STATE_LEVEL_STARTING:
+			midPhase();
+			loadMap(1);
+			break;
+		case STATE_LEVEL:
+			break;
+		case STATE_LEVEL_FINISHED:
+			midPhase();
+			break;
+		default:
+			break;
+	}
+}
+
 void game::loadMap(int map){
 	// map is series of zones
-	zones.clear();
 	genTiles();
 	
 	int i;
 	for ( i = 0; i < 16; i++){
 		zones.push_back( new zone( i ) );
 	}
+	game_sprite * pu = new game_sprite(120,780, 16,16, "pickup_thing.png", false, false);
+	pu->includeAnimation(ANIM_EXPLODE, "explosion.png", 25);
+	game_sprite * pu2 = new game_sprite(150,780, 16,16, "pickup_thing.png", false, false);
+	pu2->includeAnimation(ANIM_EXPLODE, "explosion.png", 25);
+	game_sprite * pu3 = new game_sprite(220,780, 32,32, "pickup_thing.png", false, false);
+	pu3->includeAnimation(ANIM_EXPLODE, "explosion.png", 25);
+	
+	sprites.push_back( pu );
+	sprites.push_back( pu2 );
+	sprites.push_back( pu3 );
+	
+	pickups.push_back( pu );
+	pickups.push_back( pu2 );
+	pickups.push_back( pu3 );
+	
+	
+	focus_sprite = new Player(102,700, 64,64, "player_blue.png", &sprites, &pickups);
+	sprites.push_back(focus_sprite);
+	
+	game_sprite * guard_sprite = new Guard( 202, 800, &sprites );
+	sprites.push_back( guard_sprite );
+
+	
+}
+
+void game::midPhase(){
+	zones.clear();
+	sprites.clear();
 }
 
 void game::idle(){

@@ -29,7 +29,7 @@ void fpsTimer(int value){
 	
 	glutPostRedisplay();
 	
-	glutTimerFunc(1000/120, fpsTimer, 1);
+	glutTimerFunc(1000/60, fpsTimer, 1);
 }
 
 void display(void)
@@ -91,6 +91,11 @@ void NormalKeys(unsigned char key, int x, int y) {
 	
 	if (key == 27) {
 		exit(0);
+	}
+	if (key == 13) {
+		if ( baseGame->_phase == 0){
+			baseGame->loadPhase(3);
+		}
 	}
 	if (key == 'a'){
 		InputMovement(GLUT_KEY_LEFT,1);

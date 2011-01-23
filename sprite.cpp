@@ -18,6 +18,7 @@ game_sprite::game_sprite(){
 	wh(10, 10);
 	_blockMovement = false;
 	_blockVisibility = false;
+	active = true;
 	texture = LoadTexture("img.png");
 	textures.push_back( texture );
 	includeAnimation(ANIM_NONE, texture, 0);
@@ -31,6 +32,7 @@ game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, co
 	texture_file = _filename;
 	_blockMovement = mov;
 	_blockVisibility = vis;
+	active = true;
 	
 	texture = LoadTexture(texture_file);
 	textures.push_back( texture );
@@ -106,6 +108,7 @@ void game_sprite::animate(){
 		case ANIM_EXPLODE:
 			if (frame >= animations[texture].second ) {
 				useAnimation(ANIM_NONE);
+				active = false;
 			}
 			break;
 		case ANIM_AMBIENT:
@@ -175,6 +178,7 @@ void game_sprite::draw(){
 
 void game_sprite::draw(float offset_x, float offset_y){
 
+	if (active == false) return;
 	
 	glEnable( GL_TEXTURE_2D );
 	glEnable(GL_BLEND);
