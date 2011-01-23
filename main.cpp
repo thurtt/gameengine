@@ -8,6 +8,8 @@
  */
 
 #include "main.h"
+#include <OpenAL/al.h>
+#include <OpenAL/alc.h>
 
 using namespace std;
 
@@ -20,7 +22,7 @@ void movementTimer(int value){
 
 void animationTimer(int value){
 	baseGame->animate();
-	glutTimerFunc(1000/8, animationTimer, 1);
+	glutTimerFunc(1000/16, animationTimer, 1);
 }
 
 void fpsTimer(int value){
