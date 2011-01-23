@@ -39,7 +39,9 @@ protected:
 	const char * texture_file;
 	vector<GLuint> textures; 
 	GLuint texture;
-	map<int, GLuint> animations;
+	//map<int, GLuint> animations;
+	map<int, pair<GLuint, int> > animations;
+	
 	vector<drawable *> drawables; // need to think about who is responsible for cleaning this up.
 public:
 	bool _blockVisibility;
@@ -52,8 +54,8 @@ public:
 	game_sprite();
 	game_sprite(float, float, float, float, const char *, bool, bool);
 	~game_sprite();
-	void includeAnimation(int, GLuint);
-	void includeAnimation(int, char *);
+	void includeAnimation(int, GLuint, int frames);
+	void includeAnimation(int,const char *, int frames);
 	void useAnimation(int);
 	void animate();
 	virtual void movement();
