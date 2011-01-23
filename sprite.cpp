@@ -87,8 +87,6 @@ void game_sprite::useAnimation(int anim){
 
 void game_sprite::animate(){
 	frame++;
-	int fr = animations[texture].second;
-	if (frame >= animations[texture].second ) frame = 0;
 
 	switch (texture) {
 		case ANIM_NONE:
@@ -115,6 +113,7 @@ void game_sprite::animate(){
 		default:
 			break;
 	}
+	if (frame >= animations[texture].second ) frame = 0;
 }
 
 void game_sprite::xy(float _x_, float _y_){
