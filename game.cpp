@@ -109,6 +109,10 @@ void game::loadMap(int map){
 	for ( i = 0; i < 16; i++){
 		zones.push_back( new zone( i ) );
 	}
+	sprites.push_back( new game_sprite(120,780, 16,16, "pickup_thing.png", false, false) );
+	sprites.push_back( new game_sprite(150,780, 32,32, "pickup_thing.png", false, false) );
+	sprites.push_back( new game_sprite(220,780, 64,64, "pickup_thing.png", false, false) );
+	
 	
 	focus_sprite = new Player(102,700, 64,64, "player_blue.png", &sprites);
 	sprites.push_back(focus_sprite);
