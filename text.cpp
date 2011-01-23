@@ -34,10 +34,14 @@ void Text::draw( float x, float y, float angle )
 
 void Text::write_string( std::string str, float x, float y )
 {
+	glDisable(GL_DEPTH_TEST);
+
 	for( int i = 0; i < str.length(); i++ )
 	{
 		glRasterPos2f( x, y );
 		glutBitmapCharacter( GLUT_BITMAP_HELVETICA_12, str[i] );
 		x += CHAR_WIDTH;
 	}
+	glEnable(GL_DEPTH_TEST);
+	
 }
