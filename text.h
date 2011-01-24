@@ -2,23 +2,22 @@
 #define _TEXT_H_
 
 #include "drawable.h"
-#include <string>
-#include <vector>
-#include <stack>
 
-const size_t MAX_CHARS = 2048;
+const unsigned long MAX_CHARS = 2048;
 const int CHAR_WIDTH = 6;
 
 class Text : public drawable
 {
 public:
+	Text();
+	~Text();
 	void draw( float x, float y, float angle );
 	void printf( const char * fmt, ... );
 
 private:
-	std::stack<std::string> _stringQueue;
+	char * _msg;
 
-	void write_string( std::string str, float x, float y );
+	void write_string( float x, float y );
 
 };
 	

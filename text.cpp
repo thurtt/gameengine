@@ -1,5 +1,6 @@
 #include "text.h"
 #include <cstdio>
+#include <cstdarg>
 
 #ifdef WIN32
 #include <freeglut.h>
@@ -9,43 +10,41 @@
 #include <GLUT/glut.h>
 #endif
 
+Text::Text() :
+_msg(0)
+{
+	_msg = new char[MAX_CHARS];
+}
+
+Text::~Text()
+{
+	delete [] _msg;
+}
+
 void Text::printf( const char * format, ... )
 {
 	va_list va_args;
-	char * buffer = new char[MAX_CHARS];
-
+	
 	va_start( va_args, format );
 
-	vsnprintf( buffer, MAX_CHARS, format, va_args );
-	std::string tempStr = buffer;
-
-	delete [] buffer;
-
-	_stringQueue.push( tempStr );
+	vsnprintf( _msg, MAX_CHARS, format, va_args );
+	_msg[MAX_CHARS-1] = '\0';
 }
 
 void Text::draw( float x, float y, float angle )
 {
-	for( int i = 0; i < _stringQueue.size(); i++ )
-	{ 
-		// the stl philosophy creates a hard line between accessors and
-		// mutators. This means that stavks are a two step process.
-		std::string tmpStr = _stringQueue.top();
-		write_string( tmpStr, x, y );
-		_stringQueue.pop();
-	}
-}
-
-void Text::write_string( std::string str, float x, float y )
-{
 	glDisable(GL_DEPTH_TEST);
-
-	for( int i = 0; i < str.length(); i++ )
+	
+	for( int i = 0; i < MAX_CHARS; i++ )
 	{
+		if ( _msg[i] == '\0' )
+		{
+			break;
+		}
+		
 		glRasterPos2f( x, y );
-		glutBitmapCharacter( GLUT_BITMAP_HELVETICA_12, str[i] );
+		glutBitmapCharacter( GLUT_BITMAP_HELVETICA_12, _msg[i] );
 		x += CHAR_WIDTH;
 	}
 	glEnable(GL_DEPTH_TEST);
-	
 }
