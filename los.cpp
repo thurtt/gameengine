@@ -118,15 +118,4 @@ bool line_of_sight::in_my_box( float x, float y, float h, float w )
 	return (boxCollision(x, y, h, w, _corners[0][0], _corners[0][1], my_height, my_width ) ||
 			boxCollision(_corners[0][0], _corners[0][1], my_height, my_width,x, y, h, w ));
 	
-	//original. This makes the assumption that the LOS rect is bigger than the target rect.
-	/*
-	if ( x + h > _corners[0][1] 
-		|| x < _corners[0][0]
-		|| y < _corners[1][0]
-		|| y + w > _corners[1][2] )
-	{
-		return false;
-	}
-
-	return true;*/
 }
