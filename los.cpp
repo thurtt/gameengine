@@ -94,7 +94,6 @@ std::vector<std::pair< float, float> > line_of_sight::detect_visible_sprites()
 {
 	std::vector<game_sprite *>::iterator itr = _sprites->begin();
 	std::vector<std::pair< float, float> > visible_sprites;
-
 	while( itr != _sprites->end() )
 	{
 		if ( in_my_box( (*itr)->disp_x, (*itr)->disp_y, (*itr)->height, (*itr)->width ) )
@@ -113,9 +112,13 @@ std::vector<std::pair< float, float> > line_of_sight::detect_visible_sprites()
 bool line_of_sight::in_my_box( float x, float y, float h, float w )
 {
 	// Here is the code to use boxCollision, so we can make changes in only one place
+	/*return (boxCollision(x, y, h, w, _corners[0][0], _corners[1][0], _height, _width ) ||
+			boxCollision(_corners[0][0], _corners[1][0], _height, _width,x, y, h, w ));
+		*/
 	float my_width = _corners[0][1] - _corners[0][0];
 	float my_height = _corners[1][2] - _corners[1][0];
 	return (boxCollision(x, y, h, w, _corners[0][0], _corners[0][1], my_height, my_width ) ||
 			boxCollision(_corners[0][0], _corners[0][1], my_height, my_width,x, y, h, w ));
+
 	
 }

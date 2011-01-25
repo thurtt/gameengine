@@ -34,6 +34,7 @@ class game{
 	
 	vector<game_sprite*> sprites;
 	vector<game_sprite*> pickups;
+	vector<game_sprite*> players;
 	
 	int frame,time,timebase;
 	float offset_x;

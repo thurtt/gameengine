@@ -82,13 +82,8 @@ void Player::movement(){
 void Player::checkPickups(){
 	
 	std::vector<game_sprite *>::iterator itr = _pickups->begin();
-	float xx;
-	float yy;
 	while( itr != _pickups->end() )
 	{
-		xx = (*itr)->_x;
-		yy = (*itr)->_y;
-		
 		if (boxCollision(_x, _y, height, width, (*itr)->_x, (*itr)->_y, (*itr)->height, (*itr)->width) || 
 			boxCollision((*itr)->_x, (*itr)->_y, (*itr)->height, (*itr)->width, _x, _y, height, width )){
 			if ( (*itr)->active ) {

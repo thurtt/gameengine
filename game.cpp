@@ -127,8 +127,9 @@ void game::loadMap(int map){
 	
 	focus_sprite = new Player(102,700, 64,64, "player_blue.png", &sprites, &pickups);
 	sprites.push_back(focus_sprite);
+	players.push_back(focus_sprite);
 	
-	game_sprite * guard_sprite = new Guard( 202, 800, &sprites );
+	game_sprite * guard_sprite = new Guard( 202, 800, &players );
 	sprites.push_back( guard_sprite );
 
 	
