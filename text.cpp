@@ -47,4 +47,5 @@ void Text::draw( float x, float y, float angle )
 		x += CHAR_WIDTH;
 	}
 	glEnable(GL_DEPTH_TEST);
+	_msg[0] = '\0';
 }

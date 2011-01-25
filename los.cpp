@@ -97,11 +97,11 @@ std::vector<std::pair< float, float> > line_of_sight::detect_visible_sprites()
 
 	while( itr != _sprites->end() )
 	{
-		if ( in_my_box( (*itr)->_x, (*itr)->_y, (*itr)->height, (*itr)->width ) )
+		if ( in_my_box( (*itr)->disp_x, (*itr)->disp_y, (*itr)->height, (*itr)->width ) )
 		{
 			std::pair<float, float> tmpPair;
-			tmpPair.first = (*itr)->_x;
-			tmpPair.second = (*itr)->_y;
+			tmpPair.first = (*itr)->disp_x;
+			tmpPair.second = (*itr)->disp_y;
 			visible_sprites.push_back( tmpPair );
 		}
 		++itr;

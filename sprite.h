@@ -50,6 +50,8 @@ public:
 	float _angle;
 	int move_left; int move_right; int move_up; int move_down;
 	int frame;
+	float disp_x;
+	float disp_y;
 	game_sprite();
 	game_sprite(float, float, float, float, const char *, bool, bool);
 	~game_sprite();
@@ -71,6 +73,7 @@ public:
 	GLuint LoadTexture( const char * filename);
 	void renderSpacedBitmapString(float x, float y, int spacing, void *font, char *str);
 	void setDrawable( drawable * pDrawable );
+	float distance(float from_x, float from_y);
 };
 
 

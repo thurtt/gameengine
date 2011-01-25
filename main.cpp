@@ -8,8 +8,8 @@
  */
 
 #include "main.h"
-#include <OpenAL/al.h>
-#include <OpenAL/alc.h>
+//#include <OpenAL/al.h>
+//#include <OpenAL/alc.h>
 
 using namespace std;
 

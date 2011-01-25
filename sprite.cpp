@@ -10,6 +10,7 @@
 #include "sprite.h"
 #include "SOIL.h"
 #include "collision.h"
+#include <math.h>
 
 vector< pair<const char*, GLuint> > master_texture_list;
 
@@ -24,6 +25,8 @@ game_sprite::game_sprite(){
 	includeAnimation(ANIM_NONE, texture, 0);
 	useAnimation(ANIM_NONE);
 	_angle = 0.0f;
+	disp_x = 0.0;
+	disp_y = 0.0;
 }
 
 game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, const char * _filename, bool vis, bool mov){
@@ -231,10 +234,13 @@ void game_sprite::draw(float offset_x, float offset_y){
 	glBegin(GL_QUADS);
 	glColor4f(1.0f,1.0f,1.0f,1.0f);			// Full Brightness, 0.5f == 50% Alpha ( NEW )
 	
-	glTexCoord2d(translated_x,translated_y);	glVertex2f( _x + 0.0f + offset_x ,  _y + 0.0f + offset_y );
-    glTexCoord2d(translated_x2,translated_y);	glVertex2f( _x + width + offset_x , _y +   0.0f + offset_y );
-    glTexCoord2d(translated_x2, translated_y2);	glVertex2f( _x + width + offset_x , _y + height + offset_y );
-    glTexCoord2d(translated_x, translated_y2);	glVertex2f( _x +  0.0f + offset_x , _y + height + offset_y );
+	disp_x = _x + offset_x;
+	disp_y = _y + offset_y;
+	
+	glTexCoord2d(translated_x,translated_y);	glVertex2f(  disp_x,  disp_y );
+    glTexCoord2d(translated_x2,translated_y);	glVertex2f( disp_x + width, disp_y );
+    glTexCoord2d(translated_x2, translated_y2);	glVertex2f( disp_x + width, disp_y + height );
+    glTexCoord2d(translated_x, translated_y2);	glVertex2f( disp_x , disp_y + height );
 	
 	/*
 	 
@@ -337,3 +343,6 @@ void game_sprite::setDrawable( drawable * pDrawable )
 {
 	drawables.push_back( pDrawable );
 }
+float game_sprite::distance(float from_x, float from_y){
+      return sqrt( pow(from_x - _x, 2) + pow(from_y - _y, 2) );
+ }
