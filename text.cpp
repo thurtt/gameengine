@@ -33,6 +33,8 @@ void Text::printf( const char * format, ... )
 
 void Text::draw( float x, float y, float angle )
 {
+	float orig_x = x;
+	
 	glDisable(GL_DEPTH_TEST);
 	
 	for( int i = 0; i < MAX_CHARS; i++ )
@@ -40,6 +42,12 @@ void Text::draw( float x, float y, float angle )
 		if ( _msg[i] == '\0' )
 		{
 			break;
+		}
+		if ( _msg[i] == '\n' )
+		{
+			y -= CHAR_HEIGHT;
+			x = orig_x;
+			continue;
 		}
 		
 		glRasterPos2f( x, y );

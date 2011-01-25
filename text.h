@@ -5,6 +5,7 @@
 
 const unsigned long MAX_CHARS = 2048;
 const int CHAR_WIDTH = 6;
+const int CHAR_HEIGHT = 13;
 
 class Text : public drawable
 {

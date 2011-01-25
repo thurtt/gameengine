@@ -88,7 +88,8 @@ void Guard::movement()
 	
 	vector<pair<float, float> > visibleSprites = _los->detect_visible_sprites();
 
-	_text->printf( "Sprites in line of sight: %d", visibleSprites.size() );
+	//_text->printf( "Sprites in line of sight: %d", visibleSprites.size() );
+	_text->printf( "Guard X: %5.4f  Guard Y: %5.4f\nI see %d objects.", disp_x, disp_y, visibleSprites.size() );
 }
 
 void Guard::up()
