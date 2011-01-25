@@ -42,6 +42,8 @@ game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, co
 	includeAnimation(ANIM_NONE, texture, 0);
 	useAnimation(ANIM_NONE);
 	_angle = 0.0f;
+	disp_x = 0.0;
+	disp_y = 0.0;
 }
 
 void game_sprite::includeAnimation(int anim,const char * t, int fr){
@@ -234,13 +236,13 @@ void game_sprite::draw(float offset_x, float offset_y){
 	glBegin(GL_QUADS);
 	glColor4f(1.0f,1.0f,1.0f,1.0f);			// Full Brightness, 0.5f == 50% Alpha ( NEW )
 	
-	disp_x = _x + offset_x;
-	disp_y = _y + offset_y;
+	disp_x = _x + offset_x + 0.0f;
+	disp_y = _y + offset_y + 0.0f;
 	
-	glTexCoord2d(translated_x,translated_y);	glVertex2f(  disp_x,  disp_y );
+	glTexCoord2d(translated_x,translated_y);	glVertex2f( disp_x,  disp_y );
     glTexCoord2d(translated_x2,translated_y);	glVertex2f( disp_x + width, disp_y );
     glTexCoord2d(translated_x2, translated_y2);	glVertex2f( disp_x + width, disp_y + height );
-    glTexCoord2d(translated_x, translated_y2);	glVertex2f( disp_x , disp_y + height );
+    glTexCoord2d(translated_x, translated_y2);	glVertex2f( disp_x,  disp_y + height );
 	
 	/*
 	 
@@ -258,12 +260,13 @@ void game_sprite::draw(float offset_x, float offset_y){
 	
 	// run through the drawables
 	// Thomas. This is neat.
+	// neato burrito.
 	
 	//lets make rules for drawables:
 	//1 - Do not draw if you're not onscreen.
-	if (onscreen(_x + offset_x, _y + offset_y, height, width)){
+	if (onscreen(disp_x, disp_y, height, width)){
 		for ( int i = 0; i < drawables.size(); i++ ){
-			drawables[i]->draw( _x + offset_x, _y + offset_y, _angle );
+			drawables[i]->draw( disp_x, disp_y, _angle );
 		}
 	}
 }
@@ -287,30 +290,6 @@ GLuint game_sprite::LoadTexture( const char * filename){
 	master_texture_list.push_back(make_pair(filename, _texture));
 	return _texture;
 }
-
-
-/*
-void game_sprite::draw_fov( float ref_x, float ref_y )
-{
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	
-	glPushMatrix();
-	glLoadIdentity();
-	glTranslatef(ref_x,ref_y,0.0);	// <- the translation used was world x,y, so it was rotating around screen 0,0
-	glRotatef(-_angle,0.0,0.0,1.0); // technically, you have to rotate this opposite to make it appear right.
-	glTranslatef(-ref_x, -ref_y, -0.0);
-
-	glBegin(GL_TRIANGLES);
-	glColor4f(1.0f,0.0f,0.0f,0.5f);			// Full Brightness, 0.5f == 50% Alpha ( NEW )
-	
-	glVertex2f(ref_x, ref_y);			// first corner
-	glVertex2f(ref_x - ( FIELD_OF_VISION / 2), ref_y + DEPTH_OF_VISION );	// second corner
-	glVertex2f(ref_x + ( FIELD_OF_VISION / 2), ref_y + DEPTH_OF_VISION );	// third corner
-	glEnd();
-	glPopMatrix();
-
-}*/
 
 void game_sprite::movement(){
 	float delta = 0.8;
@@ -343,6 +322,7 @@ void game_sprite::setDrawable( drawable * pDrawable )
 {
 	drawables.push_back( pDrawable );
 }
+
 float game_sprite::distance(float from_x, float from_y){
       return sqrt( pow(from_x - _x, 2) + pow(from_y - _y, 2) );
- }
+}

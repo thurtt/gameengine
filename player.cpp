@@ -77,6 +77,7 @@ void Player::movement(){
 	}
 	
 	checkPickups(); // check to see if we've snagged something.
+	_text->printf( "Player X: %5.4f  Player Y: %5.4f", disp_x, disp_y );
 }
 
 void Player::checkPickups(){
