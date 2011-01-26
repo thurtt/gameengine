@@ -93,22 +93,22 @@ void Guard::movement()
 
 void Guard::up()
 {
-	_y += DELTA;
+	//_y += DELTA;
 	_upCount++;
 
 }
 void Guard::down()
 {
-	_y -= DELTA;
+	//_y -= DELTA;
 	_downCount++;
 }
 void Guard::right()
 {
-	_x += DELTA;
+	//_x += DELTA;
 	_rightCount++;
 }
 void Guard::left()
 {
-	_x -= DELTA;
+	//_x -= DELTA;
 	_leftCount++;
 }
