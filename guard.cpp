@@ -10,6 +10,7 @@
 #include "guard.h"
 #include "los.h"
 #include "text.h"
+#include "collision.h"
 
 Guard::Guard( float start_x, float start_y,  std::vector<game_sprite*> * sprites ) :
 	_upCount(0),
@@ -20,6 +21,7 @@ Guard::Guard( float start_x, float start_y,  std::vector<game_sprite*> * sprites
 	_text(0)
 {
 	// do some basic setup
+	_players = sprites;
 	_x = start_x;
 	_y = start_y;
 	width = GUARD_WIDTH;
@@ -89,6 +91,7 @@ void Guard::movement()
 
 	//_text->printf( "Sprites in line of sight: %d", visibleSprites.size() );
 	_text->printf( "Guard X: %5.4f  Guard Y: %5.4f\nI see %d objects.", disp_x, disp_y, visibleSprites.size() );
+	checkCaptures();
 }
 
 void Guard::up()
@@ -111,4 +114,20 @@ void Guard::left()
 {
 	//_x -= DELTA;
 	_leftCount++;
+}
+
+void Guard::checkCaptures(){
+	
+	std::vector<game_sprite *>::iterator itr = _players->begin();
+	while( itr != _players->end() )
+	{
+		if (boxCollision(_x, _y, height, width, (*itr)->_x, (*itr)->_y, (*itr)->height, (*itr)->width) || 
+			boxCollision((*itr)->_x, (*itr)->_y, (*itr)->height, (*itr)->width, _x, _y, height, width )){
+			if ( (*itr)->active ) {
+				//pickupScore++;
+				(*itr)->useAnimation(ANIM_EXPLODE);
+			}
+		}
+		++itr;
+	}
 }

@@ -126,11 +126,11 @@ void game_sprite::animate(){
 		{
 			if ( (*itr)->active == true ){
 				(*itr)->animate( );
+				++itr;
 			}
 			else{
 				sprite_list.erase(itr);
 			}
-			++itr;
 		}
 	}
 }
@@ -282,11 +282,11 @@ void game_sprite::draw(float offset_x, float offset_y){
 		{
 			if ( (*itr)->active == true ){
 				(*itr)->draw( offset_x, offset_y );
+				++itr;
 			}
 			else{
 				sprite_list.erase(itr);
 			}
-			++itr;
 		}
 	}
 }
@@ -342,11 +342,11 @@ void game_sprite::movement(){
 		{
 			if ( (*itr)->active == true ){
 				(*itr)->movement( );
+				++itr;
 			}
 			else{
 				sprite_list.erase(itr);
 			}
-			++itr;
 		}
 	}
 }

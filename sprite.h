@@ -58,8 +58,6 @@ public:
 	void includeAnimation(int, GLuint, int);
 	void includeAnimation(int,const char *, int);
 	void useAnimation(int);
-	void animate();
-	virtual void movement();
 	bool blockVisibility();
 	void blockVisibility(bool);
 	bool blockMovement();
@@ -68,6 +66,8 @@ public:
 	void wh(float, float);
 	void draw();
 	virtual void draw (float, float);
+	virtual void animate();
+	virtual void movement();
 	void rotate( float angle );
 	void text(char *str);
 	GLuint LoadTexture( const char * filename);

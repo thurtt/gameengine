@@ -8,7 +8,7 @@
  */
 
 #include "player.h"
-
+#include "spriteText.h"
 #include "los.h"
 #include "text.h"
 #include "collision.h"
@@ -36,8 +36,11 @@ _pickups(pickups)
 	_los = new line_of_sight( 180.0, 250.0, 64, 64, sprites );
 	setDrawable( _los );
 	
-	_text = new Text();
-	setDrawable( _text );	
+	//_text = new Text();
+	//setDrawable( _text );	
+	
+	sprite_list.push_back(new spriteText(0, height, 13, 6, 300, "Player 1"));
+	sprite_list.push_back(new spriteText(0, 0, 13, 6, 0, "Player X: %5.4f  Player Y: %5.4f", _x_, _y_));
 }
 
 Player::~Player()
@@ -75,8 +78,23 @@ void Player::movement(){
 		_angle = 180;
 	}
 	
+	if (onscreen(disp_x, disp_y, height, width)){
+		std::vector<game_sprite *>::iterator itr = sprite_list.begin();
+		while( itr != sprite_list.end() )
+		{
+			if ( (*itr)->active == true ){
+				(*itr)->xy(_x , _y );
+				(*itr)->movement( );
+			++itr;
+			}
+			else{
+				sprite_list.erase(itr);
+			}
+		}
+	}
+	
 	checkPickups(); // check to see if we've snagged something.
-	_text->printf( "Player X: %5.4f  Player Y: %5.4f", disp_x, disp_y );
+	//_text->printf( "Player X: %5.4f  Player Y: %5.4f", disp_x, disp_y );
 }
 
 void Player::checkPickups(){

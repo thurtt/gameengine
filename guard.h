@@ -33,6 +33,7 @@ class game_sprite;
 class Guard : public game_sprite
 {
 public:
+	std::vector<game_sprite*> * _players;
 	Guard( float start_x, float start_y, std::vector<game_sprite*> * sprites );
 	~Guard();
 	virtual void movement();	
@@ -49,6 +50,7 @@ private:
 	void down();
 	void right();
 	void left();
+	void checkCaptures();
 };
 
 #endif // _GUARD_H_
