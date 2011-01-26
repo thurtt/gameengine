@@ -39,7 +39,7 @@ _pickups(pickups)
 	//_text = new Text();
 	//setDrawable( _text );	
 	
-	sprite_list.push_back(new spriteText(0, height, 13, 6, 300, "Player 1"));
+	//sprite_list.push_back(new spriteText(0, height, 13, 6, 300, "Player 1"));
 	sprite_list.push_back(new spriteText(0, 0, 13, 6, 0, "Player X: %5.4f  Player Y: %5.4f", _x_, _y_));
 }
 
@@ -99,6 +99,8 @@ void Player::movement(){
 
 void Player::checkPickups(){
 	
+	int original_pickup = pickupScore;
+	
 	std::vector<game_sprite *>::iterator itr = _pickups->begin();
 	while( itr != _pickups->end() )
 	{
@@ -111,5 +113,8 @@ void Player::checkPickups(){
 		}
 		++itr;
 	}
+	if (original_pickup < pickupScore){
+		sprite_list.push_back(new spriteText(0, height, 13, 6, 5, "+ %d", pickupScore - original_pickup));
+	}	
 }
 
