@@ -20,9 +20,8 @@ game_sprite::game_sprite(){
 	_blockMovement = false;
 	_blockVisibility = false;
 	active = true;
-	texture = LoadTexture("img.png");
-	textures.push_back( texture );
-	includeAnimation(ANIM_NONE, texture, 0);
+
+	includeAnimation(ANIM_NONE, LoadTexture("img.png"), 0);
 	useAnimation(ANIM_NONE);
 	_angle = 0.0f;
 	disp_x = 0.0;
@@ -36,10 +35,8 @@ game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, co
 	_blockMovement = mov;
 	_blockVisibility = vis;
 	active = true;
-	
-	texture = LoadTexture(texture_file);
-	textures.push_back( texture );
-	includeAnimation(ANIM_NONE, texture, 0);
+
+	includeAnimation(ANIM_NONE, LoadTexture(texture_file), 0);
 	useAnimation(ANIM_NONE);
 	_angle = 0.0f;
 	disp_x = 0.0;
@@ -122,6 +119,20 @@ void game_sprite::animate(){
 			break;
 	}
 	if (frame >= animations[texture].second ) frame = 0;
+
+	if (onscreen(disp_x, disp_y, height, width)){
+		std::vector<game_sprite *>::iterator itr = sprite_list.begin();
+		while( itr != sprite_list.end() )
+		{
+			if ( (*itr)->active == true ){
+				(*itr)->animate( );
+			}
+			else{
+				sprite_list.erase(itr);
+			}
+			++itr;
+		}
+	}
 }
 
 void game_sprite::xy(float _x_, float _y_){
@@ -139,11 +150,8 @@ void game_sprite::wh(float _width_, float _height_){
 }
 
 game_sprite::~game_sprite(){
-	int i;
-	for (i = 0; i < textures.size(); i++){
-		glDeleteTextures( 1, &textures[i] );
-	}
 	animations.clear();
+	sprite_list.clear();
 }
 
 bool game_sprite::blockVisibility(){
@@ -268,6 +276,18 @@ void game_sprite::draw(float offset_x, float offset_y){
 		for ( int i = 0; i < drawables.size(); i++ ){
 			drawables[i]->draw( disp_x, disp_y, _angle );
 		}
+
+		std::vector<game_sprite *>::iterator itr = sprite_list.begin();
+		while( itr != sprite_list.end() )
+		{
+			if ( (*itr)->active == true ){
+				(*itr)->draw( offset_x, offset_y );
+			}
+			else{
+				sprite_list.erase(itr);
+			}
+			++itr;
+		}
 	}
 }
 
@@ -293,7 +313,6 @@ GLuint game_sprite::LoadTexture( const char * filename){
 
 void game_sprite::movement(){
 	float delta = 0.8;
-	//texture = 1;
 	if ((move_right > 0) || (move_left > 0) || (move_up > 0) || (move_down > 0)){
 		if (texture != animations[ANIM_WALK].first) {
 			useAnimation(ANIM_WALK);
@@ -316,6 +335,20 @@ void game_sprite::movement(){
 		_y -= delta; 
 		_angle = 180;
 	}
+
+	if (onscreen(disp_x, disp_y, height, width)){
+		std::vector<game_sprite *>::iterator itr = sprite_list.begin();
+		while( itr != sprite_list.end() )
+		{
+			if ( (*itr)->active == true ){
+				(*itr)->movement( );
+			}
+			else{
+				sprite_list.erase(itr);
+			}
+			++itr;
+		}
+	}
 }
 
 void game_sprite::setDrawable( drawable * pDrawable )
@@ -323,6 +356,24 @@ void game_sprite::setDrawable( drawable * pDrawable )
 	drawables.push_back( pDrawable );
 }
 
+void game_sprite::includeSprite( game_sprite * pSprite )
+{
+	sprite_list.push_back( pSprite );
+}
+
 float game_sprite::distance(float from_x, float from_y){
       return sqrt( pow(from_x - _x, 2) + pow(from_y - _y, 2) );
+}
+
+
+/**************
+ We may need to use this for texture/sprite cleanup in an emergency
+ **************/
+
+void texture_cleanup(){
+	int i;
+	for (i = 0; i < master_texture_list.size(); i++){
+		glDeleteTextures( 1, &master_texture_list[i].second );
+	}
+	master_texture_list.clear();
 }

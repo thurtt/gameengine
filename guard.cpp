@@ -25,7 +25,6 @@ Guard::Guard( float start_x, float start_y,  std::vector<game_sprite*> * sprites
 	width = GUARD_WIDTH;
 	height = GUARD_HEIGHT;
 	texture = LoadTexture( GUARD_IMAGE );
-	textures.push_back( texture );
 	includeAnimation(ANIM_NONE, texture, 0);
 	useAnimation(ANIM_NONE);
 	

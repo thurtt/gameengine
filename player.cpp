@@ -28,7 +28,6 @@ _pickups(pickups)
 	_blockVisibility = false;
 	
 	texture = LoadTexture(texture_file);
-	textures.push_back( texture );
 	includeAnimation(ANIM_NONE, texture, 0);
 	includeAnimation(ANIM_EXPLODE, "explosion.png", 25);
 	includeAnimation(ANIM_WALK, "player_walking_64.png", 8);

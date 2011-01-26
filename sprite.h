@@ -35,10 +35,10 @@ using namespace std;
 class game_sprite {
 protected:
 	const char * texture_file;
-	vector<GLuint> textures; 
 	GLuint texture;
 	//map<int, GLuint> animations;
 	map<int, pair<GLuint, int> > animations;
+	vector<game_sprite *>  sprite_list;
 	
 	vector<drawable *> drawables; // need to think about who is responsible for cleaning this up.
 public:
@@ -67,14 +67,16 @@ public:
 	void xy(float, float);
 	void wh(float, float);
 	void draw();
-	void draw(float, float);
+	virtual void draw (float, float);
 	void rotate( float angle );
 	void text(char *str);
 	GLuint LoadTexture( const char * filename);
 	void renderSpacedBitmapString(float x, float y, int spacing, void *font, char *str);
 	void setDrawable( drawable * pDrawable );
+	void includeSprite( game_sprite * pSprite );
 	float distance(float from_x, float from_y);
 };
 
+void texture_cleanup(); //clean up straggler textures
 
 #endif
