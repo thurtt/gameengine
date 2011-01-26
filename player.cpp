@@ -14,8 +14,6 @@
 #include "collision.h"
 
 Player::Player( float _x_, float _y_, float _width_, float _height_, const char * _filename,  std::vector<game_sprite*> * sprites,  std::vector<game_sprite*> * pickups  ) :
-_los(0),
-_text(0),
 _sprites(sprites),
 _pickups(pickups)
 {
@@ -33,25 +31,11 @@ _pickups(pickups)
 	includeAnimation(ANIM_WALK, "player_walking_64.png", 8);
 	useAnimation(ANIM_NONE);
 	
-	_los = new line_of_sight( 180.0, 250.0, 64, 64, sprites );
-	setDrawable( _los );
-	
-	//_text = new Text();
-	//setDrawable( _text );	
 	
 	//sprite_list.push_back(new spriteText(0, height, 13, 6, 300, "Player 1"));
 	sprite_list.push_back(new spriteText(0, 0, 13, 6, 0, "Player X: %5.4f  Player Y: %5.4f", _x_, _y_));
 }
 
-Player::~Player()
-{
-	// this is a wee bit dangerous
-	delete _los;
-	_los = 0;
-	
-	delete _text;
-	_text = 0;
-}
 void Player::movement(){	
 	float delta = 0.8;
 	//texture = 1;
@@ -94,7 +78,6 @@ void Player::movement(){
 	}
 	
 	checkPickups(); // check to see if we've snagged something.
-	//_text->printf( "Player X: %5.4f  Player Y: %5.4f", disp_x, disp_y );
 }
 
 void Player::checkPickups(){

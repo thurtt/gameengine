@@ -13,8 +13,6 @@
 #include "sprite.h"
 
 
-class Text;
-class line_of_sight;
 class game_sprite;
 
 class Player : public game_sprite
@@ -27,8 +25,6 @@ public:
 	int pickupScore;
 	
 private:
-	line_of_sight * _los;
-	Text * _text;
 	std::vector<game_sprite*> * _sprites;
 	std::vector<game_sprite*> * _pickups;
 };
