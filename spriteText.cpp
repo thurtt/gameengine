@@ -56,6 +56,16 @@ spriteText::~spriteText()
 	delete [] _msg;
 }
 
+void spriteText::printf( const char * fmt, ... )
+{
+	va_list va_args;
+	
+	va_start( va_args, fmt );
+	
+	vsnprintf( _msg, MAX_SPRITE_CHARS, fmt, va_args );
+	_msg[MAX_SPRITE_CHARS-1] = '\0';
+}
+
 void spriteText::movement(){
 	_x += relative_x;
 	_y += relative_y;

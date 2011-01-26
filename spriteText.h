@@ -24,6 +24,7 @@ class spriteText : public game_sprite
 public:
 	spriteText(float _rx, float _ry, float _h_, float _w_,int exp, const char * fmt, ...   );
 	~spriteText();
+	void printf( const char * fmt, ... );
 	virtual void movement();
 	virtual void animate();
 	void draw (float offset_x, float offset_y);

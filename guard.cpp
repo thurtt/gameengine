@@ -87,6 +87,21 @@ void Guard::movement()
 		}
 	}
 	
+	if (onscreen(disp_x, disp_y, height, width)){
+		std::vector<game_sprite *>::iterator itr = sprite_list.begin();
+		while( itr != sprite_list.end() )
+		{
+			if ( (*itr)->active == true ){
+				(*itr)->xy(_x , _y );	//offer base xy?
+				(*itr)->movement( );	// override this to apply relative xy
+				++itr;
+			}
+			else{
+				sprite_list.erase(itr);
+			}
+		}
+	}
+	
 	vector<pair<float, float> > visibleSprites = _los->detect_visible_sprites();
 
 	//_text->printf( "Sprites in line of sight: %d", visibleSprites.size() );
