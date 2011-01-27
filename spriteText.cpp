@@ -51,9 +51,37 @@ spriteText::spriteText( float _rx, float _ry, float _h_, float _w_, int exp, con
 	_msg[MAX_SPRITE_CHARS-1] = '\0';
 }
 
+spriteText::spriteText()
+{
+	//delete [] _msg;
+}
+
 spriteText::~spriteText()
 {
 	delete [] _msg;
+}
+
+int spriteText::getTextLen(){
+	int i;
+	
+	for( i = 0; i < MAX_SPRITE_CHARS; i++ )
+	{
+		if ( _msg[i] == '\0' )
+		{
+			break;
+		}
+	}
+	return i;
+}
+
+void spriteText::vprintf(const char * fmt, va_list va_args){
+	
+	_msg = new char[MAX_SPRITE_CHARS];
+	
+	vsnprintf( _msg, MAX_SPRITE_CHARS, fmt, va_args );
+	_msg[MAX_SPRITE_CHARS-1] = '\0';
+	textLen = getTextLen();
+	
 }
 
 void spriteText::printf( const char * fmt, ... )
@@ -61,9 +89,7 @@ void spriteText::printf( const char * fmt, ... )
 	va_list va_args;
 	
 	va_start( va_args, fmt );
-	
-	vsnprintf( _msg, MAX_SPRITE_CHARS, fmt, va_args );
-	_msg[MAX_SPRITE_CHARS-1] = '\0';
+	vprintf(fmt, va_args);
 }
 
 void spriteText::movement(){

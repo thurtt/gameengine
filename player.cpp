@@ -9,6 +9,7 @@
 
 #include "player.h"
 #include "spriteText.h"
+#include "textblurb.h"
 #include "los.h"
 #include "text.h"
 #include "collision.h"
@@ -37,6 +38,8 @@ _pickups(pickups)
 }
 
 void Player::movement(){	
+	//game_sprite::movement();
+	
 	float delta = 0.8;
 	//texture = 1;
 	if ((move_right > 0) || (move_left > 0) || (move_up > 0) || (move_down > 0)){
@@ -97,7 +100,7 @@ void Player::checkPickups(){
 		++itr;
 	}
 	if (original_pickup < pickupScore){
-		sprite_list.push_back(new spriteText(0, height, 13, 6, 5, "+ %d", pickupScore - original_pickup));
+		sprite_list.push_back(new textBlurb(width / 2, height, "+ %d", pickupScore - original_pickup));
 	}	
 }
 

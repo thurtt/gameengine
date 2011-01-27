@@ -15,8 +15,6 @@
 
 const unsigned long MAX_SPRITE_CHARS = 2048;
 
-class Text;
-class line_of_sight;
 class game_sprite;
 
 class spriteText : public game_sprite
@@ -24,17 +22,20 @@ class spriteText : public game_sprite
 public:
 	spriteText(float _rx, float _ry, float _h_, float _w_,int exp, const char * fmt, ...   );
 	~spriteText();
+	spriteText();
 	void printf( const char * fmt, ... );
+	void vprintf( const char * fmt, va_list va_args );
 	virtual void movement();
 	virtual void animate();
 	void draw (float offset_x, float offset_y);
+	int getTextLen();
 	float relative_x;
 	float relative_y;
+	int textLen;
 	int expiration;
 	int expiration_tick; //counter for expiration.
-	
-private:	
 	char * _msg;
+private:	
 	void write_string( float x, float y );
 };
 
