@@ -42,7 +42,7 @@ private:
 	float _dov;
 	float _height;
 	float _width;
-	float _corners[2][4];
+	std::vector< std::pair<float, float> > _corners;
 
 	std::vector<game_sprite*> * _sprites;
 };

@@ -47,45 +47,52 @@ void line_of_sight::draw( float x, float y, float angle )
 	float left_y = eye_y;
 	float right_y = eye_y + _dov;
 	
-	// calculate the corners applying the angle of rotation
-	// bottom left
-	pair< float, float > tmp_xy;
+	// make sure everything is gone
+	_corners.clear();
 	
-	tmp_xy = rotate( bottom_x, left_y, eye_x, eye_y, angle );
-	_corners[0][0] = tmp_xy.first;
-	_corners[1][0] = tmp_xy.second;
+	// bottom left
+	_corners.push_back( rotate( bottom_x, left_y, eye_x, eye_y, angle ) );
 	
 	// top left
-	tmp_xy = rotate( top_x, left_y, eye_x, eye_y, angle );
-	_corners[0][1] = tmp_xy.first;
-	_corners[1][1] = tmp_xy.second;
+	_corners.push_back( rotate( top_x, left_y, eye_x, eye_y, angle ) );
 	
 	// top right
-	tmp_xy = rotate( top_x, right_y, eye_x, eye_y, angle );
-	_corners[0][2] = tmp_xy.first;
-	_corners[1][2] = tmp_xy.second;
+	_corners.push_back( rotate( top_x, right_y, eye_x, eye_y, angle ) );
 	
 	// bottom right
-	tmp_xy = rotate( bottom_x, right_y, eye_x, eye_y, angle );
-	_corners[0][3] = tmp_xy.first;
-	_corners[1][3] = tmp_xy.second;
+	_corners.push_back( rotate( bottom_x, right_y, eye_x, eye_y, angle ) );
 	
 	glMatrixMode( GL_MODELVIEW );	
 	glPushMatrix();
 	glLoadIdentity();
 	
 	glBegin( GL_LINES );
-	glColor4f( 1.0f, 0.0f, 0.0f, 0.5f );			// Full Brightness, 0.5f == 50% Alpha ( NEW )
+	glColor4f( 1.0f, 0.0f, 0.0f, 0.5f );
 
-	// create and connect the vertices
-	glVertex2f( _corners[0][0], _corners[1][0] );
-	glVertex2f( _corners[0][1], _corners[1][1] );
-	glVertex2f( _corners[0][1], _corners[1][1] );
-	glVertex2f( _corners[0][2], _corners[1][2] );
-	glVertex2f( _corners[0][2], _corners[1][2] );
-	glVertex2f( _corners[0][3], _corners[1][3] );
-	glVertex2f( _corners[0][3], _corners[1][3] );
-	glVertex2f( _corners[0][0], _corners[1][0] );
+	std::vector< std::pair<float, float> >::iterator itr = _corners.begin();
+	bool skipflag = true;
+	while( itr != _corners.end() )
+	{
+		glVertex2f( (*itr).first, (*itr).second );
+		
+		if( itr == _corners.begin() )
+		{
+			++itr;
+		}
+		else if( skipflag )
+		{
+			skipflag = false;
+		}
+		else 
+		{
+			++itr;
+			skipflag = true;
+		}
+	}
+	
+	// finish things up
+	itr = _corners.begin();
+	glVertex2f( (*itr).first, (*itr).second );
 
 	glEnd();
 	glPopMatrix();
@@ -115,10 +122,19 @@ std::vector<std::pair< float, float> > line_of_sight::detect_visible_sprites()
 bool line_of_sight::in_my_box( float x, float y, float h, float w )
 {
 	// Here is the code to use boxCollision, so we can make changes in only one place
-	float my_width = _corners[0][1] - _corners[0][0];
+	/*float my_width = _corners[0][1] - _corners[0][0];
 	float my_height = _corners[1][2] - _corners[1][0];
 	return (boxCollision(x, y, h, w, _corners[0][0], _corners[1][0], my_height, my_width ) ||
-			boxCollision(_corners[0][0], _corners[1][0], my_height, my_width,x, y, h, w ));
+			boxCollision(_corners[0][0], _corners[1][0], my_height, my_width,x, y, h, w ));*/
+	
+	std::vector< std::pair<float, float> > poly2;
+	
+	poly2.push_back( std::pair<float, float>( x, y ) );
+	poly2.push_back( std::pair<float, float>( x, y + h ) );
+	poly2.push_back( std::pair<float, float>( x + w, y + h ) );
+	poly2.push_back( std::pair<float, float>( x + w, y ) );
+	
+	return polygonCollision( _corners, poly2 );
 	
 }
 
