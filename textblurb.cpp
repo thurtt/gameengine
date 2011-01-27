@@ -18,12 +18,13 @@ textBlurb::textBlurb( float _rx, float _ry, const char * fmt, ... )
 	xy(0,0);
 	wh(6,13);
 	
-	expiration = 5;
+	expiration = 15;
 	relative_x = _rx;
 	relative_y = _ry;
 	_blockMovement = false;
 	_blockVisibility = false;
 	expiration_tick = 0;
+	alpha = 1.0f;
 	
 	includeAnimation(ANIM_NONE, LoadTexture("font_file"), 0);
 	useAnimation(ANIM_NONE);
@@ -38,9 +39,18 @@ textBlurb::textBlurb( float _rx, float _ry, const char * fmt, ... )
 	relative_x -= adjust;
 }
 
-textBlurb::~textBlurb(){
+textBlurb::~textBlurb()
+{
 }
 
-void textBlurb::movement(){
+void textBlurb::movement()
+{
 	spriteText::movement();
+}
+
+void textBlurb::animate()
+{
+	relative_y += 0.8f;
+	alpha -= 0.03f;		//too fun! :)
+	spriteText::animate();
 }

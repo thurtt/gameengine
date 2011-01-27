@@ -20,6 +20,7 @@ public:
 	textBlurb( float _rx, float _ry, const char * fmt, ... );
 	~textBlurb();
 	virtual void movement();
+	virtual void animate();
 };
 
 #endif // _TEXTBLURB_H_

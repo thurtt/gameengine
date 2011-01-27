@@ -45,6 +45,7 @@ public:
 	bool _blockVisibility;
 	bool _blockMovement;
 	bool active;
+	bool alive; //active, but not "in play"
 	int width, height;
 	float _x; float _y;
 	float _angle;

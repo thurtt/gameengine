@@ -34,7 +34,7 @@ _pickups(pickups)
 	
 	
 	//sprite_list.push_back(new spriteText(0, height, 13, 6, 300, "Player 1"));
-	sprite_list.push_back(new spriteText(0, 0, 13, 6, 0, "Player X: %5.4f  Player Y: %5.4f", _x_, _y_));
+	//sprite_list.push_back(new spriteText(0, 0, 13, 6, 0, "Player X: %5.4f  Player Y: %5.4f", _x_, _y_));
 }
 
 void Player::movement(){	
@@ -72,7 +72,7 @@ void Player::movement(){
 			if ( (*itr)->active == true ){
 				(*itr)->xy(_x , _y );
 				(*itr)->movement( );
-			++itr;
+				++itr;
 			}
 			else{
 				sprite_list.erase(itr);
@@ -92,7 +92,7 @@ void Player::checkPickups(){
 	{
 		if (boxCollision(_x, _y, height, width, (*itr)->_x, (*itr)->_y, (*itr)->height, (*itr)->width) || 
 			boxCollision((*itr)->_x, (*itr)->_y, (*itr)->height, (*itr)->width, _x, _y, height, width )){
-			if ( (*itr)->active ) {
+			if ( (*itr)->active && (*itr)->alive ) {
 				pickupScore++;
 				(*itr)->useAnimation(ANIM_EXPLODE);
 			}

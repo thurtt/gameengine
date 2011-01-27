@@ -25,6 +25,7 @@ spriteText::spriteText( float _rx, float _ry, float _h_, float _w_, int exp, con
 	_blockMovement = false;
 	_blockVisibility = false;
 	expiration_tick = 0;
+	alpha = 1.0f;
 	
 	//get the right texture for the job.
 	//maybe use mipmaps instead?
@@ -146,7 +147,9 @@ void spriteText::draw(float offset_x, float offset_y){
 	disp_y = _y + offset_y + 0.0f;
 	
 	
+	glEnable(GL_BLEND);
 	glDisable(GL_DEPTH_TEST);
+	glColor4f(1.0f,1.0f,1.0f,alpha);			// Full Brightness, 0.5f == 50% Alpha ( NEW )
 	
 	for( int i = 0; i < MAX_SPRITE_CHARS; i++ )
 	{
@@ -166,4 +169,5 @@ void spriteText::draw(float offset_x, float offset_y){
 		x += width; // this is now char width.
 	}
 	glEnable(GL_DEPTH_TEST);
+	glDisable(GL_BLEND);
 }

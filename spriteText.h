@@ -27,10 +27,11 @@ public:
 	void vprintf( const char * fmt, va_list va_args );
 	virtual void movement();
 	virtual void animate();
-	void draw (float offset_x, float offset_y);
+	virtual void draw (float offset_x, float offset_y);
 	int getTextLen();
 	float relative_x;
 	float relative_y;
+	float alpha;
 	int textLen;
 	int expiration;
 	int expiration_tick; //counter for expiration.

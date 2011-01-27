@@ -20,6 +20,7 @@ game_sprite::game_sprite(){
 	_blockMovement = false;
 	_blockVisibility = false;
 	active = true;
+	alive = true;
 
 	includeAnimation(ANIM_NONE, LoadTexture("img.png"), 0);
 	useAnimation(ANIM_NONE);
@@ -35,6 +36,7 @@ game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, co
 	_blockMovement = mov;
 	_blockVisibility = vis;
 	active = true;
+	alive = true;
 
 	includeAnimation(ANIM_NONE, LoadTexture(texture_file), 0);
 	useAnimation(ANIM_NONE);
@@ -78,6 +80,7 @@ void game_sprite::useAnimation(int anim){
 		case ANIM_HIDE:
 			break;
 		case ANIM_EXPLODE:
+			alive = false;
 			break;
 		case ANIM_AMBIENT:
 			// to make the ambience seem real, rand frame
