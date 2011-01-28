@@ -18,7 +18,9 @@ game::game(){
 	timebase = 0;
 	focus_sprite = 0;
 	_phase = 0;
-
+	
+	pMap = new game_map();
+	
 	loadPhase(STATE_TITLE);
 	
 	_finished = false;
@@ -29,18 +31,16 @@ game::~game(){
 	for (i = 0; i < sprites.size(); i++){
 		delete sprites[i];
 	}
-	for (i = 0; i < zones.size(); i++){
-		delete zones[i];
-	}
+	delete pMap;
 }
 
 void game::draw(){
 	int i;
 	float toffx = offset_x;
 	float toffy = offset_y;
-	for (i = 0; i < zones.size(); i++){
-		zones[i]->draw(toffx, toffy);
-	}
+	
+	pMap->draw(toffx, toffy);
+	
 	for (i = 0; i < sprites.size(); i++){
 		sprites[i]->draw(toffx, toffy);
 	}
@@ -49,9 +49,9 @@ void game::animate(){
 	int i;
 	float toffx = offset_x;
 	float toffy = offset_y;
-	for (i = 0; i < zones.size(); i++){
-		zones[i]->animate(toffx, toffy);
-	}
+	
+	pMap->animate(toffx, toffy);
+	
 	for (i = 0; i < sprites.size(); i++){
 		sprites[i]->animate();
 	}
@@ -71,10 +71,6 @@ void game::movement(){
 
 bool game::finished(){ return _finished; }
 bool game::finished(bool fin){ _finished = fin; return _finished; }
-
-void game::genTiles(){
-	populateTileSet();
-}
 
 void game::loadPhase(int phase){
 	
@@ -101,14 +97,10 @@ void game::loadPhase(int phase){
 	}
 }
 
-void game::loadMap(int map){
-	// map is series of zones
-	genTiles();
+void game::loadMap(int _map){
+
+	pMap->loadMap(_map);
 	
-	int i;
-	for ( i = 0; i < 16; i++){
-		zones.push_back( new zone( i ) );
-	}
 	game_sprite * pu = new game_sprite(120,780, 16,16, "pickup_thing.png", false, false);
 	pu->includeAnimation(ANIM_EXPLODE, "explosion.png", 25);
 	game_sprite * pu2 = new game_sprite(150,780, 16,16, "pickup_thing.png", false, false);
@@ -136,7 +128,7 @@ void game::loadMap(int map){
 }
 
 void game::midPhase(){
-	zones.clear();
+	pMap->clearMap();
 	sprites.clear();
 }
 

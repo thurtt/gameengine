@@ -50,3 +50,19 @@ void zone::animate(float offset_x, float offset_y){
 		quads[i]->animate(offset_x, offset_y);
 	}
 }
+tile* zone::getTile(float world_x, float world_y)
+{
+	if (!inBox(world_x, world_y, x, y, height, width))
+		return 0;
+	
+	tile* pTile;
+	pTile = 0;
+	int i;
+	for (i = 0; i < quads.size(); i++){
+		pTile = quads[i]->getTile(world_x, world_y);
+		if (pTile != 0) {
+			return pTile;
+		}
+	}
+	return pTile;
+}

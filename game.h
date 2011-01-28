@@ -12,7 +12,7 @@
 
 #include "sprite.h"
 #include "input.h"
-#include "zone.h"
+#include "game_map.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -41,7 +41,7 @@ class game{
 	float offset_y;
 public:
 	game_sprite* focus_sprite;
-	vector<zone*> zones;
+	game_map* pMap;
 	bool _finished;
 	int _phase;
 	game();

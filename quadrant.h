@@ -25,4 +25,5 @@ public:
 	void draw();
 	void draw(float, float);
 	void animate(float, float);
+	tile* getTile(float world_x, float world_y);
 };
