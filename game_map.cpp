@@ -79,3 +79,17 @@ tile* game_map::getTile(float world_x, float world_y)
 	return pTile;
 }
 
+vector<tile*> game_map::getTiles(float box_x, float box_y, float box_h, float box_w)
+{
+	vector<tile*> pTile;
+	vector<tile*> temp_tile;
+	int i;
+	for (i = 0; i < zones.size(); i++){
+		temp_tile = zones[i]->getTiles(box_x, box_y, box_h, box_w);
+		if (temp_tile.size() > 0)
+			pTile.insert( pTile.end(),temp_tile.begin(), temp_tile.end());
+	}
+	
+	return pTile;
+}
+
