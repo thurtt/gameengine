@@ -11,6 +11,10 @@
 #include "los.h"
 #include "text.h"
 #include "collision.h"
+#include <stdlib.h>
+#include <time.h>
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 Guard::Guard( float start_x, float start_y,  std::vector<game_sprite*> * sprites ) :
 	_upCount(0),
@@ -18,12 +22,17 @@ Guard::Guard( float start_x, float start_y,  std::vector<game_sprite*> * sprites
 	_rightCount(MAX_RIGHT),
 	_leftCount(MAX_LEFT),
 	_los(0),
-	_text(0)
+	_text(0),
+	_target_slope(0),
+	_target_b(0)
 {
 	// do some basic setup
 	_players = sprites;
 	_x = start_x;
 	_y = start_y;
+	_target_x = start_x;
+	_target_y = start_y;
+	
 	width = GUARD_WIDTH;
 	height = GUARD_HEIGHT;
 	texture = LoadTexture( GUARD_IMAGE );
@@ -34,7 +43,10 @@ Guard::Guard( float start_x, float start_y,  std::vector<game_sprite*> * sprites
 	setDrawable( _los );
 
 	_text = new Text();
-	setDrawable( _text );	
+	setDrawable( _text );
+	
+	// this is a terrible rng
+	srand ( time(NULL) );
 }
 
 Guard::~Guard()
@@ -49,8 +61,17 @@ Guard::~Guard()
 void Guard::movement()
 {
 
+	if( !_chase )
+	{
+		patrol();
+	}
+	else 
+	{
+	}
+
+	
 	// This is a square roaming pattern	
-	if ( _upCount < MAX_UP )
+	/*if ( _upCount < MAX_UP )
 	{
 		up();
 		if ( _upCount >= MAX_UP )
@@ -85,7 +106,7 @@ void Guard::movement()
 			_upCount =  0;
 			_angle = 0.0;
 		}
-	}
+	}*/
 	
 	if (onscreen(disp_x, disp_y, height, width)){
 		std::vector<game_sprite *>::iterator itr = sprite_list.begin();
@@ -145,4 +166,24 @@ void Guard::checkCaptures(){
 		}
 		++itr;
 	}
+}
+
+void Guard::patrol()
+{
+	if( _x >= _target_x && _y >= _target_y )
+	{
+		_target_x = static_cast<float>( rand() % static_cast<int>( _zone[1].getPoint2().x - _zone[0].getPoint1().x ) ) + _zone[0].getPoint1().x;
+		_target_y = static_cast<float>( rand() % static_cast<int>( _zone[1].getPoint2().y - _zone[0].getPoint1().y ) ) + _zone[0].getPoint1().y;
+		_target_slope = (_y - _target_y) / (_x - _target_x);
+		_target_b = _y - ( _target_slope * _x );
+
+	}
+	else 
+	{
+		_x += DELTA;		
+		_y += (_target_slope * _x) + _target_b;
+
+	}
+
+	
 }

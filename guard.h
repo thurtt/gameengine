@@ -11,6 +11,7 @@
 #define _GUARD_H_
 
 #include "sprite.h"
+#include "line.h"
 
 const unsigned long MAX_UP = 300;
 const unsigned long MAX_DOWN = 300;
@@ -35,22 +36,31 @@ class Guard : public game_sprite
 public:
 	std::vector<game_sprite*> * _players;
 	Guard( float start_x, float start_y, std::vector<game_sprite*> * sprites );
+	void setGuardZone( polygon zone ){ _zone = zone;}
 	~Guard();
 	virtual void movement();	
 	
 private:
+	void patrol();
+	void pursue();
 	unsigned long _upCount;
 	unsigned long _downCount;
 	unsigned long _rightCount;
 	unsigned long _leftCount;
 	line_of_sight * _los;
 	Text * _text;
-	
+	float _target_x;
+	float _target_y;
+	float _target_slope;
+	float _target_b;
+
 	void up();
 	void down();
 	void right();
 	void left();
 	void checkCaptures();
+	bool _chase;
+	polygon _zone;
 };
 
 #endif // _GUARD_H_
