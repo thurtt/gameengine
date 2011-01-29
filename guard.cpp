@@ -136,15 +136,6 @@ void Guard::checkCaptures(){
 	std::vector<game_sprite *>::iterator itr = _players->begin();
 	while( itr != _players->end() )
 	{	
-		float x1 = _x;
-		float y1 = _y;
-		float x2 = _x + width;
-		float y2 = _y + height;
-		float sprite_x1 = (*itr)->_x;
-		float sprite_y1 = (*itr)->_y;
-		float sprite_x2 = (*itr)->_x + (*itr)->width;
-		float sprite_y2 = (*itr)->_y + (*itr)->height;
-		
 		if (boxCollision( _x, _y, _x + width, _y + height, (*itr)->_x, (*itr)->_y, (*itr)->_x + (*itr)->width, (*itr)->_y + (*itr)->height) || 
 			boxCollision((*itr)->_x, (*itr)->_y, (*itr)->_x + (*itr)->width, (*itr)->_y + (*itr)->height, _x, _y, _x + width, _y + height )){
 			if ( (*itr)->active ) {
@@ -152,14 +143,6 @@ void Guard::checkCaptures(){
 				(*itr)->useAnimation(ANIM_EXPLODE);
 			}
 		}
-		
-		/*if (boxCollision(_x, _y, _x + width, _y + height, (*itr)->_x, (*itr)->_y, (*itr)->width + (*itr)->_x, (*itr)->height) + (*itr)->_y || 
-			boxCollision((*itr)->_x, (*itr)->_y, (*itr)->_x + (*itr)->width, (*itr)->_y + (*itr)->height, _x, _y, _x + width, _y + height )){
-			if ( (*itr)->active ) {
-				//pickupScore++;
-				(*itr)->useAnimation(ANIM_EXPLODE);
-			}
-		}*/
 		++itr;
 	}
 }

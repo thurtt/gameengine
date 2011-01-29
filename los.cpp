@@ -89,33 +89,25 @@ std::vector<std::pair< float, float> > line_of_sight::detect_visible_sprites()
 {
 	std::vector<game_sprite *>::iterator itr = _sprites->begin();
 	std::vector<std::pair< float, float> > visible_sprites;
-	
-	// there is a weird case where movement is called before draw, meaning we have no box
-	//if ( _corners.size() > 0 )
-	//{
-		while( itr != _sprites->end() )
+
+	while( itr != _sprites->end() )
+	{
+		if ( in_my_box( (*itr)->disp_x, (*itr)->disp_y, (*itr)->height, (*itr)->width ) )
 		{
-			if ( in_my_box( (*itr)->disp_x, (*itr)->disp_y, (*itr)->height, (*itr)->width ) )
-			{
-				std::pair<float, float> tmpPair;
-				tmpPair.first = (*itr)->disp_x;
-				tmpPair.second = (*itr)->disp_y;
-				visible_sprites.push_back( tmpPair );
-			}
-			++itr;
+			std::pair<float, float> tmpPair;
+			tmpPair.first = (*itr)->disp_x;
+			tmpPair.second = (*itr)->disp_y;
+			visible_sprites.push_back( tmpPair );
 		}
-	//}
+		++itr;
+	}
+
 	return visible_sprites;
 }
 
 bool line_of_sight::in_my_box( float x, float y, float h, float w )
 {
-	// Here is the code to use boxCollision, so we can make changes in only one place
-	/*float my_width = _corners[0][1] - _corners[0][0];
-	float my_height = _corners[1][2] - _corners[1][0];
-	return (boxCollision(x, y, h, w, _corners[0][0], _corners[1][0], my_height, my_width ) ||
-			boxCollision(_corners[0][0], _corners[1][0], my_height, my_width,x, y, h, w ));*/	
-	
+	// Here is the code to use boxCollision, so we can make changes in only one place	
 	if( _corners.size() == 0 ) return false;
 	
 	polygon poly2;
