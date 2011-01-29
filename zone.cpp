@@ -50,3 +50,39 @@ void zone::animate(float offset_x, float offset_y){
 		quads[i]->animate(offset_x, offset_y);
 	}
 }
+tile* zone::getTile(float world_x, float world_y)
+{
+	if (!inBox(world_x, world_y, x, y, height, width))
+		return 0;
+	
+	tile* pTile;
+	pTile = 0;
+	int i;
+	for (i = 0; i < quads.size(); i++){
+		pTile = quads[i]->getTile(world_x, world_y);
+		if (pTile != 0) {
+			return pTile;
+		}
+	}
+	return pTile;
+}
+
+vector<tile*> zone::getTiles(float box_x, float box_y, float box_h, float box_w)
+{
+	vector<tile*> pTile;
+	vector<tile*> temp_tile;
+	int i;
+	
+	if ( !boxCollision(x, y, height, width, box_x, box_y, box_h, box_w)  &&
+		!boxCollision(box_x, box_y, box_h, box_w,x, y, height, width) )
+		return pTile;
+
+	
+	for (i = 0; i < quads.size(); i++){
+		temp_tile = quads[i]->getTiles(box_x, box_y, box_h, box_w);
+		if (temp_tile.size() > 0)
+			pTile.insert( pTile.end(),temp_tile.begin(), temp_tile.end());
+	}
+	
+	return pTile;
+}

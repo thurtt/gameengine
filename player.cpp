@@ -14,9 +14,10 @@
 #include "text.h"
 #include "collision.h"
 
-Player::Player( float _x_, float _y_, float _width_, float _height_, const char * _filename,  std::vector<game_sprite*> * sprites,  std::vector<game_sprite*> * pickups  ) :
+Player::Player( float _x_, float _y_, float _width_, float _height_, const char * _filename,  std::vector<game_sprite*> * sprites,  std::vector<game_sprite*> * pickups, game_map * pMap  ) :
 _sprites(sprites),
-_pickups(pickups)
+_pickups(pickups),
+_pMap(pMap)
 {
 	// do some basic setup
 	pickupScore = 0;
@@ -41,6 +42,8 @@ void Player::movement(){
 	//game_sprite::movement();
 	
 	float delta = 0.8;
+	float temp_x = _x;
+	float temp_y = _y; // <---- store temporary coords for collision testing.
 	//texture = 1;
 	if ((move_right > 0) || (move_left > 0) || (move_up > 0) || (move_down > 0)){
 		if (texture != animations[ANIM_WALK].first) {
@@ -49,22 +52,40 @@ void Player::movement(){
 	}
 	
 	if (move_right > 0)	{ 
-		_x += delta; 
+		temp_x = _x + delta; 
 		_angle = 90;
 	}
 	if (move_left > 0)	{ 
-		_x -= delta;
+		temp_x = _x - delta; 
 		_angle = 270;
 	}
 	if (move_up > 0)	{ 
-		_y += delta;
+		temp_y = _y + delta;
 		_angle = 0;
 	}
 	if (move_down > 0)	{ 
-		_y -= delta; 
+		temp_y = _y - delta;
 		_angle = 180;
 	}
 	
+	// get textures for new position:
+	vector<tile*> pTiles;
+	pTiles = _pMap->getTiles(temp_x, temp_y, height, width);
+	int i, k;
+	bool move_allowed = true;
+	for (i = 0; i < pTiles.size(); i++){
+		for (k = 0; k < pTiles[i]->sprites.size(); k++){
+			if (pTiles[i]->sprites[k]->_blockMovement){
+				//we can't do this
+				move_allowed = false;
+			}
+		}
+	}
+	if (move_allowed){
+		_x = temp_x;
+		_y = temp_y;
+	}
+
 	if (onscreen(disp_x, disp_y, height, width)){
 		std::vector<game_sprite *>::iterator itr = sprite_list.begin();
 		while( itr != sprite_list.end() )

@@ -124,6 +124,7 @@ void NormalKeys(unsigned char key, int x, int y) {
 }
 void NormalKeysUp(unsigned char key, int x, int y) {
 	
+	int sz;
 	if (key == 27) {
 		exit(0);
 	}
@@ -135,6 +136,19 @@ void NormalKeysUp(unsigned char key, int x, int y) {
 		baseGame->focus_sprite->useAnimation(ANIM_EXPLODE);;
 	}
 	
+	if (key == 't'){
+		vector<tile*> pTiles;
+		pTiles = baseGame->pMap->getTiles(baseGame->focus_sprite->_x,baseGame->focus_sprite->_y,baseGame->focus_sprite->height,baseGame->focus_sprite->width);
+		sz = pTiles.size();
+		
+		int i;
+		int k;
+		for (i = 0; i < pTiles.size(); i++){
+			for (k = 0; k < pTiles[i]->sprites.size(); k++){
+				pTiles[i]->sprites[k]->active = false;
+			}
+		}
+	}
 	if (key == 'd'){
 		InputMovement(GLUT_KEY_RIGHT,0);
 	}

@@ -50,3 +50,42 @@ void quad::animate(float offset_x, float offset_y){
 		tiles[i]->animate(offset_x, offset_y);
 	}
 }
+
+tile* quad::getTile(float world_x, float world_y)
+{
+	if (!inBox(world_x, world_y, x, y, height, width))
+		return 0;
+	
+	tile* pTile;
+	pTile = 0;
+	int i;
+	for (i = 0; i < tiles.size(); i++){
+		if (inBox(world_x, world_y, tiles[i]->x, tiles[i]->y, tiles[i]->height, tiles[i]->width)){
+			return tiles[i];
+		}
+	}
+	
+	return pTile;
+}
+
+vector<tile*> quad::getTiles(float box_x, float box_y, float box_h, float box_w)
+{
+	vector<tile*> pTile;
+	int i;
+	
+	if ( !boxCollision(x, y, height, width, box_x, box_y, box_h, box_w)  &&
+		!boxCollision(box_x, box_y, box_h, box_w,x, y, height, width) )
+		return pTile;
+	
+	for (i = 0; i < tiles.size(); i++){
+
+		if ( boxCollision(tiles[i]->x, tiles[i]->y, tiles[i]->height, tiles[i]->width, box_x, box_y, box_h, box_w)  &&
+			boxCollision(box_x, box_y, box_h, box_w, tiles[i]->x, tiles[i]->y, tiles[i]->height, tiles[i]->width) )
+		{
+			pTile.push_back( tiles[i] );
+		}
+	}
+	
+	return pTile;
+}
+
