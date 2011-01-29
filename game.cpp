@@ -101,11 +101,11 @@ void game::loadMap(int _map){
 
 	pMap->loadMap(_map);
 	
-	game_sprite * pu = new game_sprite(120,780, 16,16, "pickup_thing.png", false, false);
+	game_sprite * pu = new game_sprite(120,780, 16,16, "pickup_thing.png", 0, 0);
 	pu->includeAnimation(ANIM_EXPLODE, "explosion.png", 25);
-	game_sprite * pu2 = new game_sprite(150,780, 16,16, "pickup_thing.png", false, false);
+	game_sprite * pu2 = new game_sprite(150,780, 16,16, "pickup_thing.png", 0, 0);
 	pu2->includeAnimation(ANIM_EXPLODE, "explosion.png", 25);
-	game_sprite * pu3 = new game_sprite(220,780, 32,32, "pickup_thing.png", false, false);
+	game_sprite * pu3 = new game_sprite(220,780, 32,32, "pickup_thing.png", 0, 0);
 	pu3->includeAnimation(ANIM_EXPLODE, "explosion.png", 25);
 	
 	sprites.push_back( pu );

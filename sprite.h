@@ -10,6 +10,7 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
+#include "sprite_defines.h"
 #include "tile_defines.h"
 #include "drawable.h"
 
@@ -36,16 +37,13 @@ class game_sprite {
 protected:
 	const char * texture_file;
 	GLuint texture;
-	//map<int, GLuint> animations;
 	map<int, pair<GLuint, int> > animations;
+	map<int, int> sprite_attributes;
 	vector<game_sprite *>  sprite_list;
 	
 	vector<drawable *> drawables; // need to think about who is responsible for cleaning this up.
 public:
-	bool _blockVisibility;
-	bool _blockMovement;
 	bool active;
-	bool alive; //active, but not "in play"
 	int width, height;
 	float _x; float _y;
 	float _angle;
@@ -54,15 +52,13 @@ public:
 	float disp_x;
 	float disp_y;
 	game_sprite();
-	game_sprite(float, float, float, float, const char *, bool, bool);
+	game_sprite(float, float, float, float, const char *, int, int);
 	~game_sprite();
 	void includeAnimation(int, GLuint, int);
 	void includeAnimation(int,const char *, int);
 	void useAnimation(int);
-	bool blockVisibility();
-	void blockVisibility(bool);
-	bool blockMovement();
-	void blockMovement(bool);
+	void setAttribute(int _attr, int val);
+	int getAttribute(int _attr);
 	void xy(float, float);
 	void wh(float, float);
 	void draw();

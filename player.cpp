@@ -24,8 +24,9 @@ _pMap(pMap)
 	xy(_x_, _y_);
 	wh(_width_, _height_);
 	texture_file = _filename;
-	_blockMovement = false;
-	_blockVisibility = false;
+	setAttribute(BLOCK_MOVEMENT, false);
+	setAttribute(BLOCK_VISIBILITY, false);
+	setAttribute(ALIVE, true);
 	
 	texture = LoadTexture(texture_file);
 	includeAnimation(ANIM_NONE, texture, 0);
@@ -75,7 +76,7 @@ void Player::movement(){
 	bool move_allowed = true;
 	for (i = 0; i < pTiles.size(); i++){
 		for (k = 0; k < pTiles[i]->sprites.size(); k++){
-			if (pTiles[i]->sprites[k]->_blockMovement){
+			if (pTiles[i]->sprites[k]->getAttribute(BLOCK_MOVEMENT) > 0){
 				//we can't do this
 				move_allowed = false;
 			}
@@ -113,7 +114,7 @@ void Player::checkPickups(){
 	{
 		if (boxCollision(_x, _y, _x + width, _y + height, (*itr)->_x, (*itr)->_y, (*itr)->_x + (*itr)->width, (*itr)->_y + (*itr)->height) || 
 			boxCollision((*itr)->_x, (*itr)->_y, (*itr)->_x + (*itr)->width, (*itr)->_y + (*itr)->height, _x, _y, _x + width, _y + height )){
-			if ( (*itr)->active && (*itr)->alive ) {
+			if ( (*itr)->active && ((*itr)->getAttribute(ALIVE) > 0) ) {
 				pickupScore++;
 				(*itr)->useAnimation(ANIM_EXPLODE);
 			}

@@ -110,7 +110,7 @@ void NormalKeys(unsigned char key, int x, int y) {
 		InputMovement(GLUT_KEY_UP,1);
 	}
 	if (key == '9'){
-		glutGameModeString("640x480:32");
+		glutGameModeString("1152x648:32");
 		if (glutGameModeGet(GLUT_GAME_MODE_POSSIBLE)){
 			glutEnterGameMode();
 			init();
@@ -194,7 +194,7 @@ int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
-    glutInitWindowSize(1024, 768);
+    glutInitWindowSize(1152, 648);
     
     glutCreateWindow("GLUT Program");
 	
