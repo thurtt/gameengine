@@ -11,14 +11,14 @@
 #define _PLAYER_H_
 
 #include "sprite.h"
-
+#include "game_map.h"
 
 class game_sprite;
 
 class Player : public game_sprite
 {
 public:
-	Player( float _x_, float _y_, float _width_, float _height_, const char * _filename, std::vector<game_sprite*> * sprites, std::vector<game_sprite*> * pickups  );
+	Player( float _x_, float _y_, float _width_, float _height_, const char * _filename, std::vector<game_sprite*> * sprites, std::vector<game_sprite*> * pickups, game_map * pMap  );
 	~Player();
 	virtual void movement();
 	void checkPickups();
@@ -27,6 +27,7 @@ public:
 private:
 	std::vector<game_sprite*> * _sprites;
 	std::vector<game_sprite*> * _pickups;
+	game_map* _pMap;
 };
 
 #endif // _PLAYER_H_

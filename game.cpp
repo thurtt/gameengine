@@ -117,7 +117,7 @@ void game::loadMap(int _map){
 	pickups.push_back( pu3 );
 	
 	
-	focus_sprite = new Player(102,700, 64,64, "player_blue.png", &sprites, &pickups);
+	focus_sprite = new Player(102,700, 64,64, "player_blue.png", &sprites, &pickups, pMap);
 	sprites.push_back(focus_sprite);
 	players.push_back(focus_sprite);
 	
