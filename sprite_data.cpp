@@ -10,7 +10,7 @@
 #include "sprite_data.h"
 
 
-_sprite_data::_sprite_data(float _x, float _y, float _height, float _width, const char * _texture, bool vis, bool mov){
+_sprite_data::_sprite_data(float _x, float _y, float _height, float _width, const char * _texture, int vis, int mov){
 	x = _x; y = _y;
 	height = _height; width = _width;
 	texture = _texture;

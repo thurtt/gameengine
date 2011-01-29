@@ -21,9 +21,9 @@ public:
 	float x, y;
 	float height, width;
 	const char * texture;
-	bool bMovement;
-	bool bVisibility;
-	_sprite_data(float, float, float, float, const char *, bool, bool);
+	int bMovement;
+	int bVisibility;
+	_sprite_data(float, float, float, float, const char *, int, int);
 };
 
 
