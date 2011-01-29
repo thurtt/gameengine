@@ -90,8 +90,8 @@ void Player::checkPickups(){
 	std::vector<game_sprite *>::iterator itr = _pickups->begin();
 	while( itr != _pickups->end() )
 	{
-		if (boxCollision(_x, _y, height, width, (*itr)->_x, (*itr)->_y, (*itr)->height, (*itr)->width) || 
-			boxCollision((*itr)->_x, (*itr)->_y, (*itr)->height, (*itr)->width, _x, _y, height, width )){
+		if (boxCollision(_x, _y, _x + width, _y + height, (*itr)->_x, (*itr)->_y, (*itr)->_x + (*itr)->width, (*itr)->_y + (*itr)->height) || 
+			boxCollision((*itr)->_x, (*itr)->_y, (*itr)->_x + (*itr)->width, (*itr)->_y + (*itr)->height, _x, _y, _x + width, _y + height )){
 			if ( (*itr)->active && (*itr)->alive ) {
 				pickupScore++;
 				(*itr)->useAnimation(ANIM_EXPLODE);

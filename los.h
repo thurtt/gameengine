@@ -15,7 +15,7 @@
 #include <utility>
 #include <vector>
 #include "sprite.h"
-
+#include "line.h"
 
 class line_of_sight : public drawable
 {
@@ -36,13 +36,13 @@ private:
 	bool in_my_box( float x, float y, float h, float w );
 	
 	// returns x,y prime, where orig is the point to rotate around, and point is the point to rotate
-	pair< float, float > rotate( float point_x, float point_y, float orig_x, float orig_y, float angle );
+	point rotate( float point_x, float point_y, float orig_x, float orig_y, float angle );
 	
 	float _fov;
 	float _dov;
 	float _height;
 	float _width;
-	std::vector< std::pair<float, float> > _corners;
+	polygon _corners;
 
 	std::vector<game_sprite*> * _sprites;
 };

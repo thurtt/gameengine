@@ -41,7 +41,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="&quot;..\freeglut-2.6.0\include\GL&quot;"
-				PreprocessorDefinitions="WIN32"
+				PreprocessorDefinitions="WIN32, _SCL_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -190,6 +190,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\line.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\los.cpp"
 				>
 			</File>
@@ -218,11 +222,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\spriteText.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stb_image_aug.c"
 				>
 			</File>
 			<File
 				RelativePath=".\text.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\textblurb.cpp"
 				>
 			</File>
 			<File
@@ -272,6 +284,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\line.h"
+				>
+			</File>
+			<File
 				RelativePath=".\los.h"
 				>
 			</File>
@@ -300,6 +316,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\spriteText.h"
+				>
+			</File>
+			<File
 				RelativePath=".\stb_image_aug.h"
 				>
 			</File>
@@ -313,6 +333,10 @@
 			</File>
 			<File
 				RelativePath=".\text.h"
+				>
+			</File>
+			<File
+				RelativePath=".\textblurb.h"
 				>
 			</File>
 			<File

@@ -7,8 +7,6 @@
  *
  */
 
-#include "collision.h"
-
 #ifdef WIN32
 #include <freeglut.h>
 #elif defined(__APPLE__) || defined(__APPLE_CC__)
@@ -17,82 +15,58 @@
 #include <GLUT/glut.h>
 #endif
 
+#include "collision.h"
+#include <algorithm>
 
-bool inBox(float x, float y, float box_x, float box_y, float box_h, float box_w){
-	return ((y < box_y + box_h) && (x < box_x + box_w) && (y > box_y) && ( x > box_x));
+using namespace std;
+
+bool inBox(float x, float y, float box_x1, float box_y1, float box_x2, float box_y2){
+
+	bool result = ( ( y < max<float>( box_y1, box_y2 ) )
+			&& ( y > min<float>( box_y1, box_y2 ) )
+			&& ( x < max<float>( box_x1, box_x2 ) )
+			&& ( x > min<float>( box_x1, box_x2 ) ) );
+	
+	return result;
+	//return ((y < box_y + box_h) && (x < box_x + box_w) && (y > box_y) && ( x > box_x));
 }
-bool boxCollision(float x, float y, float h, float w, float box_x, float box_y, float box_h, float box_w){
-	return (inBox(x,y,box_x,box_y,box_h,box_w) ||
-			inBox(x + w,y,box_x,box_y,box_h,box_w) ||
-			inBox(x,y + h,box_x,box_y,box_h,box_w) ||
-			inBox(x + w,y + h,box_x,box_y,box_h,box_w));
+
+bool boxCollision(float x1, float y1, float x2, float y2, float box_x1, float box_y1, float box_x2, float box_y2){
+	return (inBox(x1,y1,box_x1,box_y1,box_x2,box_y2) ||
+			inBox(x2,y2,box_x1,box_y1,box_x2,box_y2) ||
+			inBox(x1,y2,box_x1,box_y1,box_x2,box_y2) ||
+			inBox(x2,y2,box_x1,box_y1,box_x2,box_y2));
 }
 bool onscreen(float x, float y, float height, float width){
 	int windowHeight = glutGet( GLUT_WINDOW_HEIGHT );
 	int windowWidth = glutGet( GLUT_WINDOW_WIDTH );
 	
-	return ( boxCollision(x,y,height,width,0,0,windowHeight, windowWidth) ||
-			boxCollision(0,0,windowHeight, windowWidth,x,y,height,width));
+	return ( boxCollision(x,y,x+width,y+height,0,0,windowHeight, windowWidth) ||
+			boxCollision(0,0, windowWidth, windowHeight, x, y, x+width, y+height));
 }
 
 
-// each point in the list should connect to the previous point
-// if a list is passed in that doesn't follow this model, things 
-// won't work
-bool polygonCollision( const std::vector< std::pair<float, float> > & poly1, const std::vector< std::pair<float, float> > & poly2 )
+bool polygonCollision( polygon & poly1, polygon & poly2 )
 {
-	// lets turn these points into lines
-	std::vector< std::pair< std::pair<float, float>, std::pair<float, float> > > poly1Lines;
-	std::vector< std::pair< std::pair<float, float>, std::pair<float, float> > > poly2Lines;	
-
-	for ( unsigned long i = 0; i < poly1.size(); i++ )
-	{
-		if ( i < poly1.size() - 1 )
-		{
-			poly1Lines.push_back( std::pair< std::pair<float,float>, std::pair<float, float> >( poly1[i], poly1[i+1] ) );
-		}
-		else
-		{
-			poly1Lines.push_back( std::pair< std::pair<float,float>, std::pair<float, float> >( poly1[i], poly1[0] ) );		
-		}
-	}
+	polyIterator itr1 = poly1.begin();
 	
-	for ( unsigned long i = 0; i < poly2.size(); i++ )
+	while( itr1 != poly1.end() )
 	{
-		if ( i < poly2.size() - 1 )
+		polyIterator itr2 = poly2.begin();
+		while( itr2 != poly2.end() )
 		{
-			poly2Lines.push_back( std::pair< std::pair<float,float>, std::pair<float, float> >( poly2[i], poly2[i+1] ) );
-		}
-		else
-		{
-			poly2Lines.push_back( std::pair< std::pair<float,float>, std::pair<float, float> >( poly2[i], poly2[0] ) );		
-		}
-	}
-	
-	// compare the lines to eachother
-	std::vector< std::pair< std::pair<float, float>, std::pair<float, float> > >::iterator itr1 = poly1Lines.begin();
-	std::vector< std::pair< std::pair<float, float>, std::pair<float, float> > >::iterator itr2 = poly2Lines.begin();
-	
-	while( itr1 != poly1Lines.end() )
-	{
-		while( itr2 != poly2Lines.end() )
-		{
-			// rise over run, bitches
-			float slope1 = ( (*itr1).first.second - (*itr1).second.second ) / ( (*itr1).first.first - (*itr1).second.first );
-			float slope2 = ( (*itr2).first.second - (*itr2).second.second ) / ( (*itr2).first.first - (*itr2).second.first );	
-			if ( lineCompare( *itr1, slope1, *itr2, slope2 ) == true )
+			if ( itr1->checkIntersection( *itr2 ) )
 			{
 				return true;
 			}
 			++itr2;
 		}
 		++itr1;
-	}
-	
-	return true;
+	}	
+	return false;
 }
 
-
+/*
 bool lineCompare( std::pair< std::pair< float, float >, std::pair< float, float > > line1, float slope1, std::pair< std::pair< float, float >, std::pair< float, float > > line2, float slope2 )
 
 {
@@ -115,8 +89,8 @@ bool lineCompare( std::pair< std::pair< float, float >, std::pair< float, float 
 	// yi = a1 + b1xi
 	// substitution
 	// xi = -(a1 - a2)/(b1-b2)(a1 + b1xi)
-	// it reduces to xi = a1( -((a1 - a2)/(b1 -b2)) -(1/b1) )
-	float x_intersect = a1 * ( -( (a1 - a2)/(slope1 - slope2) ) -(1/slope1) );
+	// it reduces to xi = a1( (-(a1 - a2)/(b1 -b2)) -(1/b1) )
+	float x_intersect = a1 * ( (-(a1 - a2)/(slope1 - slope2) ) - (1/slope1) );
 	float y_intersect = a1 + ( slope1 * x_intersect );
 	
 	// check to see if the intersects are on the segments
@@ -132,12 +106,8 @@ bool lineCompare( std::pair< std::pair< float, float >, std::pair< float, float 
 	
 	return false;
 
-}
+}*/
 
-bool sort_predicate( const std::pair<float, float> & left, const std::pair<float, float> & right )
-{
-	return left.first < right.first;
-}
 
 
 

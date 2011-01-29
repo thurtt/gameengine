@@ -6,6 +6,7 @@
  *  Copyright 2011 __MyCompanyName__. All rights reserved.
  *
  */
+
 #include "los.h"
 #include "collision.h"
 
@@ -51,16 +52,16 @@ void line_of_sight::draw( float x, float y, float angle )
 	_corners.clear();
 	
 	// bottom left
-	_corners.push_back( rotate( bottom_x, left_y, eye_x, eye_y, angle ) );
+	_corners.push_back( line( rotate( bottom_x, left_y, eye_x, eye_y, angle ), rotate( top_x, left_y, eye_x, eye_y, angle ) ) );
 	
 	// top left
-	_corners.push_back( rotate( top_x, left_y, eye_x, eye_y, angle ) );
+	_corners.push_back( line( rotate( top_x, left_y, eye_x, eye_y, angle ), rotate( top_x, right_y, eye_x, eye_y, angle ) ) );
 	
 	// top right
-	_corners.push_back( rotate( top_x, right_y, eye_x, eye_y, angle ) );
+	_corners.push_back( line( rotate( top_x, right_y, eye_x, eye_y, angle ), rotate( bottom_x, right_y, eye_x, eye_y, angle ) ) );
 	
 	// bottom right
-	_corners.push_back( rotate( bottom_x, right_y, eye_x, eye_y, angle ) );
+	_corners.push_back( line( rotate( bottom_x, right_y, eye_x, eye_y, angle ), rotate( bottom_x, left_y, eye_x, eye_y, angle ) ) );
 	
 	glMatrixMode( GL_MODELVIEW );	
 	glPushMatrix();
@@ -69,30 +70,15 @@ void line_of_sight::draw( float x, float y, float angle )
 	glBegin( GL_LINES );
 	glColor4f( 1.0f, 0.0f, 0.0f, 0.5f );
 
-	std::vector< std::pair<float, float> >::iterator itr = _corners.begin();
-	bool skipflag = true;
+	
+	polyIterator itr = _corners.begin();
 	while( itr != _corners.end() )
 	{
-		glVertex2f( (*itr).first, (*itr).second );
-		
-		if( itr == _corners.begin() )
-		{
-			++itr;
-		}
-		else if( skipflag )
-		{
-			skipflag = false;
-		}
-		else 
-		{
-			++itr;
-			skipflag = true;
-		}
+		glVertex2f( itr->getPoint1().x, itr->getPoint1().y );
+		glVertex2f( itr->getPoint2().x, itr->getPoint2().y );
+
+		++itr;
 	}
-	
-	// finish things up
-	itr = _corners.begin();
-	glVertex2f( (*itr).first, (*itr).second );
 
 	glEnd();
 	glPopMatrix();
@@ -103,19 +89,22 @@ std::vector<std::pair< float, float> > line_of_sight::detect_visible_sprites()
 {
 	std::vector<game_sprite *>::iterator itr = _sprites->begin();
 	std::vector<std::pair< float, float> > visible_sprites;
-
-	while( itr != _sprites->end() )
-	{
-		if ( in_my_box( (*itr)->disp_x, (*itr)->disp_y, (*itr)->height, (*itr)->width ) )
+	
+	// there is a weird case where movement is called before draw, meaning we have no box
+	//if ( _corners.size() > 0 )
+	//{
+		while( itr != _sprites->end() )
 		{
-			std::pair<float, float> tmpPair;
-			tmpPair.first = (*itr)->disp_x;
-			tmpPair.second = (*itr)->disp_y;
-			visible_sprites.push_back( tmpPair );
+			if ( in_my_box( (*itr)->disp_x, (*itr)->disp_y, (*itr)->height, (*itr)->width ) )
+			{
+				std::pair<float, float> tmpPair;
+				tmpPair.first = (*itr)->disp_x;
+				tmpPair.second = (*itr)->disp_y;
+				visible_sprites.push_back( tmpPair );
+			}
+			++itr;
 		}
-		++itr;
-	}
-
+	//}
 	return visible_sprites;
 }
 
@@ -125,20 +114,24 @@ bool line_of_sight::in_my_box( float x, float y, float h, float w )
 	/*float my_width = _corners[0][1] - _corners[0][0];
 	float my_height = _corners[1][2] - _corners[1][0];
 	return (boxCollision(x, y, h, w, _corners[0][0], _corners[1][0], my_height, my_width ) ||
-			boxCollision(_corners[0][0], _corners[1][0], my_height, my_width,x, y, h, w ));*/
+			boxCollision(_corners[0][0], _corners[1][0], my_height, my_width,x, y, h, w ));*/	
 	
-	std::vector< std::pair<float, float> > poly2;
+	if( _corners.size() == 0 ) return false;
 	
-	poly2.push_back( std::pair<float, float>( x, y ) );
-	poly2.push_back( std::pair<float, float>( x, y + h ) );
-	poly2.push_back( std::pair<float, float>( x + w, y + h ) );
-	poly2.push_back( std::pair<float, float>( x + w, y ) );
+	polygon poly2;
+	poly2.push_back( line( x, y, x, y + h ) );
+	poly2.push_back( line( x, y + h, x + w, y + h ) );
+	poly2.push_back( line( x + w, y + h, x + w, y ) );
+	poly2.push_back( line( x + w, y, x, y ) );
 	
-	return polygonCollision( _corners, poly2 );
+	// for our box
+	point point1 = _corners[0].getPoint1();
+	point point2 = _corners[1].getPoint2();
+	return ( polygonCollision( _corners, poly2 ) || inBox( x, y, point1.x, point1.y, point2.x, point2.y ) );
 	
 }
 
-pair< float, float > line_of_sight::rotate( float point_x, float point_y, float orig_x, float orig_y, float angle )
+point line_of_sight::rotate( float point_x, float point_y, float orig_x, float orig_y, float angle )
 {
 	// DANGER: Math zone
 	// convert degrees to radians
@@ -150,5 +143,5 @@ pair< float, float > line_of_sight::rotate( float point_x, float point_y, float 
 
 	// End of DANGER
 	pair< float, float > xy_prime( x_prime , y_prime );
-	return xy_prime;
+	return point( x_prime, y_prime );
 }
