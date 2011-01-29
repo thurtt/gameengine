@@ -174,7 +174,7 @@ void Guard::checkCaptures(){
 
 void Guard::patrol()
 {
-	if( !inBox( _x, _y, _zone[0].getPoint1().x, _zone[0].getPoint1().y, _zone[1].getPoint2().x, _zone[1].getPoint2().y ) && _stepCount > 50 )
+	if( !inBox( _x, _y, _zone[0].getPoint1().x, _zone[0].getPoint1().y, _zone[1].getPoint2().x, _zone[1].getPoint2().y ) && _stepCount > 250 )
 	{
 		do
 		{
@@ -190,8 +190,8 @@ void Guard::patrol()
 	else 
 	{
 		float rad_angle = ( _angle * M_PI ) / 180.0;
-		_x += DELTA * cos( rad_angle );		
-		_y += DELTA * sin( rad_angle );
+		_x += DELTA * sin( rad_angle );		
+		_y += DELTA * cos( rad_angle );
 		_stepCount++;
 
 	}
