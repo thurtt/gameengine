@@ -86,20 +86,20 @@ void populateTileSet(){
 	tileset.clear();
 	
 	vector<_sprite_data*> raw_tile ;
-	raw_tile.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"clean_tiles.png", false, false));
+	raw_tile.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"clean_tiles.png", 0, 0));
 	tileset.push_back(raw_tile);
 	
 	vector<_sprite_data*> raw_tile2 ;
-	raw_tile2.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"clean_tiles.png", false, false));
+	raw_tile2.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"clean_tiles.png", 0, 0));
 	tileset.push_back(raw_tile2);
 	
 	
 	vector<_sprite_data*> raw_tile3 ;
-	raw_tile3.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"grass.png", false, false));	
+	raw_tile3.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"grass.png", 0, 0));	
 	tileset.push_back(raw_tile3);
 	
 	vector<_sprite_data*> raw_tile4 ;
-	raw_tile4.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"clean_tiles.png", true, true)); //this will blockmovement.
-	raw_tile4.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"tile_blood.png", false, false));
+	raw_tile4.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"clean_tiles.png", 1, 1)); //this will blockmovement.
+	raw_tile4.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"tile_blood.png", 0, 0));
 	tileset.push_back(raw_tile4);
 }

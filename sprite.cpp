@@ -17,10 +17,10 @@ vector< pair<const char*, GLuint> > master_texture_list;
 game_sprite::game_sprite(){
 	xy(10, 10);
 	wh(10, 10);
-	_blockMovement = false;
-	_blockVisibility = false;
+	setAttribute(BLOCK_MOVEMENT, 0);
+	setAttribute(BLOCK_VISIBILITY, 0);
+	setAttribute(ALIVE, 1);
 	active = true;
-	alive = true;
 
 	includeAnimation(ANIM_NONE, LoadTexture("img.png"), 0);
 	useAnimation(ANIM_NONE);
@@ -29,14 +29,15 @@ game_sprite::game_sprite(){
 	disp_y = 0.0;
 }
 
-game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, const char * _filename, bool vis, bool mov){
+game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, const char * _filename, int vis, int mov){
 	xy(_x_, _y_);
 	wh(_width_, _height_);
 	texture_file = _filename;
-	_blockMovement = mov;
-	_blockVisibility = vis;
+	
+	setAttribute(BLOCK_MOVEMENT, mov);
+	setAttribute(BLOCK_VISIBILITY, vis);
+	setAttribute(ALIVE, 1);
 	active = true;
-	alive = true;
 
 	includeAnimation(ANIM_NONE, LoadTexture(texture_file), 0);
 	useAnimation(ANIM_NONE);
@@ -52,6 +53,19 @@ void game_sprite::includeAnimation(int anim,const char * t, int fr){
 void game_sprite::includeAnimation(int anim, GLuint t, int fr){
 	animations[anim] = make_pair(t, fr);
 }
+
+void game_sprite::setAttribute(int _attr, int _val){
+	sprite_attributes[_attr] = _val;
+}
+
+int game_sprite::getAttribute(int _attr){
+	if (sprite_attributes.find(_attr) != sprite_attributes.end() )
+	{
+		return sprite_attributes[_attr];
+	}
+	return 0;
+}
+
 
 void game_sprite::useAnimation(int anim){
 	if (texture == anim){
@@ -80,7 +94,7 @@ void game_sprite::useAnimation(int anim){
 		case ANIM_HIDE:
 			break;
 		case ANIM_EXPLODE:
-			alive = false;
+			setAttribute(ALIVE, 0);
 			break;
 		case ANIM_AMBIENT:
 			// to make the ambience seem real, rand frame
@@ -156,7 +170,7 @@ game_sprite::~game_sprite(){
 	animations.clear();
 	sprite_list.clear();
 }
-
+/*
 bool game_sprite::blockVisibility(){
 	return _blockVisibility;
 }
@@ -170,6 +184,7 @@ void game_sprite::blockMovement(bool v){
 	_blockMovement = v;
 }
 
+*/
 
 void game_sprite::text(char *str){
 	renderSpacedBitmapString(_x + height /2,_y + width/2,0, GLUT_BITMAP_8_BY_13,str);
