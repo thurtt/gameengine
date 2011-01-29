@@ -51,8 +51,7 @@ private:
 	Text * _text;
 	float _target_x;
 	float _target_y;
-	float _target_slope;
-	float _target_b;
+	int _stepCount;
 
 	void up();
 	void down();
