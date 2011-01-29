@@ -37,17 +37,13 @@ class game_sprite {
 protected:
 	const char * texture_file;
 	GLuint texture;
-	//map<int, GLuint> animations;
 	map<int, pair<GLuint, int> > animations;
 	map<int, int> sprite_attributes;
 	vector<game_sprite *>  sprite_list;
 	
 	vector<drawable *> drawables; // need to think about who is responsible for cleaning this up.
 public:
-	//bool _blockVisibility;
-	//bool _blockMovement;
 	bool active;
-	//bool alive; //active, but not "in play"
 	int width, height;
 	float _x; float _y;
 	float _angle;
@@ -63,10 +59,6 @@ public:
 	void useAnimation(int);
 	void setAttribute(int _attr, int val);
 	int getAttribute(int _attr);
-	/*bool blockVisibility();
-	void blockVisibility(bool);
-	bool blockMovement();
-	void blockMovement(bool);*/
 	void xy(float, float);
 	void wh(float, float);
 	void draw();

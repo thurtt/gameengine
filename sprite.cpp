@@ -170,21 +170,6 @@ game_sprite::~game_sprite(){
 	animations.clear();
 	sprite_list.clear();
 }
-/*
-bool game_sprite::blockVisibility(){
-	return _blockVisibility;
-}
-void game_sprite::blockVisibility(bool v){
-	_blockVisibility = v;
-}
-bool game_sprite::blockMovement(){
-	return _blockMovement;
-}
-void game_sprite::blockMovement(bool v){
-	_blockMovement = v;
-}
-
-*/
 
 void game_sprite::text(char *str){
 	renderSpacedBitmapString(_x + height /2,_y + width/2,0, GLUT_BITMAP_8_BY_13,str);
