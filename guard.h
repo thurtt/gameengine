@@ -51,7 +51,6 @@ private:
 	Text * _text;
 	float _target_x;
 	float _target_y;
-	int _stepCount;
 
 	void up();
 	void down();
@@ -60,6 +59,8 @@ private:
 	void checkCaptures();
 	bool _chase;
 	polygon _zone;
+	vector<point> _waypoints;
+	int _waypoint_index;
 };
 
 #endif // _GUARD_H_

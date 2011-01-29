@@ -23,7 +23,7 @@ Guard::Guard( float start_x, float start_y,  std::vector<game_sprite*> * sprites
 	_leftCount(MAX_LEFT),
 	_los(0),
 	_text(0),
-	_stepCount(0)
+	_waypoint_index(0)
 {
 	// do some basic setup
 	_players = sprites;
@@ -51,6 +51,20 @@ Guard::Guard( float start_x, float start_y,  std::vector<game_sprite*> * sprites
 	
 	// this is a terrible rng
 	srand ( time(NULL) );
+	
+	// add a shitload of waypoints (para ahora, no es muy elegante...lo siento)
+	_waypoints.push_back( point(202, 800) );
+	_waypoints.push_back( point(300, 800) );
+	_waypoints.push_back( point(408, 650) );
+	_waypoints.push_back( point(408, 900) );
+	_waypoints.push_back( point(320, 900) );
+	_waypoints.push_back( point(800, 800) );
+	_waypoints.push_back( point(800, 1200) );
+	_waypoints.push_back( point(700, 1200) );
+	_waypoints.push_back( point(600, 1000) );
+	_waypoints.push_back( point(202, 1000) );
+	_waypoints.push_back( point(350, 1200) );
+	_waypoints.push_back( point(550, 1200) );
 }
 
 Guard::~Guard()
@@ -174,9 +188,15 @@ void Guard::checkCaptures(){
 
 void Guard::patrol()
 {
-	if( !inBox( _x, _y, _zone[0].getPoint1().x, _zone[0].getPoint1().y, _zone[1].getPoint2().x, _zone[1].getPoint2().y ) && _stepCount > 250 )
+	
+	
+	//if( !inBox( _x, _y, _zone[0].getPoint1().x, _zone[0].getPoint1().y, _zone[1].getPoint2().x, _zone[1].getPoint2().y ) ) //&& _stepCount > 250 )
+	if( _x <= _target_x + 5
+	   && _x >= _target_x - 5
+	   && _y <= _target_y + 5
+	   && _y >= _target_y - 5 )
 	{
-		do
+		/*do
 		{
 			_target_x = static_cast<float>( rand() % static_cast<int>( _zone[1].getPoint2().x - _zone[0].getPoint1().x ) ) + _zone[0].getPoint1().x;
 			_target_y = static_cast<float>( rand() % static_cast<int>( _zone[1].getPoint2().y - _zone[0].getPoint1().y ) ) + _zone[0].getPoint1().y;
@@ -185,15 +205,35 @@ void Guard::patrol()
 			// stepCount is used to keep our
 			// dude from getting stuck in a corner
 			_stepCount = 0;
-		} while (!inBox( _target_x, _target_y, _zone[0].getPoint1().x, _zone[0].getPoint1().y, _zone[1].getPoint2().x, _zone[1].getPoint2().y ) );
+		} while (!inBox( _target_x, _target_y, _zone[0].getPoint1().x, _zone[0].getPoint1().y, _zone[1].getPoint2().x, _zone[1].getPoint2().y ) );*/
+			
+		if( _waypoint_index == 11 )
+		{
+			_waypoint_index = 0;
+		}
+		else 
+		{
+			_waypoint_index++;
+			//_waypoint_index = 2;
+		}
+
+		_target_x = _waypoints[_waypoint_index].x;
+		_target_y = _waypoints[_waypoint_index].y;
+		
+		float rad_angle = atan( ( _target_y - _y ) / ( _target_x - _x ) );
+		
+		if ( _target_y - _y < 0 )
+		{
+			//rad_angle += M_PI;
+		}
+		
+		_angle = ( rad_angle * 180 ) / M_PI;
 	}
 	else 
 	{
 		float rad_angle = ( _angle * M_PI ) / 180.0;
-		_x += DELTA * sin( rad_angle );		
-		_y += DELTA * cos( rad_angle );
-		_stepCount++;
-
+		_x += DELTA * cos( rad_angle );		
+		_y += DELTA * sin( rad_angle );
 	}
 
 	
