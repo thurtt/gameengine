@@ -72,15 +72,18 @@ vector<tile*> quad::getTiles(float box_x, float box_y, float box_h, float box_w)
 {
 	vector<tile*> pTile;
 	int i;
+	bool t1, t2;
+	t1 = boxCollision( x, y, x + width, y + height, box_x, box_y, box_x + box_w, box_y + box_h );
+	t2 = boxCollision( box_x, box_y, box_x + box_w, box_y + box_h , x, y, x + width, y + height );
 	
-	if ( !boxCollision(x, y, height, width, box_x, box_y, box_h, box_w)  &&
-		!boxCollision(box_x, box_y, box_h, box_w,x, y, height, width) )
+	if ( !boxCollision( x, y, x + width, y + height, box_x, box_y, box_x + box_w, box_y + box_h )  &&
+		!boxCollision( box_x, box_y, box_x + box_w, box_y + box_h , x, y, x + width, y + height ) )
 		return pTile;
 	
 	for (i = 0; i < tiles.size(); i++){
 
-		if ( boxCollision(tiles[i]->x, tiles[i]->y, tiles[i]->height, tiles[i]->width, box_x, box_y, box_h, box_w)  &&
-			boxCollision(box_x, box_y, box_h, box_w, tiles[i]->x, tiles[i]->y, tiles[i]->height, tiles[i]->width) )
+		if ( boxCollision(tiles[i]->x, tiles[i]->y,tiles[i]->x + tiles[i]->width, tiles[i]->y + tiles[i]->height, box_x, box_y, box_x + box_w, box_y + box_h)  ||
+			boxCollision(box_x, box_y, box_x + box_w, box_y + box_h, tiles[i]->x, tiles[i]->y,tiles[i]->x + tiles[i]->width,tiles[i]->y + tiles[i]->height) )
 		{
 			pTile.push_back( tiles[i] );
 		}

@@ -73,8 +73,8 @@ vector<tile*> zone::getTiles(float box_x, float box_y, float box_h, float box_w)
 	vector<tile*> temp_tile;
 	int i;
 	
-	if ( !boxCollision(x, y, height, width, box_x, box_y, box_h, box_w)  &&
-		!boxCollision(box_x, box_y, box_h, box_w,x, y, height, width) )
+	if ( !boxCollision( x, y, x + width, y + height, box_x, box_y, box_x + box_w, box_y + box_h )  &&
+		!boxCollision( box_x, box_y, box_x + box_w, box_y + box_h , x, y, x + width, y + height ) )
 		return pTile;
 
 	
