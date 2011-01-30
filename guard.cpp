@@ -137,8 +137,8 @@ void Guard::patrol()
 		}
 		else 
 		{
-			//_waypoint_index++;
-			_waypoint_index = 2;
+			_waypoint_index++;
+			//_waypoint_index = 2;
 		}
 
 		_target_x = _waypoints[_waypoint_index].x;
@@ -146,11 +146,11 @@ void Guard::patrol()
 		
 		float rad_angle = atan2( ( _target_y - _y ), ( _target_x - _x ) );
 		
-		_angle = ( rad_angle * 180 ) / M_PI;
+		_angle = -( rad_angle * 180 ) / M_PI;
 	}
 	else 
 	{
-		float rad_angle = ( _angle * M_PI ) / 180.0;
+		float rad_angle = ( -_angle * M_PI ) / 180.0;
 		_x += DELTA * cos( rad_angle );		
 		_y += DELTA * sin( rad_angle );
 	}
