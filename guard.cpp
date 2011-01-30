@@ -87,45 +87,6 @@ void Guard::movement()
 	{
 	}
 
-	
-	// This is a square roaming pattern	
-	/*if ( _upCount < MAX_UP )
-	{
-		up();
-		if ( _upCount >= MAX_UP )
-		{
-			_rightCount = 0;
-			_angle = 90.0;
-		}
-	}
-	else if ( _rightCount < MAX_RIGHT )
-	{
-		right();
-		if ( _rightCount >= MAX_RIGHT )
-		{
-			_downCount = 0;
-			_angle = 180.0;
-		}
-	}
-	else if ( _downCount < MAX_DOWN )
-	{
-		down();
-		if ( _downCount >= MAX_DOWN )
-		{
-			_leftCount = 0;
-			_angle = -90.0;
-		}
-	}
-	else if ( _leftCount < MAX_LEFT )
-	{
-		left();
-		if ( _leftCount >= MAX_LEFT )
-		{
-			_upCount =  0;
-			_angle = 0.0;
-		}
-	}*/
-	
 	if (onscreen(disp_x, disp_y, height, width)){
 		std::vector<game_sprite *>::iterator itr = sprite_list.begin();
 		while( itr != sprite_list.end() )
@@ -143,31 +104,8 @@ void Guard::movement()
 	
 	vector<pair<float, float> > visibleSprites = _los->detect_visible_sprites();
 
-	//_text->printf( "Sprites in line of sight: %d", visibleSprites.size() );
 	_text->printf( "Guard X: %5.4f  Guard Y: %5.4f\nI see %d objects.", disp_x, disp_y, visibleSprites.size() );
 	checkCaptures();
-}
-
-void Guard::up()
-{
-	//_y += DELTA;
-	_upCount++;
-
-}
-void Guard::down()
-{
-	//_y -= DELTA;
-	_downCount++;
-}
-void Guard::right()
-{
-	//_x += DELTA;
-	_rightCount++;
-}
-void Guard::left()
-{
-	//_x -= DELTA;
-	_leftCount++;
 }
 
 void Guard::checkCaptures(){
@@ -188,9 +126,6 @@ void Guard::checkCaptures(){
 
 void Guard::patrol()
 {
-	
-	
-	//if( !inBox( _x, _y, _zone[0].getPoint1().x, _zone[0].getPoint1().y, _zone[1].getPoint2().x, _zone[1].getPoint2().y ) ) //&& _stepCount > 250 )
 	if( _x <= _target_x + 5
 	    && _x >= _target_x - 5
 	    && _y <= _target_y + 5
@@ -202,8 +137,8 @@ void Guard::patrol()
 		}
 		else 
 		{
-			_waypoint_index++;
-			//_waypoint_index = 2;
+			//_waypoint_index++;
+			_waypoint_index = 2;
 		}
 
 		_target_x = _waypoints[_waypoint_index].x;

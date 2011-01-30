@@ -45,15 +45,21 @@ bool onscreen(float x, float y, float height, float width){
 bool polygonCollision( polygon & poly1, polygon & poly2 )
 {
 	polyIterator itr1 = poly1.begin();
+	int intersectionCount = 0;
 	
 	while( itr1 != poly1.end() )
 	{
 		polyIterator itr2 = poly2.begin();
 		while( itr2 != poly2.end() )
 		{
-			if ( itr1->checkIntersection( *itr2 ) )
+			point intersection = itr1->checkIntersection( *itr2 );
+			if ( itr1->isPointOnLine( intersection ) )
 			{
-				return true;
+				intersectionCount++;
+				if( intersectionCount >= 8 )
+				{
+					return true;
+				}
 			}
 			++itr2;
 		}

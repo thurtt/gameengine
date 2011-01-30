@@ -1,5 +1,6 @@
 #include "line.h"
 #include <algorithm>
+#include <math.h>
 using namespace std;
 
 float line::getSlope() const
@@ -9,7 +10,7 @@ float line::getSlope() const
 	return (_y1 - _y2) / (_x1 - _x2);
 }
 
-bool line::checkIntersection( const line & line2 ) const
+point line::checkIntersection( const line & line2 ) const
 {
 	// now the real work begins
 
@@ -25,22 +26,21 @@ bool line::checkIntersection( const line & line2 ) const
 
 	float det = ( A1 * B2 ) - ( A2 * B1 );
 	
-	// we've already done a parallel test, but for safety
-	if ( det == 0 ) return false;
+	// parallel test
+	if ( det == 0 ) point( 0, 0 );
 
 	float x_intersect = ( ( B2 * C1 ) - ( B1 * C2 ) ) / det;
 	float y_intersect = ( ( A1 * C2 ) - ( A2 * C1 ) ) / det;
 
-	// check to see if the intersects are on the segments
-	// it should lie somewhere between _x1 and _x2
-	// also _y1 and _y1
-	if ( ( x_intersect <= max<float>( _x1, _x2 ) && x_intersect >= min<float>( _x1, _x2 ) )
-		&& ( y_intersect <= max<float>( _y1, _y2 ) && y_intersect >= min<float>( _y1, _y2 ) )
-		&& ( x_intersect <= max<float>( line2.getPoint1().x, line2.getPoint2().x ) && x_intersect >= min<float>( line2.getPoint1().x, line2.getPoint2().x ) )
-		&& ( y_intersect <= max<float>( line2.getPoint1().y, line2.getPoint2().y ) && y_intersect >= min<float>( line2.getPoint1().y, line2.getPoint2().y ) ) )
+	return point( x_intersect, y_intersect );
+}
+
+bool line::isPointOnLine( const point & testPoint ) const
+{
+	if( testPoint.x <= max<float>( _x1, _x2 ) && testPoint.x >= min<float>( _x1, _x2 )
+	   && testPoint.y <= max<float>( _y1, _y2 ) && testPoint.y >= min<float>( _y1, _y2 ) )
 	{
 		return true;
 	}
-	
 	return false;
 }

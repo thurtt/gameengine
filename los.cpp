@@ -43,25 +43,25 @@ void line_of_sight::draw( float x, float y, float angle )
 	float eye_x = x + ( _width / 2 );
 	float eye_y = y + ( _height / 2 );
 	
-	float bottom_x = eye_x - ( _fov / 2 );
-	float top_x = eye_x + ( _fov / 2 );
-	float left_y = eye_y;
-	float right_y = eye_y + _dov;
+	float bottom_y = eye_y - ( _fov / 2 );
+	float top_y = eye_y + ( _fov / 2 );
+	float left_x = eye_x;
+	float right_x = eye_x + _dov;
 	
 	// make sure everything is gone
 	_corners.clear();
 	
 	// bottom left
-	_corners.push_back( line( rotate( bottom_x, left_y, eye_x, eye_y, angle ), rotate( top_x, left_y, eye_x, eye_y, angle ) ) );
+	_corners.push_back( line( rotate( left_x, bottom_y, eye_x, eye_y, angle ), rotate( left_x, top_y, eye_x, eye_y, angle ) ) );
 	
 	// top left
-	_corners.push_back( line( rotate( top_x, left_y, eye_x, eye_y, angle ), rotate( top_x, right_y, eye_x, eye_y, angle ) ) );
+	_corners.push_back( line( rotate( left_x, top_y, eye_x, eye_y, angle ), rotate( right_x, top_y, eye_x, eye_y, angle ) ) );
 	
 	// top right
-	_corners.push_back( line( rotate( top_x, right_y, eye_x, eye_y, angle ), rotate( bottom_x, right_y, eye_x, eye_y, angle ) ) );
+	_corners.push_back( line( rotate(  right_x, top_y, eye_x, eye_y, angle ), rotate(  right_x, bottom_y, eye_x, eye_y, angle ) ) );
 	
 	// bottom right
-	_corners.push_back( line( rotate( bottom_x, right_y, eye_x, eye_y, angle ), rotate( bottom_x, left_y, eye_x, eye_y, angle ) ) );
+	_corners.push_back( line( rotate( right_x, bottom_y, eye_x, eye_y, angle ), rotate( left_x, bottom_y, eye_x, eye_y, angle ) ) );
 	
 	glMatrixMode( GL_MODELVIEW );	
 	glPushMatrix();
@@ -119,7 +119,7 @@ bool line_of_sight::in_my_box( float x, float y, float h, float w )
 	// for our box
 	point point1 = _corners[0].getPoint1();
 	point point2 = _corners[1].getPoint2();
-	return ( polygonCollision( _corners, poly2 ) || inBox( x, y, point1.x, point1.y, point2.x, point2.y ) );
+	return ( polygonCollision( _corners, poly2 ) );
 	
 }
 
@@ -134,6 +134,5 @@ point line_of_sight::rotate( float point_x, float point_y, float orig_x, float o
 	float y_prime = orig_y + ( ( ( point_x - orig_x ) * sin( rad_angle ) ) + ( ( point_y - orig_y ) * cos( rad_angle ) ) );
 
 	// End of DANGER
-	pair< float, float > xy_prime( x_prime , y_prime );
 	return point( x_prime, y_prime );
 }

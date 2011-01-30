@@ -42,6 +42,7 @@ private:
 	float _dov;
 	float _height;
 	float _width;
+	float _angle;
 	polygon _corners;
 
 	std::vector<game_sprite*> * _sprites;

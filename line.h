@@ -5,6 +5,18 @@
 struct point
 {
 	point( float _x, float _y ): x(_x), y(_y){}
+	point( const point & newPoint ) : x(newPoint.x), y(newPoint.y) {}
+	point & operator=( point & rhs )
+	{
+		// check for self assignment
+		if( this != &rhs )
+		{
+			x = rhs.x;
+			y = rhs.y;
+		}
+		return *this;
+	}
+	
 	float x;
 	float y;
 };
@@ -18,7 +30,8 @@ public:
 	point getPoint1() const { return point( _x1, _y1 ); }
 	point getPoint2() const { return point( _x2, _y2 ); }
 	float getSlope() const;
-	bool checkIntersection( const line & line2 ) const;
+	point checkIntersection( const line & line2 ) const;
+	bool isPointOnLine( const point & testPoint ) const;
 	bool isHorizontal() const { return _y1 == _y2; }
 	bool isVertical() const { return _x1 == _x2; }
 
