@@ -9,16 +9,25 @@
 #ifndef INPUT_H
 #define INPUT_H
 
+
+class game;
+
 class game_input {
+private:
+	game * pGame;
 
 public:
-	game_input();
+	game_input(game * _pGame);
+	~game_input();
 	void init();
-	static void SpecialKeys(int key, int x, int y);
-	static void NormalKeys(unsigned char key, int x, int y);
-	static void MouseActiveMotion(int x, int y) ;
-	static void MousePassiveMotion(int x, int y) ;
-	static void MainMouse(int button, int state, int x, int y);
-	static void MouseEntry(int state);
+	void InputMovement(int key, int delta);
+	void SpecialKeys(int key, int x, int y);
+	void SpecialKeysUp(int key, int x, int y);
+	void NormalKeys(unsigned char key, int x, int y);
+	void NormalKeysUp(unsigned char key, int x, int y);
+	void MouseActiveMotion(int x, int y) ;
+	void MousePassiveMotion(int x, int y) ;
+	void MainMouse(int button, int state, int x, int y);
+	void MouseEntry(int state);
 };
 #endif

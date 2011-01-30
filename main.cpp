@@ -61,111 +61,43 @@ void idle(void)
  input
  **********/
 
-void InputMovement(int key, int delta){
-	if (delta == 0) {
-		baseGame->focus_sprite->useAnimation(ANIM_NONE);
-	}
-
-	switch(key) {
-		case GLUT_KEY_LEFT : 
-			baseGame->focus_sprite->move_left = delta; break;
-		case GLUT_KEY_RIGHT : 
-			baseGame->focus_sprite->move_right = delta; break;
-		case GLUT_KEY_UP : 
-			baseGame->focus_sprite->move_up = delta; break;
-		case GLUT_KEY_DOWN : 
-			baseGame->focus_sprite->move_down = delta; break;
-		default :
-			break;
-	}
-}
-void SpecialKeys(int key, int x, int y) {
-	InputMovement(key, 1);
+void SpecialKeys(int key, int x, int y) 
+{
+	baseGame->pInput->SpecialKeys(key, x, y);
 }
 
-void SpecialKeysUp(int key, int x, int y) { 
-	InputMovement(key, 0);
+void SpecialKeysUp(int key, int x, int y) 
+{ 
+	baseGame->pInput->SpecialKeysUp(key, x, y);
 }
 
-void NormalKeys(unsigned char key, int x, int y) {
-	
-	if (key == 27) {
-		exit(0);
-	}
-	if (key == 13) {
-		if ( baseGame->_phase == 0){
-			baseGame->loadPhase(3);
-		}
-	}
-	if (key == 'a'){
-		InputMovement(GLUT_KEY_LEFT,1);
-	}
-	if (key == 'd'){
-		InputMovement(GLUT_KEY_RIGHT,1);
-	}
-	if (key == 's'){
-		InputMovement(GLUT_KEY_DOWN,1);
-	}
-	if (key == 'w'){
-		InputMovement(GLUT_KEY_UP,1);
-	}
-	if (key == '9'){
-		glutGameModeString("1152x648:32");
-		if (glutGameModeGet(GLUT_GAME_MODE_POSSIBLE)){
-			glutEnterGameMode();
-			init();
-			baseGame->loadMap(1);
-		}
-	}
-	if (key == '0'){
-		glutLeaveGameMode();
-		baseGame->loadMap(1);
-	}
+void NormalKeys(unsigned char key, int x, int y) 
+{
+	baseGame->pInput->NormalKeys(key, x, y);
 }
-void NormalKeysUp(unsigned char key, int x, int y) {
-	
-	int sz;
-	if (key == 27) {
-		exit(0);
-	}
-	if (key == 'a'){
-		InputMovement(GLUT_KEY_LEFT,0);
-	}
-	
-	if (key == 'e'){
-		baseGame->focus_sprite->useAnimation(ANIM_EXPLODE);;
-	}
-	
-	if (key == 't'){
-		vector<tile*> pTiles;
-		pTiles = baseGame->pMap->getTiles(baseGame->focus_sprite->_x,baseGame->focus_sprite->_y,baseGame->focus_sprite->height,baseGame->focus_sprite->width);
-		sz = pTiles.size();
-		
-		int i;
-		int k;
-		for (i = 0; i < pTiles.size(); i++){
-			for (k = 0; k < pTiles[i]->sprites.size(); k++){
-				pTiles[i]->sprites[k]->active = false;
-			}
-		}
-	}
-	if (key == 'd'){
-		InputMovement(GLUT_KEY_RIGHT,0);
-	}
-	if (key == 's'){
-		InputMovement(GLUT_KEY_DOWN,0);
-	}
-	if (key == 'w'){
-		InputMovement(GLUT_KEY_UP,0);
-	}
+
+void NormalKeysUp(unsigned char key, int x, int y) 
+{	
+	baseGame->pInput->NormalKeysUp(key, x, y);
 }
-void MouseActiveMotion(int x, int y) {
+
+void MouseActiveMotion(int x, int y) 
+{
+	baseGame->pInput->MouseActiveMotion(x, y);
 }
-void MousePassiveMotion(int x, int y) {
+
+void MousePassiveMotion(int x, int y) 
+{
+	baseGame->pInput->MousePassiveMotion(x, y);
 }
-void MainMouse(int button, int state, int x, int y) {
+
+void MainMouse(int button, int state, int x, int y) 
+{
+	baseGame->pInput->MainMouse(button, state, x, y);
 }
+
 void MouseEntry(int state) {
+	baseGame->pInput->MouseEntry(state);
 }
 
 void init(){
