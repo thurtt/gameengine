@@ -96,18 +96,21 @@ void Guard::movement()
 	
 	vector<point> visibleSprites = _los->detect_visible_sprites();
 	
-	if ( visibleSprites.size() > 0 )
+	if( visibleSprites.size() == 0 )
 	{
-		_chase = true;
-	}
-	
-	if( !_chase )
-	{
+		if( _chase )
+		{
+			_chase = false;
+			_target_x = _waypoints[0].x;
+			_target_y = _waypoints[0].y;
+		}
+			
 		patrol();
 	}
 	else 
 	{
 		chase( visibleSprites[0] );
+		_chase = true;
 	}
 	_text->printf( "Guard X: %5.4f  Guard Y: %5.4f\nI see %d objects.", disp_x, disp_y, visibleSprites.size() );
 	if ( checkCaptures() )
@@ -171,7 +174,7 @@ void Guard::patrol()
 	else 
 	{
 		float rad_angle = ( -_angle * M_PI ) / 180.0;
-		_x += DELTA * cos( rad_angle );		
-		_y += DELTA * sin( rad_angle );
+		_x += DELTA * .7 * cos( rad_angle );		
+		_y += DELTA * .7 * sin( rad_angle );
 	}	
 }
