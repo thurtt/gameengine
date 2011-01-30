@@ -21,13 +21,15 @@ class HUD {
 private:
 	map<int, int> _attributes;
 	vector<game_sprite *>  ui_elements;
-	Player* pPlayer; //player object to monitor for updates.
+	game_sprite* pPlayer; //player object to monitor for updates.
 	
 public:
-	HUD(Player* pl);
+	HUD();
+	HUD(game_sprite* pl);
 	~HUD();
 	void draw();
 	void animate();
+	void includeElement(game_sprite* element);
 	void setAttribute(int _attr, int val);
 	int getAttribute(int _attr);
 };

@@ -18,6 +18,7 @@ game::game(){
 	timebase = 0;
 	focus_sprite = 0;
 	_phase = 0;
+	pHUD = 0;
 	
 	pMap = new game_map();
 	
@@ -46,7 +47,8 @@ void game::draw(){
 		sprites[i]->draw(toffx, toffy);
 	}
 	
-	pHUD->draw();
+	if (pHUD != 0)
+		pHUD->draw();
 }
 void game::animate(){
 	int i;
@@ -58,7 +60,9 @@ void game::animate(){
 	for (i = 0; i < sprites.size(); i++){
 		sprites[i]->animate();
 	}
-	pHUD->animate();
+	
+	if (pHUD != 0)
+		pHUD->animate();
 }
 
 void game::movement(){
@@ -84,7 +88,9 @@ void game::loadPhase(int phase){
 	switch (phase) {
 		case STATE_TITLE:
 			midPhase(); //a little clean-up here.
-			sprites.push_back( new game_sprite(0,0, glutGet( GLUT_WINDOW_WIDTH ),glutGet( GLUT_WINDOW_HEIGHT ), "title_screen.png", false, false) );
+			pHUD = new HUD();
+			pHUD->includeElement( new game_sprite(0,0, glutGet( GLUT_WINDOW_WIDTH ),glutGet( GLUT_WINDOW_HEIGHT ), "title_screen.png", false, false) );
+			//sprites.push_back( new game_sprite(0,0, glutGet( GLUT_WINDOW_WIDTH ),glutGet( GLUT_WINDOW_HEIGHT ), "title_screen.png", false, false) );
 			
 			break;
 		case STATE_LEVEL_STARTING:
@@ -125,6 +131,13 @@ void game::loadMap(int _map){
 	sprites.push_back(focus_sprite);
 	players.push_back(focus_sprite);
 	
+	if (pHUD != 0)
+	{
+		delete pHUD;
+		pHUD = 0;
+	}
+	pHUD = new HUD(focus_sprite);
+	
 	Guard * guard_sprite = new Guard( 202, 800, &players );
 	polygon guard_zone;
 	guard_zone.push_back( line( 50, 50, 50, 600 ) );
@@ -140,6 +153,11 @@ void game::loadMap(int _map){
 void game::midPhase(){
 	pMap->clearMap();
 	sprites.clear();
+	if (pHUD != 0)
+	{
+		delete pHUD;
+		pHUD = 0;
+	}
 }
 
 void game::idle(){

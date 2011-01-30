@@ -9,7 +9,13 @@
 
 #include "HUD.h"
 
-HUD::HUD(Player* pl) :
+HUD::HUD() :
+pPlayer(0)
+{
+	
+}
+
+HUD::HUD(game_sprite* pl) :
 pPlayer(pl)
 {
 }
@@ -36,6 +42,11 @@ void HUD::animate()
 	{
 		ui_elements[i]->animate();
 	}
+}
+
+void HUD::includeElement(game_sprite* element)
+{
+	ui_elements.push_back(element);
 }
 
 void HUD::setAttribute(int _attr, int _val)
