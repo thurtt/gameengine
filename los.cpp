@@ -85,19 +85,16 @@ void line_of_sight::draw( float x, float y, float angle )
 
 }
 
-std::vector<std::pair< float, float> > line_of_sight::detect_visible_sprites()
+std::vector<point> line_of_sight::detect_visible_sprites()
 {
 	std::vector<game_sprite *>::iterator itr = _sprites->begin();
-	std::vector<std::pair< float, float> > visible_sprites;
+	std::vector<point> visible_sprites;
 
 	while( itr != _sprites->end() )
 	{
-		if ( in_my_box( (*itr)->disp_x, (*itr)->disp_y, (*itr)->height, (*itr)->width ) )
+		if ( in_my_box( (*itr)->disp_x, (*itr)->disp_y, (*itr)->height, (*itr)->width ) && (*itr)->active )
 		{
-			std::pair<float, float> tmpPair;
-			tmpPair.first = (*itr)->disp_x;
-			tmpPair.second = (*itr)->disp_y;
-			visible_sprites.push_back( tmpPair );
+			visible_sprites.push_back( point( (*itr)->_x, (*itr)->_y ) );
 		}
 		++itr;
 	}

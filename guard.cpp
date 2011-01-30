@@ -79,14 +79,6 @@ Guard::~Guard()
 void Guard::movement()
 {
 
-	if( !_chase )
-	{
-		patrol();
-	}
-	else 
-	{
-	}
-
 	if (onscreen(disp_x, disp_y, height, width)){
 		std::vector<game_sprite *>::iterator itr = sprite_list.begin();
 		while( itr != sprite_list.end() )
@@ -102,26 +94,55 @@ void Guard::movement()
 		}
 	}
 	
-	vector<pair<float, float> > visibleSprites = _los->detect_visible_sprites();
-
+	vector<point> visibleSprites = _los->detect_visible_sprites();
+	
+	if ( visibleSprites.size() > 0 )
+	{
+		_chase = true;
+	}
+	
+	if( !_chase )
+	{
+		patrol();
+	}
+	else 
+	{
+		chase( visibleSprites[0] );
+	}
 	_text->printf( "Guard X: %5.4f  Guard Y: %5.4f\nI see %d objects.", disp_x, disp_y, visibleSprites.size() );
-	checkCaptures();
+	if ( checkCaptures() )
+	{
+		_chase = false;
+		_waypoint_index = 0;
+	}
 }
 
-void Guard::checkCaptures(){
+bool Guard::checkCaptures(){
 	
+	bool caught_the_bastard = false;
 	std::vector<game_sprite *>::iterator itr = _players->begin();
 	while( itr != _players->end() )
 	{	
 		if (boxCollision( _x, _y, _x + width, _y + height, (*itr)->_x, (*itr)->_y, (*itr)->_x + (*itr)->width, (*itr)->_y + (*itr)->height) || 
 			boxCollision((*itr)->_x, (*itr)->_y, (*itr)->_x + (*itr)->width, (*itr)->_y + (*itr)->height, _x, _y, _x + width, _y + height )){
 			if ( (*itr)->active ) {
-				//pickupScore++;
+				caught_the_bastard = true;
 				(*itr)->useAnimation(ANIM_EXPLODE);
 			}
 		}
 		++itr;
 	}
+	return caught_the_bastard;
+}
+
+void Guard::chase( point waypoint )
+{
+	_target_x = waypoint.x;
+	_target_y = waypoint.y;
+	
+	float rad_angle = atan2( ( _target_y - _y ), ( _target_x - _x ) );
+	_x += DELTA * 1.1 * cos( rad_angle );		
+	_y += DELTA * 1.1 * sin( rad_angle );
 }
 
 void Guard::patrol()
@@ -138,7 +159,6 @@ void Guard::patrol()
 		else 
 		{
 			_waypoint_index++;
-			//_waypoint_index = 2;
 		}
 
 		_target_x = _waypoints[_waypoint_index].x;
@@ -153,7 +173,5 @@ void Guard::patrol()
 		float rad_angle = ( -_angle * M_PI ) / 180.0;
 		_x += DELTA * cos( rad_angle );		
 		_y += DELTA * sin( rad_angle );
-	}
-
-	
+	}	
 }

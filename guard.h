@@ -42,7 +42,7 @@ public:
 	
 private:
 	void patrol();
-	void pursue();
+	void chase( point waypoint );
 	unsigned long _upCount;
 	unsigned long _downCount;
 	unsigned long _rightCount;
@@ -56,7 +56,7 @@ private:
 	void down();
 	void right();
 	void left();
-	void checkCaptures();
+	bool checkCaptures();
 	bool _chase;
 	polygon _zone;
 	vector<point> _waypoints;

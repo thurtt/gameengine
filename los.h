@@ -27,7 +27,7 @@ public:
 	// field of vision, depth of vision, height and width are required
 	line_of_sight( float fov, float dov, float height, float width, std::vector<game_sprite*> * sprites );
 	
-	std::vector< std::pair<float, float> > detect_visible_sprites();
+	std::vector<point> detect_visible_sprites();
 private:
 	line_of_sight();
 	line_of_sight( const line_of_sight& );
