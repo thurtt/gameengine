@@ -32,6 +32,7 @@ game::~game(){
 		delete sprites[i];
 	}
 	delete pMap;
+	delete pHUD;
 }
 
 void game::draw(){
@@ -44,6 +45,8 @@ void game::draw(){
 	for (i = 0; i < sprites.size(); i++){
 		sprites[i]->draw(toffx, toffy);
 	}
+	
+	pHUD->draw();
 }
 void game::animate(){
 	int i;
@@ -55,6 +58,7 @@ void game::animate(){
 	for (i = 0; i < sprites.size(); i++){
 		sprites[i]->animate();
 	}
+	pHUD->animate();
 }
 
 void game::movement(){
