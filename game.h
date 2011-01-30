@@ -42,6 +42,7 @@ class game{
 	float offset_y;
 public:
 	game_sprite* focus_sprite;
+	game_input* pInput;
 	game_map* pMap;
 	HUD* pHUD;
 	bool _finished;

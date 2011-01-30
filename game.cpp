@@ -22,6 +22,7 @@ game::game(){
 	pHUD = 0;
 	
 	pMap = new game_map();
+	pInput = new game_input( this );
 	
 	loadPhase(STATE_TITLE);
 	
@@ -35,6 +36,7 @@ game::~game(){
 	}
 	delete pMap;
 	delete pHUD;
+	delete pInput;
 }
 
 void game::draw(){
