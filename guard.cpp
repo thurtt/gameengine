@@ -192,21 +192,10 @@ void Guard::patrol()
 	
 	//if( !inBox( _x, _y, _zone[0].getPoint1().x, _zone[0].getPoint1().y, _zone[1].getPoint2().x, _zone[1].getPoint2().y ) ) //&& _stepCount > 250 )
 	if( _x <= _target_x + 5
-	   && _x >= _target_x - 5
-	   && _y <= _target_y + 5
-	   && _y >= _target_y - 5 )
-	{
-		/*do
-		{
-			_target_x = static_cast<float>( rand() % static_cast<int>( _zone[1].getPoint2().x - _zone[0].getPoint1().x ) ) + _zone[0].getPoint1().x;
-			_target_y = static_cast<float>( rand() % static_cast<int>( _zone[1].getPoint2().y - _zone[0].getPoint1().y ) ) + _zone[0].getPoint1().y;
-			_angle = -( atan( ( _target_y - _y ) / ( _target_x - _x ) ) * 180 ) / M_PI;
-		
-			// stepCount is used to keep our
-			// dude from getting stuck in a corner
-			_stepCount = 0;
-		} while (!inBox( _target_x, _target_y, _zone[0].getPoint1().x, _zone[0].getPoint1().y, _zone[1].getPoint2().x, _zone[1].getPoint2().y ) );*/
-			
+	    && _x >= _target_x - 5
+	    && _y <= _target_y + 5
+	    && _y >= _target_y - 5 )
+	{			
 		if( _waypoint_index == 11 )
 		{
 			_waypoint_index = 0;
@@ -220,12 +209,7 @@ void Guard::patrol()
 		_target_x = _waypoints[_waypoint_index].x;
 		_target_y = _waypoints[_waypoint_index].y;
 		
-		float rad_angle = atan( ( _target_y - _y ) / ( _target_x - _x ) );
-		
-		if ( _target_y - _y < 0 )
-		{
-			//rad_angle += M_PI;
-		}
+		float rad_angle = atan2( ( _target_y - _y ), ( _target_x - _x ) );
 		
 		_angle = ( rad_angle * 180 ) / M_PI;
 	}

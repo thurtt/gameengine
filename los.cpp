@@ -127,7 +127,7 @@ point line_of_sight::rotate( float point_x, float point_y, float orig_x, float o
 {
 	// DANGER: Math zone
 	// convert degrees to radians
-	float rad_angle = ( -angle * M_PI ) / 180.0;
+	float rad_angle = ( angle * M_PI ) / 180.0;
 
 	// the trig identities used for rotation
 	float x_prime = orig_x + ( ( ( point_x - orig_x ) * cos( rad_angle ) ) - ( ( point_y - orig_y ) * sin( rad_angle ) ) );
