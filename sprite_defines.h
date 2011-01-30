@@ -16,5 +16,6 @@
 #define ALIVE 3
 #define EXPIRATION 4
 #define EXPIRATION_TICK 5
+#define PICKUP_SCORE 6
 
 #endif // _SPRITEDEFINES_H

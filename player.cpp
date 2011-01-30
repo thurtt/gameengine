@@ -20,13 +20,13 @@ _pickups(pickups),
 _pMap(pMap)
 {
 	// do some basic setup
-	pickupScore = 0;
 	xy(_x_, _y_);
 	wh(_width_, _height_);
 	texture_file = _filename;
-	setAttribute(BLOCK_MOVEMENT, false);
-	setAttribute(BLOCK_VISIBILITY, false);
-	setAttribute(ALIVE, true);
+	setAttribute(PICKUP_SCORE, 0);
+	setAttribute(BLOCK_MOVEMENT, 0);
+	setAttribute(BLOCK_VISIBILITY, 0);
+	setAttribute(ALIVE, 1);
 	
 	texture = LoadTexture(texture_file);
 	includeAnimation(ANIM_NONE, texture, 0);
@@ -107,7 +107,7 @@ void Player::movement(){
 
 void Player::checkPickups(){
 	
-	int original_pickup = pickupScore;
+	int original_pickup = getAttribute(PICKUP_SCORE);
 	
 	std::vector<game_sprite *>::iterator itr = _pickups->begin();
 	while( itr != _pickups->end() )
@@ -115,14 +115,14 @@ void Player::checkPickups(){
 		if (boxCollision(_x, _y, _x + width, _y + height, (*itr)->_x, (*itr)->_y, (*itr)->_x + (*itr)->width, (*itr)->_y + (*itr)->height) || 
 			boxCollision((*itr)->_x, (*itr)->_y, (*itr)->_x + (*itr)->width, (*itr)->_y + (*itr)->height, _x, _y, _x + width, _y + height )){
 			if ( (*itr)->active && ((*itr)->getAttribute(ALIVE) > 0) ) {
-				pickupScore++;
+				setAttribute(PICKUP_SCORE, getAttribute(PICKUP_SCORE) + 1);
 				(*itr)->useAnimation(ANIM_EXPLODE);
 			}
 		}
 		++itr;
 	}
-	if (original_pickup < pickupScore){
-		sprite_list.push_back(new textBlurb(width / 2, height, "+ %d", pickupScore - original_pickup));
+	if (original_pickup < getAttribute(PICKUP_SCORE)){
+		sprite_list.push_back(new textBlurb(width / 2, height, "+ %d", getAttribute(PICKUP_SCORE) - original_pickup));
 	}	
 }
 

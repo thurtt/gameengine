@@ -22,7 +22,6 @@ public:
 	~Player();
 	virtual void movement();
 	void checkPickups();
-	int pickupScore;
 	
 private:
 	std::vector<game_sprite*> * _sprites;

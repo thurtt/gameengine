@@ -89,8 +89,7 @@ void game::loadPhase(int phase){
 		case STATE_TITLE:
 			midPhase(); //a little clean-up here.
 			pHUD = new HUD();
-			pHUD->includeElement( new game_sprite(0,0, glutGet( GLUT_WINDOW_WIDTH ),glutGet( GLUT_WINDOW_HEIGHT ), "title_screen.png", false, false) );
-			//sprites.push_back( new game_sprite(0,0, glutGet( GLUT_WINDOW_WIDTH ),glutGet( GLUT_WINDOW_HEIGHT ), "title_screen.png", false, false) );
+			pHUD->includeElement( new game_sprite(0,0, glutGet( GLUT_WINDOW_WIDTH ), glutGet( GLUT_WINDOW_HEIGHT ), "title_screen.png", false, false) );
 			
 			break;
 		case STATE_LEVEL_STARTING:
