@@ -12,6 +12,7 @@
 #include "player.h"
 #include "los.h"
 #include "game_states.h"
+#include "textAttributeReport.h"
 
 game::game(){
 	frame = 0;
@@ -136,6 +137,7 @@ void game::loadMap(int _map){
 		pHUD = 0;
 	}
 	pHUD = new HUD(focus_sprite);
+	pHUD->includeElement(new textAttributeReport(5,5, focus_sprite, PICKUP_SCORE, "Score: %d"));
 	
 	Guard * guard_sprite = new Guard( 202, 800, &players );
 	polygon guard_zone;
