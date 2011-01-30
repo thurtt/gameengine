@@ -13,6 +13,7 @@
 #include "sprite.h"
 #include "input.h"
 #include "game_map.h"
+#include "HUD.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -42,6 +43,7 @@ class game{
 public:
 	game_sprite* focus_sprite;
 	game_map* pMap;
+	HUD* pHUD;
 	bool _finished;
 	int _phase;
 	game();
