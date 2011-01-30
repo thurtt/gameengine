@@ -33,8 +33,6 @@ public:
 	float relative_y;
 	float alpha;
 	int textLen;
-	int expiration;
-	int expiration_tick; //counter for expiration.
 	char * _msg;
 private:	
 	void write_string( float x, float y );

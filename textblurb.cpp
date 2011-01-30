@@ -17,8 +17,7 @@ textBlurb::textBlurb( float _rx, float _ry, const char * fmt, ... )
 {
 	xy(0,0);
 	wh(6,13);
-	
-	expiration = 15;
+
 	relative_x = _rx;
 	relative_y = _ry;
 	setAttribute(BLOCK_MOVEMENT, 0);
