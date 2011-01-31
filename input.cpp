@@ -9,6 +9,7 @@
 
 #include "input.h"
 #include "game.h"
+#include "button_defines.h"
 
 #include <stdlib.h>
 #include <string>
@@ -150,11 +151,28 @@ void game_input::NormalKeysUp(unsigned char key, int x, int y)
 	}
 }
 
-void game_input::MouseActiveMotion(int x, int y) {
+void game_input::MouseActiveMotion(int x, int y) 
+{
 }
-void game_input::MousePassiveMotion(int x, int y) {
+
+void game_input::MousePassiveMotion(int x, int y) 
+{
 }
-void game_input::MainMouse(int button, int state, int x, int y) {
+
+void game_input::MainMouse(int button, int state, int x, int y) 
+{
+	//check hud for response
+	int iReturn;
+	iReturn = pGame->pHUD->click(state,x,y);
+	if (iReturn == NO_EVENT) {
+		//interract with the world
+	}
+	else {
+		//do something based on phase
+	}
+
 }
-void game_input::MouseEntry(int state) {
+
+void game_input::MouseEntry(int state) 
+{
 }

@@ -93,6 +93,7 @@
 		F3EF746512F5C88D002E7129 /* HUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HUD.cpp; sourceTree = "<group>"; };
 		F3EF751712F5EEB9002E7129 /* textAttributeReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textAttributeReport.h; sourceTree = "<group>"; };
 		F3EF751812F5EEB9002E7129 /* textAttributeReport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = textAttributeReport.cpp; sourceTree = "<group>"; };
+		F3EF75EB12F62B0C002E7129 /* button_defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = button_defines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +249,7 @@
 			children = (
 				F3EF746412F5C88D002E7129 /* HUD.h */,
 				F3EF746512F5C88D002E7129 /* HUD.cpp */,
+				F3EF75EB12F62B0C002E7129 /* button_defines.h */,
 			);
 			name = HUD;
 			sourceTree = "<group>";

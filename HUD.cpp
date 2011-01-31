@@ -8,6 +8,8 @@
  */
 
 #include "HUD.h"
+#include "button_defines.h"
+#include "collision.h"
 
 HUD::HUD() :
 pPlayer(0)
@@ -61,4 +63,21 @@ int HUD::getAttribute(int _attr)
 		return _attributes[_attr];
 	}
 	return 0;
+}
+
+int HUD::click(int state, int x, int y)
+{
+	int event = NO_EVENT;
+	int i;
+	for (i = 0; i < ui_elements.size(); i++)
+	{
+		if (inBox(x, y, ui_elements[i]->_x, ui_elements[i]->_y, ui_elements[i]->_x + ui_elements[i]->width, ui_elements[i]->_y + ui_elements[i]->height)) 
+		{
+			event = ui_elements[i]->getAttribute(BUTTON_RETURN_VALUE);
+			if (event > NO_EVENT) {
+				return event;
+			}
+		}
+	}
+	return event;
 }
