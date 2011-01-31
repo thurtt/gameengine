@@ -142,12 +142,6 @@ void game::loadMap(int _map){
 	pHUD->includeElement(new textAttributeReport(5,5, focus_sprite, PICKUP_SCORE, "Score: %d"));
 	
 	Guard * guard_sprite = new Guard( 202, 800, &players );
-	polygon guard_zone;
-	guard_zone.push_back( line( 50, 50, 50, 600 ) );
-	guard_zone.push_back( line( 50, 600, 800, 600 ) );
-	guard_zone.push_back( line( 800, 600, 800, 50 ) );
-	guard_zone.push_back( line( 800, 50, 50, 50 ) );
-	guard_sprite->setGuardZone( guard_zone );
 	sprites.push_back( guard_sprite );
 
 	

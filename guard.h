@@ -12,12 +12,10 @@
 
 #include "sprite.h"
 #include "line.h"
+#include "waypoints.h"
 
-const unsigned long MAX_UP = 300;
-const unsigned long MAX_DOWN = 300;
-const unsigned long MAX_RIGHT = 400;
-const unsigned long MAX_LEFT = 300;
-const float DELTA = 0.8;
+const float PATROL_DELTA = 0.5;
+const float CHASE_DELTA = 0.9;
 
 const float FIELD_OF_VISION = 180.0;
 const float DEPTH_OF_VISION = 250.0;
@@ -36,31 +34,22 @@ class Guard : public game_sprite
 public:
 	std::vector<game_sprite*> * _players;
 	Guard( float start_x, float start_y, std::vector<game_sprite*> * sprites );
-	void setGuardZone( polygon zone ){ _zone = zone;}
 	~Guard();
 	virtual void movement();	
 	
 private:
 	void patrol();
 	void chase( point waypoint );
-	unsigned long _upCount;
-	unsigned long _downCount;
-	unsigned long _rightCount;
-	unsigned long _leftCount;
+	bool close_enough( const point & point1, const point & point2 );
+	point move( float delta );
 	line_of_sight * _los;
 	Text * _text;
-	float _target_x;
-	float _target_y;
+	point _target;
 
-	void up();
-	void down();
-	void right();
-	void left();
-	bool checkCaptures();
+	void checkCaptures();
 	bool _chase;
-	polygon _zone;
-	vector<point> _waypoints;
-	int _waypoint_index;
+	waypoint_manager _wpmgr;
+
 };
 
 #endif // _GUARD_H_

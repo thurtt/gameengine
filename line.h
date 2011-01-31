@@ -6,7 +6,7 @@ struct point
 {
 	point( float _x, float _y ): x(_x), y(_y){}
 	point( const point & newPoint ) : x(newPoint.x), y(newPoint.y) {}
-	point & operator=( point & rhs )
+	point & operator=( point rhs )
 	{
 		// check for self assignment
 		if( this != &rhs )
@@ -16,6 +16,8 @@ struct point
 		}
 		return *this;
 	}
+	
+	bool operator==( const point & rhs ){ return( rhs.x == x && rhs.y == y ); }
 	
 	float x;
 	float y;

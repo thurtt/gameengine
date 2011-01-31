@@ -34,10 +34,7 @@ private:
 	const line_of_sight& operator=( const line_of_sight& );
 
 	bool in_my_box( float x, float y, float h, float w );
-	
-	// returns x,y prime, where orig is the point to rotate around, and point is the point to rotate
-	point rotate( float point_x, float point_y, float orig_x, float orig_y, float angle );
-	
+		
 	float _fov;
 	float _dov;
 	float _height;

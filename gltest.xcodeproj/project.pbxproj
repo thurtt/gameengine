@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E2BEAC9D12E20D1A004C439E /* los.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BEAC9C12E20D1A004C439E /* los.cpp */; };
 		E2BEACBA12E2196C004C439E /* guard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BEACB912E2196C004C439E /* guard.cpp */; };
+		E2DD7CCC12F64F8200863ECB /* rotation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DD7CCB12F64F8200863ECB /* rotation.cpp */; };
+		E2DD7CD712F6520700863ECB /* waypoints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DD7CD612F6520700863ECB /* waypoints.cpp */; };
 		F304F0D712F47BD4007E09FD /* line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F304F0D512F47BD4007E09FD /* line.cpp */; };
 		F3409E1612D81B6A005240F1 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3409E1512D81B6A005240F1 /* GLUT.framework */; };
 		F3409E1812D81B6A005240F1 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3409E1712D81B6A005240F1 /* OpenGL.framework */; };
@@ -40,6 +42,10 @@
 		E2BEAC9C12E20D1A004C439E /* los.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = los.cpp; sourceTree = "<group>"; };
 		E2BEACB812E2196C004C439E /* guard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guard.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		E2BEACB912E2196C004C439E /* guard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guard.cpp; sourceTree = "<group>"; };
+		E2DD7CCA12F64F8200863ECB /* rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rotation.h; sourceTree = "<group>"; };
+		E2DD7CCB12F64F8200863ECB /* rotation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rotation.cpp; sourceTree = "<group>"; };
+		E2DD7CD512F6520700863ECB /* waypoints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = waypoints.h; sourceTree = "<group>"; };
+		E2DD7CD612F6520700863ECB /* waypoints.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = waypoints.cpp; sourceTree = "<group>"; };
 		F304F0A812F4688D007E09FD /* sprite_defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprite_defines.h; sourceTree = "<group>"; };
 		F304F0D512F47BD4007E09FD /* line.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = line.cpp; sourceTree = "<group>"; };
 		F304F0D612F47BD4007E09FD /* line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = line.h; sourceTree = "<group>"; };
@@ -109,9 +115,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E2DD7CC612F64D5C00863ECB /* Physics */ = {
+			isa = PBXGroup;
+			children = (
+				E2DD7CCA12F64F8200863ECB /* rotation.h */,
+				E2DD7CCB12F64F8200863ECB /* rotation.cpp */,
+				E2DD7CD512F6520700863ECB /* waypoints.h */,
+				E2DD7CD612F6520700863ECB /* waypoints.cpp */,
+			);
+			name = Physics;
+			sourceTree = "<group>";
+		};
 		F3409DFD12D81AA8005240F1 = {
 			isa = PBXGroup;
 			children = (
+				E2DD7CC612F64D5C00863ECB /* Physics */,
 				F3EF742812F5C6B0002E7129 /* Collision */,
 				F3E35F7112DA4A420078D65F /* SOIL */,
 				F3EF745612F5C703002E7129 /* Maps */,
@@ -328,6 +346,8 @@
 				F304F0D712F47BD4007E09FD /* line.cpp in Sources */,
 				F3EF746612F5C88D002E7129 /* HUD.cpp in Sources */,
 				F3EF751912F5EEB9002E7129 /* textAttributeReport.cpp in Sources */,
+				E2DD7CCC12F64F8200863ECB /* rotation.cpp in Sources */,
+				E2DD7CD712F6520700863ECB /* waypoints.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
