@@ -7,6 +7,10 @@
  *
  */
 
+
+#ifndef HUD_H
+#define HUD_H
+
 #include "sprite.h"
 #include "player.h"
 
@@ -32,4 +36,7 @@ public:
 	void includeElement(game_sprite* element);
 	void setAttribute(int _attr, int val);
 	int getAttribute(int _attr);
+	int click(int state, int x, int y);
 };
+
+#endif

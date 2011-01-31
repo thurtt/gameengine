@@ -17,5 +17,6 @@
 #define EXPIRATION 4
 #define EXPIRATION_TICK 5
 #define PICKUP_SCORE 6
+#define BUTTON_RETURN_VALUE 7 // to avoid collision with button logic
 
 #endif // _SPRITEDEFINES_H
