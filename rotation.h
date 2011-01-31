@@ -15,5 +15,8 @@
 // returns x,y prime, where orig is the point to rotate around, and point is the point to rotate
 point rotate( float point_x, float point_y, float orig_x, float orig_y, float angle );
 
+float toDegrees( float radians );
+float toRadians( float radians );
+
 #endif // _ROTATION_H_
 

@@ -15,7 +15,7 @@ point rotate( float point_x, float point_y, float orig_x, float orig_y, float an
 {
 	// DANGER: Math zone
 	// convert degrees to radians
-	float rad_angle = ( -angle * M_PI ) / 180.0;
+	float rad_angle = toRadians( -angle );
 	
 	// the trig identities used for rotation
 	float x_prime = orig_x + ( ( ( point_x - orig_x ) * cos( rad_angle ) ) - ( ( point_y - orig_y ) * sin( rad_angle ) ) );
@@ -23,4 +23,14 @@ point rotate( float point_x, float point_y, float orig_x, float orig_y, float an
 	
 	// End of DANGER
 	return point( x_prime, y_prime );
+}
+
+float toDegrees( float radians )
+{
+	return ( radians * 180 ) / M_PI;
+
+}
+float toRadians( float degrees )
+{
+	return ( degrees * M_PI ) / 180.0;	
 }

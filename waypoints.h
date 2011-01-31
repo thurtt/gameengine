@@ -7,3 +7,22 @@
  *
  */
 
+#include "line.h"
+
+class waypoint_manager
+{
+public:
+	waypoint_manager();
+	point getNextWaypoint();
+	point getRandomWaypoint();
+	point getClosestWaypoint( point refPoint );
+	void reset();
+	void addWaypoint( point newPoint );
+	bool removeWaypoint( point waypoint );
+	
+private:
+	
+	std::vector<point> _waypoints;
+	size_t _index;
+	
+};
