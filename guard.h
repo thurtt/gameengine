@@ -41,7 +41,7 @@ private:
 	void patrol();
 	void chase( point waypoint );
 	bool close_enough( const point & point1, const point & point2 );
-	point move( float delta );
+	void move( float delta );
 	line_of_sight * _los;
 	Text * _text;
 	point _target;

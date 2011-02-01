@@ -113,6 +113,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="&quot;..\freeglut-2.6.0\include\GL&quot;"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -129,6 +130,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="opengl32.lib glu32.lib freeglut.lib"
+				AdditionalLibraryDirectories="&quot;..\freeglut-2.6.0\VisualStudio2008\Release\&quot;"
 				GenerateDebugInformation="true"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -174,7 +177,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\game_map.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\guard.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\HUD.cpp"
 				>
 			</File>
 			<File
@@ -210,6 +221,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\rotation.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SOIL.c"
 				>
 			</File>
@@ -234,11 +249,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\textAttributeReport.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\textblurb.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\tiles.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\waypoints.cpp"
 				>
 			</File>
 			<File
@@ -252,6 +275,10 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\button_defines.h"
+				>
+			</File>
+			<File
 				RelativePath=".\collision.h"
 				>
 			</File>
@@ -264,11 +291,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\game_map.h"
+				>
+			</File>
+			<File
 				RelativePath=".\game_states.h"
 				>
 			</File>
 			<File
 				RelativePath=".\guard.h"
+				>
+			</File>
+			<File
+				RelativePath=".\HUD.h"
 				>
 			</File>
 			<File
@@ -304,6 +339,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\rotation.h"
+				>
+			</File>
+			<File
 				RelativePath=".\SOIL.h"
 				>
 			</File>
@@ -336,6 +375,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\textAttributeReport.h"
+				>
+			</File>
+			<File
 				RelativePath=".\textblurb.h"
 				>
 			</File>
@@ -345,6 +388,10 @@
 			</File>
 			<File
 				RelativePath=".\tiles.h"
+				>
+			</File>
+			<File
+				RelativePath=".\waypoints.h"
 				>
 			</File>
 			<File

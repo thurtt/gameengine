@@ -146,7 +146,7 @@ bool Guard::close_enough( const point & point1, const point & point2 )
 		   && point2.y <= point1.y + 5 && point2.y >= point1.y - 5 );
 }
 
-point Guard::move( float delta )
+void Guard::move( float delta )
 {
 	float rad_angle = atan2( ( _target.y - _y ), ( _target.x - _x ) );
 	_angle = -toDegrees( rad_angle );

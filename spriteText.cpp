@@ -55,7 +55,7 @@ spriteText::spriteText( float _rx, float _ry, float _h_, float _w_, int exp, con
 
 spriteText::spriteText()
 {
-	//delete [] _msg;
+	_msg = new char[MAX_SPRITE_CHARS];
 }
 
 spriteText::~spriteText()
@@ -64,21 +64,12 @@ spriteText::~spriteText()
 }
 
 int spriteText::getTextLen(){
-	int i;
-	
-	for( i = 0; i < MAX_SPRITE_CHARS; i++ )
-	{
-		if ( _msg[i] == '\0' )
-		{
-			break;
-		}
-	}
-	return i;
+	// strlen is implemented in assembly
+	// and is extremely fast.
+	return strlen( _msg );
 }
 
 void spriteText::vprintf(const char * fmt, va_list va_args){
-	
-	_msg = new char[MAX_SPRITE_CHARS];
 	
 	vsnprintf( _msg, MAX_SPRITE_CHARS, fmt, va_args );
 	_msg[MAX_SPRITE_CHARS-1] = '\0';
