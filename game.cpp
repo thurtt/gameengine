@@ -10,8 +10,10 @@
 #include "game.h"
 #include "guard.h"
 #include "player.h"
+#include "buttonsprite.h"
 #include "los.h"
 #include "game_states.h"
+#include "button_defines.h"
 #include "textAttributeReport.h"
 
 game::game(){
@@ -93,7 +95,7 @@ void game::loadPhase(int phase){
 			midPhase(); //a little clean-up here.
 			pHUD = new HUD();
 			pHUD->includeElement( new game_sprite(0,0, glutGet( GLUT_WINDOW_WIDTH ), glutGet( GLUT_WINDOW_HEIGHT ), "title_screen.png", false, false) );
-			
+			pHUD->includeElement( new button_sprite( (glutGet( GLUT_WINDOW_WIDTH ) /2 ) - (415 / 2),120,128,415,"start_button.png", START_GAME) );
 			break;
 		case STATE_LEVEL_STARTING:
 			midPhase();

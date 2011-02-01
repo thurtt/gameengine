@@ -42,5 +42,8 @@
 #define ANIM_HIDE  5
 #define ANIM_EXPLODE  6
 #define ANIM_AMBIENT 7
+#define ANIM_BUTTON 8
+#define ANIM_BUTTON_UP 9
+#define ANIM_BUTTON_DOWN 10
 
 #endif

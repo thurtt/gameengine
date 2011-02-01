@@ -15,5 +15,6 @@
 #define EVENT_ACCEPTED 1 // but no action
 #define QUIT_GAME 3
 #define	START_GAME 4
+#define PAUSE_GAME 5
 
 #endif // BUTTONDEFINES_H

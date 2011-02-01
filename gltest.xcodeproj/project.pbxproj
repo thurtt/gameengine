@@ -12,6 +12,7 @@
 		E2DD7CCC12F64F8200863ECB /* rotation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DD7CCB12F64F8200863ECB /* rotation.cpp */; };
 		E2DD7CD712F6520700863ECB /* waypoints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DD7CD612F6520700863ECB /* waypoints.cpp */; };
 		F304F0D712F47BD4007E09FD /* line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F304F0D512F47BD4007E09FD /* line.cpp */; };
+		F3240EC512F799DE00535C1F /* buttonsprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3240EC412F799DE00535C1F /* buttonsprite.cpp */; };
 		F3409E1612D81B6A005240F1 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3409E1512D81B6A005240F1 /* GLUT.framework */; };
 		F3409E1812D81B6A005240F1 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3409E1712D81B6A005240F1 /* OpenGL.framework */; };
 		F3409E2112D81BB5005240F1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3409E2012D81BB5005240F1 /* main.cpp */; };
@@ -49,6 +50,9 @@
 		F304F0A812F4688D007E09FD /* sprite_defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprite_defines.h; sourceTree = "<group>"; };
 		F304F0D512F47BD4007E09FD /* line.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = line.cpp; sourceTree = "<group>"; };
 		F304F0D612F47BD4007E09FD /* line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = line.h; sourceTree = "<group>"; };
+		F3240EC312F799DE00535C1F /* buttonsprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buttonsprite.h; sourceTree = "<group>"; };
+		F3240EC412F799DE00535C1F /* buttonsprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buttonsprite.cpp; sourceTree = "<group>"; };
+		F3240ED612F79E5B00535C1F /* button_defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = button_defines.h; sourceTree = "<group>"; };
 		F3409E0D12D81AD4005240F1 /* XcodeGLUT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XcodeGLUT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3409E1012D81AD4005240F1 /* XcodeGLUT-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XcodeGLUT-Info.plist"; sourceTree = "<group>"; };
 		F3409E1512D81B6A005240F1 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = /System/Library/Frameworks/GLUT.framework; sourceTree = "<absolute>"; };
@@ -124,6 +128,16 @@
 				E2DD7CD612F6520700863ECB /* waypoints.cpp */,
 			);
 			name = Physics;
+			sourceTree = "<group>";
+		};
+		F3240ECD12F79C9C00535C1F /* UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				F3240ED612F79E5B00535C1F /* button_defines.h */,
+				F3240EC312F799DE00535C1F /* buttonsprite.h */,
+				F3240EC412F799DE00535C1F /* buttonsprite.cpp */,
+			);
+			name = "UI Elements";
 			sourceTree = "<group>";
 		};
 		F3409DFD12D81AA8005240F1 = {
@@ -207,6 +221,7 @@
 			children = (
 				F3EF746012F5C831002E7129 /* TextSprites */,
 				F3EF746112F5C84B002E7129 /* DudeSprites */,
+				F3240ECD12F79C9C00535C1F /* UI Elements */,
 				F3E35BA612D958C30078D65F /* sprite.h */,
 				F3E35BA712D958C30078D65F /* sprite.cpp */,
 				F304F0A812F4688D007E09FD /* sprite_defines.h */,
@@ -348,6 +363,7 @@
 				F3EF751912F5EEB9002E7129 /* textAttributeReport.cpp in Sources */,
 				E2DD7CCC12F64F8200863ECB /* rotation.cpp in Sources */,
 				E2DD7CD712F6520700863ECB /* waypoints.cpp in Sources */,
+				F3240EC512F799DE00535C1F /* buttonsprite.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
