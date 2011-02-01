@@ -20,7 +20,7 @@ private:
 	
 public:
 	button_sprite();
-	button_sprite(float x, float y, float h, float w, char * texture, int ret_val);
+	button_sprite(float x, float y, float h, float w, const char * texture, int ret_val);
 	~button_sprite();
 	int click(int state, int x, int y);
 	//void animate();

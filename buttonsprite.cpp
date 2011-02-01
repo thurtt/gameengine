@@ -14,7 +14,7 @@ button_sprite::button_sprite()
 {
 }
 
-button_sprite::button_sprite(float x, float y, float h, float w, char * texture_file, int ret_val)
+button_sprite::button_sprite(float x, float y, float h, float w,  const char * texture_file, int ret_val)
 {
 	xy(x,y);
 	wh(w,h);
