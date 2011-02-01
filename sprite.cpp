@@ -152,6 +152,12 @@ void game_sprite::animate(){
 	}
 }
 
+int game_sprite::click(int state, int x, int y)
+{
+	//we don't really care.
+	return 0;
+}
+
 void game_sprite::xy(float _x_, float _y_){
 	_x = _x_;
 	_y = _y_;
@@ -233,7 +239,8 @@ void game_sprite::draw(float offset_x, float offset_y){
 	float translated_y = 0.0f;
 	float translated_y2 = 1.0f;
 	
-	if (animations[texture].first != animations[ANIM_NONE].first) {
+	//if (animations[texture].first != animations[ANIM_NONE].first) {
+	if (texture != ANIM_NONE ) {
 		if ((_angle == 90) || (_angle == 270)){
 			translated_y = ((float)frame * (float)height)/(animations[texture].second * (float)height);
 			translated_y2 = (((float)frame + 1) * (float)height)/(animations[texture].second * (float)height);

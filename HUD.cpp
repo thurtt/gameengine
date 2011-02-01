@@ -98,11 +98,12 @@ int HUD::click(int state, int x, int y)
 	{
 		if (inBox(x, y, ui_elements[i]->_x, ui_elements[i]->_y, ui_elements[i]->_x + ui_elements[i]->width, ui_elements[i]->_y + ui_elements[i]->height)) 
 		{
-			event = ui_elements[i]->getAttribute(BUTTON_RETURN_VALUE);
+			event = ui_elements[i]->click(state, x, y);
 			if (event > NO_EVENT) {
 				return event;
 			}
 		}
+		ui_elements[i]->frame = 0;
 	}
 	return event;
 }

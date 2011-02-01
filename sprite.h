@@ -63,6 +63,7 @@ public:
 	void wh(float, float);
 	void draw();
 	virtual void draw (float, float);
+	virtual int click (int, int, int);
 	virtual void animate();
 	virtual void movement();
 	void rotate( float angle );

@@ -10,6 +10,7 @@
 #include "input.h"
 #include "game.h"
 #include "button_defines.h"
+#include "game_states.h"
 
 #include <stdlib.h>
 #include <string>
@@ -166,12 +167,24 @@ void game_input::MainMouse(int button, int state, int x, int y)
 {
 	//check hud for response
 	int iReturn;
-	iReturn = pGame->pHUD->click(state,x,y);
+	iReturn = pGame->pHUD->click(state,x, glutGet( GLUT_WINDOW_HEIGHT ) - y);
 	if (iReturn == NO_EVENT) {
 		//interract with the world
 	}
 	else {
 		//do something based on phase
+		switch (iReturn) {
+			case EVENT_ACCEPTED:
+				//dump
+				break;
+			case START_GAME:
+				//YOU HEAR THE MAN!
+				pGame->loadPhase(STATE_LEVEL_STARTING);
+				break;
+
+			default:
+				break;
+		}
 	}
 
 }
