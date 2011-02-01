@@ -149,6 +149,9 @@ void game_input::NormalKeysUp(unsigned char key, int x, int y)
 	if (key == 'w'){
 		InputMovement(GLUT_KEY_UP,0);
 	}
+	if (key == '8'){
+		pGame->pHUD->pFPS->active = pGame->pHUD->pFPS->active ? false : true;
+	}
 }
 
 void game_input::MouseActiveMotion(int x, int y) 

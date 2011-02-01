@@ -14,27 +14,51 @@
 HUD::HUD() :
 pPlayer(0)
 {
-	
+	init();
 }
 
 HUD::HUD(game_sprite* pl) :
 pPlayer(pl)
 {
+	init();
 }
 
 HUD::~HUD()
 {
 	ui_elements.clear();
 	pPlayer = 0;
+	delete pFPS;
+}
+
+void HUD::init()
+{
+	frame = 0;
+	time = 0;
+	timebase = 0;
+	pFPS = new spriteText(500, 50, 13, 6, 0, "FPS:" );
 }
 
 void HUD::draw()
 {
+	frame++;
+	time=glutGet(GLUT_ELAPSED_TIME);
+	float fps = 0.0f;
+	float frametime = 0.0f;
+	
+	if (time - timebase > 1000) {
+		fps = frame*1000.0/(time-timebase);
+		frametime = 1/fps;
+	 	timebase = time;		
+		frame = 0;
+		pFPS->printf("FPS:%3.0f(%0.6f)", fps, frametime);
+	}
+	
 	int i;
 	for (i = 0; i < ui_elements.size(); i++)
 	{
 		ui_elements[i]->draw( 0.0f, 0.0f );
 	}
+	pFPS->draw(75,5);
 }
 
 void HUD::animate()
@@ -44,6 +68,7 @@ void HUD::animate()
 	{
 		ui_elements[i]->animate();
 	}
+	pFPS->animate();
 }
 
 void HUD::includeElement(game_sprite* element)

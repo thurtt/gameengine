@@ -20,17 +20,24 @@
 #include <vector>
 #include <map>
 
+
+#include "spriteText.h"
+
 class HUD {
 	
 private:
 	map<int, int> _attributes;
 	vector<game_sprite *>  ui_elements;
 	game_sprite* pPlayer; //player object to monitor for updates.
+	int frame, time, timebase;
 	
 public:
+	spriteText * pFPS;
+	
 	HUD();
 	HUD(game_sprite* pl);
 	~HUD();
+	void init();
 	void draw();
 	void animate();
 	void includeElement(game_sprite* element);

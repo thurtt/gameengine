@@ -140,6 +140,9 @@ void spriteText::animate(){
 }
 
 void spriteText::draw(float offset_x, float offset_y){
+	if (!active)
+		return;
+	
 	float x = _x + offset_x;
 	float y = _y + offset_y;
 	float orig_x = x;
