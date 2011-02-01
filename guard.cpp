@@ -12,14 +12,16 @@
 #include "text.h"
 #include "collision.h"
 #include "rotation.h"
+#include "tiles.h"
 
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-Guard::Guard( float start_x, float start_y,  std::vector<game_sprite*> * sprites ) :
+Guard::Guard( float start_x, float start_y,  std::vector<game_sprite*> * sprites, game_map * pMap ) :
 	_los(0),
 	_text(0),
-	_target(0, 0)
+	_target(0, 0),
+	_pMap(pMap)
 {
 	// do some basic setup
 	_players = sprites;
@@ -46,6 +48,7 @@ Guard::Guard( float start_x, float start_y,  std::vector<game_sprite*> * sprites
 	setDrawable( _text );
 	
 	// add a shitload of waypoints (para ahora, no es muy elegante...lo siento)
+	_wpmgr.addWaypoint( point(473, 1300) );
 	_wpmgr.addWaypoint( point(202, 800) );
 	_wpmgr.addWaypoint( point(300, 800) );
 	_wpmgr.addWaypoint( point(408, 650) );
@@ -104,7 +107,11 @@ void Guard::movement()
 		chase( visibleSprites[0] );
 		_chase = true;
 	}
+	
+#ifdef VISION_DEBUG
 	_text->printf( "Guard X: %5.4f  Guard Y: %5.4f\nI see %d objects.", disp_x, disp_y, visibleSprites.size() );
+#endif
+	
 	checkCaptures();
 }
 
@@ -150,8 +157,32 @@ void Guard::move( float delta )
 {
 	float rad_angle = atan2( ( _target.y - _y ), ( _target.x - _x ) );
 	_angle = -toDegrees( rad_angle );
-	_x += delta * cos( rad_angle );		
-	_y += delta * sin( rad_angle );
+	
+	float temp_x = _x + delta * cos( rad_angle );		
+	float temp_y = _y + delta * sin( rad_angle );
+	
+	// get textures for new position:
+	vector<tile*> pTiles = _pMap->getTiles(temp_x, temp_y, height, width);
+	bool move_allowed = true;
+	
+	for (int i = 0; i < pTiles.size(); i++)
+	{
+		for (int k = 0; k < pTiles[i]->sprites.size(); k++)
+		{
+			if (pTiles[i]->sprites[k]->getAttribute(BLOCK_MOVEMENT) > 0)
+			{
+				//we can't do this
+				move_allowed = false;
+			}
+		}
+	}
+	
+	if (move_allowed)
+	{
+		_x = temp_x;
+		_y = temp_y;
+	}
+
 }
 
 

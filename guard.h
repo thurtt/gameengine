@@ -13,6 +13,7 @@
 #include "sprite.h"
 #include "line.h"
 #include "waypoints.h"
+#include "game_map.h"
 
 const float PATROL_DELTA = 0.5;
 const float CHASE_DELTA = 0.9;
@@ -33,7 +34,7 @@ class Guard : public game_sprite
 {
 public:
 	std::vector<game_sprite*> * _players;
-	Guard( float start_x, float start_y, std::vector<game_sprite*> * sprites );
+	Guard( float start_x, float start_y, std::vector<game_sprite*> * sprites, game_map * pMap );
 	~Guard();
 	virtual void movement();	
 	
@@ -49,7 +50,7 @@ private:
 	void checkCaptures();
 	bool _chase;
 	waypoint_manager _wpmgr;
-
+	game_map* _pMap;
 };
 
 #endif // _GUARD_H_

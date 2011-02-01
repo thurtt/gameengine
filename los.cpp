@@ -61,7 +61,8 @@ void line_of_sight::draw( float x, float y, float angle )
 	
 	// bottom right
 	_corners.push_back( line( rotate( right_x, bottom_y, eye_x, eye_y, angle ), rotate( left_x, bottom_y, eye_x, eye_y, angle ) ) );
-	
+
+#ifdef VISION_DEBUG		
 	glMatrixMode( GL_MODELVIEW );	
 	glPushMatrix();
 	glLoadIdentity();
@@ -69,7 +70,7 @@ void line_of_sight::draw( float x, float y, float angle )
 	glBegin( GL_LINES );
 	glColor4f( 1.0f, 0.0f, 0.0f, 0.5f );
 
-	
+
 	polyIterator itr = _corners.begin();
 	while( itr != _corners.end() )
 	{
@@ -81,6 +82,7 @@ void line_of_sight::draw( float x, float y, float angle )
 
 	glEnd();
 	glPopMatrix();
+#endif
 
 }
 

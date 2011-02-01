@@ -141,10 +141,9 @@ void game::loadMap(int _map){
 	pHUD = new HUD(focus_sprite);
 	pHUD->includeElement(new textAttributeReport(5,5, focus_sprite, PICKUP_SCORE, "Score: %d"));
 	
-	Guard * guard_sprite = new Guard( 202, 800, &players );
+	Guard * guard_sprite = new Guard( 202, 800, &players, pMap );
 	sprites.push_back( guard_sprite );
 
-	
 }
 
 void game::midPhase(){

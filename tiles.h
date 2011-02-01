@@ -6,6 +6,8 @@
  *  Copyright 2011 none. All rights reserved.
  *
  */
+#ifndef _TILES_H_
+#define _TILES_H_
 
 #include "sprite_data.h"
 #include "sprite.h"
@@ -29,3 +31,5 @@ public:
 };
 
 void populateTileSet();
+
+#endif // _TILES_H_
