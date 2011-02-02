@@ -47,6 +47,7 @@ public:
 	HUD* pHUD;
 	bool _finished;
 	int _phase;
+	bool _paused;
 	game();
 	~game();
 	void draw();

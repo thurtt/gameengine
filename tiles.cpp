@@ -11,11 +11,10 @@
 #include "collision.h"
 
 
-int zone_1[ZONETILES] =	{1,2,2,2,2,
-	2,2,3,3,2,
-	2,2,3,3,2,
-	2,2,2,2,2,
-	2,2,2,2,2};
+int zone_1[ZONETILES] =	{
+	6,5,5,5,5,4,2,3,3,5,
+	4,1,1,1,1,4,2,2,2,2,
+	6,1,1,5,5,2,2,2,2,2};
  int zone_2[ZONETILES] = {1};
 
  int * map_1[16] = { zone_1, zone_1, zone_1, zone_1,
@@ -102,4 +101,25 @@ void populateTileSet(){
 	raw_tile4.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"clean_tiles.png", 1, 1)); //this will blockmovement.
 	raw_tile4.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"tile_blood.png", 0, 0));
 	tileset.push_back(raw_tile4);
+	
+	
+	/* verticle wall*/
+	vector<_sprite_data*> raw_tile5 ;
+	raw_tile5.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"clean_tiles.png", 0, 0));
+	raw_tile5.push_back( new _sprite_data(0,0,TILESIZE,15,"wall.png", 1, 1)); //this will blockmovement.
+	tileset.push_back(raw_tile5);
+	
+	/* horizontal wall*/
+	vector<_sprite_data*> raw_tile6 ;
+	raw_tile6.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"clean_tiles.png", 0, 0));
+	raw_tile6.push_back( new _sprite_data(0,0,15,TILESIZE,"wall.png", 1, 1)); //this will blockmovement.
+	tileset.push_back(raw_tile6);
+	
+	
+	/* horizontal wall*/
+	vector<_sprite_data*> raw_tile7 ;
+	raw_tile7.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"clean_tiles.png", 0, 0));
+	raw_tile7.push_back( new _sprite_data(0,0,15,TILESIZE,"wall.png", 1, 1)); //this will blockmovement.
+	raw_tile7.push_back( new _sprite_data(0,0,TILESIZE,15,"wall.png", 1, 1)); //this will blockmovement.
+	tileset.push_back(raw_tile7);
 }

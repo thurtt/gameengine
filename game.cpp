@@ -22,6 +22,7 @@ game::game(){
 	focus_sprite = 0;
 	_phase = 0;
 	pHUD = 0;
+	_paused = false;
 	
 	pMap = new game_map();
 	pInput = new game_input( this );
@@ -71,6 +72,9 @@ void game::animate(){
 }
 
 void game::movement(){
+	if (_paused)
+		return;
+	
 	int i;
 	
 	for (i = 0; i < sprites.size(); i++){
@@ -100,6 +104,8 @@ void game::loadPhase(int phase){
 		case STATE_LEVEL_STARTING:
 			midPhase();
 			loadMap(1);
+			pHUD->includeElement( new button_sprite( glutGet( GLUT_WINDOW_WIDTH )  - 64 - 10,glutGet( GLUT_WINDOW_HEIGHT )  - 64 - 10,64,64,"pause_button.png", PAUSE_GAME) );
+			
 			break;
 		case STATE_LEVEL:
 			break;
@@ -131,7 +137,7 @@ void game::loadMap(int _map){
 	pickups.push_back( pu3 );
 	
 	
-	focus_sprite = new Player(102,700, 64,64, "player_blue.png", &sprites, &pickups, pMap);
+	focus_sprite = new Player(102,700, 32,32, "player_blue.png", &sprites, &pickups, pMap);
 	sprites.push_back(focus_sprite);
 	players.push_back(focus_sprite);
 	

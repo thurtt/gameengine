@@ -181,6 +181,10 @@ void game_input::MainMouse(int button, int state, int x, int y)
 				//YOU HEAR THE MAN!
 				pGame->loadPhase(STATE_LEVEL_STARTING);
 				break;
+			case PAUSE_GAME:
+				//put it on hold
+				pGame->_paused = pGame->_paused ? false : true;
+				break;
 
 			default:
 				break;

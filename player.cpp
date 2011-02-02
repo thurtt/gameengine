@@ -77,8 +77,21 @@ void Player::movement(){
 	for (i = 0; i < pTiles.size(); i++){
 		for (k = 0; k < pTiles[i]->sprites.size(); k++){
 			if (pTiles[i]->sprites[k]->getAttribute(BLOCK_MOVEMENT) > 0){
-				//we can't do this
-				move_allowed = false;
+				if ( boxCollision(
+								  pTiles[i]->sprites[k]->_x, pTiles[i]->sprites[k]->_y,
+								  pTiles[i]->sprites[k]->_x + pTiles[i]->sprites[k]->width, 
+								  pTiles[i]->sprites[k]->_y + pTiles[i]->sprites[k]->height, 
+								  temp_x, temp_y, 
+								  temp_x + width, temp_y + height)  ||
+					boxCollision(
+								 temp_x, temp_y, 
+								 temp_x + width, temp_y + height,
+								 pTiles[i]->sprites[k]->_x, pTiles[i]->sprites[k]->_y,
+								 pTiles[i]->sprites[k]->_x + pTiles[i]->sprites[k]->width, 
+								 pTiles[i]->sprites[k]->_y + pTiles[i]->sprites[k]->height) ) {
+					//we can't do this
+					move_allowed = false;
+				}
 			}
 		}
 	}
