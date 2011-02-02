@@ -30,13 +30,15 @@ Guard::Guard( float start_x, float start_y,  std::vector<game_sprite*> * sprites
 	_target.x = start_x;
 	_target.y = start_y;
 	
+	attr = new spriteAttribute();
+	
 	width = GUARD_WIDTH;
 	height = GUARD_HEIGHT;
 	texture = LoadTexture( GUARD_IMAGE );
 	
-	setAttribute(BLOCK_MOVEMENT, 0);
-	setAttribute(BLOCK_VISIBILITY, 0);
-	setAttribute(ALIVE, 1);
+	attr->setAttribute(BLOCK_MOVEMENT, 0);
+	attr->setAttribute(BLOCK_VISIBILITY, 0);
+	attr->setAttribute(ALIVE, 1);
 	
 	includeAnimation(ANIM_NONE, texture, 0);
 	useAnimation(ANIM_NONE);
@@ -169,7 +171,7 @@ void Guard::move( float delta )
 	{
 		for (int k = 0; k < pTiles[i]->sprites.size(); k++)
 		{
-			if (pTiles[i]->sprites[k]->getAttribute(BLOCK_MOVEMENT) > 0)
+			if (pTiles[i]->sprites[k]->attr->getAttribute(BLOCK_MOVEMENT) > 0)
 			{
 				//we can't do this
 				move_allowed = false;

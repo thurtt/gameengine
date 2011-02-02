@@ -80,7 +80,7 @@ void game_input::NormalKeys(unsigned char key, int x, int y) {
 		exit(0);
 	}
 	if (key == 13) {
-		if ( pGame->_phase == 0){
+		if ( pGame->attr->getAttribute(GAME_PHASE) == 0){
 			pGame->loadPhase(3);
 		}
 	}
@@ -183,7 +183,12 @@ void game_input::MainMouse(int button, int state, int x, int y)
 				break;
 			case PAUSE_GAME:
 				//put it on hold
-				pGame->_paused = pGame->_paused ? false : true;
+				if (pGame->attr->getAttribute(GAME_PAUSED) > 0){
+					pGame->attr->setAttribute(GAME_PAUSED, 0);}
+				else {
+					pGame->attr->setAttribute(GAME_PAUSED, 1);
+				}
+
 				break;
 
 			default:

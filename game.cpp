@@ -17,13 +17,15 @@
 #include "textAttributeReport.h"
 
 game::game(){
+	
+	attr = new spriteAttribute();
+	
+	attr->setAttribute(GAME_PAUSED, 0);
+	attr->setAttribute(GAME_PHASE, 0);
 	frame = 0;
 	timebase = 0;
 	focus_sprite = 0;
-	_phase = 0;
 	pHUD = 0;
-	_paused = false;
-	
 	pMap = new game_map();
 	pInput = new game_input( this );
 	
@@ -40,6 +42,7 @@ game::~game(){
 	delete pMap;
 	delete pHUD;
 	delete pInput;
+	delete attr;
 }
 
 void game::draw(){
@@ -72,7 +75,7 @@ void game::animate(){
 }
 
 void game::movement(){
-	if (_paused)
+	if (attr->getAttribute(GAME_PAUSED) > 0)
 		return;
 	
 	int i;
@@ -91,7 +94,7 @@ bool game::finished(bool fin){ _finished = fin; return _finished; }
 
 void game::loadPhase(int phase){
 	
-	_phase = phase;
+	attr->setAttribute(GAME_PHASE, phase);
 	
 	
 	switch (phase) {

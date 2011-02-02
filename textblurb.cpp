@@ -20,11 +20,13 @@ textBlurb::textBlurb( float _rx, float _ry, const char * fmt, ... )
 
 	relative_x = _rx;
 	relative_y = _ry;
-	setAttribute(BLOCK_MOVEMENT, 0);
-	setAttribute(BLOCK_VISIBILITY, 0);
-	setAttribute(ALIVE, 1);
-	setAttribute(EXPIRATION, 15);
-	setAttribute(EXPIRATION_TICK, 0);
+	attr = new spriteAttribute();
+	
+	attr->setAttribute(BLOCK_MOVEMENT, 0);
+	attr->setAttribute(BLOCK_VISIBILITY, 0);
+	attr->setAttribute(ALIVE, 1);
+	attr->setAttribute(EXPIRATION, 15);
+	attr->setAttribute(EXPIRATION_TICK, 0);
 	alpha = 1.0f;
 	
 	includeAnimation(ANIM_NONE, LoadTexture("font_file"), 0);

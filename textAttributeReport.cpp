@@ -20,11 +20,13 @@ _fmt(fmt)
 	
 	relative_x = 0;
 	relative_y = 0;
-	setAttribute(BLOCK_MOVEMENT, 0);
-	setAttribute(BLOCK_VISIBILITY, 0);
-	setAttribute(ALIVE, 1);
-	setAttribute(EXPIRATION, 0);
-	setAttribute(EXPIRATION_TICK, 0);
+	attr = new spriteAttribute();
+	
+	attr->setAttribute(BLOCK_MOVEMENT, 0);
+	attr->setAttribute(BLOCK_VISIBILITY, 0);
+	attr->setAttribute(ALIVE, 1);
+	attr->setAttribute(EXPIRATION, 0);
+	attr->setAttribute(EXPIRATION_TICK, 0);
 	alpha = 1.0f;
 	
 	includeAnimation(ANIM_NONE, LoadTexture("font_file"), 0);
@@ -39,7 +41,7 @@ textAttributeReport::~textAttributeReport()
 
 void textAttributeReport::update()
 {
-	printf(_fmt, _monitor_sprite->getAttribute(_monitor_attribute));
+	printf(_fmt, _monitor_sprite->attr->getAttribute(_monitor_attribute));
 }
 
 void textAttributeReport::movement()

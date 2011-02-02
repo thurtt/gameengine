@@ -42,12 +42,11 @@ class game{
 	float offset_y;
 public:
 	game_sprite* focus_sprite;
+	spriteAttribute * attr;
 	game_input* pInput;
 	game_map* pMap;
 	HUD* pHUD;
 	bool _finished;
-	int _phase;
-	bool _paused;
 	game();
 	~game();
 	void draw();

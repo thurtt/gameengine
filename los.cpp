@@ -93,7 +93,7 @@ std::vector<point> line_of_sight::detect_visible_sprites()
 
 	while( itr != _sprites->end() )
 	{
-		if ( in_my_box( (*itr)->disp_x, (*itr)->disp_y, (*itr)->height, (*itr)->width ) && ((*itr)->getAttribute(ALIVE) > 0) )
+		if ( in_my_box( (*itr)->disp_x, (*itr)->disp_y, (*itr)->height, (*itr)->width ) && ((*itr)->attr->getAttribute(ALIVE) > 0) )
 		{
 			visible_sprites.push_back( point( (*itr)->_x, (*itr)->_y ) );
 		}
