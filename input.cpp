@@ -177,9 +177,13 @@ void game_input::MainMouse(int button, int state, int x, int y)
 			case EVENT_ACCEPTED:
 				//dump
 				break;
-			case START_GAME:
+			case STATE_LEVEL_STARTING:
 				//YOU HEAR THE MAN!
 				pGame->loadPhase(STATE_LEVEL_STARTING);
+				break;
+			case START_GAME:
+				//cry havok
+				pGame->loadPhase(STATE_LEVEL);
 				break;
 			case PAUSE_GAME:
 				//put it on hold

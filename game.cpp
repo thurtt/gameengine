@@ -102,15 +102,31 @@ void game::loadPhase(int phase){
 			midPhase(); //a little clean-up here.
 			pHUD = new HUD();
 			pHUD->includeElement( new game_sprite(0,0, glutGet( GLUT_WINDOW_WIDTH ), glutGet( GLUT_WINDOW_HEIGHT ), "title_screen.png", false, false) );
-			pHUD->includeElement( new button_sprite( (glutGet( GLUT_WINDOW_WIDTH ) /2 ) - (415 / 2),120,128,415,"start_button.png", START_GAME) );
+			pHUD->includeElement( new button_sprite( (glutGet( GLUT_WINDOW_WIDTH ) /2 ) - (415 / 2),120,128,415,"start_button.png", STATE_LEVEL_STARTING) );
 			break;
 		case STATE_LEVEL_STARTING:
 			midPhase();
 			loadMap(1);
-			pHUD->includeElement( new button_sprite( glutGet( GLUT_WINDOW_WIDTH )  - 64 - 10,glutGet( GLUT_WINDOW_HEIGHT )  - 64 - 10,64,64,"pause_button.png", PAUSE_GAME) );
+			if (pHUD != 0)
+			{
+				delete pHUD;
+				pHUD = 0;
+			}
+			pHUD = new HUD(focus_sprite);
+			pHUD->includeElement( new button_sprite( (glutGet( GLUT_WINDOW_WIDTH ) /2 ) - (415 / 2),120,128,415,"start_button.png", START_GAME) );
 			
 			break;
 		case STATE_LEVEL:
+			if (pHUD != 0)
+			{
+				delete pHUD;
+				pHUD = 0;
+			}
+			pHUD = new HUD(focus_sprite);
+			pHUD->includeElement(new textAttributeReport(5,5, focus_sprite, PICKUP_SCORE, "Score: %d"));
+			pHUD->includeElement( new button_sprite( glutGet( GLUT_WINDOW_WIDTH )  - 64 - 10,glutGet( GLUT_WINDOW_HEIGHT )  - 64 - 10,64,64,"pause_button.png", PAUSE_GAME) );
+			
+			attr->setAttribute(GAME_PAUSED, 0);
 			break;
 		case STATE_LEVEL_FINISHED:
 			midPhase();
@@ -122,8 +138,19 @@ void game::loadPhase(int phase){
 
 void game::loadMap(int _map){
 
+	//
+	//first order of business, make the game not run. This is the "loading screen"
+	//
+	attr->setAttribute(GAME_PAUSED, 1);
+	
+	//
+	//Generate the map
+	//
 	pMap->loadMap(_map);
 	
+	//
+	//Populate the pickups
+	//
 	game_sprite * pu = new game_sprite(120,780, 16,16, "pickup_thing.png", 0, 0);
 	pu->includeAnimation(ANIM_EXPLODE, "explosion.png", 25);
 	game_sprite * pu2 = new game_sprite(150,780, 16,16, "pickup_thing.png", 0, 0);
@@ -139,19 +166,16 @@ void game::loadMap(int _map){
 	pickups.push_back( pu2 );
 	pickups.push_back( pu3 );
 	
-	
+	//
+	//create the player
+	//
 	focus_sprite = new Player(102,700, 32,32, "player_blue.png", &sprites, &pickups, pMap);
 	sprites.push_back(focus_sprite);
 	players.push_back(focus_sprite);
 	
-	if (pHUD != 0)
-	{
-		delete pHUD;
-		pHUD = 0;
-	}
-	pHUD = new HUD(focus_sprite);
-	pHUD->includeElement(new textAttributeReport(5,5, focus_sprite, PICKUP_SCORE, "Score: %d"));
-	
+	//
+	// and some guards
+	//
 	Guard * guard_sprite = new Guard( 202, 800, &players, pMap );
 	sprites.push_back( guard_sprite );
 
