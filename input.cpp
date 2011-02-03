@@ -80,7 +80,7 @@ void game_input::NormalKeys(unsigned char key, int x, int y) {
 		exit(0);
 	}
 	if (key == 13) {
-		if ( pGame->_phase == 0){
+		if ( pGame->attr->getAttribute(GAME_PHASE) == 0){
 			pGame->loadPhase(3);
 		}
 	}
@@ -177,9 +177,22 @@ void game_input::MainMouse(int button, int state, int x, int y)
 			case EVENT_ACCEPTED:
 				//dump
 				break;
-			case START_GAME:
+			case STATE_LEVEL_STARTING:
 				//YOU HEAR THE MAN!
 				pGame->loadPhase(STATE_LEVEL_STARTING);
+				break;
+			case START_GAME:
+				//cry havok
+				pGame->loadPhase(STATE_LEVEL);
+				break;
+			case PAUSE_GAME:
+				//put it on hold
+				if (pGame->attr->getAttribute(GAME_PAUSED) > 0){
+					pGame->attr->setAttribute(GAME_PAUSED, 0);}
+				else {
+					pGame->attr->setAttribute(GAME_PAUSED, 1);
+				}
+
 				break;
 
 			default:

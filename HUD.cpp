@@ -25,9 +25,12 @@ pPlayer(pl)
 
 HUD::~HUD()
 {
+	
+	attr = new spriteAttribute();
 	ui_elements.clear();
 	pPlayer = 0;
 	delete pFPS;
+	delete attr;
 }
 
 void HUD::init()
@@ -76,19 +79,6 @@ void HUD::includeElement(game_sprite* element)
 	ui_elements.push_back(element);
 }
 
-void HUD::setAttribute(int _attr, int _val)
-{
-	_attributes[_attr] = _val;
-}
-
-int HUD::getAttribute(int _attr)
-{
-	if (_attributes.find(_attr) != _attributes.end() )
-	{
-		return _attributes[_attr];
-	}
-	return 0;
-}
 
 int HUD::click(int state, int x, int y)
 {

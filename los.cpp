@@ -118,7 +118,7 @@ std::vector<point> line_of_sight::detect_visible_sprites( float my_x, float my_y
 	
 	while( itr != _sprites->end() )
 	{
-		if ( in_my_box( (*itr)->disp_x, (*itr)->disp_y, (*itr)->height, (*itr)->width ) && ((*itr)->getAttribute(ALIVE) > 0) )
+		if ( in_my_box( (*itr)->disp_x, (*itr)->disp_y, (*itr)->height, (*itr)->width ) && ((*itr)->attr->getAttribute(ALIVE) > 0) )
 		{
 			// check to see if there are any sprites blocking visibility
 			line toSprite( my_x + (_dov / 2), my_y + (_fov / 2), (*itr)->_x + ((*itr)->width / 2), (*itr)->_y + ((*itr)->height / 2) );

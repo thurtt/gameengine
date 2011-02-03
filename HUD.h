@@ -26,13 +26,13 @@
 class HUD {
 	
 private:
-	map<int, int> _attributes;
 	vector<game_sprite *>  ui_elements;
 	game_sprite* pPlayer; //player object to monitor for updates.
 	int frame, time, timebase;
 	
 public:
 	spriteText * pFPS;
+	spriteAttribute * attr;
 	
 	HUD();
 	HUD(game_sprite* pl);
@@ -41,8 +41,6 @@ public:
 	void draw();
 	void animate();
 	void includeElement(game_sprite* element);
-	void setAttribute(int _attr, int val);
-	int getAttribute(int _attr);
 	int click(int state, int x, int y);
 };
 

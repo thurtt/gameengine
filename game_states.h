@@ -18,5 +18,7 @@
 #define STATE_LEVEL 4
 #define STATE_LEVEL_FINISHED 5
 #define STATE_OPTIONS 6
+#define GAME_PAUSED 7
+#define GAME_PHASE 8
 
 #endif //GAMESTATES_H

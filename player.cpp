@@ -23,10 +23,12 @@ _pMap(pMap)
 	xy(_x_, _y_);
 	wh(_width_, _height_);
 	texture_file = _filename;
-	setAttribute(PICKUP_SCORE, 0);
-	setAttribute(BLOCK_MOVEMENT, 0);
-	setAttribute(BLOCK_VISIBILITY, 0);
-	setAttribute(ALIVE, 1);
+	attr = new spriteAttribute();
+	
+	attr->setAttribute(PICKUP_SCORE, 0);
+	attr->setAttribute(BLOCK_MOVEMENT, 0);
+	attr->setAttribute(BLOCK_VISIBILITY, 0);
+	attr->setAttribute(ALIVE, 1);
 	
 	texture = LoadTexture(texture_file);
 	includeAnimation(ANIM_NONE, texture, 0);
@@ -76,9 +78,22 @@ void Player::movement(){
 	bool move_allowed = true;
 	for (i = 0; i < pTiles.size(); i++){
 		for (k = 0; k < pTiles[i]->sprites.size(); k++){
-			if (pTiles[i]->sprites[k]->getAttribute(BLOCK_MOVEMENT) > 0){
-				//we can't do this
-				move_allowed = false;
+			if (pTiles[i]->sprites[k]->attr->getAttribute(BLOCK_MOVEMENT) > 0){
+				if ( boxCollision(
+								  pTiles[i]->sprites[k]->_x, pTiles[i]->sprites[k]->_y,
+								  pTiles[i]->sprites[k]->_x + pTiles[i]->sprites[k]->width, 
+								  pTiles[i]->sprites[k]->_y + pTiles[i]->sprites[k]->height, 
+								  temp_x, temp_y, 
+								  temp_x + width, temp_y + height)  ||
+					boxCollision(
+								 temp_x, temp_y, 
+								 temp_x + width, temp_y + height,
+								 pTiles[i]->sprites[k]->_x, pTiles[i]->sprites[k]->_y,
+								 pTiles[i]->sprites[k]->_x + pTiles[i]->sprites[k]->width, 
+								 pTiles[i]->sprites[k]->_y + pTiles[i]->sprites[k]->height) ) {
+					//we can't do this
+					move_allowed = false;
+				}
 			}
 		}
 	}
@@ -107,22 +122,22 @@ void Player::movement(){
 
 void Player::checkPickups(){
 	
-	int original_pickup = getAttribute(PICKUP_SCORE);
+	int original_pickup = attr->getAttribute(PICKUP_SCORE);
 	
 	std::vector<game_sprite *>::iterator itr = _pickups->begin();
 	while( itr != _pickups->end() )
 	{
 		if (boxCollision(_x, _y, _x + width, _y + height, (*itr)->_x, (*itr)->_y, (*itr)->_x + (*itr)->width, (*itr)->_y + (*itr)->height) || 
 			boxCollision((*itr)->_x, (*itr)->_y, (*itr)->_x + (*itr)->width, (*itr)->_y + (*itr)->height, _x, _y, _x + width, _y + height )){
-			if ( (*itr)->active && ((*itr)->getAttribute(ALIVE) > 0) ) {
-				setAttribute(PICKUP_SCORE, getAttribute(PICKUP_SCORE) + 1);
+			if ( (*itr)->active && ((*itr)->attr->getAttribute(ALIVE) > 0) ) {
+				attr->setAttribute(PICKUP_SCORE, attr->getAttribute(PICKUP_SCORE) + 1);
 				(*itr)->useAnimation(ANIM_EXPLODE);
 			}
 		}
 		++itr;
 	}
-	if (original_pickup < getAttribute(PICKUP_SCORE)){
-		sprite_list.push_back(new textBlurb(width / 2, height, "+ %d", getAttribute(PICKUP_SCORE) - original_pickup));
+	if (original_pickup < attr->getAttribute(PICKUP_SCORE)){
+		sprite_list.push_back(new textBlurb(width / 2, height, "+ %d", attr->getAttribute(PICKUP_SCORE) - original_pickup));
 	}	
 }
 

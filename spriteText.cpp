@@ -21,11 +21,13 @@ spriteText::spriteText( float _rx, float _ry, float _h_, float _w_, int exp, con
 	GLuint texture;
 	relative_x = _rx;
 	relative_y = _ry;
-	setAttribute(BLOCK_MOVEMENT, 0);
-	setAttribute(BLOCK_VISIBILITY, 0);
-	setAttribute(ALIVE, 1);
-	setAttribute(EXPIRATION, exp);
-	setAttribute(EXPIRATION_TICK, 0);
+	attr = new spriteAttribute();
+	
+	attr->setAttribute(BLOCK_MOVEMENT, 0);
+	attr->setAttribute(BLOCK_VISIBILITY, 0);
+	attr->setAttribute(ALIVE, 1);
+	attr->setAttribute(EXPIRATION, exp);
+	attr->setAttribute(EXPIRATION_TICK, 0);
 	alpha = 1.0f;
 	
 	//get the right texture for the job.
@@ -119,10 +121,10 @@ void spriteText::animate(){
 		default:
 			break;
 	}
-	if(getAttribute(EXPIRATION) > 0){
+	if(attr->getAttribute(EXPIRATION) > 0){
 		//we can expire.
-		setAttribute(EXPIRATION_TICK , getAttribute(EXPIRATION_TICK) + 1);
-		if (getAttribute(EXPIRATION_TICK) > getAttribute(EXPIRATION)) {
+		attr->setAttribute(EXPIRATION_TICK , attr->getAttribute(EXPIRATION_TICK) + 1);
+		if (attr->getAttribute(EXPIRATION_TICK) > attr->getAttribute(EXPIRATION)) {
 			active = false; //deactivate. killed on next automation hit.
 		}
 	}

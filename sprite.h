@@ -13,6 +13,7 @@
 #include "sprite_defines.h"
 #include "tile_defines.h"
 #include "drawable.h"
+#include "spriteAttribute.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -38,11 +39,13 @@ protected:
 	const char * texture_file;
 	GLuint texture;
 	map<int, pair<GLuint, int> > animations;
-	map<int, int> sprite_attributes;
 	vector<game_sprite *>  sprite_list;
 	
 	vector<drawable *> drawables; // need to think about who is responsible for cleaning this up.
+	
+	
 public:
+	spriteAttribute * attr;
 	bool active;
 	int width, height;
 	float _x; float _y;
@@ -57,8 +60,6 @@ public:
 	void includeAnimation(int, GLuint, int);
 	void includeAnimation(int,const char *, int);
 	void useAnimation(int);
-	void setAttribute(int _attr, int val);
-	int getAttribute(int _attr);
 	void xy(float, float);
 	void wh(float, float);
 	void draw();

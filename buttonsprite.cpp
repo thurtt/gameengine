@@ -14,17 +14,17 @@ button_sprite::button_sprite()
 {
 }
 
-button_sprite::button_sprite(float x, float y, float h, float w, char * texture_file, int ret_val)
+button_sprite::button_sprite(float x, float y, float h, float w,  const char * texture_file, int ret_val)
 {
 	xy(x,y);
 	wh(w,h);
 	
-	setAttribute(BLOCK_MOVEMENT, 0);
-	setAttribute(BLOCK_VISIBILITY, 0);
-	setAttribute(ALIVE, 1);
-	setAttribute(EXPIRATION, 0);
-	setAttribute(EXPIRATION_TICK, 0);
-	setAttribute(BUTTON_RETURN_VALUE, ret_val);
+	attr->setAttribute(BLOCK_MOVEMENT, 0);
+	attr->setAttribute(BLOCK_VISIBILITY, 0);
+	attr->setAttribute(ALIVE, 1);
+	attr->setAttribute(EXPIRATION, 0);
+	attr->setAttribute(EXPIRATION_TICK, 0);
+	attr->setAttribute(BUTTON_RETURN_VALUE, ret_val);
 	active = true;
 	
 	includeAnimation(ANIM_NONE, LoadTexture(texture_file), 0);
@@ -57,7 +57,7 @@ int button_sprite::click(int state, int x, int y)
 			//up
 			//frame = 0; // up.
 			useAnimation(ANIM_BUTTON_UP);
-			return getAttribute(BUTTON_RETURN_VALUE);
+			return attr->getAttribute(BUTTON_RETURN_VALUE);
 			break;
 
 		default:

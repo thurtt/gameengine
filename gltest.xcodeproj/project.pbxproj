@@ -26,6 +26,7 @@
 		F374572E12F365EE00AD2049 /* game_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F374572D12F365EE00AD2049 /* game_map.cpp */; };
 		F382BD4812EB2805009D3146 /* text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F382BD4612EB2805009D3146 /* text.cpp */; };
 		F382BD4E12EB4B7A009D3146 /* collision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F382BD4D12EB4B7A009D3146 /* collision.cpp */; };
+		F3BB2FD112F9E2FA0015C233 /* spriteAttribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3BB2FD012F9E2FA0015C233 /* spriteAttribute.cpp */; };
 		F3DE4B3712EC850600799246 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3DE4B3612EC850600799246 /* OpenAL.framework */; };
 		F3E35BA812D958C30078D65F /* sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3E35BA712D958C30078D65F /* sprite.cpp */; };
 		F3E35C3112D96F3F0078D65F /* input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3E35C3012D96F3F0078D65F /* input.cpp */; };
@@ -82,6 +83,8 @@
 		F382BD4C12EB4B7A009D3146 /* collision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = collision.h; sourceTree = "<group>"; };
 		F382BD4D12EB4B7A009D3146 /* collision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = collision.cpp; sourceTree = "<group>"; };
 		F382BD8512EB4E8A009D3146 /* drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = drawable.h; sourceTree = "<group>"; };
+		F3BB2FCF12F9E2FA0015C233 /* spriteAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spriteAttribute.h; sourceTree = "<group>"; };
+		F3BB2FD012F9E2FA0015C233 /* spriteAttribute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spriteAttribute.cpp; sourceTree = "<group>"; };
 		F3DE4B3612EC850600799246 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = /System/Library/Frameworks/OpenAL.framework; sourceTree = "<absolute>"; };
 		F3E35BA612D958C30078D65F /* sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprite.h; sourceTree = "<group>"; };
 		F3E35BA712D958C30078D65F /* sprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sprite.cpp; sourceTree = "<group>"; };
@@ -151,12 +154,13 @@
 				F3EF745E12F5C7F2002E7129 /* Drawables */,
 				F3EF745F12F5C80D002E7129 /* Input */,
 				F3EF747F12F5CCD6002E7129 /* HUD */,
-				F3409E1012D81AD4005240F1 /* XcodeGLUT-Info.plist */,
-				F3409E2012D81BB5005240F1 /* main.cpp */,
+				F3BB2FDF12F9E5360015C233 /* Attributes */,
 				F3409E1F12D81BB5005240F1 /* main.h */,
+				F3409E2012D81BB5005240F1 /* main.cpp */,
 				F3E35FA712DA555E0078D65F /* game.h */,
 				F3E35FA812DA555E0078D65F /* game.cpp */,
 				F343218412ECA697004E248E /* game_states.h */,
+				F3409E1012D81AD4005240F1 /* XcodeGLUT-Info.plist */,
 				F3409E0E12D81AD4005240F1 /* Products */,
 				F3409E1712D81B6A005240F1 /* OpenGL.framework */,
 				F3409E1512D81B6A005240F1 /* GLUT.framework */,
@@ -170,6 +174,15 @@
 				F3409E0D12D81AD4005240F1 /* XcodeGLUT.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F3BB2FDF12F9E5360015C233 /* Attributes */ = {
+			isa = PBXGroup;
+			children = (
+				F3BB2FCF12F9E2FA0015C233 /* spriteAttribute.h */,
+				F3BB2FD012F9E2FA0015C233 /* spriteAttribute.cpp */,
+			);
+			name = Attributes;
 			sourceTree = "<group>";
 		};
 		F3E35F7112DA4A420078D65F /* SOIL */ = {
@@ -364,6 +377,7 @@
 				E2DD7CCC12F64F8200863ECB /* rotation.cpp in Sources */,
 				E2DD7CD712F6520700863ECB /* waypoints.cpp in Sources */,
 				F3240EC512F799DE00535C1F /* buttonsprite.cpp in Sources */,
+				F3BB2FD112F9E2FA0015C233 /* spriteAttribute.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,8 +389,6 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = $SDKROOT/System/Library/Frameworks/;
-				GCC_PREPROCESSOR_DEFINITIONS = VISION_DEBUG;
-				OTHER_CFLAGS = "";
 			};
 			name = Debug;
 		};

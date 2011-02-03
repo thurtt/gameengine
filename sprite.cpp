@@ -17,9 +17,11 @@ vector< pair<const char*, GLuint> > master_texture_list;
 game_sprite::game_sprite(){
 	xy(10, 10);
 	wh(10, 10);
-	setAttribute(BLOCK_MOVEMENT, 0);
-	setAttribute(BLOCK_VISIBILITY, 0);
-	setAttribute(ALIVE, 1);
+	attr = new spriteAttribute();
+	
+	attr->setAttribute(BLOCK_MOVEMENT, 0);
+	attr->setAttribute(BLOCK_VISIBILITY, 0);
+	attr->setAttribute(ALIVE, 1);
 	active = true;
 
 	includeAnimation(ANIM_NONE, LoadTexture("img.png"), 0);
@@ -33,10 +35,11 @@ game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, co
 	xy(_x_, _y_);
 	wh(_width_, _height_);
 	texture_file = _filename;
+	attr = new spriteAttribute();
 	
-	setAttribute(BLOCK_MOVEMENT, mov);
-	setAttribute(BLOCK_VISIBILITY, vis);
-	setAttribute(ALIVE, 1);
+	attr->setAttribute(BLOCK_MOVEMENT, mov);
+	attr->setAttribute(BLOCK_VISIBILITY, vis);
+	attr->setAttribute(ALIVE, 1);
 	active = true;
 
 	includeAnimation(ANIM_NONE, LoadTexture(texture_file), 0);
@@ -52,18 +55,6 @@ void game_sprite::includeAnimation(int anim,const char * t, int fr){
 
 void game_sprite::includeAnimation(int anim, GLuint t, int fr){
 	animations[anim] = make_pair(t, fr);
-}
-
-void game_sprite::setAttribute(int _attr, int _val){
-	sprite_attributes[_attr] = _val;
-}
-
-int game_sprite::getAttribute(int _attr){
-	if (sprite_attributes.find(_attr) != sprite_attributes.end() )
-	{
-		return sprite_attributes[_attr];
-	}
-	return 0;
 }
 
 
@@ -94,7 +85,7 @@ void game_sprite::useAnimation(int anim){
 		case ANIM_HIDE:
 			break;
 		case ANIM_EXPLODE:
-			setAttribute(ALIVE, 0);
+			attr->setAttribute(ALIVE, 0);
 			break;
 		case ANIM_AMBIENT:
 			// to make the ambience seem real, rand frame
@@ -175,6 +166,7 @@ void game_sprite::wh(float _width_, float _height_){
 game_sprite::~game_sprite(){
 	animations.clear();
 	sprite_list.clear();
+	delete attr;
 }
 
 void game_sprite::text(char *str){
