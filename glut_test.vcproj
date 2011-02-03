@@ -114,6 +114,7 @@
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories="&quot;..\freeglut-2.6.0\include\GL&quot;"
+				PreprocessorDefinitions="WIN32, _SCL_SECURE_NO_WARNINGS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -168,6 +169,10 @@
 			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
+			<File
+				RelativePath=".\buttonsprite.cpp"
+				>
+			</File>
 			<File
 				RelativePath=".\collision.cpp"
 				>
@@ -276,6 +281,10 @@
 			>
 			<File
 				RelativePath=".\button_defines.h"
+				>
+			</File>
+			<File
+				RelativePath=".\buttonsprite.h"
 				>
 			</File>
 			<File

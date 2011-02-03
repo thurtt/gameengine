@@ -375,6 +375,8 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = $SDKROOT/System/Library/Frameworks/;
+				GCC_PREPROCESSOR_DEFINITIONS = VISION_DEBUG;
+				OTHER_CFLAGS = "";
 			};
 			name = Debug;
 		};

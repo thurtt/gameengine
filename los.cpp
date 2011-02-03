@@ -28,12 +28,13 @@
 #include <GLUT/glut.h>
 #endif
 
-line_of_sight::line_of_sight( float fov, float dov, float height, float width, std::vector<game_sprite*> * sprites ) :
+line_of_sight::line_of_sight( float fov, float dov, float height, float width, std::vector<game_sprite*> * sprites, game_map * pMap ) :
 _fov(fov),
 _dov(dov),
 _height(height),
 _width(width),
-_sprites(sprites)
+_sprites(sprites),
+_pMap(pMap)
 {
 }
 
@@ -86,15 +87,53 @@ void line_of_sight::draw( float x, float y, float angle )
 
 }
 
-std::vector<point> line_of_sight::detect_visible_sprites()
+std::vector<point> line_of_sight::detect_visible_sprites( float my_x, float my_y )
 {
 	std::vector<game_sprite *>::iterator itr = _sprites->begin();
 	std::vector<point> visible_sprites;
 
+	if ( _corners.size() == 0 ) return visible_sprites;
+	
+	// get a list of tiles inside the vision box
+	vector<tile *> tiles = _pMap->getTiles( _corners[0].getPoint1().x, _corners[0].getPoint2().y, _fov, _dov );
+	vector<tile *>::iterator itrTiles = tiles.begin();
+
+	// get a list of sprites that are blocking
+	vector<game_sprite *> blockingSprites;
+	vector<game_sprite *>::iterator itrTileSprites;
+
+	while( itrTiles != tiles.end() )
+	{
+		itrTileSprites = (*itrTiles)->sprites.begin();
+		while( itrTileSprites != (*itrTiles)->sprites.end() )
+		{
+			if( isBlocking( *itrTileSprites ) )
+			{
+				blockingSprites.push_back( *itrTileSprites );
+			}
+			++itrTileSprites;
+		}
+		++itrTiles;
+	}
+	
 	while( itr != _sprites->end() )
 	{
 		if ( in_my_box( (*itr)->disp_x, (*itr)->disp_y, (*itr)->height, (*itr)->width ) && ((*itr)->getAttribute(ALIVE) > 0) )
 		{
+			// check to see if there are any sprites blocking visibility
+			line toSprite( my_x + (_dov / 2), my_y + (_fov / 2), (*itr)->_x + ((*itr)->width / 2), (*itr)->_y + ((*itr)->height / 2) );
+			
+			glMatrixMode( GL_MODELVIEW );	
+			glPushMatrix();
+			glLoadIdentity();
+			
+			glBegin( GL_LINES );
+			glColor4f( 1.0f, 0.0f, 0.0f, 0.5f );
+			glVertex2f( toSprite.getPoint1().x, toSprite.getPoint1().y );
+			glVertex2f( toSprite.getPoint2().x, toSprite.getPoint2().y );
+			glEnd();
+			glPopMatrix();
+			
 			visible_sprites.push_back( point( (*itr)->_x, (*itr)->_y ) );
 		}
 		++itr;
@@ -119,4 +158,10 @@ bool line_of_sight::in_my_box( float x, float y, float h, float w )
 	point point2 = _corners[1].getPoint2();
 	return ( polygonCollision( _corners, poly2 ) );
 	
+}
+
+
+bool line_of_sight::isBlocking( game_sprite * sprite )
+{
+	return( sprite->getAttribute( BLOCK_VISIBILITY ) != 0 );
 }

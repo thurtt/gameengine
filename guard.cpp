@@ -41,14 +41,14 @@ Guard::Guard( float start_x, float start_y,  std::vector<game_sprite*> * sprites
 	includeAnimation(ANIM_NONE, texture, 0);
 	useAnimation(ANIM_NONE);
 	
-	_los = new line_of_sight( FIELD_OF_VISION, DEPTH_OF_VISION, height, width, sprites );
+	_los = new line_of_sight( FIELD_OF_VISION, DEPTH_OF_VISION, height, width, sprites, _pMap );
 	setDrawable( _los );
 
 	_text = new Text();
 	setDrawable( _text );
 	
 	// add a shitload of waypoints (para ahora, no es muy elegante...lo siento)
-	_wpmgr.addWaypoint( point(473, 1300) );
+	//_wpmgr.addWaypoint( point(473, 1300) );
 	_wpmgr.addWaypoint( point(202, 800) );
 	_wpmgr.addWaypoint( point(300, 800) );
 	_wpmgr.addWaypoint( point(408, 650) );
@@ -90,7 +90,7 @@ void Guard::movement()
 		}
 	}
 	
-	vector<point> visibleSprites = _los->detect_visible_sprites();
+	vector<point> visibleSprites = _los->detect_visible_sprites( _x, _y );
 	
 	if( visibleSprites.size() == 0 )
 	{
