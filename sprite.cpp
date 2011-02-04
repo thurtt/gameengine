@@ -314,6 +314,8 @@ GLuint game_sprite::LoadTexture( const char * filename){
 }
 
 void game_sprite::movement(){
+	if (!onscreen(disp_x, disp_y, height, width)) return;
+	
 	float delta = 0.8;
 	if ((move_right > 0) || (move_left > 0) || (move_up > 0) || (move_down > 0)){
 		if (texture != animations[ANIM_WALK].first) {

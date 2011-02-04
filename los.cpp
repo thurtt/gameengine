@@ -28,6 +28,8 @@
 #include <GLUT/glut.h>
 #endif
 
+#define VISION_DEBUG
+
 line_of_sight::line_of_sight( float fov, float dov, float height, float width, std::vector<game_sprite*> * sprites, game_map * pMap ) :
 _fov(fov),
 _dov(dov),
@@ -80,6 +82,13 @@ void line_of_sight::draw( float x, float y, float angle )
 
 		++itr;
 	}
+	
+	if ( _visibleSprites.size() > 0 )
+	{
+		line toSprite( point( eye_x, eye_y ), point( _visibleSprites[0]->_x + (_visibleSprites[0]->width / 2), _visibleSprites[0]->_y + (_visibleSprites[0]->height / 2) ) );
+		glVertex2f( toSprite.getPoint1().x, toSprite.getPoint1().y );
+		glVertex2f( toSprite.getPoint2().x, toSprite.getPoint2().y );	
+	}
 
 	glEnd();
 	glPopMatrix();
@@ -87,12 +96,11 @@ void line_of_sight::draw( float x, float y, float angle )
 
 }
 
-std::vector<point> line_of_sight::detect_visible_sprites( float my_x, float my_y )
+std::vector<game_sprite *> line_of_sight::detect_visible_sprites()
 {
 	std::vector<game_sprite *>::iterator itr = _sprites->begin();
-	std::vector<point> visible_sprites;
 
-	if ( _corners.size() == 0 ) return visible_sprites;
+	if ( _corners.size() == 0 ) return _visibleSprites;
 	
 	// get a list of tiles inside the vision box
 	vector<tile *> tiles = _pMap->getTiles( _corners[0].getPoint1().x, _corners[0].getPoint2().y, _fov, _dov );
@@ -121,25 +129,12 @@ std::vector<point> line_of_sight::detect_visible_sprites( float my_x, float my_y
 		if ( in_my_box( (*itr)->disp_x, (*itr)->disp_y, (*itr)->height, (*itr)->width ) && ((*itr)->attr->getAttribute(ALIVE) > 0) )
 		{
 			// check to see if there are any sprites blocking visibility
-			line toSprite( my_x + (_dov / 2), my_y + (_fov / 2), (*itr)->_x + ((*itr)->width / 2), (*itr)->_y + ((*itr)->height / 2) );
-			
-			glMatrixMode( GL_MODELVIEW );	
-			glPushMatrix();
-			glLoadIdentity();
-			
-			glBegin( GL_LINES );
-			glColor4f( 1.0f, 0.0f, 0.0f, 0.5f );
-			glVertex2f( toSprite.getPoint1().x, toSprite.getPoint1().y );
-			glVertex2f( toSprite.getPoint2().x, toSprite.getPoint2().y );
-			glEnd();
-			glPopMatrix();
-			
-			visible_sprites.push_back( point( (*itr)->_x, (*itr)->_y ) );
+			_visibleSprites.push_back( *itr );
 		}
 		++itr;
 	}
 
-	return visible_sprites;
+	return _visibleSprites;
 }
 
 bool line_of_sight::in_my_box( float x, float y, float h, float w )
@@ -163,5 +158,6 @@ bool line_of_sight::in_my_box( float x, float y, float h, float w )
 
 bool line_of_sight::isBlocking( game_sprite * sprite )
 {
-	return( sprite->getAttribute( BLOCK_VISIBILITY ) != 0 );
+	//return( sprite->getAttribute( BLOCK_VISIBILITY ) != 0 );
+	return false;
 }

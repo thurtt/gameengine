@@ -77,6 +77,7 @@ Guard::~Guard()
 void Guard::movement()
 {
 
+	
 	if (onscreen(disp_x, disp_y, height, width)){
 		std::vector<game_sprite *>::iterator itr = sprite_list.begin();
 		while( itr != sprite_list.end() )
@@ -90,9 +91,9 @@ void Guard::movement()
 				sprite_list.erase(itr);
 			}
 		}
-	}
+	} 
 	
-	vector<point> visibleSprites = _los->detect_visible_sprites( _x, _y );
+	vector<game_sprite *> visibleSprites = _los->detect_visible_sprites();
 	
 	if( visibleSprites.size() == 0 )
 	{
@@ -106,7 +107,7 @@ void Guard::movement()
 	}
 	else 
 	{
-		chase( visibleSprites[0] );
+		chase( point( visibleSprites[0]->_x, visibleSprites[0]->_y ) );
 		_chase = true;
 	}
 	
@@ -114,7 +115,7 @@ void Guard::movement()
 	_text->printf( "Guard X: %5.4f  Guard Y: %5.4f\nI see %d objects.", disp_x, disp_y, visibleSprites.size() );
 #endif
 	
-	checkCaptures();
+	//checkCaptures();
 }
 
 void Guard::checkCaptures(){

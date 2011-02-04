@@ -16,6 +16,10 @@
 #include "button_defines.h"
 #include "textAttributeReport.h"
 
+#ifdef WIN32
+	#include <windows.h>
+#endif
+
 game::game(){
 	
 	attr = new spriteAttribute();
@@ -75,18 +79,35 @@ void game::animate(){
 }
 
 void game::movement(){
+
+#ifdef WIN32
+	LARGE_INTEGER ticksPerSecond;
+	LARGE_INTEGER startTick, stopTick;   // A point in time 
+	QueryPerformanceFrequency(&ticksPerSecond);
+	QueryPerformanceCounter(&startTick);
+#endif
 	if (attr->getAttribute(GAME_PAUSED) > 0)
 		return;
 	
+	float spriteTime;
 	int i;
 	
 	for (i = 0; i < sprites.size(); i++){
+
 		sprites[i]->movement();
 	}
+
 	if (focus_sprite != 0){ //if we have something to follow....
 		offset_x = (glutGet( GLUT_WINDOW_WIDTH ) - focus_sprite->width) / 2 - focus_sprite->_x;
 		offset_y = (glutGet( GLUT_WINDOW_HEIGHT )  - focus_sprite->height) / 2 - focus_sprite->_y;
 	}
+#ifdef WIN32
+		QueryPerformanceCounter(&stopTick);
+		spriteTime = ( stopTick.QuadPart - startTick.QuadPart ) / ( ticksPerSecond.QuadPart * 1.0f );
+#endif
+
+	if (pHUD != 0)
+		pHUD->movement( spriteTime );
 }
 
 bool game::finished(){ return _finished; }

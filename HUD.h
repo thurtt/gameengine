@@ -29,9 +29,11 @@ private:
 	vector<game_sprite *>  ui_elements;
 	game_sprite* pPlayer; //player object to monitor for updates.
 	int frame, time, timebase;
+	int move, mtime, mtimebase;
 	
 public:
 	spriteText * pFPS;
+	spriteText * pMPS;
 	spriteAttribute * attr;
 	
 	HUD();
@@ -40,6 +42,7 @@ public:
 	void init();
 	void draw();
 	void animate();
+	void movement( float spriteTime );
 	void includeElement(game_sprite* element);
 	int click(int state, int x, int y);
 };

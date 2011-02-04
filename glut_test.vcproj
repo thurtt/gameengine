@@ -242,6 +242,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\spriteAttribute.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\spriteText.cpp"
 				>
 			</File>
@@ -361,6 +365,10 @@
 			</File>
 			<File
 				RelativePath=".\sprite_data.h"
+				>
+			</File>
+			<File
+				RelativePath=".\spriteAttribute.h"
 				>
 			</File>
 			<File

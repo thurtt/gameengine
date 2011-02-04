@@ -38,7 +38,11 @@ void HUD::init()
 	frame = 0;
 	time = 0;
 	timebase = 0;
+	move = 0;
+	time = 0;
+	mtimebase = 0;
 	pFPS = new spriteText(500, 50, 13, 6, 0, "FPS:" );
+	pMPS = new spriteText(750, 50, 13, 6, 0, "MPS:" );
 }
 
 void HUD::draw()
@@ -62,6 +66,24 @@ void HUD::draw()
 		ui_elements[i]->draw( 0.0f, 0.0f );
 	}
 	pFPS->draw(75,5);
+	pMPS->draw(275,5);
+}
+
+void HUD::movement( float spriteTime )
+{
+	move++;
+	mtime=glutGet(GLUT_ELAPSED_TIME);
+	float mps = 0.0f;
+	float movetime = 0.0f;
+	
+	if (mtime - mtimebase > 1000) {
+		mps = move*1000.0/(mtime-mtimebase);
+		movetime = 1/mps;
+	 	mtimebase = mtime;		
+		move = 0;
+		pMPS->printf("MPS:%3.0f(%0.6f)  Sprite Movement Time: %0.6f  Sprite Index: %d", mps, movetime, spriteTime );
+	}
+
 }
 
 void HUD::animate()

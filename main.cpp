@@ -17,7 +17,7 @@ game* baseGame;
 
 void movementTimer(int value){
 	baseGame->movement();
-	glutTimerFunc(250/60, movementTimer, 1);
+	glutTimerFunc(1000/60, movementTimer, 1);
 }
 
 void animationTimer(int value){
