@@ -68,12 +68,30 @@ bool polygonCollision( polygon & poly1, polygon & poly2 )
 	return false;
 }
 
+bool linePolyCollision( line & testLine, polygon & testPoly)
+{
 
+	// 2 intersections should be a collision
+	polyIterator itr = testPoly.begin();
+	int collCounter = 0;
+	
+	while( itr != testPoly.end() )
+	{
+		point collPoint = testLine.checkIntersection( *itr );
+		if ( itr->isPointOnLine( collPoint ) )
+		{
+			collCounter++;
+		}
+		++itr;
+	}
 
-
-
-
-
+	if( collCounter > 1 )
+	{
+		return true;
+	}
+	
+	return false;
+}
 
 
 

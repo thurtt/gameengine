@@ -85,9 +85,8 @@ void line_of_sight::draw( float x, float y, float angle )
 	
 	if ( _visibleSprites.size() > 0 )
 	{
-		line toSprite( point( eye_x, eye_y ), point( _visibleSprites[0]->_x + (_visibleSprites[0]->width / 2), _visibleSprites[0]->_y + (_visibleSprites[0]->height / 2) ) );
-		glVertex2f( toSprite.getPoint1().x, toSprite.getPoint1().y );
-		glVertex2f( toSprite.getPoint2().x, toSprite.getPoint2().y );	
+		glVertex2f( eye_x, eye_y );
+		glVertex2f( _visibleSprites[0]->disp_x + (_visibleSprites[0]->width / 2), _visibleSprites[0]->disp_y + (_visibleSprites[0]->height / 2) );	
 	}
 
 	glEnd();
@@ -96,9 +95,11 @@ void line_of_sight::draw( float x, float y, float angle )
 
 }
 
-std::vector<game_sprite *> line_of_sight::detect_visible_sprites()
+std::vector<game_sprite *> line_of_sight::detect_visible_sprites( float eye_x, float eye_y )
 {
+	
 	std::vector<game_sprite *>::iterator itr = _sprites->begin();
+	_visibleSprites.clear();
 
 	if ( _corners.size() == 0 ) return _visibleSprites;
 	
@@ -129,7 +130,40 @@ std::vector<game_sprite *> line_of_sight::detect_visible_sprites()
 		if ( in_my_box( (*itr)->disp_x, (*itr)->disp_y, (*itr)->height, (*itr)->width ) && ((*itr)->attr->getAttribute(ALIVE) > 0) )
 		{
 			// check to see if there are any sprites blocking visibility
-			_visibleSprites.push_back( *itr );
+			line rayToSprite( eye_x, eye_y, (*itr)->disp_x, (*itr)->disp_y );
+			
+			// work through the list of blocking sprites, and check intersection
+			vector<game_sprite *>::iterator blockItr = blockingSprites.begin();
+			int intersectCount = 0;
+			
+			if( blockingSprites.size() > 0 )
+			{
+				while( blockItr != blockingSprites.end() )
+				{
+					// the sprite is some sort of rectangular square thingy
+					polygon testBox;
+					float s_x1 = (*blockItr)->disp_x;
+					float s_y1 = (*blockItr)->disp_y;
+					float s_x2 = (*blockItr)->disp_x + (*blockItr)->width;
+					float s_y2 = (*blockItr)->disp_y + (*blockItr)->height;
+					testBox.push_back( line( s_x1, s_y1, s_x1, s_y2 ) );
+					testBox.push_back( line( s_x1, s_y2, s_x2, s_y2 ) );
+					testBox.push_back( line( s_x2, s_y2, s_x2, s_y1 ) );
+					testBox.push_back( line( s_x2, s_y1, s_x1, s_y1 ) );
+					
+					if ( !linePolyCollision( rayToSprite, testBox ) )
+					{
+						_visibleSprites.push_back( *itr );
+					}
+					
+					++blockItr;
+				}
+			}
+			else 
+			{
+				_visibleSprites.push_back( *itr );
+			}
+
 		}
 		++itr;
 	}

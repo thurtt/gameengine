@@ -93,7 +93,7 @@ void Guard::movement()
 		}
 	} 
 	
-	vector<game_sprite *> visibleSprites = _los->detect_visible_sprites();
+	vector<game_sprite *> visibleSprites = _los->detect_visible_sprites( disp_x + (width / 2), disp_y + ( height /2 ) );
 	
 	if( visibleSprites.size() == 0 )
 	{
@@ -115,7 +115,7 @@ void Guard::movement()
 	_text->printf( "Guard X: %5.4f  Guard Y: %5.4f\nI see %d objects.", disp_x, disp_y, visibleSprites.size() );
 #endif
 	
-	//checkCaptures();
+	checkCaptures();
 }
 
 void Guard::checkCaptures(){

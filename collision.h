@@ -16,6 +16,7 @@ bool inBox(float x, float y, float box_x1, float box_y1, float box_x2, float box
 bool boxCollision(float x1, float y1, float x2, float y2, float box_x1, float box_y1, float box_x2, float box_y2);
 bool polygonCollision( polygon & poly1, polygon & poly2 );
 bool onscreen(float x, float y, float height, float width);
+bool linePolyCollision( line & testLine, polygon & testPoly);
 
 
 #endif // _COLLISION_H_
