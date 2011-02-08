@@ -192,6 +192,6 @@ bool line_of_sight::in_my_box( float x, float y, float h, float w )
 
 bool line_of_sight::isBlocking( game_sprite * sprite )
 {
-	//return( sprite->getAttribute( BLOCK_VISIBILITY ) != 0 );
+	return( sprite->attr->getAttribute( BLOCK_VISIBILITY ) != 0 );
 	return false;
 }
