@@ -93,7 +93,7 @@ void Guard::movement()
 		}
 	} 
 	
-	vector<game_sprite *> visibleSprites = _los->detect_visible_sprites( disp_x + (width / 2), disp_y + ( height /2 ) );
+	vector<game_sprite *> visibleSprites = _los->detect_visible_sprites( _x + (width / 2), _y + ( height /2 ) );
 	
 	if( visibleSprites.size() == 0 )
 	{

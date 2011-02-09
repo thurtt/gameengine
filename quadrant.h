@@ -26,5 +26,5 @@ public:
 	void draw(float, float);
 	void animate(float, float);
 	tile* getTile(float world_x, float world_y);
-	vector<tile*> getTiles(float box_x, float box_y, float box_h, float box_w);
+	vector<tile*> getTiles(float box_x1, float box_y1, float box_x2, float box_y2);
 };

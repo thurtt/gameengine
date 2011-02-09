@@ -73,7 +73,7 @@ void Player::movement(){
 	
 	// get textures for new position:
 	vector<tile*> pTiles;
-	pTiles = _pMap->getTiles(temp_x, temp_y, height, width);
+	pTiles = _pMap->getTiles(temp_x, temp_y, temp_x + height, temp_y + width);
 	int i, k;
 	bool move_allowed = true;
 	for (i = 0; i < pTiles.size(); i++){

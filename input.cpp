@@ -130,7 +130,7 @@ void game_input::NormalKeysUp(unsigned char key, int x, int y)
 	
 	if (key == 't'){
 		vector<tile*> pTiles;
-		pTiles = pGame->pMap->getTiles(pGame->focus_sprite->_x,pGame->focus_sprite->_y,pGame->focus_sprite->height,pGame->focus_sprite->width);
+		pTiles = pGame->pMap->getTiles(pGame->focus_sprite->_x,pGame->focus_sprite->_y, pGame->focus_sprite->_x + pGame->focus_sprite->height, pGame->focus_sprite->_y + pGame->focus_sprite->width);
 		sz = pTiles.size();
 		
 		int i;

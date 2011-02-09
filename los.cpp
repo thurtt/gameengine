@@ -104,7 +104,7 @@ std::vector<game_sprite *> line_of_sight::detect_visible_sprites( float eye_x, f
 	if ( _corners.size() == 0 ) return _visibleSprites;
 	
 	// get a list of tiles inside the vision box
-	vector<tile *> tiles = _pMap->getTiles( _corners[0].getPoint1().x, _corners[0].getPoint2().y, _fov, _dov );
+	vector<tile *> tiles = _pMap->getTiles( _corners[0].getPoint1().x, _corners[0].getPoint1().y, _corners[1].getPoint2().x, _corners[1].getPoint2().x );
 	vector<tile *>::iterator itrTiles = tiles.begin();
 
 	// get a list of sprites that are blocking

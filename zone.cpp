@@ -67,19 +67,19 @@ tile* zone::getTile(float world_x, float world_y)
 	return pTile;
 }
 
-vector<tile*> zone::getTiles(float box_x, float box_y, float box_h, float box_w)
+vector<tile*> zone::getTiles(float box_x1, float box_y1, float box_x2, float box_y2)
 {
 	vector<tile*> pTile;
 	vector<tile*> temp_tile;
 	int i;
 	
-	if ( !boxCollision( x, y, x + width, y + height, box_x, box_y, box_x + box_w, box_y + box_h )  &&
-		!boxCollision( box_x, box_y, box_x + box_w, box_y + box_h , x, y, x + width, y + height ) )
+	if ( !boxCollision( x, y, x + width, y + height, box_x1, box_y1, box_x2, box_y2 )  &&
+		!boxCollision( box_x1, box_y1, box_x2, box_y2, x, y, x + width, y + height ) )
 		return pTile;
 
 	
 	for (i = 0; i < quads.size(); i++){
-		temp_tile = quads[i]->getTiles(box_x, box_y, box_h, box_w);
+		temp_tile = quads[i]->getTiles(box_x1, box_y1, box_x2, box_y2);
 		if (temp_tile.size() > 0)
 			pTile.insert( pTile.end(),temp_tile.begin(), temp_tile.end());
 	}

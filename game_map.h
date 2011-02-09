@@ -29,7 +29,7 @@ public:
 	void clearMap();
 	void genTiles();
 	tile* getTile(float world_x, float world_y);
-	vector<tile*> getTiles(float box_x, float box_y, float box_h, float box_w);
+	vector<tile*> getTiles(float x1, float y1, float x2, float y2);
 };
 
 #endif // _GAMEMAP_H_

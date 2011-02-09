@@ -325,7 +325,14 @@
 			isa = PBXProject;
 			buildConfigurationList = F3409E0212D81AA8005240F1 /* Build configuration list for PBXProject "gltest" */;
 			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = F3409DFD12D81AA8005240F1;
 			productRefGroup = F3409E0E12D81AD4005240F1 /* Products */;
 			projectDirPath = "";
