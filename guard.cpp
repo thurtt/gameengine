@@ -93,7 +93,7 @@ void Guard::movement()
 		}
 	} 
 	
-	vector<game_sprite *> visibleSprites = _los->detect_visible_sprites( _x + (width / 2), _y + ( height /2 ) );
+	vector<game_sprite *> visibleSprites = _los->detect_visible_sprites( disp_x + (width / 2), disp_y + ( height /2 ), _x, _y );
 	
 	if( visibleSprites.size() == 0 )
 	{
@@ -165,7 +165,7 @@ void Guard::move( float delta )
 	float temp_y = _y + delta * sin( rad_angle );
 	
 	// get textures for new position:
-	vector<tile*> pTiles = _pMap->getTiles(temp_x, temp_y, height, width);
+	vector<tile*> pTiles = _pMap->getTiles(temp_x, temp_y, temp_x + height, temp_y + width);
 	bool move_allowed = true;
 	
 	for (int i = 0; i < pTiles.size(); i++)
@@ -187,5 +187,4 @@ void Guard::move( float delta )
 	}
 
 }
-
 

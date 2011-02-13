@@ -16,7 +16,7 @@
 #include "game_map.h"
 
 const float PATROL_DELTA = 0.5;
-const float CHASE_DELTA = 0.9;
+const float CHASE_DELTA = 0.8;
 
 const float FIELD_OF_VISION = 180.0;
 const float DEPTH_OF_VISION = 250.0;

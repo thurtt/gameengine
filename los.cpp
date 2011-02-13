@@ -28,7 +28,7 @@
 #include <GLUT/glut.h>
 #endif
 
-#define VISION_DEBUG
+//#define VISION_DEBUG
 
 line_of_sight::line_of_sight( float fov, float dov, float height, float width, std::vector<game_sprite*> * sprites, game_map * pMap ) :
 _fov(fov),
@@ -95,7 +95,7 @@ void line_of_sight::draw( float x, float y, float angle )
 
 }
 
-std::vector<game_sprite *> line_of_sight::detect_visible_sprites( float eye_x, float eye_y )
+std::vector<game_sprite *> line_of_sight::detect_visible_sprites( float eye_x, float eye_y, float world_x, float world_y )
 {
 	
 	std::vector<game_sprite *>::iterator itr = _sprites->begin();
@@ -104,10 +104,14 @@ std::vector<game_sprite *> line_of_sight::detect_visible_sprites( float eye_x, f
 	if ( _corners.size() == 0 ) return _visibleSprites;
 	
 	// get a list of tiles inside the vision box
-	vector<tile *> tiles = _pMap->getTiles( _corners[0].getPoint1().x, _corners[0].getPoint1().y, _corners[1].getPoint2().x, _corners[1].getPoint2().x );
+	float world_x1 = world_x;
+	float world_y1 = world_y;
+	float world_x2 = world_x + _dov;
+	float world_y2 = world_y + _fov;
+	vector<tile *> tiles = _pMap->getTiles( world_x1, world_y1, world_x2, world_y2 );
 	vector<tile *>::iterator itrTiles = tiles.begin();
 
-	// get a list of sprites that are blocking
+	// get a list of sprites that are blockings
 	vector<game_sprite *> blockingSprites;
 	vector<game_sprite *>::iterator itrTileSprites;
 
@@ -155,7 +159,6 @@ std::vector<game_sprite *> line_of_sight::detect_visible_sprites( float eye_x, f
 					{
 						_visibleSprites.push_back( *itr );
 					}
-					
 					++blockItr;
 				}
 			}
@@ -193,5 +196,4 @@ bool line_of_sight::in_my_box( float x, float y, float h, float w )
 bool line_of_sight::isBlocking( game_sprite * sprite )
 {
 	return( sprite->attr->getAttribute( BLOCK_VISIBILITY ) != 0 );
-	return false;
 }
