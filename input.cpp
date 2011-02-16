@@ -11,6 +11,7 @@
 #include "game.h"
 #include "button_defines.h"
 #include "game_states.h"
+#include "line.h"
 
 #include <stdlib.h>
 #include <string>
@@ -170,6 +171,9 @@ void game_input::MainMouse(int button, int state, int x, int y)
 	iReturn = pGame->pHUD->click(state,x, glutGet( GLUT_WINDOW_HEIGHT ) - y);
 	if (iReturn == NO_EVENT) {
 		//interract with the world
+		
+		// Set a waypoint for the player
+		pGame->players[0]->_wpmgr.addWaypoint( point( x, y ) );
 	}
 	else {
 		//do something based on phase

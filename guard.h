@@ -12,7 +12,6 @@
 
 #include "sprite.h"
 #include "line.h"
-#include "waypoints.h"
 #include "game_map.h"
 
 const float PATROL_DELTA = 0.5;
@@ -41,16 +40,15 @@ public:
 private:
 	void patrol();
 	void chase( point waypoint );
-	bool close_enough( const point & point1, const point & point2 );
-	void move( float delta );
+	bool isMoveBlocked();
 	line_of_sight * _los;
 	Text * _text;
-	point _target;
+	game_map* _pMap;
 
 	void checkCaptures();
 	bool _chase;
-	waypoint_manager _wpmgr;
-	game_map* _pMap;
+	
+
 };
 
 #endif // _GUARD_H_

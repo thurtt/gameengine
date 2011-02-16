@@ -20,7 +20,7 @@ waypoint_manager::waypoint_manager()
 }
 point waypoint_manager::getNextWaypoint()
 {
-	if( _index == _waypoints.size() )
+	if( _index >= _waypoints.size() )
 	{
 		_index = 0;
 	}
@@ -69,4 +69,16 @@ bool waypoint_manager::removeWaypoint( point waypoint )
 	}
 	_waypoints.erase( itr );
 	return false;
+}
+
+int waypoint_manager::getWaypointCount()
+{
+	return _waypoints.size();
+}
+
+point waypoint_manager::popNextWaypoint()
+{
+	point wp = getNextWaypoint();
+	removeWaypoint( wp );
+	return wp;
 }

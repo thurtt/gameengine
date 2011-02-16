@@ -24,9 +24,9 @@ public:
 	void checkPickups();
 	
 private:
+	game_map* _pMap;
 	std::vector<game_sprite*> * _sprites;
 	std::vector<game_sprite*> * _pickups;
-	game_map* _pMap;
 };
 
 #endif // _PLAYER_H_

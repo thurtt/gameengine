@@ -20,7 +20,6 @@
 Guard::Guard( float start_x, float start_y,  std::vector<game_sprite*> * sprites, game_map * pMap ) :
 	_los(0),
 	_text(0),
-	_target(0, 0),
 	_pMap(pMap)
 {
 	// do some basic setup
@@ -75,9 +74,7 @@ Guard::~Guard()
 	_text = 0;
 }
 void Guard::movement()
-{
-
-	
+{	
 	if (onscreen(disp_x, disp_y, height, width)){
 		std::vector<game_sprite *>::iterator itr = sprite_list.begin();
 		while( itr != sprite_list.end() )
@@ -135,7 +132,10 @@ void Guard::checkCaptures(){
 void Guard::chase( point waypoint )
 {
 	_target = waypoint;
-	move( CHASE_DELTA );
+	if ( isMoveBlocked() == false ) 
+	{
+		move( CHASE_DELTA );
+	}
 }
 
 void Guard::patrol()
@@ -144,29 +144,17 @@ void Guard::patrol()
 	{
 		_target = _wpmgr.getNextWaypoint();
 	}
-	else
+	else if ( isMoveBlocked() == false )
 	{
 		move( PATROL_DELTA );
 	}	
 }
 
-bool Guard::close_enough( const point & point1, const point & point2 )
+bool Guard::isMoveBlocked()
 {
-	return( point2.x <= point1.x + 5 && point2.x >= point1.x - 5
-		   && point2.y <= point1.y + 5 && point2.y >= point1.y - 5 );
-}
-
-void Guard::move( float delta )
-{
-	float rad_angle = atan2( ( _target.y - _y ), ( _target.x - _x ) );
-	_angle = -toDegrees( rad_angle );
-	
-	float temp_x = _x + delta * cos( rad_angle );		
-	float temp_y = _y + delta * sin( rad_angle );
-	
 	// get textures for new position:
-	vector<tile*> pTiles = _pMap->getTiles(temp_x, temp_y, temp_x + height, temp_y + width);
-	bool move_allowed = true;
+	vector<tile*> pTiles = _pMap->getTiles(_x, _y, _x + height, _y + width);
+	bool move_blocked = false;
 	
 	for (int i = 0; i < pTiles.size(); i++)
 	{
@@ -175,16 +163,13 @@ void Guard::move( float delta )
 			if (pTiles[i]->sprites[k]->attr->getAttribute(BLOCK_MOVEMENT) > 0)
 			{
 				//we can't do this
-				move_allowed = false;
+				move_blocked = true;
 			}
 		}
 	}
-	
-	if (move_allowed)
-	{
-		_x = temp_x;
-		_y = temp_y;
-	}
-
+	return move_blocked;
 }
+
+
+
 

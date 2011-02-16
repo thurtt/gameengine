@@ -35,7 +35,6 @@ class game{
 	
 	vector<game_sprite*> sprites;
 	vector<game_sprite*> pickups;
-	vector<game_sprite*> players;
 	
 	int frame,time,timebase;
 	float offset_x;
@@ -47,6 +46,8 @@ public:
 	game_map* pMap;
 	HUD* pHUD;
 	bool _finished;
+	
+	vector<game_sprite*> players;
 	game();
 	~game();
 	void draw();

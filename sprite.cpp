@@ -10,11 +10,13 @@
 #include "sprite.h"
 #include "SOIL.h"
 #include "collision.h"
+#include "tiles.h"
+#include "rotation.h"
 #include <math.h>
 
 vector< pair<const char*, GLuint> > master_texture_list;
 
-game_sprite::game_sprite(){
+game_sprite::game_sprite() : _target(0, 0){
 	xy(10, 10);
 	wh(10, 10);
 	attr = new spriteAttribute();
@@ -31,7 +33,7 @@ game_sprite::game_sprite(){
 	disp_y = 0.0;
 }
 
-game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, const char * _filename, int vis, int mov){
+game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, const char * _filename, int vis, int mov) : _target(0, 0) {
 	xy(_x_, _y_);
 	wh(_width_, _height_);
 	texture_file = _filename;
@@ -367,6 +369,21 @@ void game_sprite::includeSprite( game_sprite * pSprite )
 
 float game_sprite::distance(float from_x, float from_y){
       return sqrt( pow(from_x - _x, 2) + pow(from_y - _y, 2) );
+}
+bool game_sprite::close_enough( const point & point1, const point & point2 )
+{
+	return( point2.x <= point1.x + 5 && point2.x >= point1.x - 5
+		   && point2.y <= point1.y + 5 && point2.y >= point1.y - 5 );
+}
+
+void game_sprite::move( float delta )
+{
+	float rad_angle = atan2( ( _target.y - _y ), ( _target.x - _x ) );
+	_angle = -toDegrees( rad_angle );
+	
+	_x = _x + delta * cos( rad_angle );		
+	_y = _y + delta * sin( rad_angle );
+	
 }
 
 

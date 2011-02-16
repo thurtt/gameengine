@@ -14,11 +14,13 @@ class waypoint_manager
 public:
 	waypoint_manager();
 	point getNextWaypoint();
+	point popNextWaypoint();
 	point getRandomWaypoint();
 	point getClosestWaypoint( point refPoint );
 	void reset();
 	void addWaypoint( point newPoint );
 	bool removeWaypoint( point waypoint );
+	int getWaypointCount();
 	
 private:
 	

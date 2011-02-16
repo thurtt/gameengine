@@ -45,13 +45,11 @@ void Player::movement(){
 	//game_sprite::movement();
 	
 	float delta = 0.8;
-	float temp_x = _x;
-	float temp_y = _y; // <---- store temporary coords for collision testing.
-	//texture = 1;
-	if ((move_right > 0) || (move_left > 0) || (move_up > 0) || (move_down > 0)){
-		if (texture != animations[ANIM_WALK].first) {
-			useAnimation(ANIM_WALK);
-		}
+	//float temp_x = _x;
+	//float temp_y = _y; // <---- store temporary coords for collision testing.
+	texture = 1;
+	/*if ((move_right > 0) || (move_left > 0) || (move_up > 0) || (move_down > 0)){
+		
 	}
 	
 	if (move_right > 0)	{ 
@@ -69,11 +67,16 @@ void Player::movement(){
 	if (move_down > 0)	{ 
 		temp_y = _y - delta;
 		_angle = 180;
+	}*/
+	
+	if ( _wpmgr.getWaypointCount() )
+	{
+		_target = _wpmgr.popNextWaypoint();
 	}
 	
 	// get textures for new position:
 	vector<tile*> pTiles;
-	pTiles = _pMap->getTiles(temp_x, temp_y, temp_x + height, temp_y + width);
+	pTiles = _pMap->getTiles( _x, _y, _x + height, _y + width);
 	int i, k;
 	bool move_allowed = true;
 	for (i = 0; i < pTiles.size(); i++){
@@ -83,11 +86,11 @@ void Player::movement(){
 								  pTiles[i]->sprites[k]->_x, pTiles[i]->sprites[k]->_y,
 								  pTiles[i]->sprites[k]->_x + pTiles[i]->sprites[k]->width, 
 								  pTiles[i]->sprites[k]->_y + pTiles[i]->sprites[k]->height, 
-								  temp_x, temp_y, 
-								  temp_x + width, temp_y + height)  ||
+								  _x, _y, 
+								  _x + width, _y + height)  ||
 					boxCollision(
-								 temp_x, temp_y, 
-								 temp_x + width, temp_y + height,
+								 _x, _y, 
+								 _x + width, _y + height,
 								 pTiles[i]->sprites[k]->_x, pTiles[i]->sprites[k]->_y,
 								 pTiles[i]->sprites[k]->_x + pTiles[i]->sprites[k]->width, 
 								 pTiles[i]->sprites[k]->_y + pTiles[i]->sprites[k]->height) ) {
@@ -97,9 +100,11 @@ void Player::movement(){
 			}
 		}
 	}
-	if (move_allowed){
-		_x = temp_x;
-		_y = temp_y;
+	if (move_allowed && !close_enough( point( _x, _y ), _target ) ){
+		move( delta );
+		if (texture != animations[ANIM_WALK].first) {
+			useAnimation(ANIM_WALK);
+		}
 	}
 
 	if (onscreen(disp_x, disp_y, height, width)){
