@@ -12,6 +12,7 @@
 #include "button_defines.h"
 #include "game_states.h"
 #include "line.h"
+#include "player.h"
 
 #include <stdlib.h>
 #include <string>
@@ -173,7 +174,8 @@ void game_input::MainMouse(int button, int state, int x, int y)
 		//interract with the world
 		
 		// Set a waypoint for the player
-		pGame->players[0]->_wpmgr.addWaypoint( point( x, y ) );
+		Player * pPlayer = dynamic_cast<Player *>( pGame->players[0] );
+		pPlayer->_wpmgr.addWaypoint( point( x, y ) );
 	}
 	else {
 		//do something based on phase

@@ -11,6 +11,7 @@
 		E2BEACBA12E2196C004C439E /* guard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BEACB912E2196C004C439E /* guard.cpp */; };
 		E2DD7CCC12F64F8200863ECB /* rotation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DD7CCB12F64F8200863ECB /* rotation.cpp */; };
 		E2DD7CD712F6520700863ECB /* waypoints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DD7CD612F6520700863ECB /* waypoints.cpp */; };
+		E2F94812130DF49F0017E9C1 /* dude.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2F94811130DF49F0017E9C1 /* dude.cpp */; };
 		F304F0D712F47BD4007E09FD /* line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F304F0D512F47BD4007E09FD /* line.cpp */; };
 		F3240EC512F799DE00535C1F /* buttonsprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3240EC412F799DE00535C1F /* buttonsprite.cpp */; };
 		F3409E1612D81B6A005240F1 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3409E1512D81B6A005240F1 /* GLUT.framework */; };
@@ -48,6 +49,8 @@
 		E2DD7CCB12F64F8200863ECB /* rotation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rotation.cpp; sourceTree = "<group>"; };
 		E2DD7CD512F6520700863ECB /* waypoints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = waypoints.h; sourceTree = "<group>"; };
 		E2DD7CD612F6520700863ECB /* waypoints.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = waypoints.cpp; sourceTree = "<group>"; };
+		E2F94810130DF49F0017E9C1 /* dude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dude.h; sourceTree = "<group>"; };
+		E2F94811130DF49F0017E9C1 /* dude.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dude.cpp; sourceTree = "<group>"; };
 		F304F0A812F4688D007E09FD /* sprite_defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprite_defines.h; sourceTree = "<group>"; };
 		F304F0D512F47BD4007E09FD /* line.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = line.cpp; sourceTree = "<group>"; };
 		F304F0D612F47BD4007E09FD /* line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = line.h; sourceTree = "<group>"; };
@@ -285,6 +288,8 @@
 				E2BEACB912E2196C004C439E /* guard.cpp */,
 				F343214612EC9A92004E248E /* player.h */,
 				F343214712EC9A92004E248E /* player.cpp */,
+				E2F94810130DF49F0017E9C1 /* dude.h */,
+				E2F94811130DF49F0017E9C1 /* dude.cpp */,
 			);
 			name = DudeSprites;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 				E2DD7CD712F6520700863ECB /* waypoints.cpp in Sources */,
 				F3240EC512F799DE00535C1F /* buttonsprite.cpp in Sources */,
 				F3BB2FD112F9E2FA0015C233 /* spriteAttribute.cpp in Sources */,
+				E2F94812130DF49F0017E9C1 /* dude.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

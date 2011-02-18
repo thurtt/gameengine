@@ -14,8 +14,7 @@
 #include "tile_defines.h"
 #include "drawable.h"
 #include "spriteAttribute.h"
-#include "waypoints.h"
-#include "line.h"
+
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -45,14 +44,8 @@ protected:
 	
 	vector<drawable *> drawables; // need to think about who is responsible for cleaning this up.
 	
-	point _target;
-	bool close_enough( const point & point1, const point & point2 );
-	void move( float delta );
-
-	
-	
 public:
-	waypoint_manager _wpmgr;
+
 	spriteAttribute * attr;
 	bool active;
 	int width, height;
@@ -75,7 +68,6 @@ public:
 	virtual int click (int, int, int);
 	virtual void animate();
 	virtual void movement();
-	void rotate( float angle );
 	void text(char *str);
 	GLuint LoadTexture( const char * filename);
 	void renderSpacedBitmapString(float x, float y, int spacing, void *font, char *str);

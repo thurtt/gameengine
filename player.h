@@ -12,10 +12,11 @@
 
 #include "sprite.h"
 #include "game_map.h"
+#include "dude.h"
 
 class game_sprite;
 
-class Player : public game_sprite
+class Player : public Dude
 {
 public:
 	Player( float _x_, float _y_, float _width_, float _height_, const char * _filename, std::vector<game_sprite*> * sprites, std::vector<game_sprite*> * pickups, game_map * pMap  );

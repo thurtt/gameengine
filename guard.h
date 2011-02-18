@@ -10,7 +10,7 @@
 #ifndef _GUARD_H_
 #define _GUARD_H_
 
-#include "sprite.h"
+#include "dude.h"
 #include "line.h"
 #include "game_map.h"
 
@@ -29,7 +29,7 @@ class Text;
 class line_of_sight;
 class game_sprite;
 
-class Guard : public game_sprite
+class Guard : public Dude
 {
 public:
 	std::vector<game_sprite*> * _players;
