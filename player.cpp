@@ -35,7 +35,7 @@ _pMap(pMap)
 	includeAnimation(ANIM_EXPLODE, "explosion.png", 25);
 	includeAnimation(ANIM_WALK, "player_walking_64.png", 8);
 	useAnimation(ANIM_NONE);
-	
+	_target = point( _x, _y );
 	
 	//sprite_list.push_back(new spriteText(0, height, 13, 6, 300, "Player 1"));
 	//sprite_list.push_back(new spriteText(0, 0, 13, 6, 0, "Player X: %5.4f  Player Y: %5.4f", _x_, _y_));

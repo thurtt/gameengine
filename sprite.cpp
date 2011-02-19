@@ -11,6 +11,7 @@
 #include "SOIL.h"
 #include "collision.h"
 #include "tiles.h"
+#include "rotation.h"
 #include <math.h>
 
 
@@ -204,11 +205,11 @@ void game_sprite::draw(float offset_x, float offset_y){
 	// not exactly sure how this works, but it does.
 	// use the _angle member variable to change the
 	// direction of the sprite.
-	glMatrixMode(GL_TEXTURE);
-	glLoadIdentity();
-	glTranslatef(0.5,0.5,0.0);
-	glRotatef(_angle,0.0,0.0,1.0);
-	glTranslatef(-0.5,-0.5,0.0);
+	//glMatrixMode(GL_TEXTURE);
+	//glLoadIdentity();
+	//glTranslatef(0.5,0.5,0.0);
+	//glRotatef(_angle,0.0,0.0,1.0);
+	//glTranslatef(-0.5,-0.5,0.0);
 	glMatrixMode(GL_MODELVIEW);
 	
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -235,14 +236,14 @@ void game_sprite::draw(float offset_x, float offset_y){
 	
 	//if (animations[texture].first != animations[ANIM_NONE].first) {
 	if (texture != ANIM_NONE ) {
-		if ((_angle == 90) || (_angle == 270)){
-			translated_y = ((float)frame * (float)height)/(animations[texture].second * (float)height);
-			translated_y2 = (((float)frame + 1) * (float)height)/(animations[texture].second * (float)height);
-		}
-		else {
+		//if ((_angle == 90) || (_angle == 270)){
+		//	translated_y = ((float)frame * (float)height)/(animations[texture].second * (float)height);
+		//	translated_y2 = (((float)frame + 1) * (float)height)/(animations[texture].second * (float)height);
+		//}
+		//else {
 			translated_x = ((float)frame * (float)width)/(animations[texture].second * (float)width);
 			translated_x2 = (((float)frame + 1) * (float)width)/(animations[texture].second * (float)width);
-		}
+		//}
 	}
 
 	glBegin(GL_QUADS);
@@ -251,10 +252,35 @@ void game_sprite::draw(float offset_x, float offset_y){
 	disp_x = _x + offset_x + 0.0f;
 	disp_y = _y + offset_y + 0.0f;
 	
-	glTexCoord2d(translated_x,translated_y);	glVertex2f( disp_x,  disp_y );
-    glTexCoord2d(translated_x2,translated_y);	glVertex2f( disp_x + width, disp_y );
-    glTexCoord2d(translated_x2, translated_y2);	glVertex2f( disp_x + width, disp_y + height );
-    glTexCoord2d(translated_x, translated_y2);	glVertex2f( disp_x,  disp_y + height );
+	// let's rotate some shit
+	// we rotate around a origin point
+	// this will generally be the center of the sprite
+	float origin_x = disp_x + ( width / 2 );
+	float origin_y = disp_y + ( height / 2 );
+	float tex_orig_x = ( translated_x2 - translated_x ) / 2;
+	float tex_orig_y = 0.5f;
+
+	
+	point tex_corner1 = rotate( translated_x, translated_y, tex_orig_x, tex_orig_y, _angle );
+	point tex_corner2 = rotate( translated_x2, translated_y, tex_orig_x, tex_orig_y, _angle );
+	point tex_corner3 = rotate( translated_x2, translated_y2, tex_orig_x, tex_orig_y, _angle );
+	point tex_corner4 = rotate( translated_x, translated_y2, tex_orig_x, tex_orig_y, _angle );
+	
+	point corner1 = rotate( disp_x, disp_y, origin_x, origin_y, _angle );
+	point corner2 = rotate( disp_x + width, disp_y, origin_x, origin_y, _angle );
+	point corner3 = rotate( disp_x + width, disp_y + height, origin_x, origin_y, _angle );
+	point corner4 = rotate( disp_x, disp_y + height, origin_x, origin_y, _angle );
+		
+	glTexCoord2d( translated_x, translated_y );		glVertex2f( corner1.x,  corner1.y );
+    glTexCoord2d( translated_x2, translated_y );	glVertex2f( corner2.x,  corner2.y );
+    glTexCoord2d( translated_x2, translated_y2 );	glVertex2f( corner3.x,  corner3.y );
+    glTexCoord2d( translated_x, translated_y2 );	glVertex2f( corner4.x,  corner4.y );
+	
+	/*
+	glTexCoord2d( tex_corner1.x, tex_corner1.y );	glVertex2f( corner1.x,  corner1.y );
+    glTexCoord2d( tex_corner2.x, tex_corner2.y );	glVertex2f( corner2.x,  corner2.y );
+    glTexCoord2d( tex_corner3.x, tex_corner3.y );	glVertex2f( corner3.x,  corner3.y );
+    glTexCoord2d( tex_corner4.x, tex_corner4.y );	glVertex2f( corner4.x,  corner4.y );
 	
 	/*
 	 
