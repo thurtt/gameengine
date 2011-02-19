@@ -45,29 +45,7 @@ void Player::movement(){
 	//game_sprite::movement();
 	
 	float delta = 0.8;
-	//float temp_x = _x;
-	//float temp_y = _y; // <---- store temporary coords for collision testing.
 	texture = 1;
-	/*if ((move_right > 0) || (move_left > 0) || (move_up > 0) || (move_down > 0)){
-		
-	}
-	
-	if (move_right > 0)	{ 
-		temp_x = _x + delta; 
-		_angle = 90;
-	}
-	if (move_left > 0)	{ 
-		temp_x = _x - delta; 
-		_angle = 270;
-	}
-	if (move_up > 0)	{ 
-		temp_y = _y + delta;
-		_angle = 0;
-	}
-	if (move_down > 0)	{ 
-		temp_y = _y - delta;
-		_angle = 180;
-	}*/
 	
 	if ( _wpmgr.getWaypointCount() )
 	{

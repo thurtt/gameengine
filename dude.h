@@ -18,6 +18,8 @@ class Dude : public game_sprite
 public:
 	waypoint_manager _wpmgr;
 	Dude() : _target(0, 0){} 
+	point dispToWorld( float x, float y );
+	point worldToDisp( float x, float y );
 protected:
 	point _target;
 	bool close_enough( const point & point1, const point & point2 );

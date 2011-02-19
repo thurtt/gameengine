@@ -169,13 +169,14 @@ void game_input::MainMouse(int button, int state, int x, int y)
 {
 	//check hud for response
 	int iReturn;
-	iReturn = pGame->pHUD->click(state,x, glutGet( GLUT_WINDOW_HEIGHT ) - y);
+	float adj_y = glutGet( GLUT_WINDOW_HEIGHT ) - y;
+	iReturn = pGame->pHUD->click(state,x, adj_y );
 	if (iReturn == NO_EVENT) {
 		//interract with the world
 		
 		// Set a waypoint for the player
 		Player * pPlayer = dynamic_cast<Player *>( pGame->players[0] );
-		pPlayer->_wpmgr.addWaypoint( point( x, y ) );
+		pPlayer->_wpmgr.addWaypoint( pPlayer->dispToWorld( x, adj_y ) );
 	}
 	else {
 		//do something based on phase

@@ -26,3 +26,20 @@ void Dude::move( float delta )
 	_y = _y + delta * sin( rad_angle );
 	
 }
+
+point Dude::dispToWorld( float x, float y )
+{
+	float offset_x = _x - disp_x;
+	float offset_y = _y - disp_y;
+	
+	return point( offset_x + x, offset_y + y );
+}
+
+point Dude::worldToDisp( float x, float y )
+{
+	float offset_x = _x - disp_x;
+	float offset_y = _y - disp_y;
+	
+	return point( x - offset_x, y - offset_y );
+	
+}
