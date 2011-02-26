@@ -14,7 +14,7 @@
 #include "tile_defines.h"
 #include "drawable.h"
 #include "spriteAttribute.h"
-
+#include "sprite_data.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -56,8 +56,10 @@ public:
 	float disp_x;
 	float disp_y;
 	game_sprite();
+	game_sprite(float _x_, float _y_, _sprite_data * sprite_data);
 	game_sprite(float, float, float, float, const char *, int, int);
 	~game_sprite();
+	void generalInit(float _x_, float _y_, float _width_, float _height_, const char * _filename, int vis, int mov);
 	void includeAnimation(int, GLuint, int);
 	void includeAnimation(int,const char *, int);
 	void useAnimation(int);

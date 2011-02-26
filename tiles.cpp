@@ -40,13 +40,7 @@ tile::tile(int _id, int _quad_id, int _zone_id){
 	int tilesize = tileset[tile_id].size();
 	
 	for (i = 0; i < tileset[tile_id].size(); i++){
-		sprites.push_back( new game_sprite( tileset[tile_id][i]->x + x, 
-										   tileset[tile_id][i]->y + y,  
-										   tileset[tile_id][i]->width,
-										   tileset[tile_id][i]->height,
-										   tileset[tile_id][i]->texture,
-										   tileset[tile_id][i]->bVisibility,
-										   tileset[tile_id][i]->bMovement));
+		sprites.push_back( new game_sprite( x, y, tileset[tile_id][i] ) );
 	}
 }
 tile::~tile(){

@@ -17,24 +17,24 @@
 
 vector< pair<const char*, GLuint> > master_texture_list;
 
-game_sprite::game_sprite(){
-	xy(10, 10);
-	wh(10, 10);
-	attr = new spriteAttribute();
-	
-	attr->setAttribute(BLOCK_MOVEMENT, 0);
-	attr->setAttribute(BLOCK_VISIBILITY, 0);
-	attr->setAttribute(ALIVE, 1);
-	active = true;
-
-	includeAnimation(ANIM_NONE, LoadTexture("img.png"), 0);
-	useAnimation(ANIM_NONE);
-	_angle = 0.0f;
-	disp_x = 0.0;
-	disp_y = 0.0;
+game_sprite::game_sprite()
+{
+	generalInit(10, 10, 10, 10, "img_png", 0, 0);
 }
 
-game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, const char * _filename, int vis, int mov){
+game_sprite::game_sprite(float _x_, float _y_, _sprite_data * sd)
+{
+	generalInit( sd->x + _x_, sd->y + _y_, sd->width, sd->height, sd->texture, sd->bVisibility, sd->bMovement);
+	//attr->setAttribute(1000, 0);
+}
+
+game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, const char * _filename, int vis, int mov)
+{
+	generalInit(_x_, _y_, _width_, _height_, _filename, vis, mov);
+}
+
+void game_sprite::generalInit(float _x_, float _y_, float _width_, float _height_, const char * _filename, int vis, int mov)
+{
 	xy(_x_, _y_);
 	wh(_width_, _height_);
 	texture_file = _filename;
@@ -44,7 +44,7 @@ game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, co
 	attr->setAttribute(BLOCK_VISIBILITY, vis);
 	attr->setAttribute(ALIVE, 1);
 	active = true;
-
+	
 	includeAnimation(ANIM_NONE, LoadTexture(texture_file), 0);
 	useAnimation(ANIM_NONE);
 	_angle = 0.0f;
