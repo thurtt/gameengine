@@ -37,7 +37,6 @@ tile::tile(int _id, int _quad_id, int _zone_id){
 	y = (id / (TILESETHEIGHT / 2) ) * TILESIZE + ((quad_id / 2) * QUADHEIGHT + (zone_id /4) * ZONEHEIGHT) ;
 	int i; 
 	int tile_id = maps[0][zone_id][quad_id * QUADTILES + id];
-	int tilesize = tileset[tile_id].size();
 	
 	for (i = 0; i < tileset[tile_id].size(); i++){
 		sprites.push_back( new game_sprite( x, y, tileset[tile_id][i] ) );
