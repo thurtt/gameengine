@@ -24,8 +24,9 @@ game_sprite::game_sprite()
 
 game_sprite::game_sprite(float _x_, float _y_, _sprite_data * sd)
 {
-	generalInit( sd->x + _x_, sd->y + _y_, sd->width, sd->height, sd->texture, sd->bVisibility, sd->bMovement);
-	//attr->setAttribute(1000, 0);
+	generalInit( sd->x + _x_, sd->y + _y_, sd->width, sd->height, sd->texture, sd->Visibility, sd->Movement);
+	attr->setAttribute(SPAWN_POINT, sd->Spawn);
+	attr->setAttribute(DETENTION_POINT, sd->Detention);
 }
 
 game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, const char * _filename, int vis, int mov)

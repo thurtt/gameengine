@@ -10,10 +10,12 @@
 #include "sprite_data.h"
 
 
-_sprite_data::_sprite_data(float _x, float _y, float _height, float _width, const char * _texture, int vis, int mov){
+_sprite_data::_sprite_data(float _x, float _y, float _height, float _width, const char * _texture, int vis, int mov, int spn, int det){
 	x = _x; y = _y;
 	height = _height; width = _width;
 	texture = _texture;
-	bMovement = mov;
-	bVisibility = vis;
+	Movement = mov;
+	Visibility = vis;
+	Spawn = spn;
+	Detention = det;
 };

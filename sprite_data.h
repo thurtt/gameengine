@@ -21,9 +21,11 @@ public:
 	float x, y;
 	float height, width;
 	const char * texture;
-	int bMovement;
-	int bVisibility;
-	_sprite_data(float, float, float, float, const char *, int, int);
+	int Movement;
+	int Visibility;
+	int Spawn;
+	int Detention;
+	_sprite_data(float _x, float _y, float _height, float _width, const char * _texture, int vis, int mov, int spn, int det);
 };
 
 

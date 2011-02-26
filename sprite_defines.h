@@ -18,5 +18,7 @@
 #define EXPIRATION_TICK 5
 #define PICKUP_SCORE 6
 #define BUTTON_RETURN_VALUE 7 // to avoid collision with button logic
+#define SPAWN_POINT 8
+#define DETENTION_POINT 9
 
 #endif // _SPRITEDEFINES_H
