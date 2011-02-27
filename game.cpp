@@ -232,26 +232,14 @@ void game::watchdog(int value)
 {
 	//basic handler. needs access to entire game data
 	
-	// look for captured players.
 	int i;
 	vector<tile*> pTiles;
-	point det = point(0,0); //front load
 	
 	for (i = 0; i < players.size(); i++){
-		if (players[i]->attr->getAttribute(DAWG_PLAYER_CAPTURED) > 0)
+		/*if (players[i]->attr->getAttribute(DAWG_PLAYER_CAPTURED) > 0)
 		{
 			players[i]->attr->setAttribute(DAWG_PLAYER_CAPTURED, 0);
-			
-			pTiles = pMap->zones[0]->getTiles(DETENTION_POINT); //todo: get current zone.
-			det = point(0,0);
-			
-			if (pTiles.size() > 0){
-				det = pTiles[0]->center();
-			}
-			players[i]->xy(det);
-			//players[i]->_target = point(players[i]->_x, players[i]->_y);
-			players[i]->attr->setAttribute(ALIVE, 1);
-			
 		}
+		 */
 	}
 }

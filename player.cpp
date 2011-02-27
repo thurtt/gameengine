@@ -130,4 +130,16 @@ void Player::captured(){
 	useAnimation(ANIM_NONE);
 	attr->setAttribute(ALIVE, 0); //deactivate. game will reactivate.
 	attr->setAttribute(DAWG_PLAYER_CAPTURED, 1); // omg!!11!  set id to player ID maybe? leave 1 for now.
+	
+	vector<tile*> pTiles;
+	point det = point(0,0); //front load
+	pTiles = _pMap->zones[0]->getTiles(DETENTION_POINT); //todo: get current zone.
+	
+	if (pTiles.size() > 0){
+		det = pTiles[0]->center();
+	}
+	xy(det);
+	_target = point(_x, _y);
+	attr->setAttribute(ALIVE, 1);
+	
 }
