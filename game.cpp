@@ -211,7 +211,12 @@ void game::loadMap(int _map){
 		spawn = pTiles[0]->center();
 	}
 	
-	focus_sprite = new Player(spawn.x, spawn.y, 32,32, "player_blue.png", &sprites, &pickups, pMap);
+	if ( player_configuration == 0 ){
+		player_configuration = new player_data( "Blue Guy", "player_blue.png", point(0,0), point(32,32));
+	}
+	player_configuration->spawn = spawn;
+	
+	focus_sprite = new Player(player_configuration, &sprites, &pickups, pMap);
 	sprites.push_back(focus_sprite);
 	players.push_back(focus_sprite);
 	
