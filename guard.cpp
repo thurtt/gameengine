@@ -122,7 +122,8 @@ void Guard::checkCaptures(){
 		if (boxCollision( _x, _y, _x + width, _y + height, (*itr)->_x, (*itr)->_y, (*itr)->_x + (*itr)->width, (*itr)->_y + (*itr)->height) || 
 			boxCollision((*itr)->_x, (*itr)->_y, (*itr)->_x + (*itr)->width, (*itr)->_y + (*itr)->height, _x, _y, _x + width, _y + height )){
 			if ( (*itr)->active ) {
-				(*itr)->useAnimation(ANIM_EXPLODE);
+				(*itr)->captured();
+				//(*itr)->useAnimation(ANIM_EXPLODE);
 			}
 		}
 		++itr;

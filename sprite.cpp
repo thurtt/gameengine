@@ -388,6 +388,11 @@ void game_sprite::movement(){
 	}
 }
 
+void game_sprite::captured()
+{
+	//um... most sprites might not care, I guess.
+}
+
 void game_sprite::setDrawable( drawable * pDrawable )
 {
 	drawables.push_back( pDrawable );

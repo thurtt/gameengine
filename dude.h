@@ -20,6 +20,7 @@ public:
 	Dude() : _target(0, 0){} 
 	point dispToWorld( float x, float y );
 	point worldToDisp( float x, float y );
+	virtual void captured();
 protected:
 	point _target;
 	bool close_enough( const point & point1, const point & point2 );

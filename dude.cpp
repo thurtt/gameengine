@@ -43,3 +43,6 @@ point Dude::worldToDisp( float x, float y )
 	return point( x - offset_x, y - offset_y );
 	
 }
+
+void Dude::captured(){
+}

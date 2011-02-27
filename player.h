@@ -23,6 +23,7 @@ public:
 	~Player();
 	virtual void movement();
 	void checkPickups();
+	void captured();
 	
 private:
 	game_map* _pMap;

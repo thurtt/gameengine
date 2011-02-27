@@ -37,7 +37,7 @@ _pMap(pMap)
 	useAnimation(ANIM_NONE);
 	_target = point( _x, _y );
 	
-	//sprite_list.push_back(new spriteText(0, height, 13, 6, 300, "Player 1"));
+	sprite_list.push_back(new spriteText(0, height, 13, 6, 300, "Player 1"));
 	//sprite_list.push_back(new spriteText(0, 0, 13, 6, 0, "Player X: %5.4f  Player Y: %5.4f", _x_, _y_));
 }
 
@@ -124,3 +124,10 @@ void Player::checkPickups(){
 	}	
 }
 
+
+void Player::captured(){
+	attr->setAttribute(PLAYER_CAPTURED, attr->getAttribute(PLAYER_CAPTURED) + 1);
+	useAnimation(ANIM_NONE);
+	attr->setAttribute(ALIVE, 0); //deactivate. game will reactivate.
+	attr->setAttribute(DAWG_PLAYER_CAPTURED, 1); // omg!!11!  set id to player ID maybe? leave 1 for now.
+}

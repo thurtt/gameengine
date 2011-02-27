@@ -15,6 +15,12 @@ using namespace std;
 
 game* baseGame;
 
+void watchdogTimer(int value)
+{
+	baseGame->watchdog( value );
+	glutTimerFunc(1000/10, watchdogTimer, 1);
+}
+
 void movementTimer(int value){
 	baseGame->movement();
 	glutTimerFunc(1000/60, movementTimer, 1);
@@ -117,6 +123,7 @@ void init(){
 	glutEntryFunc(MouseEntry);
 	
 	glutTimerFunc(1000/60,movementTimer,1);
+	glutTimerFunc(1000/10,watchdogTimer,1);
 	glutTimerFunc(900/60,fpsTimer,1);
 	glutTimerFunc(1000/20,animationTimer,1);
 	

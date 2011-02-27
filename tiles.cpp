@@ -12,7 +12,7 @@
 
 
 int zone_1[ZONETILES] =	{
-	6,5,5,5,5,4,2,3,3,5,
+	6,5,5,8,5,4,2,3,3,5,
 	4,1,1,1,1,4,2,2,2,2,
 	7,1,1,5,5,2,2,2,2,2};
 int zone_2[ZONETILES] = {1};
@@ -131,4 +131,11 @@ void populateTileSet(){
 	raw_tile8.push_back( new _sprite_data(0,0,15,TILESIZE,"wall.png", 1, 1, 0, 0)); //this will blockmovement.
 	raw_tile8.push_back( new _sprite_data(0,0,TILESIZE,15,"wall.png", 1, 1, 0, 0)); //this will blockmovement.
 	tileset.push_back(raw_tile8);
+	
+	
+	/* HORIZONTAL wall DETENTION */
+	vector<_sprite_data*> raw_tile9 ;
+	raw_tile9.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"clean_tiles.png", 0, 0, 0, 1));
+	raw_tile9.push_back( new _sprite_data(0,0,15,TILESIZE,"wall.png", 1, 1, 0, 0)); //this will blockmovement.
+	tileset.push_back(raw_tile9);
 }

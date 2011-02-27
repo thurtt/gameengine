@@ -20,5 +20,12 @@
 #define BUTTON_RETURN_VALUE 7 // to avoid collision with button logic
 #define SPAWN_POINT 8
 #define DETENTION_POINT 9
+#define PLAYER_CAPTURED 10
+
+/****************
+ WATCH DOG DEFINITIONS - for automation. win conditions, etc
+ ****************/
+
+#define DAWG_PLAYER_CAPTURED 100 // automation alert. watch dog can act on this.
 
 #endif // _SPRITEDEFINES_H

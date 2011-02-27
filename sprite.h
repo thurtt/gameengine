@@ -72,6 +72,7 @@ public:
 	virtual int click (int, int, int);
 	virtual void animate();
 	virtual void movement();
+	virtual void captured();
 	void text(char *str);
 	GLuint LoadTexture( const char * filename);
 	void renderSpacedBitmapString(float x, float y, int spacing, void *font, char *str);

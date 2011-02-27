@@ -40,14 +40,14 @@ class game{
 	float offset_x;
 	float offset_y;
 public:
-	game_sprite* focus_sprite;
+	Dude* focus_sprite;
 	spriteAttribute * attr;
 	game_input* pInput;
 	game_map* pMap;
 	HUD* pHUD;
 	bool _finished;
 	
-	vector<game_sprite*> players;
+	vector<game_sprite *> players;
 	game();
 	~game();
 	void draw();
@@ -62,6 +62,7 @@ public:
 	void loadPhase(int phase);
 	void loadMap(int map);
 	void midPhase();
+	void watchdog(int value);
 	
 };
 #endif
