@@ -27,6 +27,9 @@
 		F374572E12F365EE00AD2049 /* game_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F374572D12F365EE00AD2049 /* game_map.cpp */; };
 		F382BD4812EB2805009D3146 /* text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F382BD4612EB2805009D3146 /* text.cpp */; };
 		F382BD4E12EB4B7A009D3146 /* collision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F382BD4D12EB4B7A009D3146 /* collision.cpp */; };
+		F3A9D47E131AD3B2003981FC /* player_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3A9D47D131AD3B2003981FC /* player_data.cpp */; };
+		F3A9D498131AE42D003981FC /* charselection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3A9D497131AE42D003981FC /* charselection.cpp */; };
+		F3A9D49B131AE875003981FC /* playerselectsprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3A9D49A131AE875003981FC /* playerselectsprite.cpp */; };
 		F3BB2FD112F9E2FA0015C233 /* spriteAttribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3BB2FD012F9E2FA0015C233 /* spriteAttribute.cpp */; };
 		F3DE4B3712EC850600799246 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3DE4B3612EC850600799246 /* OpenAL.framework */; };
 		F3E35BA812D958C30078D65F /* sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3E35BA712D958C30078D65F /* sprite.cpp */; };
@@ -86,6 +89,12 @@
 		F382BD4C12EB4B7A009D3146 /* collision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = collision.h; sourceTree = "<group>"; };
 		F382BD4D12EB4B7A009D3146 /* collision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = collision.cpp; sourceTree = "<group>"; };
 		F382BD8512EB4E8A009D3146 /* drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = drawable.h; sourceTree = "<group>"; };
+		F3A9D47C131AD3B2003981FC /* player_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = player_data.h; sourceTree = "<group>"; };
+		F3A9D47D131AD3B2003981FC /* player_data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = player_data.cpp; sourceTree = "<group>"; };
+		F3A9D496131AE42D003981FC /* charselection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = charselection.h; sourceTree = "<group>"; };
+		F3A9D497131AE42D003981FC /* charselection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = charselection.cpp; sourceTree = "<group>"; };
+		F3A9D499131AE875003981FC /* playerselectsprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playerselectsprite.h; sourceTree = "<group>"; };
+		F3A9D49A131AE875003981FC /* playerselectsprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = playerselectsprite.cpp; sourceTree = "<group>"; };
 		F3BB2FCF12F9E2FA0015C233 /* spriteAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spriteAttribute.h; sourceTree = "<group>"; };
 		F3BB2FD012F9E2FA0015C233 /* spriteAttribute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spriteAttribute.cpp; sourceTree = "<group>"; };
 		F3DE4B3612EC850600799246 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = /System/Library/Frameworks/OpenAL.framework; sourceTree = "<absolute>"; };
@@ -142,6 +151,8 @@
 				F3240ED612F79E5B00535C1F /* button_defines.h */,
 				F3240EC312F799DE00535C1F /* buttonsprite.h */,
 				F3240EC412F799DE00535C1F /* buttonsprite.cpp */,
+				F3A9D499131AE875003981FC /* playerselectsprite.h */,
+				F3A9D49A131AE875003981FC /* playerselectsprite.cpp */,
 			);
 			name = "UI Elements";
 			sourceTree = "<group>";
@@ -177,6 +188,15 @@
 				F3409E0D12D81AD4005240F1 /* XcodeGLUT.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F3A9D495131AE40C003981FC /* Char Select */ = {
+			isa = PBXGroup;
+			children = (
+				F3A9D496131AE42D003981FC /* charselection.h */,
+				F3A9D497131AE42D003981FC /* charselection.cpp */,
+			);
+			name = "Char Select";
 			sourceTree = "<group>";
 		};
 		F3BB2FDF12F9E5360015C233 /* Attributes */ = {
@@ -290,6 +310,8 @@
 				F343214712EC9A92004E248E /* player.cpp */,
 				E2F94810130DF49F0017E9C1 /* dude.h */,
 				E2F94811130DF49F0017E9C1 /* dude.cpp */,
+				F3A9D47C131AD3B2003981FC /* player_data.h */,
+				F3A9D47D131AD3B2003981FC /* player_data.cpp */,
 			);
 			name = DudeSprites;
 			sourceTree = "<group>";
@@ -297,6 +319,7 @@
 		F3EF747F12F5CCD6002E7129 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
+				F3A9D495131AE40C003981FC /* Char Select */,
 				F3EF746412F5C88D002E7129 /* HUD.h */,
 				F3EF746512F5C88D002E7129 /* HUD.cpp */,
 			);
@@ -330,7 +353,6 @@
 			isa = PBXProject;
 			buildConfigurationList = F3409E0212D81AA8005240F1 /* Build configuration list for PBXProject "gltest" */;
 			compatibilityVersion = "Xcode 2.4";
-			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				English,
@@ -391,6 +413,9 @@
 				F3240EC512F799DE00535C1F /* buttonsprite.cpp in Sources */,
 				F3BB2FD112F9E2FA0015C233 /* spriteAttribute.cpp in Sources */,
 				E2F94812130DF49F0017E9C1 /* dude.cpp in Sources */,
+				F3A9D47E131AD3B2003981FC /* player_data.cpp in Sources */,
+				F3A9D498131AE42D003981FC /* charselection.cpp in Sources */,
+				F3A9D49B131AE875003981FC /* playerselectsprite.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

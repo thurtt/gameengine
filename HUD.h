@@ -25,9 +25,8 @@
 
 class HUD {
 	
-private:
+protected:
 	vector<game_sprite *>  ui_elements;
-	game_sprite* pPlayer; //player object to monitor for updates.
 	int frame, time, timebase;
 	int move, mtime, mtimebase;
 	
@@ -35,6 +34,7 @@ public:
 	spriteText * pFPS;
 	spriteText * pMPS;
 	spriteAttribute * attr;
+	game_sprite* pPlayer; //player object to monitor for updates.
 	
 	HUD();
 	HUD(game_sprite* pl);

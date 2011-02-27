@@ -175,14 +175,65 @@ void game_input::MainMouse(int button, int state, int x, int y)
 		//interract with the world
 		
 		// Set a waypoint for the player
-		Player * pPlayer = dynamic_cast<Player *>( pGame->players[0] );
-		pPlayer->_wpmgr.addWaypoint( pPlayer->dispToWorld( x, adj_y ) );
+		if (pGame->players.size() > 0){
+			Player * pPlayer = dynamic_cast<Player *>( pGame->players[0] );
+			pPlayer->_wpmgr.addWaypoint( pPlayer->dispToWorld( x, adj_y ) );
+		}
 	}
-	else {
-		//do something based on phase
-		switch (iReturn) {
+	else if (iReturn != EVENT_ACCEPTED) {
+		//case is game phase, if/then iReturn value.
+		
+		switch ( pGame->attr->getAttribute(GAME_PHASE) ) {
+			case STATE_TITLE:
+				// do eet.
+				if (iReturn == STATE_CHARACTER_SELECT) {
+					//touchy touchy
+					pGame->loadPhase(STATE_CHARACTER_SELECT);
+				}
+				break;
+				
+			case STATE_CHARACTER_SELECT:
+				if (iReturn == STATE_TITLE) {
+					//touchy touchy
+					pGame->loadPhase(STATE_TITLE);
+				}
+				else {
+					//get player data selected
+					//load game
+					pGame->loadPhase(STATE_LEVEL_STARTING);
+				}
+
+				break;
+			case STATE_LEVEL_STARTING:
+				if (iReturn == START_GAME) {
+					//touchy touchy
+					pGame->loadPhase(STATE_LEVEL);
+				}
+				break;
+			case STATE_LEVEL:
+				if (iReturn == PAUSE_GAME) {
+					//put it on hold
+					if (pGame->attr->getAttribute(GAME_PAUSED) > 0){
+						pGame->attr->setAttribute(GAME_PAUSED, 0);}
+					else {
+						pGame->attr->setAttribute(GAME_PAUSED, 1);
+					}
+				}
+				break;
+			default:
+				break;
+		}
+		/*switch (iReturn) {
 			case EVENT_ACCEPTED:
 				//dump
+				break;
+			case STATE_CHARACTER_SELECT:
+				//touchy touchy
+				pGame->loadPhase(STATE_CHARACTER_SELECT);
+				break;
+			case STATE_TITLE:
+				//Ou est la pamplemousse? DANS LA SALLE DE BAINS!
+				pGame->loadPhase(STATE_TITLE);
 				break;
 			case STATE_LEVEL_STARTING:
 				//YOU HEAR THE MAN!
@@ -204,7 +255,7 @@ void game_input::MainMouse(int button, int state, int x, int y)
 
 			default:
 				break;
-		}
+		}*/
 	}
 
 }

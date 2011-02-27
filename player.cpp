@@ -14,6 +14,32 @@
 #include "text.h"
 #include "collision.h"
 
+Player::Player( player_data * pdata, std::vector<game_sprite*> * sprites, std::vector<game_sprite*> * pickups, game_map * pMap  ) :
+_sprites(sprites),
+_pickups(pickups),
+_pMap(pMap)
+{	
+	// do some basic setup
+	xy( pdata->spawn.x, pdata->spawn.y );
+	wh( pdata->width, pdata->height );
+	texture_file = pdata->texture;
+	attr = new spriteAttribute();
+	
+	attr->setAttribute(PICKUP_SCORE, 0);
+	attr->setAttribute(BLOCK_MOVEMENT, 0);
+	attr->setAttribute(BLOCK_VISIBILITY, 0);
+	attr->setAttribute(ALIVE, 1);
+	
+	texture = LoadTexture(texture_file);
+	includeAnimation(ANIM_NONE, texture, 0);
+	includeAnimation(ANIM_EXPLODE, "explosion.png", 25);
+	includeAnimation(ANIM_WALK, "player_walking_64.png", 8);
+	useAnimation(ANIM_NONE);
+	_target = point( _x, _y );
+	
+	sprite_list.push_back(new spriteText(0, height, 13, 6, 300, pdata->name));
+}
+
 Player::Player( float _x_, float _y_, float _width_, float _height_, const char * _filename,  std::vector<game_sprite*> * sprites,  std::vector<game_sprite*> * pickups, game_map * pMap  ) :
 _sprites(sprites),
 _pickups(pickups),

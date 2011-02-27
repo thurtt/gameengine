@@ -14,6 +14,7 @@
 #include "input.h"
 #include "game_map.h"
 #include "HUD.h"
+#include "charselection.h"
 
 #include <stdlib.h>
 #include <stdio.h>

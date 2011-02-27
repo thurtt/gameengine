@@ -1,0 +1,76 @@
+/*
+ *  playerselectsprite.cpp
+ *  gltest
+ *
+ *  Created by Stuart Templeton on 2/27/11.
+ *  Copyright 2011 none. All rights reserved.
+ *
+ */
+
+#include "playerselectsprite.h"
+#include "button_defines.h"
+
+player_select_sprite::player_select_sprite()
+{
+}
+
+player_select_sprite::player_select_sprite(float x, float y, float h, float w,  const char * texture_file, int ret_val)
+{
+	xy(x,y);
+	wh(w,h);
+	
+	attr->setAttribute(BLOCK_MOVEMENT, 0);
+	attr->setAttribute(BLOCK_VISIBILITY, 0);
+	attr->setAttribute(ALIVE, 1);
+	attr->setAttribute(EXPIRATION, 0);
+	attr->setAttribute(EXPIRATION_TICK, 0);
+	attr->setAttribute(BUTTON_RETURN_VALUE, ret_val);
+	active = true;
+	
+	includeAnimation(ANIM_NONE, LoadTexture(texture_file), 0);
+	useAnimation(ANIM_NONE);
+	_angle = 0.0f;
+	disp_x = 0.0;
+	disp_y = 0.0;
+	
+}
+
+player_select_sprite::~player_select_sprite()
+{
+}
+
+int player_select_sprite::click(int state, int x, int y)
+{
+	//both mouse click AND release are sent. track that.
+	
+	switch (state) {
+		case GLUT_DOWN:
+			//DEPRESSED
+			//frame = 1; //two frames of animation: up and down.
+			
+			//useAnimation(ANIM_BUTTON_DOWN);
+			return EVENT_ACCEPTED;
+			break;
+		case GLUT_UP:
+			//up
+			//frame = 0; // up.
+			//useAnimation(ANIM_BUTTON_UP);
+			return attr->getAttribute(BUTTON_RETURN_VALUE);
+			break;
+			
+		default:
+			break;
+	}
+	return NO_EVENT;
+}
+
+void player_select_sprite::clear()
+{
+	frame = 0;
+}
+
+/*void player_select_sprite::animate()
+ {
+ //bail. animate based off of click state.
+ }
+ */

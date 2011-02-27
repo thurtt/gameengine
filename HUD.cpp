@@ -26,7 +26,6 @@ pPlayer(pl)
 HUD::~HUD()
 {
 	
-	attr = new spriteAttribute();
 	ui_elements.clear();
 	pPlayer = 0;
 	delete pFPS;
@@ -43,6 +42,7 @@ void HUD::init()
 	mtimebase = 0;
 	pFPS = new spriteText(500, 50, 13, 6, 0, "FPS:" );
 	pMPS = new spriteText(750, 50, 13, 6, 0, "MPS:" );
+	attr = new spriteAttribute();
 }
 
 void HUD::draw()

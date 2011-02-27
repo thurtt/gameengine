@@ -123,8 +123,16 @@ void game::loadPhase(int phase){
 			midPhase(); //a little clean-up here.
 			pHUD = new HUD();
 			pHUD->includeElement( new game_sprite(0,0, glutGet( GLUT_WINDOW_WIDTH ), glutGet( GLUT_WINDOW_HEIGHT ), "title_screen.png", false, false) );
-			pHUD->includeElement( new button_sprite( (glutGet( GLUT_WINDOW_WIDTH ) /2 ) - (415 / 2),120,128,415,"start_button.png", STATE_LEVEL_STARTING) );
+			pHUD->includeElement( new button_sprite( (glutGet( GLUT_WINDOW_WIDTH ) /2 ) - (415 / 2),120,128,415,"start_button.png", STATE_CHARACTER_SELECT) );
 			break;
+			
+		case STATE_CHARACTER_SELECT:
+			midPhase();
+			pHUD = new char_selection();
+			pHUD->includeElement( new button_sprite( (glutGet( GLUT_WINDOW_WIDTH ) /2 ) - (415 / 2),120,128,415,"start_button.png", STATE_TITLE) );
+			
+			break;
+			
 		case STATE_LEVEL_STARTING:
 			midPhase();
 			loadMap(1);
