@@ -81,12 +81,34 @@ vector<tile*> quad::getTiles(float box_x1, float box_y1, float box_x2, float box
 		return pTile;
 	
 	for (i = 0; i < tiles.size(); i++){
-
+		
 		if ( boxCollision(tiles[i]->x, tiles[i]->y,tiles[i]->x + tiles[i]->width, tiles[i]->y + tiles[i]->height, box_x1, box_y1, box_x2, box_y2)  ||
 			boxCollision(box_x1, box_y1, box_x2, box_y2, tiles[i]->x, tiles[i]->y,tiles[i]->x + tiles[i]->width,tiles[i]->y + tiles[i]->height) )
 		{
 			pTile.push_back( tiles[i] );
 		}
+	}
+	
+	return pTile;
+}
+
+vector<tile*> quad::getTiles(int attribute)
+{
+	vector<tile*> pTile;
+	int i;
+	int spIter;
+	int token; //easier to prevent duplicate entries.
+	
+	for (i = 0; i < tiles.size(); i++){
+		//each tile has sprites.
+		token = 0;
+		for (spIter = 0; spIter < tiles[i]->sprites.size(); spIter++){
+			if (tiles[i]->sprites[spIter]->attr->getAttribute(attribute) > 0 ){
+				token += 1; //flag for keeping
+			}
+		}
+		if (token > 0)
+			pTile.push_back( tiles[i] );
 	}
 	
 	return pTile;

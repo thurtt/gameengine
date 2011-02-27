@@ -15,6 +15,7 @@
 #include "drawable.h"
 #include "spriteAttribute.h"
 #include "sprite_data.h"
+#include "line.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -63,6 +64,7 @@ public:
 	void includeAnimation(int, GLuint, int);
 	void includeAnimation(int,const char *, int);
 	void useAnimation(int);
+	void xy(point pt);
 	void xy(float, float);
 	void wh(float, float);
 	void draw();
@@ -75,9 +77,22 @@ public:
 	void renderSpacedBitmapString(float x, float y, int spacing, void *font, char *str);
 	void setDrawable( drawable * pDrawable );
 	void includeSprite( game_sprite * pSprite );
-	float distance(float from_x, float from_y);
+	float distance(point target);
+	point center();
 };
 
 void texture_cleanup(); //clean up straggler textures
+
+/**************
+ Sort routine for vectors of these bitches.
+ **************/
+struct by_distance {
+	by_distance(point _t) : target(_t) {}
+	bool operator()(game_sprite &a, game_sprite &b) {
+		return a.distance(target) < b.distance(target);
+	}
+	point target;
+};
+//use: std::sort(sprites.begin, sprites.end, by_distance( point(my_x, my_y)));
 
 #endif

@@ -190,7 +190,17 @@ void game::loadMap(int _map){
 	//
 	//create the player
 	//
-	focus_sprite = new Player(102,700, 32,32, "player_blue.png", &sprites, &pickups, pMap);
+	vector<tile*> pTiles;
+	pTiles = pMap->zones[0]->getTiles(SPAWN_POINT);
+	point spawn = point(0,0); //front load
+	
+	if (pTiles.size() > 0){
+		//SORT! Y U NO WORK?
+		//sort(pTiles.begin, pTiles.end, by_tile_distance( point(0,0)));
+		spawn = pTiles[0]->center();
+	}
+	
+	focus_sprite = new Player(spawn.x, spawn.y, 32,32, "player_blue.png", &sprites, &pickups, pMap);
 	sprites.push_back(focus_sprite);
 	players.push_back(focus_sprite);
 	

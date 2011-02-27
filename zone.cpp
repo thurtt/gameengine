@@ -86,3 +86,19 @@ vector<tile*> zone::getTiles(float box_x1, float box_y1, float box_x2, float box
 	
 	return pTile;
 }
+
+
+vector<tile*> zone::getTiles(int attribute)
+{
+	vector<tile*> pTile;
+	vector<tile*> temp_tile;
+	int i;
+	
+	for (i = 0; i < quads.size(); i++){
+		temp_tile = quads[i]->getTiles(attribute);
+		if (temp_tile.size() > 0)
+			pTile.insert( pTile.end(),temp_tile.begin(), temp_tile.end());
+	}
+	
+	return pTile;
+}

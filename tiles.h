@@ -11,6 +11,9 @@
 
 #include "sprite_data.h"
 #include "sprite.h"
+#include "line.h"
+
+#include <math.h>
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -27,9 +30,24 @@ public:
 	void draw();
 	void draw(float, float);
 	void animate(float, float);
+	point center();
+	float distance(point target);
 	vector<game_sprite*> sprites;
 };
 
 void populateTileSet();
+
+
+/**************
+ Sort routine for vectors of these bitches.
+ **************/
+struct by_tile_distance {
+	by_tile_distance(point _t) : target(_t) {}
+	bool operator()(tile &a, tile &b) {
+		return a.distance(target) < b.distance(target);
+	}
+	point target;
+};
+//use: std::sort(tiles.begin, tiles.end, by_tile_distance( point(my_x, my_y)));
 
 #endif // _TILES_H_

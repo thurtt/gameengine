@@ -30,6 +30,7 @@ public:
 	void genTiles();
 	tile* getTile(float world_x, float world_y);
 	vector<tile*> getTiles(float x1, float y1, float x2, float y2);
+	vector<tile*> getTiles(int attribute);
 };
 
 #endif // _GAMEMAP_H_

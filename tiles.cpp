@@ -14,15 +14,16 @@
 int zone_1[ZONETILES] =	{
 	6,5,5,5,5,4,2,3,3,5,
 	4,1,1,1,1,4,2,2,2,2,
-	6,1,1,5,5,2,2,2,2,2};
- int zone_2[ZONETILES] = {1};
+	7,1,1,5,5,2,2,2,2,2};
+int zone_2[ZONETILES] = {1};
+int zone_EMPTY[ZONETILES] = {0};
 
- int * map_1[16] = { zone_1, zone_1, zone_1, zone_1,
+int * map_1[16] = { zone_1, zone_1, zone_1, zone_1,
 					zone_1, zone_1, zone_1, zone_1,
 					zone_1, zone_1, zone_1, zone_1,
 					zone_1, zone_1, zone_1, zone_1};
 
- int ** maps[1] = { map_1 };
+int ** maps[1] = { map_1 };
 
 
 vector< vector<_sprite_data*> > tileset;
@@ -73,6 +74,13 @@ void tile::animate(float offset_x, float offset_y){
 		sprites[i]->animate();
 	}
 }
+point tile::center(){
+	return point(x + ( width / 2), y + ( height / 2));
+}
+
+float tile::distance(point target){
+	return sqrt( pow(target.x - x, 2) + pow(target.y - y, 2) );
+}
 
 void populateTileSet(){
 	tileset.clear();
@@ -109,10 +117,18 @@ void populateTileSet(){
 	tileset.push_back(raw_tile6);
 	
 	
-	/* horizontal wall*/
+	/* corner wall*/
 	vector<_sprite_data*> raw_tile7 ;
 	raw_tile7.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"clean_tiles.png", 0, 0, 0, 0));
 	raw_tile7.push_back( new _sprite_data(0,0,15,TILESIZE,"wall.png", 1, 1, 0, 0)); //this will blockmovement.
 	raw_tile7.push_back( new _sprite_data(0,0,TILESIZE,15,"wall.png", 1, 1, 0, 0)); //this will blockmovement.
-	tileset.push_back(raw_tile7);
+	tileset.push_back(raw_tile7);	
+	
+	
+	/* corner wall SPAWN */
+	vector<_sprite_data*> raw_tile8 ;
+	raw_tile8.push_back( new _sprite_data(0,0,TILESIZE,TILESIZE,"clean_tiles.png", 0, 0, 1, 0));
+	raw_tile8.push_back( new _sprite_data(0,0,15,TILESIZE,"wall.png", 1, 1, 0, 0)); //this will blockmovement.
+	raw_tile8.push_back( new _sprite_data(0,0,TILESIZE,15,"wall.png", 1, 1, 0, 0)); //this will blockmovement.
+	tileset.push_back(raw_tile8);
 }

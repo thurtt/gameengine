@@ -93,3 +93,17 @@ vector<tile*> game_map::getTiles(float x1, float y1, float x2, float y2)
 	return pTile;
 }
 
+
+vector<tile*> game_map::getTiles(int attribute)
+{
+	vector<tile*> pTile;
+	vector<tile*> temp_tile;
+	int i;
+	for (i = 0; i < zones.size(); i++){
+		temp_tile = zones[i]->getTiles(attribute);
+		if (temp_tile.size() > 0)
+			pTile.insert( pTile.end(),temp_tile.begin(), temp_tile.end());
+	}
+	
+	return pTile;
+}

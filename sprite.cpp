@@ -153,6 +153,10 @@ int game_sprite::click(int state, int x, int y)
 	return 0;
 }
 
+void game_sprite::xy(point pt){
+	xy(pt.x, pt.y);
+}
+
 void game_sprite::xy(float _x_, float _y_){
 	_x = _x_;
 	_y = _y_;
@@ -394,10 +398,15 @@ void game_sprite::includeSprite( game_sprite * pSprite )
 	sprite_list.push_back( pSprite );
 }
 
-float game_sprite::distance(float from_x, float from_y){
-      return sqrt( pow(from_x - _x, 2) + pow(from_y - _y, 2) );
+float game_sprite::distance(point target)
+{
+      return sqrt( pow(target.x - _x, 2) + pow(target.y - _y, 2) );
 }
 
+point game_sprite::center()
+{
+	return point(_x + ( width / 2), _y + ( height / 2));
+}
 
 
 /**************
@@ -411,3 +420,7 @@ void texture_cleanup(){
 	}
 	master_texture_list.clear();
 }
+
+
+
+
