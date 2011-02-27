@@ -44,7 +44,7 @@ public:
 	void animate();
 	void movement( float spriteTime );
 	void includeElement(game_sprite* element);
-	int click(int state, int x, int y);
+	virtual int click(int state, int x, int y);
 };
 
 #endif

@@ -13,6 +13,7 @@
 #include "game_states.h"
 #include "line.h"
 #include "player.h"
+#include "player_data.h"
 
 #include <stdlib.h>
 #include <string>
@@ -187,7 +188,7 @@ void game_input::MainMouse(int button, int state, int x, int y)
 			case STATE_TITLE:
 				// do eet.
 				if (iReturn == STATE_CHARACTER_SELECT) {
-					//touchy touchy
+					//Ou est la pamplemousse? DANS LA SALLE DE BAINS!
 					pGame->loadPhase(STATE_CHARACTER_SELECT);
 				}
 				break;
@@ -199,14 +200,15 @@ void game_input::MainMouse(int button, int state, int x, int y)
 				}
 				else {
 					//get player data selected
-					//load game
+					//YOU HEAR THE MAN!
+					pGame->player_configuration = dynamic_cast<char_selection *>( pGame->pHUD )->selectedElement(iReturn);
 					pGame->loadPhase(STATE_LEVEL_STARTING);
 				}
 
 				break;
 			case STATE_LEVEL_STARTING:
 				if (iReturn == START_GAME) {
-					//touchy touchy
+					//cry havok
 					pGame->loadPhase(STATE_LEVEL);
 				}
 				break;
@@ -223,39 +225,6 @@ void game_input::MainMouse(int button, int state, int x, int y)
 			default:
 				break;
 		}
-		/*switch (iReturn) {
-			case EVENT_ACCEPTED:
-				//dump
-				break;
-			case STATE_CHARACTER_SELECT:
-				//touchy touchy
-				pGame->loadPhase(STATE_CHARACTER_SELECT);
-				break;
-			case STATE_TITLE:
-				//Ou est la pamplemousse? DANS LA SALLE DE BAINS!
-				pGame->loadPhase(STATE_TITLE);
-				break;
-			case STATE_LEVEL_STARTING:
-				//YOU HEAR THE MAN!
-				pGame->loadPhase(STATE_LEVEL_STARTING);
-				break;
-			case START_GAME:
-				//cry havok
-				pGame->loadPhase(STATE_LEVEL);
-				break;
-			case PAUSE_GAME:
-				//put it on hold
-				if (pGame->attr->getAttribute(GAME_PAUSED) > 0){
-					pGame->attr->setAttribute(GAME_PAUSED, 0);}
-				else {
-					pGame->attr->setAttribute(GAME_PAUSED, 1);
-				}
-
-				break;
-
-			default:
-				break;
-		}*/
 	}
 
 }

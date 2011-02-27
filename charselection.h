@@ -19,10 +19,9 @@
 #include <vector>
 #include <map>
 
+class HUD;
 
 class char_selection : public HUD {
-private:
-	
 public:
 	char_selection();
 	~char_selection();

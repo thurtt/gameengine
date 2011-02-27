@@ -52,14 +52,17 @@ void char_selection::genElements()
 	{
 		x = 10 + (i * 64);
 		y = 10;
-		includeElement( new player_select_sprite( x, y, 64, 64, archetypes[i]->texture, ( i + 1 ) * selection_mask) ); //use "i" return value to look up data.
+		includeElement( new player_select_sprite( x, y, 64, 64, archetypes[i]->texture, archetypes[i]->name, ( i + 1 ) * selection_mask) ); //use "i" return value to look up data.
 	}
 }
 
 player_data * char_selection::selectedElement(int selection)
 {
-	if ( selection <= archetypes.size() ) {
-		return archetypes[(selection - 1) / selection_mask];
+	int unmasked;
+	unmasked = (selection - 1) / selection_mask;
+	
+	if ( unmasked <= archetypes.size() ) {
+		return archetypes[unmasked];
 	}
 	else {
 		return new player_data( "Bad selection", "default.png", point(0,0), point(0,0) );

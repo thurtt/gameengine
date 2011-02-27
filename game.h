@@ -15,6 +15,7 @@
 #include "game_map.h"
 #include "HUD.h"
 #include "charselection.h"
+#include "player_data.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -46,6 +47,7 @@ public:
 	game_input* pInput;
 	game_map* pMap;
 	HUD* pHUD;
+	player_data* player_configuration;
 	bool _finished;
 	
 	vector<game_sprite *> players;

@@ -83,6 +83,11 @@ void HUD::movement( float spriteTime )
 		move = 0;
 		pMPS->printf("MPS:%3.0f(%0.6f)  Sprite Movement Time: %0.6f  Sprite Index: %d", mps, movetime, spriteTime );
 	}
+	int i;
+	for (i = 0; i < ui_elements.size(); i++)
+	{
+		ui_elements[i]->movement();
+	}
 
 }
 

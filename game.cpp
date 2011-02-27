@@ -15,6 +15,7 @@
 #include "game_states.h"
 #include "button_defines.h"
 #include "textAttributeReport.h"
+#include "spriteText.h"
 
 #ifdef WIN32
 	#include <windows.h>
@@ -30,6 +31,7 @@ game::game(){
 	timebase = 0;
 	focus_sprite = 0;
 	pHUD = 0;
+	player_configuration = 0;
 	pMap = new game_map();
 	pInput = new game_input( this );
 	
@@ -131,6 +133,7 @@ void game::loadPhase(int phase){
 			pHUD = new char_selection();
 			pHUD->includeElement( new button_sprite( (glutGet( GLUT_WINDOW_WIDTH ) /2 ) - (415 / 2),120,128,415,"start_button.png", STATE_TITLE) );
 			
+			//pHUD->includeElement( new spriteText(20,20,6,13,0,"test") );
 			break;
 			
 		case STATE_LEVEL_STARTING:

@@ -11,7 +11,7 @@
 #define PLAYERSELECTSPRITE_H
 
 #include "sprite.h"
-
+#include "spriteText.h"
 
 class game_sprite;
 
@@ -20,9 +20,10 @@ private:
 	
 public:
 	player_select_sprite();
-	player_select_sprite(float x, float y, float h, float w, const char * texture, int ret_val);
+	player_select_sprite(float x, float y, float h, float w, const char * texture, const char * name, int ret_val);
 	~player_select_sprite();
 	int click(int state, int x, int y);
+	void movement();
 	//void animate();
 	void clear();
 };
