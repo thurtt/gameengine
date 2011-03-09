@@ -34,6 +34,8 @@ public:
 	float alpha;
 	int textLen;
 	char * _msg;
+	int sp_height;
+	int sp_width;
 private:	
 	void write_string( float x, float y );
 };

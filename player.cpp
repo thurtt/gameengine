@@ -37,7 +37,7 @@ _pMap(pMap)
 	useAnimation(ANIM_NONE);
 	_target = point( _x, _y );
 	
-	sprite_list.push_back(new spriteText(0, height, 13, 6, 300, pdata->name));
+	sprite_list.push_back(new spriteText(0, height, 12, 12, 0, pdata->name));
 }
 
 Player::Player( float _x_, float _y_, float _width_, float _height_, const char * _filename,  std::vector<game_sprite*> * sprites,  std::vector<game_sprite*> * pickups, game_map * pMap  ) :
@@ -63,7 +63,7 @@ _pMap(pMap)
 	useAnimation(ANIM_NONE);
 	_target = point( _x, _y );
 	
-	sprite_list.push_back(new spriteText(0, height, 13, 6, 300, "Player 1"));
+	sprite_list.push_back(new spriteText(0, height,12,12, 0, "Player 1"));
 	//sprite_list.push_back(new spriteText(0, 0, 13, 6, 0, "Player X: %5.4f  Player Y: %5.4f", _x_, _y_));
 }
 

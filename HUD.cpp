@@ -40,8 +40,8 @@ void HUD::init()
 	move = 0;
 	time = 0;
 	mtimebase = 0;
-	pFPS = new spriteText(500, 50, 13, 6, 0, "FPS:" );
-	pMPS = new spriteText(750, 50, 13, 6, 0, "MPS:" );
+	pFPS = new spriteText(500, 50, 12, 12, 0, "FPS:" );
+	pMPS = new spriteText(750, 50, 12, 12, 0, "MPS:" );
 	attr = new spriteAttribute();
 }
 

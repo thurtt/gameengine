@@ -50,7 +50,7 @@ void char_selection::genElements()
 	
 	for (i = 0; i < archetypes.size(); i++)
 	{
-		x = 10 + (i * 64);
+		x = 10 + (i * 128);
 		y = 10;
 		includeElement( new player_select_sprite( x, y, 64, 64, archetypes[i]->texture, archetypes[i]->name, ( i + 1 ) * selection_mask) ); //use "i" return value to look up data.
 	}

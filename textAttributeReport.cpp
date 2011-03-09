@@ -16,7 +16,7 @@ _monitor_sprite(monitor_sprite),
 _fmt(fmt)
 {
 	xy(_x,_y);
-	wh(6,13);
+	wh(16,16);
 	
 	relative_x = 0;
 	relative_y = 0;
@@ -29,7 +29,9 @@ _fmt(fmt)
 	attr->setAttribute(EXPIRATION_TICK, 0);
 	alpha = 1.0f;
 	
-	includeAnimation(ANIM_NONE, LoadTexture("font_file"), 0);
+	sp_height = 32;
+	sp_width = 32;
+	includeAnimation(ANIM_NONE, LoadTexture("alphatiles_32.png"), 94);
 	useAnimation(ANIM_NONE);
 	
 	update();

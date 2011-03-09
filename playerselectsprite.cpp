@@ -33,7 +33,7 @@ player_select_sprite::player_select_sprite(float x, float y, float h, float w,  
 	disp_x = 0.0;
 	disp_y = 0.0;
 	
-	sprite_list.push_back(new spriteText(0, height, 13, 9, 300, name));
+	sprite_list.push_back(new spriteText(0, height, 32, 32, 0, name));
 }
 
 player_select_sprite::~player_select_sprite()
