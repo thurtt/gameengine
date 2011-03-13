@@ -41,7 +41,7 @@ void HUD::init()
 	time = 0;
 	mtimebase = 0;
 	pFPS = new spriteText(500, 50, 12, 12, 0, "FPS:" );
-	pMPS = new spriteText(750, 50, 12, 12, 0, "MPS:" );
+	pMPS = new spriteText(750, 50, 12, 12, 0, "MPS:" );             
 	attr = new spriteAttribute();
 }
 
@@ -101,9 +101,10 @@ void HUD::animate()
 	pFPS->animate();
 }
 
-void HUD::includeElement(game_sprite* element)
+game_sprite* HUD::includeElement(game_sprite* element)
 {
 	ui_elements.push_back(element);
+	return element;
 }
 
 

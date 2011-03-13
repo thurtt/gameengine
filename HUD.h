@@ -43,7 +43,7 @@ public:
 	void draw();
 	void animate();
 	void movement( float spriteTime );
-	void includeElement(game_sprite* element);
+	game_sprite* includeElement(game_sprite* element);
 	virtual int click(int state, int x, int y);
 };
 

@@ -65,6 +65,7 @@ public:
 	void loadPhase(int phase);
 	void loadMap(int map);
 	void midPhase();
+	void scrubHUD();
 	void watchdog(int value);
 	
 };

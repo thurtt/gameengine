@@ -153,7 +153,7 @@ void spriteText::draw(float offset_x, float offset_y){
 	int texture_x_offset;
 	int texture_y_offset;
 	int frames_width, frames_height;
-	GLint texture_width, texture_height;
+	//GLint texture_width, texture_height;
 	
 	disp_x = _x + offset_x + 0.0f;
 	disp_y = _y + offset_y + 0.0f;
@@ -164,8 +164,8 @@ void spriteText::draw(float offset_x, float offset_y){
 	glDisable(GL_DEPTH_TEST);
 	glBindTexture( GL_TEXTURE_2D, animations[texture].first );
 	
-	glGetTexLevelParameteriv(GL_TEXTURE_2D, 2, GL_TEXTURE_WIDTH, &texture_width);
-	glGetTexLevelParameteriv(GL_TEXTURE_2D, 2, GL_TEXTURE_HEIGHT, &texture_height);
+	//glGetTexLevelParameteriv(GL_TEXTURE_2D, 2, GL_TEXTURE_WIDTH, &texture_width);
+	//glGetTexLevelParameteriv(GL_TEXTURE_2D, 2, GL_TEXTURE_HEIGHT, &texture_height);
 	frames_width = 10; //(texture_width / sp_width);
 	frames_height = 10; //(texture_height / sp_height);
 	
@@ -194,14 +194,6 @@ void spriteText::draw(float offset_x, float offset_y){
 		texture_offset = static_cast<int>(_msg[i]) - 32;
 		texture_x_offset = texture_offset % frames_width;
 		texture_y_offset = texture_offset / frames_width;// not a mistake, using frames_width
-		
-		/*
-		translated_x = ((float)texture_offset * (float)sp_width)/(frames_width * (float)sp_width);
-		translated_x2 = (((float)texture_offset + 1) * (float)sp_width)/(frames_width * (float)sp_width);
-		 
-		translated_y = ((float)texture_offset * (float)sp_height)/(frames_height * (float)sp_height);
-		translated_y2 = (((float)texture_offset + 1) * (float)sp_height)/(frames_height * (float)sp_height);
-		*/
 		
 		translated_x = texture_x_offset * 0.1;
 		translated_x2 = (texture_x_offset + 1) * 0.1;

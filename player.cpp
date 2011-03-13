@@ -29,6 +29,7 @@ _pMap(pMap)
 	attr->setAttribute(BLOCK_MOVEMENT, 0);
 	attr->setAttribute(BLOCK_VISIBILITY, 0);
 	attr->setAttribute(ALIVE, 1);
+	attr->setAttribute(PLAYER_LIVES, 3);
 	
 	texture = LoadTexture(texture_file);
 	includeAnimation(ANIM_NONE, texture, 0);
@@ -55,6 +56,7 @@ _pMap(pMap)
 	attr->setAttribute(BLOCK_MOVEMENT, 0);
 	attr->setAttribute(BLOCK_VISIBILITY, 0);
 	attr->setAttribute(ALIVE, 1);
+	attr->setAttribute(PLAYER_LIVES, 3);
 	
 	texture = LoadTexture(texture_file);
 	includeAnimation(ANIM_NONE, texture, 0);
@@ -153,6 +155,9 @@ void Player::checkPickups(){
 
 void Player::captured(){
 	attr->setAttribute(PLAYER_CAPTURED, attr->getAttribute(PLAYER_CAPTURED) + 1);
+	if ( attr->getAttribute(PLAYER_LIVES) > 0 ){
+		attr->setAttribute(PLAYER_LIVES, attr->getAttribute(PLAYER_LIVES) - 1);
+	}
 	useAnimation(ANIM_NONE);
 	attr->setAttribute(ALIVE, 0); //deactivate. game will reactivate.
 	attr->setAttribute(DAWG_PLAYER_CAPTURED, 1); // omg!!11!  set id to player ID maybe? leave 1 for now.

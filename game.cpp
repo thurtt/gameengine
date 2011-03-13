@@ -123,45 +123,57 @@ void game::loadPhase(int phase){
 	switch (phase) {
 		case STATE_TITLE:
 			midPhase(); //a little clean-up here.
+			scrubHUD();
 			pHUD = new HUD();
+			
 			pHUD->includeElement( new game_sprite(0,0, glutGet( GLUT_WINDOW_WIDTH ), glutGet( GLUT_WINDOW_HEIGHT ), "title_screen.png", false, false) );
 			pHUD->includeElement( new button_sprite( (glutGet( GLUT_WINDOW_WIDTH ) /2 ) - (415 / 2),120,128,415,"start_button.png", STATE_CHARACTER_SELECT) );
 			break;
 			
 		case STATE_CHARACTER_SELECT:
 			midPhase();
+			scrubHUD();
 			pHUD = new char_selection();
 			pHUD->includeElement( new button_sprite( (glutGet( GLUT_WINDOW_WIDTH ) /2 ) - (415 / 2),120,128,415,"start_button.png", STATE_TITLE) );
 			
-			//pHUD->includeElement( new spriteText(20,20,6,13,0,"test") );
+			//pHUD->includeElement( new spriteText(5,5,64,64,0,"test") );
 			break;
 			
 		case STATE_LEVEL_STARTING:
 			midPhase();
 			loadMap(1);
-			if (pHUD != 0)
-			{
-				delete pHUD;
-				pHUD = 0;
-			}
+			scrubHUD();
 			pHUD = new HUD(focus_sprite);
 			pHUD->includeElement( new button_sprite( (glutGet( GLUT_WINDOW_WIDTH ) /2 ) - (415 / 2),120,128,415,"start_button.png", START_GAME) );
 			
 			break;
 		case STATE_LEVEL:
-			if (pHUD != 0)
-			{
-				delete pHUD;
-				pHUD = 0;
-			}
+			
+			scrubHUD();
 			pHUD = new HUD(focus_sprite);
 			pHUD->includeElement(new textAttributeReport(5,5, focus_sprite, PICKUP_SCORE, "Score: %d"));
+			pHUD->includeElement(new textAttributeReport(5,35, focus_sprite, PLAYER_LIVES, "Lives: %d"));
 			pHUD->includeElement( new button_sprite( glutGet( GLUT_WINDOW_WIDTH )  - 64 - 10,glutGet( GLUT_WINDOW_HEIGHT )  - 64 - 10,64,64,"pause_button.png", PAUSE_GAME) );
 			
 			attr->setAttribute(GAME_PAUSED, 0);
 			break;
 		case STATE_LEVEL_FINISHED:
-			midPhase();
+			attr->setAttribute(GAME_PAUSED, 1); // stop the interactive portion of the game.
+			scrubHUD();
+			
+			pHUD = new HUD(focus_sprite);
+			pHUD->includeElement( new spriteText(0,0,64,64,0,"Level Finished"))->xy((glutGet( GLUT_WINDOW_WIDTH ) /2 ) - ((14*64) / 2), glutGet( GLUT_WINDOW_HEIGHT )  - 64 - 10);
+			
+			
+			if (focus_sprite->attr->getAttribute(PLAYER_LIVES) == 0)
+			{
+				//game over because you suck.
+				pHUD->includeElement( new spriteText(0,0,32,32,0,"You died a lot."))->xy((glutGet( GLUT_WINDOW_WIDTH ) /2 ) - ((15*32) / 2), 220);
+				
+			}
+			
+			//tearing down the game at this point FEELS weird.
+			//midPhase();
 			break;
 		default:
 			break;
@@ -212,7 +224,7 @@ void game::loadMap(int _map){
 	}
 	
 	if ( player_configuration == 0 ){
-		player_configuration = new player_data( "Blue Guy", "player_blue.png", point(0,0), point(32,32));
+		player_configuration = new player_data( "Blue Guy", "player_blue.png", point(0,0), point(32,32), 3);
 	}
 	player_configuration->spawn = spawn;
 	
@@ -231,6 +243,9 @@ void game::loadMap(int _map){
 void game::midPhase(){
 	pMap->clearMap();
 	sprites.clear();
+}
+
+void game::scrubHUD(){
 	if (pHUD != 0)
 	{
 		delete pHUD;
@@ -252,10 +267,10 @@ void game::watchdog(int value)
 	vector<tile*> pTiles;
 	
 	for (i = 0; i < players.size(); i++){
-		/*if (players[i]->attr->getAttribute(DAWG_PLAYER_CAPTURED) > 0)
+		if (players[i]->attr->getAttribute(PLAYER_LIVES) == 0)
 		{
-			players[i]->attr->setAttribute(DAWG_PLAYER_CAPTURED, 0);
+			//oh noes!
+			loadPhase(STATE_LEVEL_FINISHED); // display score or something. You're done, monchichi!
 		}
-		 */
 	}
 }

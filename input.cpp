@@ -155,6 +155,7 @@ void game_input::NormalKeysUp(unsigned char key, int x, int y)
 	}
 	if (key == '8'){
 		pGame->pHUD->pFPS->active = pGame->pHUD->pFPS->active ? false : true;
+		pGame->pHUD->pMPS->active = pGame->pHUD->pMPS->active ? false : true;
 	}
 }
 

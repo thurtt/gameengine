@@ -133,6 +133,17 @@ int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
+	
+	//iPad
+    //glutInitWindowSize(1024, 768);
+	
+	//iPhone
+    //glutInitWindowSize(480, 320);
+	
+	//MacbookPro Standard
+    //glutInitWindowSize(1440, 900);
+	
+	//Smaller Widescreen
     glutInitWindowSize(1152, 648);
     
     glutCreateWindow("GLUT Program");

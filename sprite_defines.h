@@ -21,6 +21,7 @@
 #define SPAWN_POINT 8
 #define DETENTION_POINT 9
 #define PLAYER_CAPTURED 10
+#define PLAYER_LIVES 11
 
 /****************
  WATCH DOG DEFINITIONS - for automation. win conditions, etc

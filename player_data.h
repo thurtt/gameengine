@@ -17,11 +17,12 @@
 
 class player_data {
 public:
-	player_data(const char * _name, const char * _tex, point _spawn, point _hw);
+	player_data(const char * _name, const char * _tex, point _spawn, point _hw, int _lives);
 	
 	point spawn;
 	int height;
 	int width;
+	int lives; //this is almost game logic?
 	const char * name;
 	const char * texture;
 };

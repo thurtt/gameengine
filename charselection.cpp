@@ -39,8 +39,8 @@ void char_selection::loadArchetypes()
 	//todo: load from database --
 	
 	
-	archetypes.push_back(new player_data( "Blue Guy", "player_blue.png", point(0,0), point(32,32)));
-	archetypes.push_back(new player_data( "Other Guy", "player_blue.png", point(0,0), point(32,32)));
+	archetypes.push_back(new player_data( "Blue Guy", "player_blue.png", point(0,0), point(32,32), 3));
+	archetypes.push_back(new player_data( "Other Guy", "player_blue.png", point(0,0), point(32,32), 3));
 }
 
 void char_selection::genElements()
@@ -65,7 +65,7 @@ player_data * char_selection::selectedElement(int selection)
 		return archetypes[unmasked];
 	}
 	else {
-		return new player_data( "Bad selection", "default.png", point(0,0), point(0,0) );
+		return new player_data( "Bad selection", "default.png", point(0,0), point(0,0), 0 );
 	}
 
 }
