@@ -85,6 +85,7 @@ void Player::movement(){
 	pTiles = _pMap->getTiles( _x, _y, _x + height, _y + width);
 	int i, k;
 	bool move_allowed = true;
+	point nextStep = get_next_step( delta );
 	for (i = 0; i < pTiles.size(); i++){
 		for (k = 0; k < pTiles[i]->sprites.size(); k++){
 			if (pTiles[i]->sprites[k]->attr->getAttribute(BLOCK_MOVEMENT) > 0){
@@ -92,11 +93,11 @@ void Player::movement(){
 								  pTiles[i]->sprites[k]->_x, pTiles[i]->sprites[k]->_y,
 								  pTiles[i]->sprites[k]->_x + pTiles[i]->sprites[k]->width, 
 								  pTiles[i]->sprites[k]->_y + pTiles[i]->sprites[k]->height, 
-								  _x, _y, 
-								  _x + width, _y + height)  ||
+								  nextStep.x, nextStep.y, 
+								  nextStep.x + width, nextStep.y + height)  ||
 					boxCollision(
-								 _x, _y, 
-								 _x + width, _y + height,
+								 nextStep.x, nextStep.y, 
+								 nextStep.x + width, nextStep.y + height,
 								 pTiles[i]->sprites[k]->_x, pTiles[i]->sprites[k]->_y,
 								 pTiles[i]->sprites[k]->_x + pTiles[i]->sprites[k]->width, 
 								 pTiles[i]->sprites[k]->_y + pTiles[i]->sprites[k]->height) ) {

@@ -133,7 +133,7 @@ void Guard::checkCaptures(){
 void Guard::chase( point waypoint )
 {
 	_target = waypoint;
-	if ( isMoveBlocked() == false ) 
+	if ( isMoveBlocked( CHASE_DELTA ) == false ) 
 	{
 		move( CHASE_DELTA );
 	}
@@ -145,16 +145,17 @@ void Guard::patrol()
 	{
 		_target = _wpmgr.getNextWaypoint();
 	}
-	else if ( isMoveBlocked() == false )
+	else if ( isMoveBlocked( PATROL_DELTA ) == false )
 	{
 		move( PATROL_DELTA );
 	}	
 }
 
-bool Guard::isMoveBlocked()
+bool Guard::isMoveBlocked( float delta )
 {
 	// get textures for new position:
-	vector<tile*> pTiles = _pMap->getTiles(_x, _y, _x + height, _y + width);
+	point newPoint = get_next_step( delta );
+	vector<tile*> pTiles = _pMap->getTiles( newPoint.x, newPoint.y, newPoint.x + height, newPoint.y + width);
 	bool move_blocked = false;
 	
 	for (int i = 0; i < pTiles.size(); i++)

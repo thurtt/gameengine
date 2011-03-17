@@ -17,13 +17,24 @@ bool Dude::close_enough( const point & point1, const point & point2 )
 		   && point2.y <= point1.y + 5 && point2.y >= point1.y - 5 );
 }
 
-void Dude::move( float delta )
+point Dude::get_next_step( float delta )
 {
+	point newPoint( 0, 0 );
 	float rad_angle = atan2( ( _target.y - _y ), ( _target.x - _x ) );
 	_angle = -toDegrees( rad_angle );
 	
-	_x = _x + delta * cos( rad_angle );		
-	_y = _y + delta * sin( rad_angle );
+	newPoint.x = _x + delta * cos( rad_angle );		
+	newPoint.y = _y + delta * sin( rad_angle );
+	
+	return newPoint;
+}
+
+void Dude::move( float delta )
+{
+	point newPoint = get_next_step( delta );
+	
+	_x = newPoint.x;		
+	_y = newPoint.y;
 	
 }
 

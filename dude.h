@@ -24,6 +24,7 @@ public:
 protected:
 	point _target;
 	bool close_enough( const point & point1, const point & point2 );
+	point get_next_step( float delta );
 	void move( float delta );
 
 private:

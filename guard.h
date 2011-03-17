@@ -40,7 +40,7 @@ public:
 private:
 	void patrol();
 	void chase( point waypoint );
-	bool isMoveBlocked();
+	bool isMoveBlocked( float delta );
 	line_of_sight * _los;
 	Text * _text;
 	game_map* _pMap;
