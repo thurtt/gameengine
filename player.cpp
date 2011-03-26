@@ -14,6 +14,8 @@
 #include "text.h"
 #include "collision.h"
 
+const float ROTATION_OFFSET = -90;
+
 Player::Player( player_data * pdata, std::vector<game_sprite*> * sprites, std::vector<game_sprite*> * pickups, game_map * pMap  ) :
 _sprites(sprites),
 _pickups(pickups),
@@ -109,6 +111,7 @@ void Player::movement(){
 	}
 	if (move_allowed && !close_enough( point( _x, _y ), _target ) ){
 		move( delta );
+		_angle += ROTATION_OFFSET;
 		if (texture != animations[ANIM_WALK].first) {
 			useAnimation(ANIM_WALK);
 		}
