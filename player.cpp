@@ -115,6 +115,8 @@ void Player::movement(){
 		if (texture != animations[ANIM_WALK].first) {
 			useAnimation(ANIM_WALK);
 		}
+	} else {
+		useAnimation(ANIM_NONE);
 	}
 
 	if (onscreen(disp_x, disp_y, height, width)){

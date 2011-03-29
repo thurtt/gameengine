@@ -212,32 +212,19 @@ void game_sprite::draw(float offset_x, float offset_y){
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	
 
 	glPushMatrix();
-	
-	/* WHAT IS THIS TREACHERY?
-	 
-	 apparantly glRotate rotates the texture texel offsets too, so a 64x512 texture becomes a 512x64 texture
-	 and the offests needed to get the animation frames switch from x-axis to y-axis.
-	 
-	 go figure. My code is... not good.
-	 
-	 */
 	
 	float translated_x = 0.0f;
 	float translated_x2 = 1.0f;
 	float translated_y = 0.0f;
 	float translated_y2 = 1.0f;
 
-	if (texture != ANIM_NONE ) {
+	if (texture != ANIM_NONE ) { 
 		translated_x = ((float)frame * (float)width)/(animations[texture].second * (float)width);
 		translated_x2 = (((float)frame + 1) * (float)width)/(animations[texture].second * (float)width);
-	} else {
-		translated_x2 = ( (float)width) / ( animations[texture].second * (float)width );
-	}
-
-
+	} 
+	
 	glBegin(GL_QUADS);
 	glColor4f(1.0f,1.0f,1.0f,1.0f);			// Full Brightness, 0.5f == 50% Alpha ( NEW )
 	
