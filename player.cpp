@@ -109,6 +109,7 @@ void Player::movement(){
 			}
 		}
 	}
+	
 	if (move_allowed && !close_enough( point( _x, _y ), _target ) ){
 		move( delta );
 		_angle += ROTATION_OFFSET;
@@ -116,6 +117,7 @@ void Player::movement(){
 			useAnimation(ANIM_WALK);
 		}
 	} else {
+		_angle += -ROTATION_OFFSET;
 		useAnimation(ANIM_NONE);
 	}
 
