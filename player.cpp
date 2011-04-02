@@ -117,6 +117,7 @@ void Player::movement(){
 			useAnimation(ANIM_WALK);
 		}
 	} else {
+		// ???
 		_angle += -ROTATION_OFFSET;
 		useAnimation(ANIM_NONE);
 	}
