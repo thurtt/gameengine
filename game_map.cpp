@@ -49,7 +49,6 @@ void game_map::draw(int offset_x, int offset_y)
 	}
 	
 	for (i = 0; i < markers.size(); i++){
-		//markers[i]->draw(0, 0);
 		markers[i]->draw(offset_x, offset_y);
 	}
 }
