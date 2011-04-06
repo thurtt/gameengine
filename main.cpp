@@ -141,10 +141,10 @@ int main(int argc, char** argv)
     //glutInitWindowSize(480, 320);
 	
 	//MacbookPro Standard
-    //glutInitWindowSize(1440, 900);
+    glutInitWindowSize(1440, 900);
 	
 	//Smaller Widescreen
-    glutInitWindowSize(1152, 648);
+    //glutInitWindowSize(1152, 648);
     
     glutCreateWindow("GLUT Program");
 	

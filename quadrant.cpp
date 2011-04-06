@@ -53,7 +53,7 @@ void quad::animate(float offset_x, float offset_y){
 
 tile* quad::getTile(float world_x, float world_y)
 {
-	if (!inBox(world_x, world_y, x, y, height, width))
+	if (!inBox(world_x, world_y, x, y, x + width, y + height))
 		return 0;
 	
 	tile* pTile;

@@ -132,17 +132,13 @@ void game_input::NormalKeysUp(unsigned char key, int x, int y)
 	}
 	
 	if (key == 't'){
-		vector<tile*> pTiles;
-		pTiles = pGame->pMap->getTiles(pGame->focus_sprite->_x,pGame->focus_sprite->_y, pGame->focus_sprite->_x + pGame->focus_sprite->height, pGame->focus_sprite->_y + pGame->focus_sprite->width);
-		sz = pTiles.size();
+		tile* pTile;
+		pTile = pGame->pMap->getTile(pGame->focus_sprite->_x,pGame->focus_sprite->_y);
 		
-		int i;
 		int k;
-		for (i = 0; i < pTiles.size(); i++){
-			for (k = 0; k < pTiles[i]->sprites.size(); k++){
-				pTiles[i]->sprites[k]->active = false;
+			for (k = 0; k < pTile->sprites.size(); k++){
+				pTile->sprites[k]->active = false;
 			}
-		}
 	}
 	if (key == 'd'){
 		InputMovement(GLUT_KEY_RIGHT,0);
@@ -180,6 +176,8 @@ void game_input::MainMouse(int button, int state, int x, int y)
 		if (pGame->players.size() > 0){
 			Player * pPlayer = dynamic_cast<Player *>( pGame->players[0] );
 			pPlayer->_wpmgr.addWaypoint( pPlayer->dispToWorld( x, adj_y ) );
+			pGame->pMap->PlaceMarker( pPlayer->dispToWorld( x, adj_y ) );
+			
 		}
 	}
 	else if (iReturn != EVENT_ACCEPTED) {

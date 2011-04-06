@@ -6,6 +6,8 @@
  *  Copyright 2011 __MyCompanyName__. All rights reserved.
  *
  */
+#ifndef _WAYPOINTMGR_H_
+#define _WAYPOINTMGR_H_
 
 #include "line.h"
 
@@ -28,3 +30,5 @@ private:
 	size_t _index;
 	
 };
+
+#endif _WAYPOINTMGR_H_

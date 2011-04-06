@@ -12,6 +12,9 @@
 
 #include "zone.h"
 
+#include "waypoints.h"
+#include "line.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
@@ -20,6 +23,7 @@
 class game_map{
 public:
 	vector<zone*> zones;
+	vector<game_sprite *> markers;
 	game_map();
 	game_map(int _map);
 	~game_map();
@@ -28,6 +32,7 @@ public:
 	void loadMap(int _map);
 	void clearMap();
 	void genTiles();
+	void PlaceMarker(point _xy);
 	tile* getTile(float world_x, float world_y);
 	vector<tile*> getTiles(float x1, float y1, float x2, float y2);
 	vector<tile*> getTiles(int attribute);
