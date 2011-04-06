@@ -60,7 +60,7 @@ tile* quad::getTile(float world_x, float world_y)
 	pTile = 0;
 	int i;
 	for (i = 0; i < tiles.size(); i++){
-		if (inBox(world_x, world_y, tiles[i]->x, tiles[i]->y, tiles[i]->height, tiles[i]->width)){
+		if (inBox(world_x, world_y, tiles[i]->x, tiles[i]->y, tiles[i]->x + tiles[i]->width, tiles[i]->y + tiles[i]->height)){
 			return tiles[i];
 		}
 	}
