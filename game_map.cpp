@@ -137,32 +137,33 @@ void game_map::saveTiles()
 	FileLoader loader;
 	vector<FileObject> mapObjs;
 	FileObject workObj;
-	vector<tile*> tiles;
 	vector<tile*> temp_tiles;
 	
 	// turn the tiles into file objects
-	for ( int i = 0; i < zones.size(); i++ )
+	int i = 0;
+	for ( i = 0; i < zones.size(); i++ )
 	{
 		temp_tiles = zones[i]->getTiles();
-		// get a whole mess of tiles
-		temp_tiles.insert( tiles.end(), temp_tiles.begin(), temp_tiles.end());
+		// convert to fileObjects
+		vector<tile*>::iterator itr = temp_tiles.begin();
+		
+		while( itr != temp_tiles.end() )
+		{
+			tile * pTile = *itr;
+			workObj.type = TILE_FLOOR;
+			workObj.width = pTile->width;
+			workObj.height = pTile->height;
+			workObj.pos_x = pTile->x;
+			workObj.pos_y = pTile->y;
+			mapObjs.push_back( workObj );
+			++itr;
+		}
+		int stop = 0;
+		
+		loader.saveConfig( "game.dat", mapObjs );
 	}
 	
 	
-	// convert to fileObjects
-	vector<tile*>::iterator itr = temp_tiles.begin();
-	
-	while( itr != temp_tiles.end() )
-	{
-		workObj.type = TILE_FLOOR;
-		workObj.width = (*itr)->width;
-		workObj.height = (*itr)->height;
-		workObj.pos_x = (*itr)->x;
-		workObj.pos_y = (*itr)->y;
-		mapObjs.push_back( workObj );
-		++itr;
-	}
-	
-	loader.saveConfig( "game.dat", mapObjs );
+
 }
 
