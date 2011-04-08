@@ -16,6 +16,7 @@
 #include "button_defines.h"
 #include "textAttributeReport.h"
 #include "spriteText.h"
+#include "map_manager.h"
 
 #ifdef WIN32
 	#include <windows.h>
@@ -273,4 +274,11 @@ void game::watchdog(int value)
 			loadPhase(STATE_LEVEL_FINISHED); // display score or something. You're done, monchichi!
 		}
 	}
+}
+
+void game::saveMap()
+{
+	
+	pMap->saveTiles();
+	
 }

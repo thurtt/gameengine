@@ -9,6 +9,7 @@
 
 
 #include "game_map.h"
+#include "map_manager.h"
 
 game_map::game_map()
 {
@@ -130,3 +131,38 @@ vector<tile*> game_map::getTiles(int attribute)
 	
 	return pTile;
 }
+
+void game_map::saveTiles()
+{
+	FileLoader loader;
+	vector<FileObject> mapObjs;
+	FileObject workObj;
+	vector<tile*> tiles;
+	vector<tile*> temp_tiles;
+	
+	// turn the tiles into file objects
+	for ( int i = 0; i < zones.size(); i++ )
+	{
+		temp_tiles = zones[i]->getTiles();
+		// get a whole mess of tiles
+		temp_tiles.insert( tiles.end(), temp_tiles.begin(), temp_tiles.end());
+	}
+	
+	
+	// convert to fileObjects
+	vector<tile*>::iterator itr = temp_tiles.begin();
+	
+	while( itr != temp_tiles.end() )
+	{
+		workObj.type = TILE_FLOOR;
+		workObj.width = (*itr)->width;
+		workObj.height = (*itr)->height;
+		workObj.pos_x = (*itr)->x;
+		workObj.pos_y = (*itr)->y;
+		mapObjs.push_back( workObj );
+		++itr;
+	}
+	
+	loader.saveConfig( "game.dat", mapObjs );
+}
+

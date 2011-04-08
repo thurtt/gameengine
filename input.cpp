@@ -153,6 +153,10 @@ void game_input::NormalKeysUp(unsigned char key, int x, int y)
 		pGame->pHUD->pFPS->active = pGame->pHUD->pFPS->active ? false : true;
 		pGame->pHUD->pMPS->active = pGame->pHUD->pMPS->active ? false : true;
 	}
+	if ( key == 'f' ){
+		pGame->saveMap();
+	}
+	
 }
 
 void game_input::MouseActiveMotion(int x, int y) 

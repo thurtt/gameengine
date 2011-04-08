@@ -13,21 +13,19 @@
 void FileLoader::loadConfig( std::string filename )
 {
 	FILE * hFile = fopen( filename.c_str(), "rb" );
-	unsigned long bytesInFile = 0;
-	unsigned long totalBytesRead = 0;
-	
-	
-	// old school trick to get the file size
-	fseek( hFile, 0, SEEK_END );
-	bytesInFile = ftell( hFile ) + 1; // 0 based
-	fseek( hFile, 0, SEEK_SET );
-	
-	
 	if ( hFile == 0 )
 	{
 		/// bye bye
 		throw std::runtime_error( "Cannot open configuration file" );
 	}
+	
+	unsigned long bytesInFile = 0;
+	unsigned long totalBytesRead = 0;
+	
+	// old school trick to get the file size
+	fseek( hFile, 0, SEEK_END );
+	bytesInFile = ftell( hFile ) + 1; // 0 based
+	fseek( hFile, 0, SEEK_SET );
 	
 	while ( totalBytesRead < bytesInFile )
 	{
@@ -56,13 +54,32 @@ void FileLoader::loadConfig( std::string filename )
 	
 void FileLoader::saveConfig( std::string filename, const std::vector<FileObject> & config )
 {
+	FILE * hFile = fopen( filename.c_str(), "wb" );
+	if ( hFile == 0 )
+	{
+		/// bye bye
+		throw std::runtime_error( "Cannot open configuration file" );
+	}
 	
+	// save things to the end of the file
+	fseek( hFile, 0, SEEK_END );
+	
+	for ( int i = 0; i < config.size(); i++ )
+	{
+		// write out the main object
+		fwrite( &(config[i]), sizeof( unsigned char ), ( sizeof( FileObject ) - ( MAX_FILENAME_LEN - 1 ) ) , hFile );
+		
+		// write out the filename
+		fwrite( config[i].img_filename, sizeof( unsigned char ), config[i].img_filename_len, hFile );
+
+	}
+	
+	fclose( hFile );
 }
 	
 std::vector<FileObject> FileLoader::getAllFileObjects()
 {
 	return m_fileObjects;
-	
 }
 
 std::vector<FileObject> FileLoader::getObjectsByType( FILE_OBJECT_TYPE type )

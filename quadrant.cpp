@@ -114,3 +114,7 @@ vector<tile*> quad::getTiles(int attribute)
 	return pTile;
 }
 
+vector<tile*> quad::getTiles()
+{
+	return tiles;
+}

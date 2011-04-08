@@ -102,3 +102,14 @@ vector<tile*> zone::getTiles(int attribute)
 	
 	return pTile;
 }
+
+vector<tile*> zone::getTiles()
+{
+	vector<tile*> tempTiles;
+	for ( int i = 0; i < quads.size(); i++ ) 
+	{
+		tempTiles.insert( tempTiles.end(), quads[i]->getTiles().begin(), quads[i]->getTiles().end() );
+	}
+	
+	return tempTiles;
+}

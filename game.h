@@ -67,6 +67,7 @@ public:
 	void midPhase();
 	void scrubHUD();
 	void watchdog(int value);
+	void saveMap();
 	
 };
 #endif

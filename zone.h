@@ -29,6 +29,7 @@ public:
 	tile* getTile(float world_x, float world_y);
 	vector<tile*> getTiles(float box_x1, float box_y1, float box_x2, float box_y2);
 	vector<tile*> getTiles(int attribute);
+	vector<tile*> getTiles();
 };
 
 
