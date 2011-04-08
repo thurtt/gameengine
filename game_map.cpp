@@ -149,6 +149,7 @@ void game_map::saveTiles()
 		
 		while( itr != temp_tiles.end() )
 		{
+			memset( &workObj, 0, sizeof( FileObject ) );
 			tile * pTile = *itr;
 			workObj.type = TILE_FLOOR;
 			workObj.width = pTile->width;

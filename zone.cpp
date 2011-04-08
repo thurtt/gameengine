@@ -106,10 +106,12 @@ vector<tile*> zone::getTiles(int attribute)
 vector<tile*> zone::getTiles()
 {
 	vector<tile*> tempTiles;
+	vector<tile*> allTiles;
 	for ( int i = 0; i < quads.size(); i++ ) 
 	{
-		tempTiles.insert( tempTiles.end(), quads[i]->getTiles().begin(), quads[i]->getTiles().end() );
+		tempTiles = quads[i]->getTiles();
+		allTiles.insert( allTiles.end(), tempTiles.begin(), tempTiles.end() );
 	}
 	
-	return tempTiles;
+	return allTiles;
 }
