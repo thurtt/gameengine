@@ -135,8 +135,8 @@ vector<tile*> game_map::getTiles(int attribute)
 void game_map::saveTiles()
 {
 	FileLoader loader;
-	vector<FileObject> mapObjs;
-	FileObject workObj;
+	vector<SpriteObject> mapObjs;
+	SpriteObject workObj;
 	vector<tile*> temp_tiles;
 	
 	// turn the tiles into file objects
@@ -149,9 +149,8 @@ void game_map::saveTiles()
 		
 		while( itr != temp_tiles.end() )
 		{
-			memset( &workObj, 0, sizeof( FileObject ) );
+			memset( &workObj, 0, sizeof( SpriteObject ) );
 			tile * pTile = *itr;
-			workObj.type = TILE_FLOOR;
 			workObj.width = pTile->width;
 			workObj.height = pTile->height;
 			workObj.pos_x = pTile->x;

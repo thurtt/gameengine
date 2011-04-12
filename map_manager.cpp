@@ -30,29 +30,29 @@ void FileLoader::loadConfig( std::string filename )
 	while ( totalBytesRead < bytesInFile )
 	{
 		
-		FileObject loadObj;
-		memset( &loadObj, 0, sizeof(FileObject) );
+		SpriteObject loadObj;
+		memset( &loadObj, 0, sizeof(SpriteObject) );
 		
 		// only read up to the filename since it can be variable length
-		totalBytesRead += fread( &loadObj, sizeof( unsigned char ), ( sizeof( FileObject ) - MAX_FILENAME_LEN + 1 ), hFile );
+		totalBytesRead += fread( &loadObj, sizeof( unsigned char ), ( sizeof( SpriteObject ) - MAX_FILENAME_LEN + 1 ), hFile );
 		
 		// now take the filename len to determine how much filename we need to read in
-		unsigned long readLen = loadObj.img_filename_len;
+		unsigned long readLen = loadObj.text_filename_len;
 		if ( readLen > MAX_FILENAME_LEN )
 		{
 			readLen = MAX_FILENAME_LEN;
 		}
-		totalBytesRead = fread( loadObj.img_filename, sizeof( unsigned char ), readLen, hFile );
+		totalBytesRead = fread( loadObj.textFilename, sizeof( unsigned char ), readLen, hFile );
 		
 		// add it to our list
-		m_fileObjects.push_back( loadObj );
+		m_spriteObjects.push_back( loadObj );
 		
 	}
 	
 	fclose( hFile );
 }
 	
-void FileLoader::saveConfig( std::string filename, const std::vector<FileObject> & config )
+void FileLoader::saveConfig( std::string filename, const std::vector<SpriteObject> & config )
 {
 	FILE * hFile = fopen( filename.c_str(), "wb" );
 	if ( hFile == 0 )
@@ -67,22 +67,22 @@ void FileLoader::saveConfig( std::string filename, const std::vector<FileObject>
 	for ( int i = 0; i < config.size(); i++ )
 	{
 		// write out the main object
-		fwrite( &(config[i]), sizeof( unsigned char ), ( sizeof( FileObject ) - ( MAX_FILENAME_LEN - 1 ) ) , hFile );
+		fwrite( &(config[i]), sizeof( unsigned char ), ( sizeof( SpriteObject ) - ( MAX_FILENAME_LEN - 1 ) ) , hFile );
 		
 		// write out the filename
-		fwrite( config[i].img_filename, sizeof( unsigned char ), config[i].img_filename_len, hFile );
+		fwrite( config[i].textFilename, sizeof( unsigned char ), config[i].text_filename_len, hFile );
 
 	}
 	
 	fclose( hFile );
 }
 	
-std::vector<FileObject> FileLoader::getAllFileObjects()
+std::vector<SpriteObject> FileLoader::getAllSpriteObjects()
 {
-	return m_fileObjects;
+	return m_spriteObjects;
 }
 
-std::vector<FileObject> FileLoader::getObjectsByType( FILE_OBJECT_TYPE type )
+/*std::vector<FileObject> FileLoader::getObjectsByType( FILE_OBJECT_TYPE type )
 {
 	std::vector<FileObject> tmpResult;
 	std::vector<FileObject>::iterator itr = m_fileObjects.begin();
@@ -96,5 +96,5 @@ std::vector<FileObject> FileLoader::getObjectsByType( FILE_OBJECT_TYPE type )
 		++itr;
 	}
 	return tmpResult;
-}
+}*/
 	
