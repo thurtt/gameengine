@@ -52,26 +52,42 @@ void FileLoader::loadConfig( std::string filename )
 	fclose( hFile );
 }
 	
-void FileLoader::saveConfig( std::string filename, const std::vector<SpriteObject> & config )
+void FileLoader::saveConfig( std::string filename, const std::vector<SpriteObject> & config, bool newfile )
 {
-	FILE * hFile = fopen( filename.c_str(), "wb" );
+	
+	FILE * hFile = 0;
+	
+	if ( newfile )
+	{
+		hFile = fopen( filename.c_str(), "wb" );
+	}
+	else 
+	{
+		hFile = fopen( filename.c_str(), "ab" );
+	}
+
 	if ( hFile == 0 )
 	{
 		/// bye bye
 		throw std::runtime_error( "Cannot open configuration file" );
 	}
 	
-	// save things to the end of the file
-	fseek( hFile, 0, SEEK_END );
 	
 	for ( int i = 0; i < config.size(); i++ )
 	{
+		unsigned long bytesToWrite = ( sizeof( SpriteObject ) - ( ( MAX_FILENAME_LEN - 1 ) + ( sizeof( unsigned long ) + ( sizeof( unsigned long ) * config[i].attrib_count ) ) ) );
+		
 		// write out the main object
-		fwrite( &(config[i]), sizeof( unsigned char ), ( sizeof( SpriteObject ) - ( MAX_FILENAME_LEN - 1 ) ) , hFile );
+		fwrite( &(config[i]), sizeof( unsigned char ), bytesToWrite, hFile );
 		
 		// write out the filename
 		fwrite( config[i].textFilename, sizeof( unsigned char ), config[i].text_filename_len, hFile );
-
+		
+		// write out any attributes. We need to write out the attribute count regardless of whether or not any exist
+		fwrite( &(config[i].attrib_count), sizeof( unsigned long ), 1, hFile );
+		
+		// We can directly write out the entire attributes array in one line...badass
+		fwrite( config[i].attributes, sizeof( unsigned long ), config[i].attrib_count, hFile ); 
 	}
 	
 	fclose( hFile );

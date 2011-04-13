@@ -19,12 +19,11 @@ struct SpriteObject
 	float height;
 	float pos_x;
 	float pos_y;
-	int movement;
-	int visibility;
-	int spawn;
-	int detention;
 	unsigned long text_filename_len;
 	char textFilename[MAX_FILENAME_LEN];
+	// these are in pairs
+	unsigned long attrib_count;
+	unsigned long * attributes;
 };
 
 
@@ -46,7 +45,7 @@ class FileLoader
 public:
 	void loadConfig( std::string filename );
 	
-	void saveConfig( std::string filename, const std::vector<SpriteObject> & config );
+	void saveConfig( std::string filename, const std::vector<SpriteObject> & config, bool newfile = false );
 	
 	std::vector<SpriteObject> getAllSpriteObjects();
 	//std::vector<SpriteObject> getObjectsByType( FILE_OBJECT_TYPE type );

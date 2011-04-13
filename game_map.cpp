@@ -149,21 +149,45 @@ void game_map::saveTiles()
 		
 		while( itr != temp_tiles.end() )
 		{
-			memset( &workObj, 0, sizeof( SpriteObject ) );
-			tile * pTile = *itr;
-			workObj.width = pTile->width;
-			workObj.height = pTile->height;
-			workObj.pos_x = pTile->x;
-			workObj.pos_y = pTile->y;
-			mapObjs.push_back( workObj );
+			// yet another loop to get sprite info for each tile
+			vector<game_sprite *>::iterator itr2 = (*itr)->sprites.begin();
+			
+			while( itr2 != (*itr)->sprites.end() )
+			{
+				memset( &workObj, 0, sizeof( SpriteObject ) );
+				game_sprite * pSprite = *itr2;
+				workObj.width = pSprite->width;
+				workObj.height = pSprite->height;
+				workObj.pos_x = pSprite->_x;
+				workObj.pos_y = pSprite->_y;
+				
+				// get all of the attributes
+				unsigned long attrib_count = pSprite->attr->_attributes.size() * 2;
+				workObj.attributes = new unsigned long[attrib_count];
+				workObj.attrib_count = attrib_count;
+				
+				map<int, int>::iterator itr3 = pSprite->attr->_attributes.begin();
+				unsigned long idx = 0;
+				while ( itr3 != pSprite->attr->_attributes.end() )
+				{
+					workObj.attributes[idx] = itr3->first;
+					workObj.attributes[idx+1] = itr3->second;
+					++itr3;
+				}
+				
+				mapObjs.push_back( workObj );
+				++itr2;
+			}
 			++itr;
 		}
-		int stop = 0;
 		
 		loader.saveConfig( "game.dat", mapObjs );
+		
+		// this cleanup needs to occur unfornunately
+		for( i = 0; i < mapObjs.size(); i++ )
+		{
+			delete [] mapObjs[i].attributes;
+		}
 	}
-	
-	
-
 }
 
