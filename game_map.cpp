@@ -160,6 +160,9 @@ void game_map::saveTiles()
 				workObj.height = pSprite->height;
 				workObj.pos_x = pSprite->_x;
 				workObj.pos_y = pSprite->_y;
+				strncpy( workObj.textFilename, pSprite->texture_file, MAX_FILENAME_LEN );
+				workObj.text_filename_len = strlen( workObj.textFilename );
+				
 				
 				// get all of the attributes
 				unsigned long attrib_count = pSprite->attr->_attributes.size() * 2;
@@ -172,6 +175,7 @@ void game_map::saveTiles()
 				{
 					workObj.attributes[idx] = itr3->first;
 					workObj.attributes[idx+1] = itr3->second;
+					idx += 2;
 					++itr3;
 				}
 				
@@ -181,7 +185,7 @@ void game_map::saveTiles()
 			++itr;
 		}
 		
-		loader.saveConfig( "game.dat", mapObjs );
+		loader.saveConfig( "game.dat", mapObjs, true );
 		
 		// this cleanup needs to occur unfornunately
 		for( i = 0; i < mapObjs.size(); i++ )

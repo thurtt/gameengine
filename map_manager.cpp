@@ -75,7 +75,7 @@ void FileLoader::saveConfig( std::string filename, const std::vector<SpriteObjec
 	
 	for ( int i = 0; i < config.size(); i++ )
 	{
-		unsigned long bytesToWrite = ( sizeof( SpriteObject ) - ( ( MAX_FILENAME_LEN - 1 ) + ( sizeof( unsigned long ) + ( sizeof( unsigned long ) * config[i].attrib_count ) ) ) );
+		unsigned long bytesToWrite = ( sizeof( SpriteObject ) - ( ( MAX_FILENAME_LEN - 1 ) + sizeof( unsigned long ) + sizeof( unsigned long * ) ) );
 		
 		// write out the main object
 		fwrite( &(config[i]), sizeof( unsigned char ), bytesToWrite, hFile );

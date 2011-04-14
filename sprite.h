@@ -38,7 +38,6 @@ using namespace std;
 
 class game_sprite {
 protected:
-	const char * texture_file;
 	GLuint texture;
 	map<int, pair<GLuint, int> > animations;
 	vector<game_sprite *>  sprite_list;
@@ -80,6 +79,7 @@ public:
 	void includeSprite( game_sprite * pSprite );
 	float distance(point target);
 	point center();
+	const char * texture_file;
 };
 
 void texture_cleanup(); //clean up straggler textures

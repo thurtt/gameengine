@@ -110,7 +110,7 @@ void Player::movement(){
 		}
 	}
 	
-	if (move_allowed && !close_enough( point( _x, _y ), _target ) ){
+	if (move_allowed && !close_enough( center(), _target ) ){
 		move( delta );
 		_angle += ROTATION_OFFSET;
 		if (texture != animations[ANIM_WALK].first) {
