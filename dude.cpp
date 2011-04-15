@@ -20,11 +20,13 @@ bool Dude::close_enough( const point & point1, const point & point2 )
 point Dude::get_next_step( float delta )
 {
 	point newPoint( 0, 0 );
-	float rad_angle = atan2( ( _target.y - _y ), ( _target.x - _x ) );
+	point oldePointe = center();
+	float rad_angle = atan2( ( _target.y - oldePointe.y ), ( _target.x - oldePointe.x ) );
 	_angle = -toDegrees( rad_angle );
 	
-	newPoint.x = _x + delta * cos( rad_angle );		
-	newPoint.y = _y + delta * sin( rad_angle );
+	// What kind of sorcery is this??
+	newPoint.x = ( oldePointe.x + delta * cos( rad_angle ) ) - ( width / 2 );		
+	newPoint.y = ( oldePointe.y + delta * sin( rad_angle ) ) - ( height / 2 );
 	
 	return newPoint;
 }
