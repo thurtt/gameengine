@@ -6,6 +6,9 @@
  *  Copyright 2011 __MyCompanyName__. All rights reserved.
  *
  */
+#ifndef _MAP_MANAGER_H_
+#define _MAP_MANAGER_H_
+
 #include <string>
 #include <vector>
 
@@ -20,7 +23,7 @@ struct SpriteObject
 	float pos_x;
 	float pos_y;
 	unsigned long text_filename_len;
-	char textFilename[MAX_FILENAME_LEN];
+	char textFilename[MAX_FILENAME_LEN+1];
 	// these are in pairs
 	unsigned long attrib_count;
 	unsigned long * attributes;
@@ -54,3 +57,4 @@ private:
 	std::vector<SpriteObject> m_spriteObjects;
 };
 
+#endif // _MAP_MANAGER_H_

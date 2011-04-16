@@ -14,6 +14,7 @@
 
 #include "waypoints.h"
 #include "line.h"
+#include "map_manager.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -37,6 +38,13 @@ public:
 	vector<tile*> getTiles(float x1, float y1, float x2, float y2);
 	vector<tile*> getTiles(int attribute);
 	void saveTiles();
+	void loadTiles();
+	
+private:
+	
+	// sprites that are loaded from file
+	vector<SpriteObject> m_spritesFromFile;
+	
 };
 
 #endif // _GAMEMAP_H_

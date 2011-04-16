@@ -56,6 +56,10 @@ void game_map::draw(int offset_x, int offset_y)
 
 void game_map::loadMap(int _map)
 {
+	
+	// get the tiles from the data file
+	loadTiles();
+	
 	// map is series of zones
 	genTiles();
 	
@@ -161,7 +165,7 @@ void game_map::saveTiles()
 				workObj.pos_x = pSprite->_x;
 				workObj.pos_y = pSprite->_y;
 				strncpy( workObj.textFilename, pSprite->texture_file, MAX_FILENAME_LEN );
-				workObj.text_filename_len = strlen( workObj.textFilename );
+				workObj.text_filename_len = strlen( workObj.textFilename ) + 1;
 				
 				
 				// get all of the attributes
@@ -195,3 +199,11 @@ void game_map::saveTiles()
 	}
 }
 
+void game_map::loadTiles()
+{
+	FileLoader loader;
+	
+	loader.loadConfig( "game.dat" );
+	
+	m_spritesFromFile = loader.getAllSpriteObjects();
+}

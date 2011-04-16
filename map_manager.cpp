@@ -9,6 +9,7 @@
 
 #include <stdexcept>
 #include "map_manager.h"
+#include <assert.h>
 
 void FileLoader::loadConfig( std::string filename )
 {
@@ -21,20 +22,26 @@ void FileLoader::loadConfig( std::string filename )
 	
 	unsigned long bytesInFile = 0;
 	unsigned long totalBytesRead = 0;
+	unsigned long blocksRead = 0;
+	const unsigned long objHeadSize = ( sizeof( SpriteObject ) - ( ( MAX_FILENAME_LEN - 1 ) + sizeof( unsigned long ) + sizeof( unsigned long * ) ) );
 	
 	// old school trick to get the file size
 	fseek( hFile, 0, SEEK_END );
-	bytesInFile = ftell( hFile ) + 1; // 0 based
+	bytesInFile = ftell( hFile ); // 0 based
 	fseek( hFile, 0, SEEK_SET );
 	
-	while ( totalBytesRead < bytesInFile )
+
+	
+	while ( ( totalBytesRead < bytesInFile ) && !feof( hFile ) )
 	{
 		
 		SpriteObject loadObj;
 		memset( &loadObj, 0, sizeof(SpriteObject) );
 		
 		// only read up to the filename since it can be variable length
-		totalBytesRead += fread( &loadObj, sizeof( unsigned char ), ( sizeof( SpriteObject ) - MAX_FILENAME_LEN + 1 ), hFile );
+		blocksRead = fread( &loadObj, sizeof( unsigned char ), objHeadSize , hFile );
+		assert( blocksRead == objHeadSize );
+		totalBytesRead += blocksRead;
 		
 		// now take the filename len to determine how much filename we need to read in
 		unsigned long readLen = loadObj.text_filename_len;
@@ -42,7 +49,20 @@ void FileLoader::loadConfig( std::string filename )
 		{
 			readLen = MAX_FILENAME_LEN;
 		}
-		totalBytesRead = fread( loadObj.textFilename, sizeof( unsigned char ), readLen, hFile );
+		blocksRead = fread( loadObj.textFilename, sizeof( unsigned char ), readLen, hFile );
+		assert( blocksRead == loadObj.text_filename_len );
+		totalBytesRead += blocksRead;
+		
+		// read in the size of our attributes
+		blocksRead = fread( &( loadObj.attrib_count ), sizeof( unsigned long ), 1, hFile );
+		assert( blocksRead == 1 );
+		totalBytesRead += ( blocksRead * sizeof( unsigned long ) );
+		
+		// load up the attributes
+		loadObj.attributes = new unsigned long[loadObj.attrib_count];
+		blocksRead = fread( loadObj.attributes, sizeof( unsigned long ), loadObj.attrib_count, hFile );
+		assert( blocksRead == loadObj.attrib_count );
+		totalBytesRead += ( blocksRead * sizeof( unsigned long ) );
 		
 		// add it to our list
 		m_spriteObjects.push_back( loadObj );
@@ -97,20 +117,3 @@ std::vector<SpriteObject> FileLoader::getAllSpriteObjects()
 {
 	return m_spriteObjects;
 }
-
-/*std::vector<FileObject> FileLoader::getObjectsByType( FILE_OBJECT_TYPE type )
-{
-	std::vector<FileObject> tmpResult;
-	std::vector<FileObject>::iterator itr = m_fileObjects.begin();
-	
-	while( itr != m_fileObjects.end() )
-	{
-		if ( itr->type == type )
-		{
-			tmpResult.push_back( *itr );
-		}
-		++itr;
-	}
-	return tmpResult;
-}*/
-	
