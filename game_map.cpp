@@ -65,7 +65,7 @@ void game_map::loadMap(int _map)
 	
 	int i;
 	for ( i = 0; i < 16; i++){
-		zones.push_back( new zone( i ) );
+		zones.push_back( new zone( i, m_spritesFromFile ) );
 	}
 }
 

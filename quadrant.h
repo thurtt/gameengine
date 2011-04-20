@@ -8,6 +8,7 @@
  */
 
 #include "tiles.h"
+#include "map_manager.h"
 
 #include <vector>
 #include <string>
@@ -20,7 +21,7 @@ public:
 	int id, zone_id;
 	bool populated;
 	vector<tile*> tiles;
-	quad(int _id, int _zone_id);
+	quad(int _id, int _zone_id, vector<SpriteObject> & spriteObjects );
 	~quad();
 	void draw();
 	void draw(float, float);

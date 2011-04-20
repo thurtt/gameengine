@@ -11,7 +11,7 @@
 #include "collision.h"
 
 
-zone::zone(int _id){
+zone::zone(int _id, vector<SpriteObject> & spriteObjects){
 	id = _id;
 	height = ZONEHEIGHT;
 	width = ZONEWIDTH;
@@ -19,7 +19,7 @@ zone::zone(int _id){
 	y = (id / 4) * ZONEHEIGHT;
 	int i; 
 	for (i = 0; i < 4; i++){
-		quads.push_back(new quad( i, id ));
+		quads.push_back(new quad( i, id, spriteObjects ));
 	}
 }
 zone::~zone(){

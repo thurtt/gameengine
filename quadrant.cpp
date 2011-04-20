@@ -11,7 +11,7 @@
 #include "collision.h"
 
 
-quad::quad(int _id, int _zone_id){
+quad::quad(int _id, int _zone_id, vector<SpriteObject> & spriteObjects){
 	id = _id; zone_id = _zone_id;
 	height = QUADHEIGHT;
 	width = QUADWIDTH;
@@ -19,7 +19,7 @@ quad::quad(int _id, int _zone_id){
 	y = (id / 2) * QUADHEIGHT + (zone_id / 4) * ZONEHEIGHT ;
 	int i; 
 	for (i = 0; i < QUADTILES; i++){
-		tiles.push_back( new tile( i, id, zone_id ));
+		tiles.push_back( new tile( i, id, zone_id, spriteObjects ));
 	}
 }
 quad::~quad(){

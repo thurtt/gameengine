@@ -29,7 +29,7 @@ int ** maps[1] = { map_1 };
 vector< vector<_sprite_data*> > tileset;
 
 
-tile::tile(int _id, int _quad_id, int _zone_id){
+tile::tile(int _id, int _quad_id, int _zone_id, vector<SpriteObject> & spriteObjects ){
 	id = _id; zone_id = _zone_id; quad_id = _quad_id;
 	height = TILESIZE;
 	width = TILESIZE;
@@ -39,9 +39,33 @@ tile::tile(int _id, int _quad_id, int _zone_id){
 	int i; 
 	int tile_id = maps[0][zone_id][quad_id * QUADTILES + id];
 	
-	for (i = 0; i < tileset[tile_id].size(); i++){
+	/*for (i = 0; i < tileset[tile_id].size(); i++){
 		sprites.push_back( new game_sprite( x, y, tileset[tile_id][i] ) );
+	}*/
+	
+	// find the sprites for this tile
+	vector<SpriteObject>::iterator itr = spriteObjects.begin();
+	
+	while( itr != spriteObjects.end() )
+	{
+		SpriteObject & sObj = *itr;
+		if( ( sObj.pos_x >= x ) && ( sObj.pos_x <= ( x + width ) ) && ( sObj.pos_y >= y ) && ( sObj.pos_y <= ( y + height ) ) )
+		{
+			// move over the attributes
+			map<int, int> attributes;
+			for( int i; i < sObj.attrib_count; i += 2 )
+			{
+				attributes[i] = i+1;
+			}
+			
+			// build a new-ass sprite
+			game_sprite * newAssSprite = new game_sprite( sObj.pos_x, sObj.pos_y, sObj.width, sObj.height, sObj.textFilename, attributes );
+			sprites.push_back( newAssSprite );
+		}
+		
+		++itr;
 	}
+	
 }
 tile::~tile(){
 	int i;

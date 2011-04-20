@@ -58,8 +58,9 @@ public:
 	game_sprite();
 	game_sprite(float _x_, float _y_, _sprite_data * sprite_data);
 	game_sprite(float, float, float, float, const char *, int, int);
+	game_sprite(float _x_, float _y_, float _width_, float _height_, const char * _filename_, map<int, int> _attr_);
 	~game_sprite();
-	void generalInit(float _x_, float _y_, float _width_, float _height_, const char * _filename, int vis, int mov);
+	void generalInit(float _x_, float _y_, float _width_, float _height_, const char * _filename);
 	void includeAnimation(int, GLuint, int);
 	void includeAnimation(int,const char *, int);
 	void useAnimation(int);

@@ -21,7 +21,7 @@ public:
 	int id;
 	bool populated;
 	vector<quad*> quads;
-	zone(int _id);
+	zone(int _id, vector<SpriteObject> & spriteObjects);
 	~zone();
 	void draw();
 	void draw(float, float);

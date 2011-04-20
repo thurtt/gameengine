@@ -174,7 +174,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\charselection.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\collision.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\dude.cpp"
 				>
 			</File>
 			<File
@@ -218,7 +226,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\map_manager.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\player.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\player_data.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\playerselectsprite.cpp"
 				>
 			</File>
 			<File
@@ -292,11 +312,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\charselection.h"
+				>
+			</File>
+			<File
 				RelativePath=".\collision.h"
 				>
 			</File>
 			<File
 				RelativePath=".\drawable.h"
+				>
+			</File>
+			<File
+				RelativePath=".\dude.h"
 				>
 			</File>
 			<File
@@ -344,7 +372,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\map_manager.h"
+				>
+			</File>
+			<File
 				RelativePath=".\player.h"
+				>
+			</File>
+			<File
+				RelativePath=".\player_data.h"
+				>
+			</File>
+			<File
+				RelativePath=".\playerselectsprite.h"
 				>
 			</File>
 			<File
@@ -365,6 +405,10 @@
 			</File>
 			<File
 				RelativePath=".\sprite_data.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sprite_defines.h"
 				>
 			</File>
 			<File

@@ -12,6 +12,7 @@
 #include "sprite_data.h"
 #include "sprite.h"
 #include "line.h"
+#include "map_manager.h"
 
 #include <math.h>
 #include <vector>
@@ -25,7 +26,7 @@ public:
 	float x, y;
 	float height, width;
 	int id, quad_id, zone_id;
-	tile(int _id, int _quad_id, int _zone_id);
+	tile(int _id, int _quad_id, int _zone_id, vector<SpriteObject> & spriteObjects );
 	~tile();
 	void draw();
 	void draw(float, float);

@@ -19,31 +19,51 @@ vector< pair<const char*, GLuint> > master_texture_list;
 
 game_sprite::game_sprite()
 {
-	generalInit(10, 10, 10, 10, "img_png", 0, 0);
+	generalInit(10, 10, 10, 10, "img_png");
+	attr->setAttribute(BLOCK_MOVEMENT, 0);
+	attr->setAttribute(BLOCK_VISIBILITY, 0);
 }
 
 game_sprite::game_sprite(float _x_, float _y_, _sprite_data * sd)
 {
-	generalInit( sd->x + _x_, sd->y + _y_, sd->width, sd->height, sd->texture, sd->Visibility, sd->Movement);
+	generalInit( sd->x + _x_, sd->y + _y_, sd->width, sd->height, sd->texture );
 	attr->setAttribute(SPAWN_POINT, sd->Spawn);
 	attr->setAttribute(DETENTION_POINT, sd->Detention);
+	attr->setAttribute(BLOCK_MOVEMENT, sd->Movement);
+	attr->setAttribute(BLOCK_VISIBILITY, sd->Visibility);
+	attr->setAttribute(ALIVE, 1);
+}
+
+game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, const char * _filename_, map<int, int> _attrib_ )
+{
+	generalInit( _x_, _y_, _width_, _height_, _filename_ );
+	
+	map<int, int>::iterator itr = _attrib_.begin();
+	
+	// populate the attributes
+	while( itr != _attrib_.end() )
+	{
+		attr->setAttribute( itr->first, itr->second );
+		++itr;
+	}	
 }
 
 game_sprite::game_sprite(float _x_, float _y_, float _width_, float _height_, const char * _filename, int vis, int mov)
 {
-	generalInit(_x_, _y_, _width_, _height_, _filename, vis, mov);
+	generalInit(_x_, _y_, _width_, _height_, _filename);
+	attr->setAttribute(BLOCK_MOVEMENT, mov);
+	attr->setAttribute(BLOCK_VISIBILITY, vis);
+	attr->setAttribute(ALIVE, 1);
 }
 
-void game_sprite::generalInit(float _x_, float _y_, float _width_, float _height_, const char * _filename, int vis, int mov)
+void game_sprite::generalInit(float _x_, float _y_, float _width_, float _height_, const char * _filename )
 {
 	xy(_x_, _y_);
 	wh(_width_, _height_);
 	texture_file = _filename;
 	attr = new spriteAttribute();
 	
-	attr->setAttribute(BLOCK_MOVEMENT, mov);
-	attr->setAttribute(BLOCK_VISIBILITY, vis);
-	attr->setAttribute(ALIVE, 1);
+
 	active = true;
 	
 	includeAnimation(ANIM_NONE, LoadTexture(texture_file), 0);
