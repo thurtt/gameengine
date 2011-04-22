@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E2BEAC9D12E20D1A004C439E /* los.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BEAC9C12E20D1A004C439E /* los.cpp */; };
 		E2BEACBA12E2196C004C439E /* guard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BEACB912E2196C004C439E /* guard.cpp */; };
+		E2C23EFB13449DE700EBD34C /* map_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2C23EFA13449DE700EBD34C /* map_manager.cpp */; };
 		E2DD7CCC12F64F8200863ECB /* rotation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DD7CCB12F64F8200863ECB /* rotation.cpp */; };
 		E2DD7CD712F6520700863ECB /* waypoints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DD7CD612F6520700863ECB /* waypoints.cpp */; };
 		E2F94812130DF49F0017E9C1 /* dude.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2F94811130DF49F0017E9C1 /* dude.cpp */; };
@@ -48,6 +49,8 @@
 		E2BEAC9C12E20D1A004C439E /* los.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = los.cpp; sourceTree = "<group>"; };
 		E2BEACB812E2196C004C439E /* guard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guard.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		E2BEACB912E2196C004C439E /* guard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guard.cpp; sourceTree = "<group>"; };
+		E2C23EF913449DE700EBD34C /* map_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = map_manager.h; sourceTree = "<group>"; };
+		E2C23EFA13449DE700EBD34C /* map_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = map_manager.cpp; sourceTree = "<group>"; };
 		E2DD7CCA12F64F8200863ECB /* rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rotation.h; sourceTree = "<group>"; };
 		E2DD7CCB12F64F8200863ECB /* rotation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rotation.cpp; sourceTree = "<group>"; };
 		E2DD7CD512F6520700863ECB /* waypoints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = waypoints.h; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 				F367739912DCF60600367F02 /* tiles.h */,
 				F367739A12DCF60600367F02 /* tiles.cpp */,
 				F367739E12DCF64A00367F02 /* tile_defines.h */,
+				E2C23EF913449DE700EBD34C /* map_manager.h */,
+				E2C23EFA13449DE700EBD34C /* map_manager.cpp */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -353,6 +358,7 @@
 			isa = PBXProject;
 			buildConfigurationList = F3409E0212D81AA8005240F1 /* Build configuration list for PBXProject "gltest" */;
 			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				English,
@@ -416,6 +422,7 @@
 				F3A9D47E131AD3B2003981FC /* player_data.cpp in Sources */,
 				F3A9D498131AE42D003981FC /* charselection.cpp in Sources */,
 				F3A9D49B131AE875003981FC /* playerselectsprite.cpp in Sources */,
+				E2C23EFB13449DE700EBD34C /* map_manager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
